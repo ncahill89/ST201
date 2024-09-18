@@ -1,0 +1,406 @@
+---
+title: "ST201 Data Analysis"
+subtitle: "Data"
+author: "Prof. Niamh Cahill (she/her)"
+format: revealjs
+editor: visual
+highlight-style: github
+revealjs-plugins: quiz
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(openintro)
+library(tidyverse)
+```
+
+## Data basics {style="font-size: 80%;"}
+
+::: panel-tabset
+### Loans Data
+
+We will consider a dataset with information for 50 loans
+
+-   Each row in the dataset represents a single loan
+
+    -   formally, an observational unit
+
+-   Each column represents characteristics associated with the loan
+
+    -   formally, a variable
+
+### Dataset
+
+```{r, echo = FALSE}
+DT::datatable(openintro::loan50 %>% select(state,loan_amount, interest_rate, term, grade, total_income, homeownership))
+```
+:::
+
+## Variables {style="font-size: 80%;"}
+
+Observations or data points can be collected in a **statistical variable**.
+
+::: columns
+::: {.column width="50%"}
+### Qualitative Variables
+
+Descriptive or categorical variables that **define characteristics**.
+
+::: incremental
+-   🌎 **US State**: Identifies geographic locations.
+-   🏷️ **Loan Grade**: Categorizes the quality of loans.
+-   🏠 **Homeownership**: Indicates property ownership status.
+:::
+:::
+
+::: {.column width="50%"}
+### Quantitative Variables
+
+Measurable or numerical variables that **quantify data**.
+
+::: incremental
+-   💵 **Loan Amount**: The total value of the loan.
+-   📈 **Interest Rate**: The cost of borrowing expressed as a percentage.
+-   🗓️ **Loan Term**: The duration for repayment.
+-   💰 **Total Income**: The amount of income earned.
+:::
+:::
+:::
+
+## Variables {style="font-size: 80%;"}
+
+Variables can be categorized as either **discrete** or **continuous**.
+
+::: columns
+::: {.column width="42%"}
+### Discrete Variables
+
+Distinct and countable variables that represent **individual values**.
+
+::: incremental
+-   📅 **Loan Term**: The number of periods for repayment.
+-   🏷️ **Loan Grade**: Categories such as 1 = A, 2 = B, 3 = C, 4 = D...
+:::
+:::
+
+::: {.column width="58%"}
+### Continuous Variables
+
+Variables that can take an **infinite number of values**, representing measurable quantities.
+
+::: incremental
+-   💵 **Loan Amount**: The exact value of the loan.
+-   📈 **Interest Rate**: The precise percentage of borrowing cost.
+:::
+:::
+:::
+
+## Scales {style="font-size: 80%;"}
+
+Understanding the different **scales of measurement** helps in analyzing data accurately.
+
+::: columns
+::: {.column width="55%"}
+### Nominal Scale
+
+Values **cannot be ordered** and represent distinct categories.
+
+::: incremental
+-   🌎 **US State**: Identifies states without any order.
+-   🏠 **Homeownership**: Categories (rent, mortgage), with no inherent ranking.
+:::
+:::
+
+::: {.column width="45%"}
+### Ordinal Scale
+
+Values **can be ordered** and reflect a natural ranking.
+
+::: incremental
+-   🎓 **Loan Grade**: Categories like A, B, C, D, E, which represent a quality spectrum. <!-- - **Natural Ordering**: Reflects a progression from high to low quality. -->
+:::
+
+<!-- ### Continuous Scale -->
+
+<!-- Values can be ordered, and the **differences between values** have meaningful interpretations. -->
+
+<!-- - 💵 **Loan Amount**: Examples like 3000, 6000, 6400, etc., where differences represent actual quantities. -->
+:::
+:::
+
+## Grouped Data {style="font-size: 80%;"}
+
+Sometimes, data is available only in **summarized form**, where you know the category or group rather than the exact value.
+
+::: incremental
+-   **Income Groups**: (0 EUR - 20,000 EUR), \[20,000 EUR - 30,000 EUR), etc.
+-   **Political Parties**: Combines parties with a low number of voters into one category ("other").
+-   **Insurance Claims**: Claims data might be simplified - if a customer has made a claim or not (Yes/No)
+-   Any grouped variable with only **two possible values** is called a **binary variable**.
+:::
+
+## Creating Data Sets {style="font-size: 80%;"}
+
+A data frame is a convenient and common way to organize data, especially if collecting data in a spreadsheet.
+
+::: incremental
+-   The loan data is an example of a data frame.
+
+-   A data frame where each row is a unique case (observational unit), each column is a variable, and each cell is a single value is commonly referred to as tidy data.
+
+-   When recording data, use a tidy data frame unless you have a very good reason to use a different structure.
+
+-   This structure allows new cases to be added as rows or new variables as new columns and facilitates visualization, summarization, and other statistical analyses.
+:::
+
+## Statistical Software {style="font-size: 80%;"}
+
+There are number of statistical software packages which allow data collection, management, and–most importantly–analysis.
+
+::: incremental
+-   We will focus on the statistical software package R.
+
+    ![](images/RStudio-Logo-Flat.png)
+
+-   Data can easily be read into R to be analysed.
+:::
+
+## Numerical representations of categorical data {style="font-size: 80%;"}
+
+Let's consider the number (frequency) of loans made among renters vs mortgage holders vs those who own their home outright in this dataset
+
+::: panel-tabset
+### Frequency Table
+
+```{r}
+loan_tab <- loan50$homeownership %>% table
+ knitr::kable(loan_tab)
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1|2|3"
+#| output-location: column-fragment
+
+home <- loan50$homeownership
+loan_tab <- table(home)
+loan_tab
+```
+:::
+
+## Numerical Representations of Categorical Data {style="font-size: 80%;"}
+
+\footnotesize
+
+Let's consider the proportion (relative frequency) of loans made within each homeowner category in this dataset
+
+::: panel-tabset
+### Relative Frequency Table
+
+```{r}
+N <- nrow(loan50)
+knitr::kable(loan_tab/N)
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1|2-3|4"
+#| output-location: column-fragment
+
+N <- nrow(loan50)
+home <- loan50$homeownership
+loan_tab <- table(home)
+loan_tab/N
+```
+:::
+
+## Graphical representations of categorical data {style="font-size: 80%;"}
+
+Let's consider the number (frequency) of loans made among renters vs mortgage holders vs those who own their home outright in this dataset
+
+::: panel-tabset
+### Barplot
+
+```{r}
+barplot(loan_tab)
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1|2|3"
+#| output-location: column-fragment
+
+home <- loan50$homeownership
+loan_tab <- table(home)
+barplot(loan_tab)
+```
+:::
+
+## Graphical representations of categorical data {style="font-size: 80%;"}
+
+Let's consider the proportion (relative frequency) of loans made within each homeowner category in this dataset
+
+::: panel-tabset
+### Barplot
+
+```{r}
+barplot(loan_tab/N)
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1|2-3|4"
+#| output-location: column-fragment
+
+N <- nrow(loan50)
+home <- loan50$homeownership
+loan_tab <- table(home)
+barplot(loan_tab/N)
+```
+:::
+
+## Numerical representations of numerical data {style="font-size: 80%;"}
+
+Consider the frequencies of the unique loan amounts in the data:
+
+```{r, fig.width=5, fig.height=3.8}
+table(loan50$loan_amount)
+```
+
+::: incremental
+-   There are 34 unique loan amounts.
+
+-   Does it make sense to tabulate this type of data?
+:::
+
+## Graphical representations of numerical data {style="font-size: 80%;"}
+
+::: panel-tabset
+<!-- Histogram of loan amounts (no. cell = 34) -->
+
+### Histogram
+
+```{r}
+hist(loan50$loan_amount,
+     breaks = 34,
+     main = "Histogram",
+     xlab = "Loan Amounts")
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| output-location: column-fragment
+#| code-line-numbers: "1-4|2"
+
+hist(loan50$loan_amount,
+     breaks = 34,
+     main = "Histogram",
+     xlab = "Loan Amounts")
+```
+:::
+
+## Graphical representations of numerical data {style="font-size: 80%;"}
+
+::: panel-tabset
+<!-- Histogram of loan amounts (no. cell = 34/2) -->
+
+### Histogram
+
+```{r}
+hist(loan50$loan_amount,
+     breaks = 34/2,
+     main = "Histogram",
+     xlab = "Loan Amounts")
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| output-location: column-fragment
+#| code-line-numbers: "1-4|2"
+
+hist(loan50$loan_amount,
+     breaks = 16,
+     main = "Histogram",
+     xlab = "Loan Amounts")
+```
+:::
+
+## Graphical representations of numerical data {style="font-size: 80%;"}
+
+::: panel-tabset
+<!-- Histogram of loan amounts (no. cell = 34/4) -->
+
+### Histogram
+
+```{r}
+hist(loan50$loan_amount,
+     breaks = 34/4,
+     main = "Histogram",
+     xlab = "Loan Amounts")
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| output-location: column-fragment
+#| code-line-numbers: "1-4|2"
+
+hist(loan50$loan_amount,
+     breaks = 8,
+     main = "Histogram",
+     xlab = "Loan Amounts")
+```
+:::
+
+## Empirical Cumulative Distribution Function (ECDF) {style="font-size: 80%;"}
+
+Consider the following 10 loan amounts:
+
+```{r, fig.width=5, fig.height=3.8}
+ check <- sort(loan50$loan_amount)[1:10]
+ check
+```
+
+::: incremental
+-   An ECDF can be used to obtain the relative frequencies for values contained in certain intervals, e.g., 0 - 3000, 3001 - 5000.
+
+-   For the 10 loan amounts we can see that
+
+    -   20% of the amounts are equal to or below 3000
+    -   50% are equal to or below 5000
+    -   100% are equal to or below 6000
+:::
+
+## ECDF plot of loan amounts (subset of 10) {style="font-size: 80%;"}
+
+```{r}
+ plot.ecdf(check)
+```
+
+## ECDF plot of loan amounts (all data) {style="font-size: 80%;"}
+
+::: panel-tabset
+### ECDF Plot
+
+```{r}
+loan_amount <- loan50$loan_amount
+plot.ecdf(loan_amount)
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| output-location: column-fragment
+#| code-line-numbers: "1|2"
+
+loan_amount <- loan50$loan_amount
+plot.ecdf(loan_amount)
+```
+:::

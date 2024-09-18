@@ -8,8 +8,12 @@ format:
 
 Welcome to the course website for ST201 Data Analysis!
 
-[Course information:](https://ncahill89.github.io/ST201/0-Information.html)
+[Module information](https://ncahill89.github.io/ST201/0-Information.html)
 
 Lecture material (slides, notes, videos) are licensed under CC-BY-NC 4.0.
 
 Contact: Niamh Cahill (niamh.cahill\@mu.ie)
+
+## Lecture Slides 
+
+Week 1: [Data](https://ncahill89.github.io/ST201/1-Data.html)
