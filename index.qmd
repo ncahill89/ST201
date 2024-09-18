@@ -1,0 +1,15 @@
+---
+title: "Welcome to Data Analysis!"
+format:
+  html:
+    link-external-icon: true
+    link-external-newwindow: true
+---
+
+Welcome to the course website for ST201 Data Analysis!
+
+Course information:
+
+Lecture material (slides, notes, videos) are licensed under CC-BY-NC 4.0.
+
+Contact: Niamh Cahill (niamh.cahill\@mu.ie)

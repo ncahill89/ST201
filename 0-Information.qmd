@@ -1,0 +1,71 @@
+---
+title: "ST201 Module Information"
+subtitle: "Information"
+author: "Prof. Niamh Cahill (she/her)"
+format: revealjs
+editor: visual
+---
+
+## Information {style="font-size: 80%;"}
+
+**🏢 Office:** Room 223, Logic House
+
+**📧 Email:** niamh.cahill\@mu.ie
+
+**📅 Lectures:**
+
+-   📍Tuesdays @3pm in Physics Hall
+-   📍Thursdays @12pm in Physics Hall
+
+**📚 Tutorials:** Alternating weeks, beginning **Week 4 (14th Oct)**.
+
+-   📍 **Mondays** 2pm
+-   📍 **Tuesdays** 11am, 1pm.
+
+## Information {style="font-size: 80%;"}
+
+**📝 Assessment:**
+
+-   4 **Assignments** worth **15%**
+-   1 **Midterm** worth **10%** (November 12th)
+-   **Final Exam** worth **75%** (Date TBC)
+
+**📖 Textbooks:**
+
+-   *Introduction to Statistical and Data Analysis* by Christian Heimann & Michael Schomaker Shalabh
+
+**⏰ Office Hours:** By appointment (and please do make an appointment if needed)
+
+## Lecturing format {style="font-size: 80%;"}
+
+-   **Lecture notes** will be shared, but don't hesitate to **take your own notes** for deeper understanding. 📝
+
+-   **Slides** will be uploaded to **Moodle** for easy access after class. 💻
+
+-   Expect a mix of formats! Some lectures will focus on **slides**, while others will involve **hands-on R coding** in **RStudio**—a key part of this course. 💡💻
+
+-   Relevant **R code** will be provided along with the lecture notes to enhance your learning. 📊💻
+
+-   **Got questions?** Don't be shy—ask them during the lecture! 🙋‍♂️🙋‍♀️
+
+## What Topics Will We Cover? {style="font-size: 80%;"}
+
+The objective of this module is to introduce students to the fundamentals of **Data Analysis using R**. This course will cover (but is not limited to) the following topics:
+
+-   📊 **Numerical and graphical data summaries**
+-   📈 **Measures of central tendency**
+-   🔗 **Association of two or more variables**
+-   🤝 **Correlation**
+-   📉 **Regression**
+
+## Diversity & inclusion {style="font-size: 80%;"}
+
+It is my intent to present materials and activities that are respectful of diversity: gender identity, sexuality, disability, age, socioeconomic status, ethnicity, race, nationality, religion, and culture. I may not always get this right so please let me know ways to improve the effectiveness of the course for you personally, or for other students or student groups.
+
+To help with this:
+
+-   If you have a name that differs from those that appear in your official University records, please let me know!
+
+-   Please let me know your preferred pronouns if you wish to do so.
+
+-   I (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please talk to me about it.
