@@ -16,4 +16,6 @@ Contact: Niamh Cahill (niamh.cahill\@mu.ie)
 
 ## Lecture Slides 
 
-Week 1: [Data](https://ncahill89.github.io/ST201/1-Data.html)
+### Week 1
+
+1a. [Data](https://ncahill89.github.io/ST201/1-Data.html)
