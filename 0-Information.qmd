@@ -28,7 +28,7 @@ editor: visual
 
 -   4 **Assignments** worth **15%**
 -   1 **Midterm** worth **10%** (November 12th)
--   **Final Exam** worth **75%** (Date TBC)
+-   **Final Exam** worth **75%** (January 9th @ 10am-12pm)
 
 **📖 Textbooks:**
 
