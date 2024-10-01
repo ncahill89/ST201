@@ -19,3 +19,11 @@ Contact: Niamh Cahill (niamh.cahill\@mu.ie)
 ### Week 1
 
 1a. [Data](https://ncahill89.github.io/ST201/1-Data.html)
+
+1b. Code lecture; check the [Rstudio Sever](https://rstudio.maths.nuim.ie) for Week1_Data.R
+
+### Week 2
+
+2a. [Numerical Data](https://ncahill89.github.io/ST201/2-Numerical.html)
+
+

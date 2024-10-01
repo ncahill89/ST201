@@ -1,0 +1,901 @@
+---
+title: "ST201 Data Analysis"
+subtitle: "Numerical Data"
+author: "Prof. Niamh Cahill (she/her)"
+format: revealjs
+editor: visual
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+library(openintro)
+library(tidyverse)
+library(magick)
+
+loan50 <- openintro::loan50 %>% select(state,loan_amount, interest_rate, term, grade, total_income, homeownership)
+```
+
+## **🚴 Watt Test Challenge: 7 Rounds! 🚴** {style="font-size: 80%;"}
+
+![](images/Concept2-BikeERG-Exercise-Bike.jpg)
+
+**🏋️‍♂️ Goal:** Achieve an **average** of 160 watts
+
+**⏲️ Time:** 2 minutes per round
+
+**💡 Pro Tip:** Adjust the resistance to push your wattage higher!
+
+## The Average (Mean) {style="font-size: 80%;"}
+
+The mean, often called the average, is a common way to measure the center of a distribution of data. For example, assume we have a watt value every second over a two minute period. To compute the mean watt value, we add up all the watt values and divide by 120.
+
+::: columns
+::: {.column width="65%"}
+**The Sample Mean**
+
+-   a typical or central value in a set of numbers.
+-   **Formula:** the sum of all values divided by the total number of values
+:::
+
+::: {.column width="35%"}
+**Notation (general)**
+
+-   often labeled $\bar{x}$
+-   **Formula:** $\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$
+:::
+:::
+
+For the 🚴 Watt Test 🚴 we know what we want the mean to be e.g., 160.
+
+🤔 Consider how many different ways we can generate that mean value in a two minute interval.
+
+<!-- The loans data represents a sample from a larger population of loans. We could compute a mean for the entire population in the same way as the sample mean. However, the population mean has a special label: $\mu$ -->
+
+<!-- -   Oftentimes it is too expensive to measure the population mean precisely, so we often estimate $\mu$ using the sample mean $\bar{x}$ -->
+
+## Visualisation - Dot plots {style="font-size: 80%;"}
+
+::: columns
+::: {.column width="45%"}
+Sometimes we are interested in the distribution of a single variable.
+
+-   In these cases, a dot plot provides the most basic of displays.
+-   A dot plot is a one-variable scatterplot;
+-   an example using 120 seconds of watt values is shown:
+:::
+
+::: {.column width="55%"}
+```{r, eval = FALSE}
+watt1 <- rep(seq(135,190,by = 5), each = 10)
+watt2 <- c(rep(125,10),rep(140,20),rep(165,60),rep(180,20),rep(185,10))
+watt3 <- rep(seq(190,135,by = -5), each = 10)
+
+# Load necessary packages
+#install.packages("magick")  # Uncomment if not installed
+library(magick)
+
+# Set parameters
+watts <- watt1
+data <- data.frame(watts = round(watts))
+
+# Create an empty list to store each frame
+frames <- list()
+
+# Create frames for the stripchart
+for (i in seq_along(data$watts)) {
+  # Clear the plot area
+  plot.new()
+  
+  # Set plot margins to reduce whitespace
+ # par(mar = c(2, 4, 2, 1))  # bottom, left, top, right margins
+  
+  # Create the stripchart with the current number of points
+  stripchart(data$watts[1:i], method = "stack", at = 0, 
+             pch = 19, cex = 0.7, col = "steelblue", 
+             main = "", xlab = "Watt", ylab = "", ylim = c(0,0.1))  # Set y-limits to reduce height
+  
+  # Save the plot as a temporary image
+  img <- tempfile(fileext = ".png")
+  dev.copy(png, filename = img)
+  dev.off()
+  
+  # Read the image into the list
+  frames[[i]] <- image_read(img)
+}
+
+# Combine the frames into a GIF
+animation <- image_animate(image_join(frames), fps = 10)
+
+# Save the GIF
+image_write(animation, path = "images/stripchart_animation.gif", format = "gif")
+
+
+```
+
+![](images/stripchart_animation.gif){fig-align="center"}
+:::
+:::
+
+## Visualisation - Dot plots {style="font-size: 80%;"}
+
+::: columns
+::: {.column width="45%"}
+Sometimes we are interested in the distribution of a single variable.
+
+-   In these cases, a dot plot provides the most basic of displays.
+-   A dot plot is a one-variable scatterplot;
+-   an example using 120 seconds of watt values is shown:
+:::
+
+::: {.column width="55%"}
+```{r, eval = TRUE, fig.width= 5.5, fig.height=5.5, fig.align='center'}
+watt1 <- rep(seq(135,190,by = 5), each = 10)
+watt2 <- c(rep(125,10),rep(140,20),rep(165,60),rep(180,20),rep(185,10))
+watt3 <- rep(seq(190,135,by = -5), each = 10)
+
+# Set parameters
+watts <- watt1
+data <- data.frame(watts = round(watts))
+
+
+  # Create the stripchart with the current number of points
+ stripchart(data$watts, method = "stack", at = 0, 
+             pch = 19, cex = 0.7, col = "steelblue",
+             main = "", xlab = "Watt", ylab = "")  # Set y-limits to reduce height
+
+
+```
+:::
+:::
+
+## Visualisation - Dot plots {style="font-size: 80%;"}
+
+::: columns
+::: {.column width="45%"}
+We could achieve a similar average in a different way:
+
+![](images/Concept2-BikeERG-Exercise-Bike.jpg)
+
+:::
+
+::: {.column width="55%"}
+```{r, eval = FALSE}
+watt1 <- rep(seq(135,190,by = 5), each = 10)
+watt2 <- c(rep(135,10),rep(145,20),rep(160,60),rep(175,20),rep(185,10))
+watt3 <- rep(seq(190,135,by = -5), each = 10)
+watt4 <- c(rep(200,20),rep(180,20),rep(160,40),rep(140,20),rep(120,20))
+
+# Load necessary packages
+#install.packages("magick")  # Uncomment if not installed
+library(magick)
+
+# Set parameters
+watts <- watt2
+data <- data.frame(watts = round(watts))
+
+# Create an empty list to store each frame
+frames <- list()
+
+# Create frames for the stripchart
+for (i in seq_along(data$watts)) {
+  # Clear the plot area
+  plot.new()
+  
+  # Set plot margins to reduce whitespace
+ # par(mar = c(2, 4, 2, 1))  # bottom, left, top, right margins
+  
+  # Create the stripchart with the current number of points
+  stripchart(data$watts[1:i], method = "stack", at = 0, 
+             pch = 19, cex = 0.7, col = "steelblue", 
+             main = "", xlab = "Watt", ylab = "", ylim = c(0,0.1))  # Set y-limits to reduce height
+  
+  # Save the plot as a temporary image
+  img <- tempfile(fileext = ".png")
+  dev.copy(png, filename = img)
+  dev.off()
+  
+  # Read the image into the list
+  frames[[i]] <- image_read(img)
+}
+
+# Combine the frames into a GIF
+animation <- image_animate(image_join(frames), fps = 10)
+
+# Save the GIF
+image_write(animation, path = "images/stripchart_animation2.gif", format = "gif")
+
+
+```
+
+![](images/stripchart_animation2.gif){fig-align="center"}
+:::
+:::
+
+## Visualisation - Dot plots {style="font-size: 80%;"}
+
+::: columns
+::: {.column width="45%"}
+We could achieve a similar average in a different way:
+
+![](images/Concept2-BikeERG-Exercise-Bike.jpg)
+
+:::
+
+::: {.column width="55%"}
+```{r, eval = TRUE, fig.width= 5.5, fig.height=5.5, fig.align='center'}
+watt1 <- rep(seq(135,190,by = 5), each = 10)
+watt2 <- c(rep(135,10),rep(145,20),rep(160,60),rep(175,20),rep(185,10))
+watt3 <- rep(seq(190,135,by = -5), each = 10)
+watt4 <- c(rep(200,20),rep(180,20),rep(160,40),rep(140,20),rep(120,20))
+
+# Set parameters
+watts <- watt2
+data <- data.frame(watts = round(watts))
+
+
+  # Create the stripchart with the current number of points
+ stripchart(data$watts, method = "stack", at = 0, 
+             pch = 19, cex = 0.7, col = "steelblue",
+             main = "", xlab = "Watt", ylab = "")  # Set y-limits to reduce height
+
+
+```
+:::
+:::
+
+## Scatter Plots {style="font-size: 80%;"}
+
+We could also consider visualising two variables here if we include the time aspect.
+
+::: columns
+::: {.column width="50%"}
+-   Consider the following strategy:
+
+    -   get a 160 watt average in a 2 minute interval
+    -   have a steady increase every 10 seconds
+:::
+
+```{r, fig.align='center', eval = FALSE}
+time <- 1:120
+watt1 <- rep(seq(135,190,by = 5), each = 10)
+watts <- watt1
+data <- data.frame(watts = round(watts), time = time)
+
+# Create an empty list to store each frame
+frames <- list()
+
+# Create frames for the stripchart
+for (i in seq_along(data$watts)) {
+  # Clear the plot area
+  plot.new()
+  
+  # Set plot margins to reduce whitespace
+ # par(mar = c(2, 4, 2, 1))  # bottom, left, top, right margins
+  
+  # Create the stripchart with the current number of points
+  plot(data$time[1:i],data$watts[1:i],
+             pch = 19, cex = 0.7, col = "steelblue", 
+             main = "", xlab = "Time (seconds)",ylab =  "Watt")  # Set y-limits to reduce height
+  
+  # Save the plot as a temporary image
+  img <- tempfile(fileext = ".png")
+  dev.copy(png, filename = img)
+  dev.off()
+  
+  # Read the image into the list
+  frames[[i]] <- image_read(img)
+}
+
+# Combine the frames into a GIF
+animation <- image_animate(image_join(frames), fps = 10)
+
+# Save the GIF
+image_write(animation, path = "images/scatter_animation1.gif", format = "gif")
+
+
+```
+
+::: {.column width="50%"}
+![](images/scatter_animation1.gif){fig-align="center"}
+:::
+:::
+
+## Scatter Plots {style="font-size: 80%;"}
+
+We could also consider visualising two variables here if we include the time aspect.
+
+::: columns
+::: {.column width="50%"}
+-   Consider the following strategy:
+
+    -   get a 160 watt average in a 2 minute interval
+    -   have a steady increase every 10 seconds
+:::
+
+::: {.column width="45%"}
+```{r, fig.width=8, fig.height=8, fig.align='center'}
+time <- 1:120
+
+plot(time, watt1,ylab = "Watt", xlab = "Time (seconds)", pch = 19, cex = 0.7, col = "steelblue", 
+             main = "")
+
+```
+:::
+:::
+
+## Scatter Plots {style="font-size: 80%;"}
+
+We can change the strategy and still maintain the same average.
+
+::: columns
+::: {.column width="50%"}
+-   Consider the following strategy:
+
+    -   get a 160 watt average in a 2 minute interval
+    -   have a longer period of 160 watts
+:::
+
+```{r, fig.align='center', eval = FALSE}
+time <- 1:120
+watt2 <- c(rep(135,10),rep(145,20),rep(160,60),rep(175,20),rep(185,10))
+watts <- watt2
+data <- data.frame(watts = round(watts), time = time)
+
+# Create an empty list to store each frame
+frames <- list()
+
+# Create frames for the stripchart
+for (i in seq_along(data$watts)) {
+  # Clear the plot area
+  plot.new()
+  
+  # Set plot margins to reduce whitespace
+ # par(mar = c(2, 4, 2, 1))  # bottom, left, top, right margins
+  
+  # Create the stripchart with the current number of points
+  plot(data$time[1:i],data$watts[1:i],
+             pch = 19, cex = 0.7, col = "steelblue", 
+             main = "", xlab = "Time (seconds)",ylab =  "Watt")  # Set y-limits to reduce height
+  
+  # Save the plot as a temporary image
+  img <- tempfile(fileext = ".png")
+  dev.copy(png, filename = img)
+  dev.off()
+  
+  # Read the image into the list
+  frames[[i]] <- image_read(img)
+}
+
+# Combine the frames into a GIF
+animation <- image_animate(image_join(frames), fps = 10)
+
+# Save the GIF
+image_write(animation, path = "images/scatter_animation2.gif", format = "gif")
+
+
+```
+
+::: {.column width="50%"}
+![](images/scatter_animation2.gif){fig-align="center"}
+:::
+:::
+
+## Scatter Plots {style="font-size: 80%;"}
+
+We can change the strategy and still maintain the same average.
+
+::: columns
+::: {.column width="50%"}
+-   Consider the following strategy:
+
+    -   get a 160 watt average in a 2 minute interval
+    -   have a longer period of 160 watts
+:::
+
+::: {.column width="45%"}
+```{r, fig.width=8, fig.height=8, fig.align='center'}
+time <- 1:120
+
+plot(time, watt2,ylab = "Watt", xlab = "Time (seconds)", pch = 19, cex = 0.7, col = "steelblue", 
+             main = "")
+
+```
+:::
+:::
+
+
+## Scatter Plots {style="font-size: 80%;"}
+
+We can change the strategy and still maintain the same average.
+
+::: columns
+::: {.column width="50%"}
+-   Consider the following strategy:
+
+    -   get a 160 watt average in a 2 minute interval
+    -   have a steady decrease every 10 seconds
+:::
+
+```{r, fig.align='center', eval = FALSE}
+time <- 1:120
+watt3 <- rep(seq(190,135,by = -5), each = 10)
+watts <- watt3
+data <- data.frame(watts = round(watts), time = time)
+
+# Create an empty list to store each frame
+frames <- list()
+
+# Create frames for the stripchart
+for (i in seq_along(data$watts)) {
+  # Clear the plot area
+  plot.new()
+  
+  # Set plot margins to reduce whitespace
+ # par(mar = c(2, 4, 2, 1))  # bottom, left, top, right margins
+  
+  # Create the stripchart with the current number of points
+  plot(data$time[1:i],data$watts[1:i],
+             pch = 19, cex = 0.7, col = "steelblue", 
+             main = "", xlab = "Time (seconds)",ylab =  "Watt")  # Set y-limits to reduce height
+  
+  # Save the plot as a temporary image
+  img <- tempfile(fileext = ".png")
+  dev.copy(png, filename = img)
+  dev.off()
+  
+  # Read the image into the list
+  frames[[i]] <- image_read(img)
+}
+
+# Combine the frames into a GIF
+animation <- image_animate(image_join(frames), fps = 10)
+
+# Save the GIF
+image_write(animation, path = "images/scatter_animation3.gif", format = "gif")
+
+
+```
+
+::: {.column width="50%"}
+![](images/scatter_animation3.gif){fig-align="center"}
+:::
+:::
+
+## Scatter Plots {style="font-size: 80%;"}
+
+We can change the strategy and still maintain the same average.
+
+
+::: columns
+::: {.column width="50%"}
+-   Consider the following strategy:
+
+    -   get a 160 watt average in a 2 minute interval
+    -   have a steady decrease every 10 seconds
+:::
+
+::: {.column width="45%"}
+```{r, fig.width=8, fig.height=8, fig.align='center'}
+time <- 1:120
+
+plot(time, watt3,ylab = "Watt", xlab = "Time (seconds)", pch = 19, cex = 0.7, col = "steelblue", 
+             main = "")
+
+```
+:::
+:::
+
+## Example - Loan Interest Rates {style="font-size: 80%;"}
+
+A dot plot of the (rounded) loan interest rate data is shown below:
+
+::: panel-tabset
+### Dot Plot
+
+```{r}
+stripchart(x=round(loan50$interest_rate), method = "stack", at = 0, pch = 19, cex=2,
+           col = "steelblue", main = "",
+           xlab = "Loan interest rates", ylab="")
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1|2|3-4|5-7"
+#| output-location: column-fragment
+
+stripchart(x=round(loan50$interest_rate), 
+           method = "stack", 
+           at = 0, cex = 2,
+           col = "steelblue",  pch = 19,
+           main = "", 
+           xlab = "Loan interest rates", 
+           ylab="")
+```
+:::
+
+## Example - Loan Interest Rates {style="font-size: 80%;"}
+
+A histogram of the loan interest rate data is shown below:
+
+::: panel-tabset
+### Dot Plot
+
+```{r}
+hist(x=loan50$interest_rate,
+     breaks = 10,
+           col = "steelblue", main = "",
+           xlab = "Loan interest rates", ylab="")
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1|2|3|4-7"
+#| output-location: column-fragment
+
+hist(x=loan50$interest_rate,
+     breaks = 10,
+     col = "steelblue", 
+     main = "",
+     xlab = "Loan interest rates", 
+     ylab="")
+
+```
+:::
+
+## Mean of Loan Interest Rates {style="font-size: 75%;"}
+
+When working with data we often have a **sample** from a larger population.
+
+-   We can calculate the **mean** for the sample: $\bar{x}$.\
+-   But the mean of the **entire population** has a special label: $\mu$.
+
+#### Why don't we always calculate $\mu$?
+
+-   **Often not feasible** to measure the population mean precisely.
+-   Instead, we estimate $\mu$ using the **sample mean** $\bar{x}$.
+
+#### Loan Interest Rate Example
+
+-   From the sample of **50 loans**, the **mean interest rate** is **11.57%**.
+
+**Later** we'll explore how **reliable** $\bar{x}$ is for estimating $\mu$!
+
+## Median - Loan Interest Rates {style="font-size: 80%;"}
+
+-   The median is the value which divides the observations into two equal parts
+
+::: columns
+::: {.column width="40%"}
+**The Median**
+
+-   the 50th percentile.
+-   **Formula:** order the values and find the middle value
+:::
+
+::: {.column width="60%"}
+**Notation (general)**
+
+-   labeled $\tilde{x}^{(0.5)}$
+-   **Formula:** $$
+    \tilde{x}^{(0.5)} = 
+\begin{cases}
+    x_{(n+1)/2},& \text{if n is odd}\\
+    \frac{1}{2}(x_{n/2} + x_{(n/2) + 1}), & \text{if n is even}
+\end{cases}$$
+:::
+:::
+
+
+-   Consider 10 interest rates from the loan data and calculate the median
+
+```{r}
+round(loan50$interest_rate[1:10])
+```
+
+## Median - Loan Interest Rates {style="font-size: 80%;"}
+
+-   Recall the ECDF? Let's look at it for the interest rate data and get an idea of where the median is.
+
+::: panel-tabset
+### ECDF Plot
+
+```{r, fig.align='center'}
+plot.ecdf(x=loan50$interest_rate) 
+abline(h = 0.5)
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1-2|"
+#| output-location: column-fragment
+
+plot.ecdf(x=loan50$interest_rate) 
+abline(h = 0.5)
+
+```
+:::
+
+## Quantiles {style="font-size: 80%;"}
+
+-   Quantiles are a generalization of the idea of the median
+
+-   A quantile partitions the data into proportions
+
+-   In general a ($\alpha \times 100$)% - quantile (percentile) splits the data such that at least ($\alpha \times 100$)% of the values are $\leq$ the quantile value $\tilde{x}^{(\alpha)}$.
+
+    $$
+      \tilde{x}^{(\alpha)} = 
+    \begin{cases}
+      x_{(k)},& \text{if } n\alpha \text{ is not an integer},
+      \text{k = smallest integer > } n\alpha\\
+      \frac{1}{2}(x_{n\alpha} + x_{n\alpha + 1}), & \text{if } n\alpha \text{ is an integer}
+    \end{cases}
+    $$
+
+## Quantiles {style="font-size: 80%;"}
+
+-   Let's look at the ECDF for the interest rate data and get an idea of where the 80th percentile is.
+
+
+```{r, fig.align='center'}
+plot.ecdf(loan50$interest_rate) 
+abline(h = 0.8)
+```
+
+<!-- ## Comparing quantiles -->
+
+<!-- \footnotesize -->
+
+<!--   - If we plot the quantiles of two variables against each other, we obtain a Quantile–Quantile plot (QQ-plot).  -->
+
+<!-- - This provides a simple summary of whether the distributions -->
+
+<!-- of the two variables are similar with respect to their location or not.   -->
+
+<!-- - Lets look at a QQ-plot for two weather data sets -->
+
+<!-- ```{r, fig.width=4, fig.height=3.5} -->
+
+<!-- weather1 <- weather -->
+
+<!-- weather2 <- runif(length(weather1), min(weather1), max(weather1)) -->
+
+<!-- qqplot(weather1, weather2)  -->
+
+<!-- lines(weather1, weather1)  -->
+
+<!-- ``` -->
+
+## Measures of Dispersion - Range {style="font-size: 80%;"}
+
+-   The **range** is a measure of dispersion defined as the difference between the maximum and minimum value of the data.
+
+-   The **interquartile range** is the difference between the 75% quantile (upper quartile) and 25% quantile (lower quartile).
+
+    -   It covers the center of the data distribution and contains 50% of the observations.
+
+    $$d_{Q} = \tilde{x}^{(0.75)} - \tilde{x}^{(0.25)}$$
+
+## Boxplots {style="font-size: 80%;"}
+
+Consider a boxplot of the interest rates.
+
+::: panel-tabset
+### Boxplot
+
+```{r, fig.align='center'}
+boxplot(loan50$interest_rate,
+        ylab = "Loan interest rates")
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1|2"
+#| output-location: column-fragment
+
+boxplot(loan50$interest_rate,
+        ylab = "Loan interest rates")
+
+```
+:::
+
+## Measures of Dispersion - Variance {style="font-size: 80%;"}
+
+-   Another measure of dispersion is the **variance**. The variance is one of the most important measures in statistics.
+
+    -   This can be thought of as the mean of the squared errors
+
+    $$s^2 = \frac{1}{n-1}\sum_{i = 1}^{n}(x_i - \bar{x})^2$$
+
+    -   the variance of the interest rates in the loan dataset is 25.52
+    
+        - the standard deviation, $s$, is 5.05
+
+```{r,include = FALSE}
+var(loan50$interest_rate)
+```
+
+
+## Changing variances/standard deviations {style="font-size: 80%;"}
+
+Which histogram has s = 5, 10, 15, 20
+
+```{r}
+# Set a seed for reproducibility
+set.seed(123)
+
+# Define the mean for all distributions
+mean_value <- 50
+
+# Define different standard deviations (which will result in different variances)
+sd_values <- c(5, 10, 15, 30)
+
+# Generate data from normal distributions with the same mean but different standard deviations
+data1 <- rnorm(1000, mean = mean_value, sd = sd_values[2])
+data2 <- rnorm(1000, mean = mean_value, sd = sd_values[4])
+data3 <- rnorm(1000, mean = mean_value, sd = sd_values[1])
+data4 <- rnorm(1000, mean = mean_value, sd = sd_values[3])
+
+# Set up a 2x2 plot layout for the histograms
+par(mfrow = c(2, 2))
+
+# Create histograms
+hist(data1, main = paste("A: S = ?"), xlab = "Value", col = "lightblue", xlim = c(-40, 140))
+hist(data2, main = paste("B: S = ?"), xlab = "Value", col = "lightgreen", xlim = c(-40, 140))
+hist(data3, main = paste("C: S = ? "), xlab = "Value", col = "lightpink", xlim =c(-40, 140))
+hist(data4, main = paste("D: S = ? "), xlab = "Value", col = "lightyellow", xlim = c(-40, 140))
+
+# Reset the plot layout
+par(mfrow = c(1, 1))
+
+```
+
+## Changing variances/standard deviations {style="font-size: 80%;"}
+
+Which boxplot has s = 5, 10, 15, 20
+
+```{r}
+# Set a seed for reproducibility
+set.seed(123)
+
+# Define the mean for all distributions
+mean_value <- 50
+
+# Define different standard deviations (which will result in different variances)
+sd_values <- c(5, 10, 15, 30)
+
+# Generate data from normal distributions with the same mean but different standard deviations
+data1 <- rnorm(1000, mean = mean_value, sd = sd_values[3])
+data2 <- rnorm(1000, mean = mean_value, sd = sd_values[4])
+data3 <- rnorm(1000, mean = mean_value, sd = sd_values[2])
+data4 <- rnorm(1000, mean = mean_value, sd = sd_values[1])
+
+# Set up a 2x2 plot layout for the histograms
+par(mfrow = c(2, 2))
+
+# Create histograms
+boxplot(data1, main = paste("A: S = ?"), ylab = "Value", col = "lightblue")
+boxplot(data2, main = paste("B: S = ?"), ylab = "Value", col = "lightgreen")
+boxplot(data3, main = paste("C: S = ? "), ylab = "Value", col = "lightpink")
+boxplot(data4, main = paste("D: S = ? "), ylab = "Value", col = "lightyellow")
+
+# Reset the plot layout
+par(mfrow = c(1, 1))
+
+```
+
+
+<!-- ## Robust statistics - Mean vs Median {style="font-size: 80%;"} -->
+
+```{r, fig.width=6, fig.height=4, fig.align='center', eval = FALSE}
+
+loan1 <- sort(round(loan50$interest_rate))
+loan2 <- loan1
+loan2[50] <- 45
+
+stripchart(loan1, method = "stack", at = 0, pch = 19, cex=2,
+           col = "steelblue", main = "",
+           xlab = "Loan interest rates", ylab="",xlim = c(5,45))
+
+```
+
+## Robust statistics - Mean vs Median {style="font-size: 80%;"}
+
+  - red = mean
+  - green = median
+
+
+```{r, fig.width=6, fig.height=4, fig.align='center'}
+loan1 <- sort(round(loan50$interest_rate))
+loan2 <- loan1
+loan2[50] <- 45
+
+stripchart(loan1, method = "stack", at = 0, pch = 19, cex=2,
+           col = "steelblue", main = "",
+           xlab = "Loan interest rates", ylab="",xlim = c(5,45))
+abline(v = mean(loan1), col = "red")
+abline(v = median(loan1), col = "green")
+
+```
+
+<!-- ## Robust statistics - Mean vs Median {style="font-size: 80%;"} -->
+
+<!-- ```{r, fig.width=6, fig.height=4, fig.align='center'} -->
+<!-- stripchart(loan2, method = "stack", at = 0, pch = 19, cex=2, -->
+<!--            col = "steelblue", main = "", -->
+<!--            xlab = "Loan interest rates", ylab="",xlim = c(5,45)) -->
+<!-- ``` -->
+
+## Robust statistics - Mean vs Median {style="font-size: 80%;"}
+
+  - red = mean
+  - green = median
+
+```{r, fig.width=6, fig.height=4, fig.align='center'}
+stripchart(loan2, method = "stack", at = 0, pch = 19, cex=2,
+           col = "steelblue", main = "",
+           xlab = "Loan interest rates", ylab="", xlim = c(5,45))
+abline(v = mean(loan2), col = "red")
+abline(v = median(loan2), col = "green")
+
+```
+
+## Scatterplots for paired data {style="font-size: 80%;"}
+
+### Loan amount vs Interest rates
+
+::: panel-tabset
+### Scatterplot
+
+```{r, fig.align='center'}
+plot(loan50$loan_amount, loan50$interest_rate,
+     pch = 19, cex=2, cex.lab = 1.5,
+           col = "steelblue",
+           xlab = "Loan amount (thousands)", ylab="Interest rates (%)")
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1-2|3-4|5-6|7-8"
+#| output-location: column-fragment
+
+plot(x=loan50$loan_amount, 
+     y=loan50$interest_rate,
+     cex=2, 
+     cex.lab = 1.5,
+     pch = 19, 
+     col = "steelblue",
+     xlab = "Loan amount (thousands)", 
+     ylab="Interest rates (%)")
+
+```
+:::
+
+## Scatterplots for paired data {style="font-size: 80%;"}
+
+### Loan amount vs Income
+
+```{r}
+plot(loan50$total_income, loan50$loan_amount,
+pch = 19, cex=2,cex.lab = 1.5,
+           col = "steelblue",
+           xlab = "Income (thousands)", ylab="Loan amount (thousands)")
+```
+
+## Scatterplots for paired data {style="font-size: 80%;"}
+
+### Interest rates vs Income
+
+```{r}
+plot(loan50$total_income, loan50$interest_rate,
+pch = 19, cex=2,cex.lab = 1.5,
+           col = "steelblue",
+           xlab = "Income (thousands)", ylab="Interest rates (%)")
+```

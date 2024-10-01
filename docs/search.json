@@ -172,6 +172,272 @@
     "href": "index.html#lecture-slides",
     "title": "Welcome to Data Analysis!",
     "section": "Lecture Slides",
-    "text": "Lecture Slides\n\nWeek 1\n1a. Data"
+    "text": "Lecture Slides\n\nWeek 1\n1a. Data\n1b. Code lecture, check the Rstudio Sever for Week1_Data.R\n\n\nWeek 2\n2a. Numerical Data"
+  },
+  {
+    "objectID": "2-Numerical.html#watt-test-challenge-7-rounds",
+    "href": "2-Numerical.html#watt-test-challenge-7-rounds",
+    "title": "ST201 Data Analysis",
+    "section": "🚴 Watt Test Challenge: 7 Rounds! 🚴",
+    "text": "🚴 Watt Test Challenge: 7 Rounds! 🚴\n\n🏋️‍♂️ Goal: Achieve an average of 160 watts\n⏲️ Time: 2 minutes per round\n💡 Pro Tip: Adjust the resistance to push your wattage higher!"
+  },
+  {
+    "objectID": "2-Numerical.html#the-average-mean",
+    "href": "2-Numerical.html#the-average-mean",
+    "title": "ST201 Data Analysis",
+    "section": "The Average (Mean)",
+    "text": "The Average (Mean)\nThe mean, often called the average, is a common way to measure the center of a distribution of data. For example, assume we have a watt value every second over a two minute period. To compute the mean watt value, we add up all the watt values and divide by 120.\n\n\nThe Sample Mean\n\na typical or central value in a set of numbers.\nFormula: the sum of all values divided by the total number of values\n\n\nNotation (general)\n\noften labeled \\(\\bar{x}\\)\nFormula: \\(\\bar{x} = \\frac{1}{n}\\sum_{i=1}^n x_i\\)\n\n\nFor the 🚴 Watt Test 🚴 we know what we want the mean to be e.g., 160.\n🤔 Consider how many different ways we can generate that mean value in a two minute interval."
+  },
+  {
+    "objectID": "2-Numerical.html#visualisation---dot-plots",
+    "href": "2-Numerical.html#visualisation---dot-plots",
+    "title": "ST201 Data Analysis",
+    "section": "Visualisation - Dot plots",
+    "text": "Visualisation - Dot plots\n\n\nSometimes we are interested in the distribution of a single variable.\n\nIn these cases, a dot plot provides the most basic of displays.\nA dot plot is a one-variable scatterplot;\nan example using 120 seconds of watt values is shown:"
+  },
+  {
+    "objectID": "2-Numerical.html#visualisation---dot-plots-1",
+    "href": "2-Numerical.html#visualisation---dot-plots-1",
+    "title": "ST201 Data Analysis",
+    "section": "Visualisation - Dot plots",
+    "text": "Visualisation - Dot plots\n\n\nSometimes we are interested in the distribution of a single variable.\n\nIn these cases, a dot plot provides the most basic of displays.\nA dot plot is a one-variable scatterplot;\nan example using 120 seconds of watt values is shown:"
+  },
+  {
+    "objectID": "2-Numerical.html#visualisation---dot-plots-2",
+    "href": "2-Numerical.html#visualisation---dot-plots-2",
+    "title": "ST201 Data Analysis",
+    "section": "Visualisation - Dot plots",
+    "text": "Visualisation - Dot plots\n\n\nWe could achieve a similar average in a different way:"
+  },
+  {
+    "objectID": "2-Numerical.html#visualisation---dot-plots-3",
+    "href": "2-Numerical.html#visualisation---dot-plots-3",
+    "title": "ST201 Data Analysis",
+    "section": "Visualisation - Dot plots",
+    "text": "Visualisation - Dot plots\n\n\nWe could achieve a similar average in a different way:"
+  },
+  {
+    "objectID": "2-Numerical.html#scatter-plots",
+    "href": "2-Numerical.html#scatter-plots",
+    "title": "ST201 Data Analysis",
+    "section": "Scatter Plots",
+    "text": "Scatter Plots\nWe could also consider visualising two variables here if we include the time aspect.\n\n\n\nConsider the following strategy:\n\nget a 160 watt average in a 2 minute interval\nhave a steady increase every 10 seconds"
+  },
+  {
+    "objectID": "2-Numerical.html#scatter-plots-1",
+    "href": "2-Numerical.html#scatter-plots-1",
+    "title": "ST201 Data Analysis",
+    "section": "Scatter Plots",
+    "text": "Scatter Plots\nWe could also consider visualising two variables here if we include the time aspect.\n\n\n\nConsider the following strategy:\n\nget a 160 watt average in a 2 minute interval\nhave a steady increase every 10 seconds"
+  },
+  {
+    "objectID": "2-Numerical.html#scatter-plots-2",
+    "href": "2-Numerical.html#scatter-plots-2",
+    "title": "ST201 Data Analysis",
+    "section": "Scatter Plots",
+    "text": "Scatter Plots\nWe can change the strategy and still maintain the same average.\n\n\n\nConsider the following strategy:\n\nget a 160 watt average in a 2 minute interval\nhave a longer period of 160 watts"
+  },
+  {
+    "objectID": "2-Numerical.html#scatter-plots-3",
+    "href": "2-Numerical.html#scatter-plots-3",
+    "title": "ST201 Data Analysis",
+    "section": "Scatter Plots",
+    "text": "Scatter Plots\nWe can change the strategy and still maintain the same average.\n\n\n\nConsider the following strategy:\n\nget a 160 watt average in a 2 minute interval\nhave a longer period of 160 watts"
+  },
+  {
+    "objectID": "2-Numerical.html#scatter-plots-4",
+    "href": "2-Numerical.html#scatter-plots-4",
+    "title": "ST201 Data Analysis",
+    "section": "Scatter Plots",
+    "text": "Scatter Plots\nWe can change the strategy and still maintain the same average.\n\n\n\nConsider the following strategy:\n\nget a 160 watt average in a 2 minute interval\nhave a steady decrease every 10 seconds"
+  },
+  {
+    "objectID": "2-Numerical.html#example---loan-interest-rates",
+    "href": "2-Numerical.html#example---loan-interest-rates",
+    "title": "ST201 Data Analysis",
+    "section": "Example - Loan Interest Rates",
+    "text": "Example - Loan Interest Rates\nA dot plot of the (rounded) loan interest rate data is shown below:\n\nDot PlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nstripchart(x=round(loan50$interest_rate), \n           method = \"stack\", \n           at = 0, cex = 2,\n           col = \"steelblue\",  pch = 19,\n           main = \"\", \n           xlab = \"Loan interest rates\", \n           ylab=\"\")"
+  },
+  {
+    "objectID": "2-Numerical.html#example---loan-interest-rates-1",
+    "href": "2-Numerical.html#example---loan-interest-rates-1",
+    "title": "ST201 Data Analysis",
+    "section": "Example - Loan Interest Rates",
+    "text": "Example - Loan Interest Rates\nA histogram of the loan interest rate data is shown below:\n\nDot PlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(x=loan50$interest_rate,\n     breaks = 10,\n     col = \"steelblue\", \n     main = \"\",\n     xlab = \"Loan interest rates\", \n     ylab=\"\")"
+  },
+  {
+    "objectID": "2-Numerical.html#mean-of-loan-interest-rates",
+    "href": "2-Numerical.html#mean-of-loan-interest-rates",
+    "title": "ST201 Data Analysis",
+    "section": "Mean of Loan Interest Rates",
+    "text": "Mean of Loan Interest Rates\nWhen working with data we often have a sample from a larger population.\n\nWe can calculate the mean for the sample: \\(\\bar{x}\\).\n\nBut the mean of the entire population has a special label: \\(\\mu\\).\n\nWhy don’t we always calculate \\(\\mu\\)?\n\nOften not feasible to measure the population mean precisely.\nInstead, we estimate \\(\\mu\\) using the sample mean \\(\\bar{x}\\).\n\nLoan Interest Rate Example\n\nFrom the sample of 50 loans, the mean interest rate is 11.57%.\n\nLater we’ll explore how reliable \\(\\bar{x}\\) is for estimating \\(\\mu\\)!"
+  },
+  {
+    "objectID": "2-Numerical.html#later-well-explore-how-reliable-barx-is-in-estimating-mu",
+    "href": "2-Numerical.html#later-well-explore-how-reliable-barx-is-in-estimating-mu",
+    "title": "ST201 Data Analysis",
+    "section": "Later we’ll explore how reliable \\(\\bar{x}\\) is in estimating \\(\\mu\\)!",
+    "text": "Later we’ll explore how reliable \\(\\bar{x}\\) is in estimating \\(\\mu\\)!"
+  },
+  {
+    "objectID": "2-Numerical.html#median---loan-interest-rates",
+    "href": "2-Numerical.html#median---loan-interest-rates",
+    "title": "ST201 Data Analysis",
+    "section": "Median - Loan Interest Rates",
+    "text": "Median - Loan Interest Rates\n\nThe median is the value which divides the observations into two equal parts\n\n\n\nThe Median\n\nthe 50th percentile.\nFormula: order the values and find the middle value\n\n\nNotation (general)\n\nlabeled \\(\\tilde{x}^{(0.5)}\\)\nFormula: \\[\n\\tilde{x}^{(0.5)} =\n\\begin{cases}\nx_{(n+1)/2},& \\text{if n is odd}\\\\\n\\frac{1}{2}(x_{n/2} + x_{(n/2) + 1}), & \\text{if n is even}\n\\end{cases}\\]\n\n\n\nConsider 10 interest rates from the loan data and calculate the median\n\n\n\n [1] 11 10 26 10  9 10 17  6  8 13"
+  },
+  {
+    "objectID": "2-Numerical.html#median---loan-interest-rates-1",
+    "href": "2-Numerical.html#median---loan-interest-rates-1",
+    "title": "ST201 Data Analysis",
+    "section": "Median - Loan Interest Rates",
+    "text": "Median - Loan Interest Rates\n\nRecall the ECDF? Let’s look at it for the interest rate data and get an idea of where the median is.\n\n\nECDF PlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplot.ecdf(x=loan50$interest_rate) \nabline(h = 0.5)"
+  },
+  {
+    "objectID": "2-Numerical.html#quantiles",
+    "href": "2-Numerical.html#quantiles",
+    "title": "ST201 Data Analysis",
+    "section": "Quantiles",
+    "text": "Quantiles\n\nQuantiles are a generalization of the idea of the median\nA quantile partitions the data into proportions\nIn general a (\\(\\alpha \\times 100\\))% - quantile (percentile) splits the data such that at least (\\(\\alpha \\times 100\\))% of the values are \\(\\leq\\) the quantile value \\(\\tilde{x}^{(\\alpha)}\\).\n\\[\n  \\tilde{x}^{(\\alpha)} =\n\\begin{cases}\n  x_{(k)},& \\text{if } n\\alpha \\text{ is not an integer},\n  \\text{k = smallest integer &gt; } n\\alpha\\\\\n  \\frac{1}{2}(x_{n\\alpha} + x_{n\\alpha + 1}), & \\text{if } n\\alpha \\text{ is an integer}\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "2-Numerical.html#quantiles-1",
+    "href": "2-Numerical.html#quantiles-1",
+    "title": "ST201 Data Analysis",
+    "section": "Quantiles",
+    "text": "Quantiles\n\nLet’s look at the ECDF for the interest rate data and get an idea of where the 80th percentile is."
+  },
+  {
+    "objectID": "2-Numerical.html#measures-of-dispersion---range",
+    "href": "2-Numerical.html#measures-of-dispersion---range",
+    "title": "ST201 Data Analysis",
+    "section": "Measures of Dispersion - Range",
+    "text": "Measures of Dispersion - Range\n\nThe range is a measure of dispersion defined as the difference between the maximum and minimum value of the data.\nThe interquartile range is the difference between the 75% quantile (upper quartile) and 25% quantile (lower quartile).\n\nIt covers the center of the data distribution and contains 50% of the observations.\n\n\\[d_{Q} = \\tilde{x}^{(0.75)} - \\tilde{x}^{(0.25)}\\]"
+  },
+  {
+    "objectID": "2-Numerical.html#boxplots",
+    "href": "2-Numerical.html#boxplots",
+    "title": "ST201 Data Analysis",
+    "section": "Boxplots",
+    "text": "Boxplots\nConsider a boxplot of the interest rates.\n\nBoxplotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nboxplot(loan50$interest_rate,\n        ylab = \"Loan interest rates\")"
+  },
+  {
+    "objectID": "2-Numerical.html#measures-of-dispersion---variance",
+    "href": "2-Numerical.html#measures-of-dispersion---variance",
+    "title": "ST201 Data Analysis",
+    "section": "Measures of Dispersion - Variance",
+    "text": "Measures of Dispersion - Variance\n\nAnother measure of dispersion is the variance. The variance is one of the most important measures in statistics.\n\nThis can be thought of as the mean of the squared errors\n\n\\[s^2 = \\frac{1}{n-1}\\sum_{i = 1}^{n}(x_i - \\bar{x})^2\\]\n\nthe variance of the interest rates in the loan dataset is 25.52\n\nthe standard deviation, \\(s\\), is 5.05"
+  },
+  {
+    "objectID": "2-Numerical.html#robust-statistics",
+    "href": "2-Numerical.html#robust-statistics",
+    "title": "ST201 Data Analysis",
+    "section": "Robust statistics",
+    "text": "Robust statistics"
+  },
+  {
+    "objectID": "2-Numerical.html#robust-statistics-1",
+    "href": "2-Numerical.html#robust-statistics-1",
+    "title": "ST201 Data Analysis",
+    "section": "Robust statistics",
+    "text": "Robust statistics"
+  },
+  {
+    "objectID": "2-Numerical.html#robust-statistics-2",
+    "href": "2-Numerical.html#robust-statistics-2",
+    "title": "ST201 Data Analysis",
+    "section": "Robust statistics",
+    "text": "Robust statistics"
+  },
+  {
+    "objectID": "2-Numerical.html#robust-statistics-3",
+    "href": "2-Numerical.html#robust-statistics-3",
+    "title": "ST201 Data Analysis",
+    "section": "Robust statistics",
+    "text": "Robust statistics"
+  },
+  {
+    "objectID": "2-Numerical.html#scatterplots-for-paired-data",
+    "href": "2-Numerical.html#scatterplots-for-paired-data",
+    "title": "ST201 Data Analysis",
+    "section": "Scatterplots for paired data",
+    "text": "Scatterplots for paired data\nLoan amount vs Interest rates\n\nScatterplotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplot(x=loan50$loan_amount, \n     y=loan50$interest_rate,\n     cex=2, \n     cex.lab = 1.5,\n     pch = 19, \n     col = \"steelblue\",\n     xlab = \"Loan amount (thousands)\", \n     ylab=\"Interest rates (%)\")"
+  },
+  {
+    "objectID": "2-Numerical.html#scatterplots-for-paired-data-1",
+    "href": "2-Numerical.html#scatterplots-for-paired-data-1",
+    "title": "ST201 Data Analysis",
+    "section": "Scatterplots for paired data",
+    "text": "Scatterplots for paired data\nLoan amount vs Income"
+  },
+  {
+    "objectID": "2-Numerical.html#scatterplots-for-paired-data-2",
+    "href": "2-Numerical.html#scatterplots-for-paired-data-2",
+    "title": "ST201 Data Analysis",
+    "section": "Scatterplots for paired data",
+    "text": "Scatterplots for paired data\nInterest rates vs Income"
+  },
+  {
+    "objectID": "2-Numerical.html#scatter-plots-5",
+    "href": "2-Numerical.html#scatter-plots-5",
+    "title": "ST201 Data Analysis",
+    "section": "Scatter Plots",
+    "text": "Scatter Plots\nWe can change the strategy and still maintain the same average.\n\n\n\nConsider the following strategy:\n\nget a 160 watt average in a 2 minute interval\nhave a steady decrease every 10 seconds"
+  },
+  {
+    "objectID": "2-Numerical.html#robust-statistics---mean-vs-median",
+    "href": "2-Numerical.html#robust-statistics---mean-vs-median",
+    "title": "ST201 Data Analysis",
+    "section": "Robust statistics - Mean vs Median",
+    "text": "Robust statistics - Mean vs Median\n\nred = mean\ngreen = median"
+  },
+  {
+    "objectID": "2-Numerical.html#robust-statistics---mean-vs-median-1",
+    "href": "2-Numerical.html#robust-statistics---mean-vs-median-1",
+    "title": "ST201 Data Analysis",
+    "section": "Robust statistics - Mean vs Median",
+    "text": "Robust statistics - Mean vs Median\n\nred = mean\ngreen = median"
+  },
+  {
+    "objectID": "2-Numerical.html#robust-statistics---mean-vs-median-2",
+    "href": "2-Numerical.html#robust-statistics---mean-vs-median-2",
+    "title": "ST201 Data Analysis",
+    "section": "Robust statistics - Mean vs Median",
+    "text": "Robust statistics - Mean vs Median"
+  },
+  {
+    "objectID": "2-Numerical.html#robust-statistics---mean-vs-median-3",
+    "href": "2-Numerical.html#robust-statistics---mean-vs-median-3",
+    "title": "ST201 Data Analysis",
+    "section": "Robust statistics - Mean vs Median",
+    "text": "Robust statistics - Mean vs Median\n\nred = mean\ngreen = median"
+  },
+  {
+    "objectID": "2-Numerical.html#changing-variances",
+    "href": "2-Numerical.html#changing-variances",
+    "title": "ST201 Data Analysis",
+    "section": "Changing variances",
+    "text": "Changing variances\nWhich histogram has s = 5, 10, 15, 20"
+  },
+  {
+    "objectID": "2-Numerical.html#changing-variances-1",
+    "href": "2-Numerical.html#changing-variances-1",
+    "title": "ST201 Data Analysis",
+    "section": "Changing variances",
+    "text": "Changing variances\nWhich boxplot has s = 5, 10, 15, 20"
+  },
+  {
+    "objectID": "2-Numerical.html#changing-variancesstandard-deviations",
+    "href": "2-Numerical.html#changing-variancesstandard-deviations",
+    "title": "ST201 Data Analysis",
+    "section": "Changing variances/standard deviations",
+    "text": "Changing variances/standard deviations\nWhich histogram has s = 5, 10, 15, 20"
+  },
+  {
+    "objectID": "2-Numerical.html#changing-variancesstandard-deviations-1",
+    "href": "2-Numerical.html#changing-variancesstandard-deviations-1",
+    "title": "ST201 Data Analysis",
+    "section": "Changing variances/standard deviations",
+    "text": "Changing variances/standard deviations\nWhich boxplot has s = 5, 10, 15, 20"
   }
 ]
