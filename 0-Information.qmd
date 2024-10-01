@@ -27,7 +27,7 @@ editor: visual
 **📝 Assessment:**
 
 -   4 **Assignments** worth **15%**
--   1 **Midterm** worth **10%** (November 12th)
+-   1 **Midterm** worth **10%** (November 12th @ 3pm)
 -   **Final Exam** worth **75%** (January 9th @ 10am-12pm)
 
 **📖 Textbooks:**
