@@ -172,7 +172,7 @@
     "href": "index.html#lecture-slides",
     "title": "Welcome to Data Analysis!",
     "section": "Lecture Slides",
-    "text": "Lecture Slides\n\nWeek 1\n1a. Data\n1b. Code lecture, check the Rstudio Sever for Week1_Data.R\n\n\nWeek 2\n2a. Numerical Data"
+    "text": "Lecture Slides\n\nWeek 1\n1a. Data\n1b. Code lecture; check the Rstudio Sever for Week1_Data.R\n\n\nWeek 2\n2a. Numerical Data"
   },
   {
     "objectID": "2-Numerical.html#watt-test-challenge-7-rounds",
@@ -439,5 +439,61 @@
     "title": "ST201 Data Analysis",
     "section": "Changing variances/standard deviations",
     "text": "Changing variances/standard deviations\nWhich boxplot has s = 5, 10, 15, 20"
+  },
+  {
+    "objectID": "Tutorial1.html",
+    "href": "Tutorial1.html",
+    "title": "ST201 Tutorial Sheet 1",
+    "section": "",
+    "text": "Attempt the questions below before your tutorial in the week beginning 14th October 2024."
+  },
+  {
+    "objectID": "Tutorial1.html#instructions",
+    "href": "Tutorial1.html#instructions",
+    "title": "ST201 Tutorial Sheet 1",
+    "section": "",
+    "text": "Attempt the questions below before your tutorial in the week beginning 14th October 2024."
+  },
+  {
+    "objectID": "Tutorial1.html#reading-the-the-data",
+    "href": "Tutorial1.html#reading-the-the-data",
+    "title": "ST201 Tutorial Sheet 1",
+    "section": "Reading the the Data",
+    "text": "Reading the the Data\nOpen a new R script. The pizza delivery dataset is available on the Rstudio server in the ST201 folder in a file called pizza_del.rds. You can load the file into R by clicking the file and loading it in or copying the following code into your R script:\n\npizza_del &lt;- readRDS(\"~/SharedFiles/ST201/pizza_del.rds\")\n\nLet’s say we want to look at the distance variable (distance between the pizza place and the delivery location) in the pizza_del dataset. Copy the following into your R script and run it to view the first 10 observations of this variable:\n\npizza_del$distance[1:10]\n\nExercise 1\nWhat is the value of the 275th observation of distance?"
+  },
+  {
+    "objectID": "Tutorial1.html#mean-and-median",
+    "href": "Tutorial1.html#mean-and-median",
+    "title": "ST201 Tutorial Sheet 1",
+    "section": "Mean and Median",
+    "text": "Mean and Median\nNow, suppose we are interested in the average distance between the pizza place and the delivery location. Copy the following into your R script and run it to to obtain the average:\n\nmean(pizza_del$distance)\n\nExercise 2\n\nUsing R, find the median distance between the pizza place and the delivery location.\nHow does the mean compare to the median? What might this tell you about the distribution of the data?"
+  },
+  {
+    "objectID": "Tutorial1.html#quantiles",
+    "href": "Tutorial1.html#quantiles",
+    "title": "ST201 Tutorial Sheet 1",
+    "section": "Quantiles",
+    "text": "Quantiles\nNow I want to know what distance value represents the lower quartile (25% quantile) of the data. To do this I can use the quantile function in R. Copy the following into your R script. If you run this, you will notice an error, why?\n\nquantile(pizza_del$distance,)\n\n\nExercise 3\n\nAdd the correct argument to the quantile function for finding the 25% quantile.\n\nWhen you correct the code above and run it you will see that the lower quartile value is 1.3. So this means that there’s a 25% chance that the delivery driver will need to travel less than 1.3 km when delivering pizzas. Why might this information be useful to the owners of a pizza place?\n\nWhat is the upper quartile distance value?\nProvide an interpretation for (b)."
+  },
+  {
+    "objectID": "Tutorial1.html#variance-and-standard-deviation",
+    "href": "Tutorial1.html#variance-and-standard-deviation",
+    "title": "ST201 Tutorial Sheet 1",
+    "section": "Variance and Standard Deviation",
+    "text": "Variance and Standard Deviation\nI want to know how much variation there is in the distances.\nExercise 4\n\nUse the var function in R to calculate the variance.\nUse R to obtain the standard deviation using the sd function. What is the advantage of using the standard deviation as a measure of variation?\nWhat range of distances fall within 1 standard deviation of the mean distance?"
+  },
+  {
+    "objectID": "Tutorial1.html#boxplots-and-histograms",
+    "href": "Tutorial1.html#boxplots-and-histograms",
+    "title": "ST201 Tutorial Sheet 1",
+    "section": "Boxplots and Histograms",
+    "text": "Boxplots and Histograms\nI want to visualise the distance variable using a boxplot. Copy the following into your R script and run it to produce a boxplot:\n\nboxplot(pizza_del$distance)\n\nExercise 5\n\nAdd a y-axis label to the boxplot by adding a ylab argument to the code above. Label the axis “Distance (km)”\nProvide an interpretation for the boxplot.\n\nExercise 6\n\nCreate a histogram of the distance variable using the hist function. Change the x-axis label to “Distance (km)” using the argument xlab.\nDescribe the distribution of the histogram (symmetric or skewed?). What have you learned from this?\n\nSAVE YOUR R SCRIPT!\nClick: file - save as"
+  },
+  {
+    "objectID": "index.html#tutorial-sheets",
+    "href": "index.html#tutorial-sheets",
+    "title": "Welcome to Data Analysis!",
+    "section": "Tutorial Sheets",
+    "text": "Tutorial Sheets\nTutorial Sheet 1: Numerical Data"
   }
 ]

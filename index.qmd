@@ -26,4 +26,6 @@ Contact: Niamh Cahill (niamh.cahill\@mu.ie)
 
 2a. [Numerical Data](https://ncahill89.github.io/ST201/2-Numerical.html)
 
+## Tutorial Sheets
 
+[Tutorial Sheet 1: Numerical Data](https://ncahill89.github.io/ST201/Tutorial1.html)

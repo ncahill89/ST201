@@ -1,0 +1,107 @@
+---
+title: "ST201 Tutorial Sheet 1 "
+format: html
+editor: visual
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+INCLUDE = FALSE
+pizza_del <- readRDS("~/Dropbox/LecturingMaynooth/ST201_DataAnalysis/Tutorials/pizza_del.rds")
+```
+
+## Instructions
+
+-   Attempt the questions below before your tutorial in the week beginning 14th October 2024.
+
+## Reading the the Data
+
+**Open a new R script.** The pizza delivery dataset is available on the Rstudio server in the ST201 folder in a file called `pizza_del.rds`. You can load the file into R by clicking the file and loading it in or copying the following code into your R script:
+
+```{r, eval = FALSE}
+pizza_del <- readRDS("~/SharedFiles/ST201/pizza_del.rds")
+```
+
+Let's say we want to look at the `distance` variable (distance between the pizza place and the delivery location) in the `pizza_del` dataset. Copy the following into your R script and run it to view the first 10 observations of this variable:
+
+```{r, eval = FALSE}
+pizza_del$distance[1:10]
+```
+
+**Exercise 1**
+
+What is the value of the 275th observation of distance?
+
+## Mean and Median
+
+Now, suppose we are interested in the average distance between the pizza place and the delivery location. Copy the following into your R script and run it to to obtain the average:
+
+```{r, eval = FALSE}
+mean(pizza_del$distance)
+```
+
+**Exercise 2**
+
+(a) Using R, find the median distance between the pizza place and the delivery location.
+
+```{r,include = INCLUDE, echo = FALSE}
+median(pizza_del$distance)
+```
+
+(b) How does the mean compare to the median? What might this tell you about the distribution of the data?
+
+## Quantiles
+
+Now I want to know what distance value represents the lower quartile (25% quantile) of the data. To do this I can use the `quantile` function in R. Copy the following into your R script. If you run this, you will notice an error, why?
+
+```{r, eval = FALSE}
+quantile(pizza_del$distance,)
+```
+
+\newpage
+
+**Exercise 3**
+
+(a) Add the correct argument to the quantile function for finding the 25% quantile.
+
+When you correct the code above and run it you will see that the lower quartile value is 1.3. So this means that there's a 25% chance that the delivery driver will need to travel less than 1.3 km when delivering pizzas. Why might this information be useful to the owners of a pizza place?
+
+(b) What is the upper quartile distance value?
+
+(c) Provide an interpretation for (b).
+
+## Variance and Standard Deviation
+
+I want to know how much variation there is in the distances.
+
+**Exercise 4**
+
+(a) Use the `var` function in R to calculate the variance.
+
+(b) Use R to obtain the standard deviation using the `sd` function. What is the advantage of using the standard deviation as a measure of variation?
+
+(c) What range of distances fall within 1 standard deviation of the mean distance?
+
+## Boxplots and Histograms
+
+I want to visualise the distance variable using a boxplot. Copy the following into your R script and run it to produce a boxplot:
+
+```{r, eval = FALSE}
+boxplot(pizza_del$distance)
+```
+
+**Exercise 5**
+
+(a) Add a y-axis label to the boxplot by adding a `ylab` argument to the code above. Label the axis "Distance (km)"
+
+(b) Provide an interpretation for the boxplot.
+
+**Exercise 6**
+
+(a) Create a histogram of the distance variable using the `hist` function. Change the x-axis label to "Distance (km)" using the argument `xlab`.
+
+(b) Describe the distribution of the histogram (symmetric or skewed?). What have you learned from this?
+
+**SAVE YOUR R SCRIPT!**
+
+Click: file - save as
