@@ -219,7 +219,6 @@ barplot(t(tab),
         legend = TRUE,
         args.legend = list(x = "top", ncol = 2), 
         ylim = c(0,95))
-
 ```
 
 ### Code
