@@ -184,7 +184,7 @@ cond_prob_B; cond_prob_E
 Are these plots providing the same information?
 
 ::: columns
-::: {.column width="65%"}
+::: {.column width="50%"}
 ```{r}
 #library(lattice)
 barplot(t(tab), 
@@ -195,7 +195,7 @@ barplot(t(tab),
 ```
 :::
 
-::: {.column width="65%"}
+::: {.column width="50%"}
 ```{r}
 library(lattice)
 barplot(t(tab), 
