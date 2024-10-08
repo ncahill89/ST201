@@ -621,5 +621,12 @@
     "title": "ST201 Data Analysis",
     "section": "In Summary",
     "text": "In Summary\n\nWhen associations between variables is stronger, then the deviation between observed and expected frequencies are higher.\nA chi-squared (\\(\\chi^2\\)) test statistic summarises these deviations.\nFor the airline data \\(\\chi^2 = 17.99\\).\nIf there was independence then this value (17.99) is considered very unusual, actually we would only expect to see it less than 5% of the time.\nIn other words, for the airline data the chance of seeing a value as large as 17.99, if class and satisfaction are independent is &lt; 5%\nWe conclude (because it seems more likely) that satisfaction and airline class are independent."
+  },
+  {
+    "objectID": "3-Categorical.html",
+    "href": "3-Categorical.html",
+    "title": "ST201 Data Analysis",
+    "section": "",
+    "text": "We are often interested in the interdependence of two or more categorical variables\n\ne.g., we might be interested in whether the satisfaction of airline customers varies w.r.t the travel class (Economy, Business)\ne.g., we may want to find out of female employees at a company are paid less than male employees or vice versa. Assume in this example we have two salary categories (low, high).\n\nWhen both variables are categorical then it is possible to list all combinations of the variables and count how often the combinations occur in the data."
   }
 ]
