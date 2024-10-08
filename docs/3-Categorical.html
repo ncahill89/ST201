@@ -899,7 +899,7 @@ class poor fair good v. good  Sum
 <section id="barplots" class="slide level2" style="font-size: 80%;">
 <h2>Barplots</h2>
 <div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Barplot of rating by class</a></li><li><a href="#tabset-5-2">Code</a></li></ul>
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Barplot of rating by class - stacked</a></li><li><a href="#tabset-5-2">Code</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1">
 <div class="cell">
@@ -918,10 +918,9 @@ class poor fair good v. good  Sum
 <div class="sourceCode cell-code" id="cb12" data-code-line-numbers="1|2-3|4-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(airline)</span>
 <span id="cb12-2"><a></a></span>
 <span id="cb12-3"><a></a><span class="fu">barplot</span>(<span class="fu">t</span>(tab), </span>
-<span id="cb12-4"><a></a>        <span class="at">beside =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb12-5"><a></a>        <span class="at">legend =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb12-6"><a></a>        <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"topleft"</span>, <span class="at">ncol =</span> <span class="dv">1</span>),</span>
-<span id="cb12-7"><a></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">40</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-4"><a></a>        <span class="at">legend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-5"><a></a>        <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"top"</span>, <span class="at">ncol =</span> <span class="dv">2</span>), </span>
+<span id="cb12-6"><a></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">95</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -938,7 +937,7 @@ class poor fair good v. good  Sum
 <section id="barplots-1" class="slide level2" style="font-size: 80%;">
 <h2>Barplots</h2>
 <div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Barplot of rating by class - stacked</a></li><li><a href="#tabset-6-2">Code</a></li></ul>
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Barplot of rating by class</a></li><li><a href="#tabset-6-2">Code</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1">
 <div class="cell">
@@ -957,9 +956,10 @@ class poor fair good v. good  Sum
 <div class="sourceCode cell-code" id="cb13" data-code-line-numbers="1|2-3|4-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(airline)</span>
 <span id="cb13-2"><a></a></span>
 <span id="cb13-3"><a></a><span class="fu">barplot</span>(<span class="fu">t</span>(tab), </span>
-<span id="cb13-4"><a></a>        <span class="at">legend =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb13-5"><a></a>        <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"top"</span>, <span class="at">ncol =</span> <span class="dv">2</span>), </span>
-<span id="cb13-6"><a></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">95</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-4"><a></a>        <span class="at">beside =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-5"><a></a>        <span class="at">legend =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb13-6"><a></a>        <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"topleft"</span>, <span class="at">ncol =</span> <span class="dv">1</span>),</span>
+<span id="cb13-7"><a></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">40</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>

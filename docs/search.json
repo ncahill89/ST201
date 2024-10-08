@@ -557,14 +557,14 @@
     "href": "3-Categorical.html#barplots",
     "title": "ST201 Data Analysis",
     "section": "Barplots",
-    "text": "Barplots\n\nBarplot of rating by classCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntab &lt;- table(airline)\n\nbarplot(t(tab), \n        beside = TRUE,\n        legend = TRUE, \n        args.legend = list(x = \"topleft\", ncol = 1),\n        ylim = c(0,40))"
+    "text": "Barplots\n\nBarplot of rating by class - stackedCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntab &lt;- table(airline)\n\nbarplot(t(tab), \n        legend = TRUE,\n        args.legend = list(x = \"top\", ncol = 2), \n        ylim = c(0,95))"
   },
   {
     "objectID": "3-Categorical.html#barplots-1",
     "href": "3-Categorical.html#barplots-1",
     "title": "ST201 Data Analysis",
     "section": "Barplots",
-    "text": "Barplots\n\nBarplot of rating by class - stackedCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntab &lt;- table(airline)\n\nbarplot(t(tab), \n        legend = TRUE,\n        args.legend = list(x = \"top\", ncol = 2), \n        ylim = c(0,95))"
+    "text": "Barplots\n\nBarplot of rating by classCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntab &lt;- table(airline)\n\nbarplot(t(tab), \n        beside = TRUE,\n        legend = TRUE, \n        args.legend = list(x = \"topleft\", ncol = 1),\n        ylim = c(0,40))"
   },
   {
     "objectID": "3-Categorical.html#expected-counts-in-two-way-tables",

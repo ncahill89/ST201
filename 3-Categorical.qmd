@@ -188,7 +188,6 @@ Are these plots providing the same information?
 ```{r}
 #library(lattice)
 barplot(t(tab), 
-        beside = TRUE,
         legend = TRUE, 
         args.legend = list(x = "topleft", ncol = 1),
         ylim = c(0,40))
@@ -199,12 +198,45 @@ barplot(t(tab),
 ```{r}
 library(lattice)
 barplot(t(tab), 
+        beside = TRUE,
         legend = TRUE,
         args.legend = list(x = "top", ncol = 2), 
         ylim = c(0,95))
 
 ```
 :::
+:::
+
+
+## Barplots {style="font-size: 80%;"}
+
+::: panel-tabset
+### Barplot of rating by class - stacked
+
+```{r}
+library(lattice)
+barplot(t(tab), 
+        legend = TRUE,
+        args.legend = list(x = "top", ncol = 2), 
+        ylim = c(0,95))
+
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1|2-3|4-7"
+#| output-location: column-fragment
+
+tab <- table(airline)
+
+barplot(t(tab), 
+        legend = TRUE,
+        args.legend = list(x = "top", ncol = 2), 
+        ylim = c(0,95))
+
+
+```
 :::
 
 ## Barplots {style="font-size: 80%;"}
@@ -234,37 +266,6 @@ barplot(t(tab),
         legend = TRUE, 
         args.legend = list(x = "topleft", ncol = 1),
         ylim = c(0,40))
-
-```
-:::
-
-## Barplots {style="font-size: 80%;"}
-
-::: panel-tabset
-### Barplot of rating by class - stacked
-
-```{r}
-library(lattice)
-barplot(t(tab), 
-        legend = TRUE,
-        args.legend = list(x = "top", ncol = 2), 
-        ylim = c(0,95))
-
-```
-
-### Code
-
-```{r, echo = TRUE, include=TRUE}
-#| code-line-numbers: "1|2-3|4-7"
-#| output-location: column-fragment
-
-tab <- table(airline)
-
-barplot(t(tab), 
-        legend = TRUE,
-        args.legend = list(x = "top", ncol = 2), 
-        ylim = c(0,95))
-
 
 ```
 :::
