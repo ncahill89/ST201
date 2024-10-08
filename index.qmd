@@ -26,6 +26,15 @@ Contact: Niamh Cahill (niamh.cahill\@mu.ie)
 
 2a. [Numerical Data](https://ncahill89.github.io/ST201/2-Numerical.html)
 
+2b. Code lecture; check the [Rstudio Sever](https://rstudio.maths.nuim.ie) for Week2_NumericalData.R
+
+
+### Week 3
+
+3a. [Association between Categorical Variables](https://ncahill89.github.io/ST201/3-Categorical.html)
+
+
+
 ## Tutorial Sheets
 
 [Tutorial Sheet 1: Numerical Data](https://ncahill89.github.io/ST201/Tutorial1.html)

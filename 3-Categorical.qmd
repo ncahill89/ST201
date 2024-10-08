@@ -1,0 +1,451 @@
+---
+title: "ST201 Data Analysis"
+subtitle:  "Association between Categorical Variables"
+author: "Prof. Niamh Cahill (she/her)"
+format: 
+  revealjs:
+    highlight-style: github
+editor: visual
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(echo = FALSE)
+airline <- readRDS("data/airline.rds")
+
+```
+
+## Association of Two Variables {style="font-size: 80%;"}
+
+We are often interested in the interdependence of two or more categorical variables
+
+-   e.g., we might be interested in whether the satisfaction of airline customers varies w.r.t the travel class (Economy, Business)
+
+-   e.g., we may want to find out of female employees at a company are paid less than male employees or vice versa. Assume in this example we have two salary categories (low, high).
+
+When both variables are categorical then it is possible to list all combinations of the variables and count how often the combinations occur in the data.
+
+## Airline Satisfaction Example {style="font-size: 70%;"}
+
+Suppose we have data on two categorical variables.
+
+```{r}
+airline_subset <- tibble(class = c("E","E","E","B","E","B","E","B","E","B","E","B"),
+                  satisfaction = c(2,4,1,3,1,2,3,4,2,4,3,3))
+airline_subset <- airline_subset %>% 
+            mutate(satisfaction = factor(satisfaction, 
+                                         levels = c(1,2,3,4), 
+                                         labels = c("poor","fair","good","v. good")))
+knitr::kable(airline_subset)
+
+```
+
+## Contingency Tables {style="font-size: 80%;"}
+
+This data can be described in a two-dimensional **contingency table**.
+
+::: panel-tabset
+### Contingency Table
+
+```{r}
+
+tab <- table(airline_subset)
+
+knitr::kable(tab)
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1|2"
+#| output-location: column-fragment
+
+
+tab <- table(airline_subset)
+tab
+```
+:::
+
+## Marginal and Conditional Distributions {style="font-size: 80%;"}
+
+Airline data; N = 100
+
+```{r}
+tab <- table(airline)
+knitr::kable(tab)
+```
+
+::: callout-note
+### Marginal frequency
+
+**Marginal frequency** distributions are displayed in the last column and last row.
+:::
+
+::: callout-note
+### Conditional frequency
+
+**Conditional frequency** distributions give us an idea about the behaviour of one variable when the other one is kept fixed.
+:::
+
+## Marginal Distributions {style="font-size: 80%;"}
+
+```{r}
+tab <- table(airline)
+knitr::kable(tab)
+```
+
+::: panel-tabset
+### Adding the marginal frequencies to the table
+
+```{r}
+knitr::kable(addmargins(tab))
+#knitr::kable(addmargins(prop.table(tab2)))
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1|2"
+#| output-location: column-fragment
+
+tab <- table(airline)
+addmargins(tab)
+```
+:::
+
+## Marginal Distributions {style="font-size: 80%;"}
+
+```{r}
+knitr::kable(tab)
+```
+
+::: panel-tabset
+### Adding the marginal relative frequencies to the table
+
+```{r}
+knitr::kable(addmargins(prop.table(tab)))
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1|2|3"
+#| output-location: column-fragment
+
+tab <- table(airline)
+rel_tab <- prop.table(tab)
+addmargins(rel_tab)
+```
+:::
+
+## Conditional Distributions {style="font-size: 80%;"}
+
+```{r}
+knitr::kable(tab)
+```
+
+::: panel-tabset
+### Conditioning on class
+
+The probability of satisfaction conditional on Business class
+
+```{r}
+cond_prob_B <- tab[1,]/sum(tab[1,])
+cond_prob_B
+```
+
+The probability of satisfaction conditional on Economy class
+
+```{r}
+cond_prob_E <- tab[2,]/sum(tab[2,])
+cond_prob_E
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1|2-4|5-7|8-9"
+#| output-location: column-fragment
+
+tab <- table(airline)
+
+# The probability of satisfaction conditional on Business class
+cond_prob_B <- tab[1,]/sum(tab[1,])
+
+# The probability of satisfaction conditional on Economy class
+cond_prob_E <- tab[2,]/sum(tab[2,])
+
+cond_prob_B; cond_prob_E
+```
+:::
+
+## Visualisation - Barplots {style="font-size: 80%;"}
+
+Are these plots providing the same information?
+
+::: columns
+::: {.column width="65%"}
+```{r}
+#library(lattice)
+barplot(t(tab), 
+        beside = TRUE,
+        legend = TRUE, 
+        args.legend = list(x = "topleft", ncol = 1),
+        ylim = c(0,40))
+```
+:::
+
+::: {.column width="65%"}
+```{r}
+library(lattice)
+barplot(t(tab), 
+        legend = TRUE,
+        args.legend = list(x = "top", ncol = 2), 
+        ylim = c(0,95))
+
+```
+:::
+:::
+
+## Barplots {style="font-size: 80%;"}
+
+::: panel-tabset
+### Barplot of rating by class
+
+```{r}
+#library(lattice)
+barplot(t(tab), 
+        beside = TRUE,
+        legend = TRUE, 
+        args.legend = list(x = "topleft", ncol = 1),
+        ylim = c(0,40))
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1|2-3|4-7"
+#| output-location: column-fragment
+
+tab <- table(airline)
+
+barplot(t(tab), 
+        beside = TRUE,
+        legend = TRUE, 
+        args.legend = list(x = "topleft", ncol = 1),
+        ylim = c(0,40))
+
+```
+:::
+
+## Barplots {style="font-size: 80%;"}
+
+::: panel-tabset
+### Barplot of rating by class - stacked
+
+```{r}
+library(lattice)
+barplot(t(tab), 
+        legend = TRUE,
+        args.legend = list(x = "top", ncol = 2), 
+        ylim = c(0,95))
+
+```
+
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1|2-3|4-7"
+#| output-location: column-fragment
+
+tab <- table(airline)
+
+barplot(t(tab), 
+        legend = TRUE,
+        args.legend = list(x = "top", ncol = 2), 
+        ylim = c(0,95))
+
+
+```
+:::
+
+<!-- ## Let's break down the comparison {style="font-size: 80%;"} -->
+
+<!-- ```{r} -->
+
+<!-- knitr::kable(tab2) -->
+
+<!-- ``` -->
+
+<!-- What proportion of people gave a poor satisfaction rating in Business class? -->
+
+<!-- What proportion of people gave a poor satisfaction rating in Economy class? -->
+
+<!-- How do these compare? -->
+
+## Expected counts in two-way tables {style="font-size: 80%;"}
+
+::: callout-tip
+## Thinking about a hypothesis
+
+While we would not expect the satisfaction to be exactly the same across the classes, the rate of satistaction seems different across the two groups. In order to investigate whether the differences in satisfaction is due to natural variability in people’s honesty or due to a treatment effect (i.e., what seat that sat in), we need to compute expected (estimated) counts for each cell in a two-way table.
+:::
+
+::: {.callout-note icon="false"}
+## Overall what proportion gave a poor satisfaction rating?
+
+We see from the marginal distribution that the overall proportion of people that gave a poor satisfaction rating is 0.15 or 15%.
+
+If class didn't matter (i.e, satisfaction is independent of class), 15% of respondents would disclose this satisfaction rating regardless of their seat, so 15% in economy and 15% in business.
+
+Based on this line of thinking, we can compute an expected count under an independence assumption.
+:::
+
+## Independence and Expected Frequencies {style="font-size: 80%;"}
+
+-   Two variables are considered to be independent if the observations on one variable do not effect the observation on another variable.
+
+::: {.callout-caution collapse="true"}
+## Expected Frequencies
+
+The expected frequencies under independence are given by
+
+$$E_{\text{row } i, \text{col } j} = \frac{(\text{row i total})(\text{column j total})}{\text{grand total}} $$
+:::
+
+-   For the airline data these are
+
+```{r}
+test <- suppressWarnings(chisq.test(tab))
+knitr::kable(test$expected)
+```
+
+## Pearson's $\chi^2$ Statistic {style="font-size: 80%;"}
+
+-   Pearson's $\chi^2$ statistics is used for measuring association between variables in a contingency table.
+
+-   The chi-squared test statistic for a two-way table is found by finding the ratio of how far the observed counts are from the expected counts, as compared to the expected counts, for every cell in the table.
+
+::: {.callout-caution collapse="true"}
+### $\chi^2$ statistic
+
+The $\chi^2$ statistic is given as:
+
+$$\chi^2 = \sum_i \sum_j\frac{(O_{ij}-E_{ij})^2}{E_{ij}}$$
+:::
+
+## Chi-squared distribution {style="font-size: 75%;"}
+
+The chi-squared test statistic has a mathematical distribution called the Chi-squared distribution.
+
+::: columns
+::: {.column width="50%"}
+-   The important specification to make in describing the chi-squared distribution is something called degrees of freedom.
+
+-   Different chi-squared distributions correspond to different degrees of freedom.
+:::
+
+::: {.column width="50%"}
+```{r}
+# Load the ggplot2 library
+library(ggplot2)
+
+# Create a data frame for different degrees of freedom and the corresponding chi-square densities
+df_values <- c(3, 5, 10, 20)  # Degrees of freedom to compare
+x <- seq(0, 30, by = 0.1)  # Values for the x-axis (range of chi-squared distribution)
+
+# Create a data frame for plotting
+data <- data.frame(x = rep(x, times = length(df_values)),
+                   density = unlist(lapply(df_values, function(df) dchisq(x, df))),
+                   df = factor(rep(df_values, each = length(x))))
+
+# Plot using ggplot2
+ggplot(data, aes(x = x, y = density, color = df)) +
+  geom_line(size = 1.2) +
+  labs(title = "Chi-Squared Distributions with Different Degrees of Freedom",
+       x = "x", y = "Density",
+       color = "Degrees of Freedom") +
+  theme_minimal()
+
+```
+:::
+:::
+
+For two way tables, the degrees of freedom is equal to: $df$ = (number of rows minus 1) $\times$ (number of columns minus 1).
+
+-   In our airline example, the degrees of freedom parameter is: $df = (2-1)*(4-1) = 3$ .
+
+## Chi-squared test of independence {style="font-size: 75%;"}
+
+We will use the chi-squared test statistic and the chi-squared distribution to do a hypothesis test for independence for a two-way table.
+
+-   the *null* hypothesis is **independence**
+-   the *alternative* hypothesis is **no independence**
+
+::: callout-note
+## The test statistic for assessing the independence between two categorical variables is a chi-squared ($\chi^2$) test statistic
+
+The statistic is a ratio of how the observed counts vary from the expected counts as compared to the expected counts.
+
+When the null hypothesis is true and some conditions are met, the test statistic has a Chi-squared distribution with $df = (R-1) \times (C-1).$
+
+**Conditions:**
+
+-   Independent observations
+
+-   Large samples: 5 expected counts in each cell
+:::
+
+## Chi-squared test of independence {style="font-size: 75%;"}
+
+For the airline data, if the null hypothesis is true (i.e., class has no impact on satisfaction), then the test statistic ($\chi^2 = 17.99$) is expected to follow a Chi-squared distribution with 3 degrees of freedom.
+
+```{r}
+# Load the ggplot2 library
+library(ggplot2)
+
+# Create a data frame for different degrees of freedom and the corresponding chi-square densities
+df_values <- c(3)  # Degrees of freedom to compare
+x <- seq(0, 30, by = 0.1)  # Values for the x-axis (range of chi-squared distribution)
+
+# Create a data frame for plotting
+data <- data.frame(x = rep(x, times = length(df_values)),
+                   density = unlist(lapply(df_values, function(df) dchisq(x, df))),
+                   df = factor(rep(df_values, each = length(x))))
+
+# Plot using ggplot2
+ggplot(data, aes(x = x, y = density)) +
+  geom_line(size = 1.2, color = "red") +
+  labs(title = "Chi-Squared Distributions with DF = 3",
+       x = "x", y = "Density") +
+  theme_minimal()
+  
+```
+
+Using this information, we can compute the p-value for the test.
+
+::: panel-tabset
+### Code
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1|2"
+#| output-location: column-fragment
+
+tab <- table(airline)
+chisq.test(tab)
+```
+:::
+
+## In Summary {style="font-size: 80%;"}
+
+-   When associations between variables is stronger, then the deviation between observed and expected frequencies are higher.
+
+-   A chi-squared ($\chi^2$) test statistic summarises these deviations.
+
+-   For the airline data $\chi^2 = 17.99$.
+
+-   If there was independence then this value (17.99) is considered very unusual, actually we would only expect to see it less than 5% of the time.
+
+-   In other words, for the airline data the chance of seeing a value as large as 17.99, if class and satisfaction are independent is **\< 5%**
+
+-   We conclude (because it seems more likely) that satisfaction and airline class are \underline{not} independent.
