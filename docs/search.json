@@ -172,7 +172,7 @@
     "href": "index.html#lecture-slides",
     "title": "Welcome to Data Analysis!",
     "section": "Lecture Slides",
-    "text": "Lecture Slides\n\nWeek 1\n1a. Data\n1b. Code lecture; check the Rstudio Sever for Week1_Data.R\n\n\nWeek 2\n2a. Numerical Data\n2b. Code lecture; check the Rstudio Sever for Week2_NumericalData.R\n\n\nWeek 3\n3a. Association between Categorical Variables"
+    "text": "Lecture Slides\n\nWeek 1\n1a. Data\n1b. Code lecture; check the Rstudio Sever for Week1_Data.R\n\n\nWeek 2\n2a. Numerical Data\n2b. Code lecture; check the Rstudio Sever for Week2_NumericalData.R\n\n\nWeek 3\n3a. Association between Categorical Variables\n3b. Code lecture; check the Rstudio Sever for Week3_Categorical.R\n\n\nWeek 4\n4a. Association between Categorical Variables (2)\n4b. Code lecture; check the Rstudio Sever for Week4_Categorical(2).R"
   },
   {
     "objectID": "2-Numerical.html#watt-test-challenge-7-rounds",
@@ -628,5 +628,89 @@
     "title": "ST201 Data Analysis",
     "section": "",
     "text": "We are often interested in the interdependence of two or more categorical variables\n\ne.g., we might be interested in whether the satisfaction of airline customers varies w.r.t the travel class (Economy, Business)\ne.g., we may want to find out of female employees at a company are paid less than male employees or vice versa. Assume in this example we have two salary categories (low, high).\n\nWhen both variables are categorical then it is possible to list all combinations of the variables and count how often the combinations occur in the data."
+  },
+  {
+    "objectID": "4-Categorical2.html#pearsons-chi-squared-test-recap",
+    "href": "4-Categorical2.html#pearsons-chi-squared-test-recap",
+    "title": "ST201 Data Analysis",
+    "section": "Pearson’s Chi-squared test (recap)",
+    "text": "Pearson’s Chi-squared test (recap)\n\nPearson’s \\(\\chi^2\\) statistic is used for measuring association between variables in a contingency table.\n\n\n\n\n\n\n\n\\(\\chi^2\\) test of association\n\n\n\nThe \\(\\chi^2\\) statistic is given as\n\n\\[\\chi^2 = \\sum_i \\sum_j\\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\\] We use the chi-squared test statistic and the chi-squared distribution to do a hypothesis test for independence for a two-way table.\n\nDifferent chi-squared distributions correspond to different degrees of freedom.\nFor two way tables, the degrees of freedom is equal to: \\(df\\) = (number of rows minus 1) \\(\\times\\) (number of columns minus 1).\n\nConditions:\n\nIndependent observations\nLarge samples: 5 expected counts in each cell"
+  },
+  {
+    "objectID": "4-Categorical2.html#pearsons-chi-squared-test-recap-1",
+    "href": "4-Categorical2.html#pearsons-chi-squared-test-recap-1",
+    "title": "ST201 Data Analysis",
+    "section": "Pearson’s Chi-squared test (recap)",
+    "text": "Pearson’s Chi-squared test (recap)\nState the hypothesis - the null and the alternative.\n\nH0: the variables are independent - there is no relationship between the two categorical variables. Knowing the value of one variable does not help to predict the value of the other variable.\nH1: the variables are dependent - there is a relationship between the two categorical variables. Knowing the value of one variable helps to predict the value of the other variable.\n\nChoose a significance level - common values are 0.05 (5%) or 0.01 (1%).\nGet the test statistic - We can do this in R once we have data.\nMake a decision - How does your p-value compare to the significance level?\nDraw a conclusion - Is there independence or not?"
+  },
+  {
+    "objectID": "4-Categorical2.html#climate-example",
+    "href": "4-Categorical2.html#climate-example",
+    "title": "ST201 Data Analysis",
+    "section": "Climate Example",
+    "text": "Climate Example\nAct on climate change. The table below summarizes results from a Research poll which asked respondents their generation and whether they have personally taken action to help address climate change within the last year.\n\n\n\n\n\nGeneration\nResponse\nCount\n\n\n\n\nGen Z\nTook action\n292\n\n\nMillenial\nTook action\n885\n\n\nGen X\nTook action\n809\n\n\nBoomer & older\nTook action\n1276\n\n\nGen Z\nDidn’t take action\n620\n\n\nMillenial\nDidn’t take action\n2275\n\n\nGen X\nDidn’t take action\n2709\n\n\nBoomer & older\nDidn’t take action\n4798"
+  },
+  {
+    "objectID": "4-Categorical2.html#chi-squared-test-in-r",
+    "href": "4-Categorical2.html#chi-squared-test-in-r",
+    "title": "ST201 Data Analysis",
+    "section": "Chi-squared test in R",
+    "text": "Chi-squared test in R\n\n\n# 1. Create a two-way contingency table\ncontingency_table &lt;- \n  xtabs(Count ~ Generation + Response, \n        data = clim_data)\n\n# 2. Do the chi-sq test\nclim_chisq_test &lt;- chisq.test(contingency_table)\n\ncontingency_table;clim_chisq_test\n\n\n                Response\nGeneration       Didn't take action Took action\n  Boomer & older               4798        1276\n  Gen X                        2709         809\n  Gen Z                         620         292\n  Millenial                    2275         885\n\n\n\n    Pearson's Chi-squared test\n\ndata:  contingency_table\nX-squared = 91.924, df = 3, p-value &lt; 2.2e-16"
+  },
+  {
+    "objectID": "4-Categorical2.html#mosaic-plot",
+    "href": "4-Categorical2.html#mosaic-plot",
+    "title": "ST201 Data Analysis",
+    "section": "Mosaic Plot",
+    "text": "Mosaic Plot\nA mosaic plot is a visualization technique suitable for contingency tables that resembles a standardized stacked bar plot with the benefit that we still see the relative group sizes of the primary variable as well.\n\n\nmosaic(contingency_table, \n       shade=TRUE, \n       legend=TRUE)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPearson’s residual\n\n\n\\(r_i = \\frac{O_i - E_i}{\\sqrt{E_i}}\\)\n\n\\(r_i\\) is the Pearson residual for the i-th observation. \\(O_i\\) is the observed frequency for the i-th category. \\(E_i\\) is the expected frequency for the i-th category."
+  },
+  {
+    "objectID": "4-Categorical2.html#reporting-on-results",
+    "href": "4-Categorical2.html#reporting-on-results",
+    "title": "ST201 Data Analysis",
+    "section": "Reporting on results",
+    "text": "Reporting on results\n\n\n\nIf I wanted to write this result up for a paper I could write:\n\n\nOf the Boomer generation, 21% indicated that they have taken action on climate change. This compares to 32% for Gen Z. A chi-square goodness of fit test was conducted to test whether taking action was independent of generation. The results were significant (\\(\\chi^2(3) = 91.92\\),\\(p &lt;&lt; 0.05\\)), suggesting that your likelihood of taking climate action is dependent on what generation you belong to.\n\n\n\n\nNotes:\n\nThe result of the statistical test is preceded by the descriptive statistics. That is, I told the reader something about what the data look like before going on to do the test.\nThe description tells you what the null hypothesis being tested is.\nA “stat block” is included given some specific information about the results of the test.\nThe results are interpreted."
+  },
+  {
+    "objectID": "4-Categorical2.html#fishers-exact-test-independence-test-for-a-small-sample",
+    "href": "4-Categorical2.html#fishers-exact-test-independence-test-for-a-small-sample",
+    "title": "ST201 Data Analysis",
+    "section": "Fisher’s exact test: independence test for a small sample",
+    "text": "Fisher’s exact test: independence test for a small sample\nFisher’s Exact Test is used when:\n\nComparing two categorical variables in a contingency table (usually 2x2).\nSample sizes are small, where other tests like the Chi-square test might not be appropriate.\n\nFisher’s exact test is preferred when the expected values in one of the cells of the contingency table is less than 5.\n\n\nWhy use Fisher’s Exact Test?\n\nIt doesn’t rely on large sample approximations.\nIt provides an exact p-value"
+  },
+  {
+    "objectID": "4-Categorical2.html#fishers-exact-test",
+    "href": "4-Categorical2.html#fishers-exact-test",
+    "title": "ST201 Data Analysis",
+    "section": "Fisher’s exact test",
+    "text": "Fisher’s exact test\nFishers exact test is based upon calculating directly the probability of obtaining the observed data results (or results more extreme) if the null hypothesis is actually true, using all possible 2 × 2 tables that could have been observed, for the same row and column totals as the observed data.\n\n\n\n\n\n\nFisher’s test of association\n\n\nFor a given 2x2 table, the probability of obtaining the frequencies a, b, c and d is\n\\[P(Table) = \\frac{{a+b \\choose a}{c+d \\choose c}}{{n \\choose a+c}} =  \\frac{(a+b)!(c+d)!(a+c)!(b+d)!}\n{N!a!b!c!d!}\\]\nThe p-value is the sum of the probabilities of all tables as extreme (or more extreme) than the observed one.\n\nThis tells us the probability of getting the observed table (or more extreme) if the null hypothesis is true."
+  },
+  {
+    "objectID": "4-Categorical2.html#fishers-test",
+    "href": "4-Categorical2.html#fishers-test",
+    "title": "ST201 Data Analysis",
+    "section": "Fisher’s test",
+    "text": "Fisher’s test\nState the hypothesis - the null and the alternative.\n\nH0: the variables are independent - there is no relationship between the two categorical variables. Knowing the value of one variable does not help to predict the value of the other variable.\nH1: the variables are dependent - there is a relationship between the two categorical variables. Knowing the value of one variable helps to predict the value of the other variable.\n\nChoose a significance level - common values are 0.05 (5%) or 0.01 (1%).\nGet the test statistic - We can do this in R once we have data.\nMake a decision - How does your p-value compare to the significance level?\nDraw a conclusion - Is there independence or not?"
+  },
+  {
+    "objectID": "4-Categorical2.html#smoking-example",
+    "href": "4-Categorical2.html#smoking-example",
+    "title": "ST201 Data Analysis",
+    "section": "Smoking Example",
+    "text": "Smoking Example\nFor our example, we want to determine whether there is a statistically significant association between smoking and being a professional athlete. Smoking can only be “yes” or “no” and being a professional athlete can only be “yes” or “no”. The two variables of interest are qualitative variables and we collected data on 14 persons.\n\n\n\n\n\n\n\n\nnon-smoker\nsmoker\n\n\n\n\nathlete\n7\n2\n\n\nnon-athlete\n2\n3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExpected Frequencies\nRemember that the Fisher’s exact test is used when there is at least one cell in the contingency table with the expected frequencies below 5.\n\n\n\n\n\n\nnon-smoker\nsmoker\n\n\n\n\nathlete\n5.785714\n3.214286\n\n\nnon-athlete\n3.214286\n1.785714"
+  },
+  {
+    "objectID": "4-Categorical2.html#smoking-example-in-r",
+    "href": "4-Categorical2.html#smoking-example-in-r",
+    "title": "ST201 Data Analysis",
+    "section": "Smoking example in R",
+    "text": "Smoking example in R\nFisher’s test\n\n\nsmoking_tab &lt;- table(smoking_dat)\nfisher.test(smoking_tab)\n\n\n\n    Fisher's Exact Test for Count Data\n\ndata:  smoking_tab\np-value = 0.2657\nalternative hypothesis: true odds ratio is not equal to 1\n95 percent confidence interval:\n  0.2990134 99.1958282\nsample estimates:\nodds ratio \n  4.575127 \n\n\nMosaic Plot\n\n\nmosaic(smoking_tab, \n       shade=TRUE, \n       legend=FALSE)"
+  },
+  {
+    "objectID": "4-Categorical2.html#reporting-on-results-1",
+    "href": "4-Categorical2.html#reporting-on-results-1",
+    "title": "ST201 Data Analysis",
+    "section": "Reporting on results",
+    "text": "Reporting on results\n\n\n\nIf I wanted to write this result up for a paper I could write:\n\n\nOf the 9 athletes, 2 were smokers (22%) and of the 5 Non-athletes, 3 were smokers (60%), indicating that non-athletes are almost 3 times more likely than athletes to be smokers. However, given the small sample size, Fisher’s exact test was conducted to test whether being an athlete influenced smoking habits. The results were not significant (\\(p &gt; 0.05\\)) and we concluded there is no evidence of a relationship between smoking and being an athlete based on these data.\n\n\n\n\nNotes:\n\nThe result of the statistical test is preceded by the descriptive statistics. That is, I told the reader something about what the data look like before going on to do the test.\nThe description tells you what the null hypothesis being tested is.\nA “stat block” is included given some specific information about the results of the test.\nThe results are interpreted.\n\n\n\n\n\n\n\n\n\nBeware!! The headline might read:\n\n\n“Study finds that being an Athlete reduces your chance of smoking”"
   }
 ]

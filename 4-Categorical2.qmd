@@ -1,0 +1,306 @@
+---
+title: "ST201 Data Analysis"
+subtitle:  "Association between Categorical Variables"
+author: "Prof. Niamh Cahill (she/her)"
+format: 
+  revealjs:
+    highlight-style: github
+editor: visual
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(mosaic)
+library(vcd)
+knitr::opts_chunk$set(echo = FALSE)
+
+# Create the data
+clim_data <- data.frame(
+  Generation = c("Gen Z", "Millenial", "Gen X", "Boomer & older", 
+                 "Gen Z", "Millenial", "Gen X", "Boomer & older"),
+  Response = c("Took action", "Took action", "Took action", "Took action", 
+               "Didn't take action", "Didn't take action", "Didn't take action", "Didn't take action"),
+  Count = c(292, 885, 809, 1276, 620, 2275, 2709, 4798)
+)
+
+
+# Create a two-way contingency table
+contingency_table <- xtabs(Count ~ Generation + Response, data = clim_data)
+
+# View the contingency table
+print(contingency_table)
+
+smoking <- tibble()
+
+smoking_dat <- tibble(       athlete = c("athlete","athlete","athlete","athlete","athlete","athlete","athlete","athlete","athlete","non-athlete","non-athlete","non-athlete","non-athlete","non-athlete"),smoker = c("non-smoker","non-smoker","non-smoker","non-smoker","non-smoker","non-smoker","non-smoker","smoker","smoker","smoker","smoker","smoker","non-smoker","non-smoker")
+)
+table(smoking_dat)
+
+
+```
+
+## Pearson's Chi-squared test (recap) {style="font-size: 70%;"}
+
+-   Pearson's $\chi^2$ statistic is used for measuring association between variables in a contingency table.
+
+::: callout-note
+### $\chi^2$ test of association
+
+-   The $\chi^2$ statistic is given as
+
+$$\chi^2 = \sum_i \sum_j\frac{(O_{ij}-E_{ij})^2}{E_{ij}}$$ We use the chi-squared test statistic and the chi-squared distribution to do a hypothesis test for independence for a two-way table.
+
+-   Different chi-squared distributions correspond to different degrees of freedom.
+
+-   For two way tables, the degrees of freedom is equal to: $df$ = (number of rows minus 1) $\times$ (number of columns minus 1).
+
+**Conditions:**
+
+-   Independent observations
+
+-   Large samples: 5 expected counts in each cell
+:::
+
+## Pearson's Chi-squared test (recap) {style="font-size: 70%;"}
+
+**State the hypothesis** - the null and the alternative.
+
+-   **H0: the variables are independent** - there is no relationship between the two categorical variables. Knowing the value of one variable does not help to predict the value of the other variable.
+
+-   **H1: the variables are dependent** - there is a relationship between the two categorical variables. Knowing the value of one variable helps to predict the value of the other variable.
+
+**Choose a significance level** - common values are 0.05 (5%) or 0.01 (1%).
+
+**Get the test statistic** - We can do this in R once we have data.
+
+**Make a decision** - How does your p-value compare to the significance level?
+
+**Draw a conclusion** - Is there independence or not?
+
+## Climate Example {style="font-size: 70%;"}
+
+**Act on climate change.** The table below summarizes results from a Research poll which asked respondents their generation and whether they have personally taken action to help address climate change within the last year.
+
+```{r}
+knitr::kable(clim_data)
+```
+
+## Chi-squared test in R {style="font-size: 70%;"}
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1-4|6-7|9"
+#| output-location: column-fragment
+
+# 1. Create a two-way contingency table
+contingency_table <- 
+  xtabs(Count ~ Generation + Response, 
+        data = clim_data)
+
+# 2. Do the chi-sq test
+clim_chisq_test <- chisq.test(contingency_table)
+
+contingency_table;clim_chisq_test
+```
+
+. . .
+
+```{r, echo = FALSE}
+# Load the ggplot2 library
+library(ggplot2)
+
+# Create a data frame for different degrees of freedom and the corresponding chi-square densities
+df_values <- c(3)  # Degrees of freedom to compare
+x <- seq(0, 100, by = 0.1)  # Values for the x-axis (range of chi-squared distribution)
+
+# Create a data frame for plotting
+data <- data.frame(x = rep(x, times = length(df_values)),
+                   density = unlist(lapply(df_values, function(df) dchisq(x, df))),
+                   df = factor(rep(df_values, each = length(x))))
+
+# Plot using ggplot2
+ggplot(data, aes(x = x, y = density)) +
+  geom_line(size = 1.2, color = "red") +
+  labs(title = "Chi-Squared Distributions with DF = 3",
+       x = "x", y = "Density") +
+  theme_minimal() +
+  geom_vline(aes(xintercept = 91.924, colour = "statistic"))
+  
+```
+
+## Mosaic Plot {style="font-size: 60%;"}
+
+A mosaic plot is a visualization technique suitable for contingency tables that resembles a standardized stacked bar plot with the benefit that we still see the relative group sizes of the primary variable as well.
+
+```{r, echo = TRUE, include=TRUE, fig.height=6}
+#| code-line-numbers: "1|2|3"
+#| output-location: column-fragment
+
+mosaic(contingency_table, 
+       shade=TRUE, 
+       legend=TRUE)
+```
+
+. . .
+
+::: callout-note
+### Pearson's residual
+
+$r_i = \frac{O_i - E_i}{\sqrt{E_i}}$
+
+-   $r_i$ is the Pearson residual for the i-th observation. $O_i$ is the observed frequency for the i-th category. $E_i$ is the expected frequency for the i-th category.
+:::
+
+## Reporting on results {style="font-size: 70%;"}
+
+::: {.callout-tip icon="false"}
+### If I wanted to write this result up for a paper I could write:
+
+Of the Boomer generation, 21% indicated that they have taken action on climate change. This compares to 32% for Gen Z. A chi-square goodness of fit test was conducted to test whether taking action was independent of generation. The results were significant ($\chi^2(3) = 91.92$,$p << 0.05$), suggesting that your likelihood of taking climate action is dependent on what generation you belong to.
+:::
+
+. . .
+
+**Notes:**
+
+-   The result of the statistical test is preceded by the descriptive statistics. That is, I told the reader something about what the data look like before going on to do the test.
+
+-   The description tells you what the null hypothesis being tested is.
+
+-   A “stat block” is included given some specific information about the results of the test.
+
+-   The results are interpreted.
+
+## Fisher’s exact test: independence test for a small sample {style="font-size: 70%;"}
+
+Fisher's Exact Test is used when:
+
+-   **Comparing two categorical variables** in a contingency table (usually 2x2).
+
+-   **Sample sizes are small**, where other tests like the Chi-square test might not be appropriate.
+
+    -   Fisher's exact test is preferred when the expected values in one of the cells of the contingency table is **less than 5**.
+
+Why use Fisher's Exact Test?
+
+-   It **doesn't rely on large sample approximations**.
+
+-   It provides an **exact p-value**
+
+## Fisher’s exact test {style="font-size: 70%;"}
+
+Fishers exact test is based upon calculating directly the probability of obtaining the observed data results (or results more extreme) if the null hypothesis is actually true, using all possible 2 × 2 tables that could have been observed, for the same row and column totals as the observed data.
+
+::: callout-note
+### Fisher's test of association
+
+For a given 2x2 table, the probability of obtaining the frequencies a, b, c and d is
+
+$$P(Table) = \frac{{a+b \choose a}{c+d \choose c}}{{n \choose a+c}} =  \frac{(a+b)!(c+d)!(a+c)!(b+d)!}
+{N!a!b!c!d!}$$
+
+The p-value is the sum of the probabilities of all tables as extreme (or more extreme) than the observed one.
+
+-   This tells us the probability of getting the observed table (or more extreme) if the null hypothesis is true.
+:::
+
+## Fisher's test {style="font-size: 70%;"}
+
+**State the hypothesis** - the null and the alternative.
+
+-   **H0: the variables are independent** - there is no relationship between the two categorical variables. Knowing the value of one variable does not help to predict the value of the other variable.
+
+-   **H1: the variables are dependent** - there is a relationship between the two categorical variables. Knowing the value of one variable helps to predict the value of the other variable.
+
+**Choose a significance level** - common values are 0.05 (5%) or 0.01 (1%).
+
+**Get the test statistic** - We can do this in R once we have data.
+
+**Make a decision** - How does your p-value compare to the significance level?
+
+**Draw a conclusion** - Is there independence or not?
+
+## Smoking Example {style="font-size: 70%;"}
+
+For our example, we want to determine whether there is a statistically significant association between smoking and being a professional athlete. Smoking can only be “yes” or “no” and being a professional athlete can only be “yes” or “no”. The two variables of interest are qualitative variables and we collected data on 14 persons.
+
+::: columns
+::: {.column width="50%"}
+```{r}
+knitr::kable(table(smoking_dat))
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+barplot(table(smoking_dat),
+        legend = TRUE)
+```
+:::
+:::
+
+. . .
+
+**Expected Frequencies**
+
+Remember that the Fisher’s exact test is used when there is at least one cell in the contingency table with the expected frequencies below 5.
+
+```{r}
+chi_test <- suppressWarnings(chisq.test(table(smoking_dat)))
+knitr::kable(chi_test$expected)
+```
+
+## Smoking example in R {style="font-size: 70%;"}
+
+```{r}
+# factorial(9)*factorial(5)*factorial(9)*factorial(5)/(factorial(14)*factorial(7)*factorial(2)*factorial(2)*factorial(3))
+
+```
+
+### Fisher's test
+
+```{r, echo = TRUE, include=TRUE, fig.height=6}
+#| code-line-numbers: "1|2"
+#| output-location: column-fragment
+
+smoking_tab <- table(smoking_dat)
+fisher.test(smoking_tab)
+```
+
+### Mosaic Plot
+
+```{r, echo = TRUE, include=TRUE, fig.height=6}
+#| code-line-numbers: "1|2"
+#| output-location: column-fragment
+
+mosaic(smoking_tab, 
+       shade=TRUE, 
+       legend=FALSE)
+```
+
+## Reporting on results {style="font-size: 70%;"}
+
+::: {.callout-tip icon="false"}
+### If I wanted to write this result up for a paper I could write:
+
+Of the 9 athletes, 2 were smokers (22%) and of the 5 Non-athletes, 3 were smokers (60%), indicating that non-athletes are almost 3 times more likely than athletes to be smokers. However, given the small sample size, Fisher's exact test was conducted to test whether being an athlete influenced smoking habits. The results were not significant ($p > 0.05$) and we concluded there is no evidence of a relationship between smoking and being an athlete based on these data.
+:::
+
+. . .
+
+**Notes:**
+
+-   The result of the statistical test is preceded by the descriptive statistics. That is, I told the reader something about what the data look like before going on to do the test.
+
+-   The description tells you what the null hypothesis being tested is.
+
+-   A “stat block” is included given some specific information about the results of the test.
+
+-   The results are interpreted.
+
+. . .
+
+::: callout-warning
+### Beware!! The headline might read:
+
+"Study finds that being an Athlete reduces your chance of smoking"
+:::

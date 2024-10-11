@@ -33,6 +33,13 @@ Contact: Niamh Cahill (niamh.cahill\@mu.ie)
 
 3a. [Association between Categorical Variables](https://ncahill89.github.io/ST201/3-Categorical.html)
 
+3b. Code lecture; check the [Rstudio Sever](https://rstudio.maths.nuim.ie) for Week3_Categorical.R
+
+### Week 4
+
+4a. [Association between Categorical Variables (2)](https://ncahill89.github.io/ST201/4-Categorical2.html)
+
+4b. Code lecture; check the [Rstudio Sever](https://rstudio.maths.nuim.ie) for Week4_Categorical(2).R
 
 
 ## Tutorial Sheets
