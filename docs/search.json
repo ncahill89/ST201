@@ -712,5 +712,12 @@
     "title": "ST201 Data Analysis",
     "section": "Reporting on results",
     "text": "Reporting on results\n\n\n\nIf I wanted to write this result up for a paper I could write:\n\n\nOf the 9 athletes, 2 were smokers (22%) and of the 5 Non-athletes, 3 were smokers (60%), indicating that non-athletes are almost 3 times more likely than athletes to be smokers. However, given the small sample size, Fisher’s exact test was conducted to test whether being an athlete influenced smoking habits. The results were not significant (\\(p &gt; 0.05\\)) and we concluded there is no evidence of a relationship between smoking and being an athlete based on these data.\n\n\n\n\nNotes:\n\nThe result of the statistical test is preceded by the descriptive statistics. That is, I told the reader something about what the data look like before going on to do the test.\nThe description tells you what the null hypothesis being tested is.\nA “stat block” is included given some specific information about the results of the test.\nThe results are interpreted.\n\n\n\n\n\n\n\n\n\nBeware!! The headline might read:\n\n\n“Study finds that being an Athlete reduces your chance of smoking!”"
+  },
+  {
+    "objectID": "4-Categorical2.html#class-example",
+    "href": "4-Categorical2.html#class-example",
+    "title": "ST201 Data Analysis",
+    "section": "Class Example",
+    "text": "Class Example\n\n\n\n\n\n\nCancer\nNo cancer\nTotal\n\n\n\n\nCoffee drinkers\n3\n11\n14\n\n\nNon-coffee drinkers\n1\n15\n16\n\n\nTotal\n4\n26\n30\n\n\n\n\n\n\nPresent the null and alternative hypotheses\nCalculate the exact probability in the observed contingency table\nObtain other more extreme tables\nObtain p-values of other tables\nObtain p-value for the test\nInterpret"
   }
 ]
