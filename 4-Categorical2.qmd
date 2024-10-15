@@ -302,5 +302,5 @@ Of the 9 athletes, 2 were smokers (22%) and of the 5 Non-athletes, 3 were smoker
 ::: callout-warning
 ### Beware!! The headline might read:
 
-"Study finds that being an Athlete reduces your chance of smoking"
+"Study finds that being an Athlete reduces your chance of smoking!"
 :::
