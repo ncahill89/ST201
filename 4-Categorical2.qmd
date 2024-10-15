@@ -104,7 +104,7 @@ contingency_table;clim_chisq_test
 
 . . .
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.height=4}
 # Load the ggplot2 library
 library(ggplot2)
 
@@ -219,7 +219,7 @@ The p-value is the sum of the probabilities of all tables as extreme (or more ex
 
 **Draw a conclusion** - Is there independence or not?
 
-## Smoking Example {style="font-size: 70%;"}
+## Smoking Example {style="font-size: 60%;"}
 
 For our example, we want to determine whether there is a statistically significant association between smoking and being a professional athlete. Smoking can only be “yes” or “no” and being a professional athlete can only be “yes” or “no”. The two variables of interest are qualitative variables and we collected data on 14 persons.
 
