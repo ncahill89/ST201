@@ -1,0 +1,356 @@
+---
+title: "ST201 Data Analysis"
+subtitle:  "Association between Categorical Variables (3)"
+author: "Prof. Niamh Cahill (she/her)"
+format: 
+  revealjs:
+    highlight-style: github
+editor: visual
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(echo = FALSE)
+library(vcd) 
+
+```
+
+## What is Simpson's Paradox? {style="font-size: 70%;"}
+
+Ignoring an important variable can lead to **Simpson's Paradox**, especially when analyzing **categorical data**. This paradox occurs when the relationship between two variables reverses or changes after considering a third variable.
+
+**How do we explore Simpsons' paradox with categorical data?**
+
+-   Visualisation
+-   Proportions and Relative Risk
+-   Odds and Odds Ratios
+
+## Example Scenario: Medical Treatment Success Rates {style="font-size: 70%;"}
+
+Let’s consider two treatments, **Treatment A** and **Treatment B**, and their successes. Assume we also have information on where the treatments are carried out, either Hospital X or Hospital Y.
+
+### Data
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+# Create the data
+hospital_data <- data.frame(
+  Hospital = rep(c("X", "Y"), each = 2),
+  Treatment = c("A", "B", "A", "B"),
+  Patients = c(10, 90, 10, 90),
+  Successes = c(5, 30, 9, 60)
+)
+
+print(hospital_data[,-5])
+```
+
+**Turning this data into contingency tables**
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1-3|4-7|8-12|13"
+#| output-location: column-fragment
+
+library(vcd)
+hospital_data$Failures <- 
+  hospital_data$Patients -  hospital_data$Successes
+
+treatment_tab <- 
+  xtabs(cbind(Successes, Failures) ~ Treatment, 
+      data = hospital_data)
+
+hospital_tab <- 
+  xtabs(cbind(Successes, Failures)  ~ Hospital, 
+      data = hospital_data)
+
+treatment_tab;hospital_tab
+
+```
+
+## Overall Success Rates (ignoring hospital) {style="font-size: 70%;"}
+
+Let’s first compare the **overall success rates** for both treatments, ignoring the hospital.
+
+-   Given the format of this data we might deal with it a little differently in R than we've seen before.
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1-6"
+
+# Calculate the overall success rate for Treatment A and B
+overall_data <- aggregate(cbind(Patients, Successes) ~ Treatment, 
+                          data = hospital_data, sum)
+overall_data$OverallSuccessRate <- 
+  overall_data$Successes / overall_data$Patients
+overall_data
+```
+
+-   We can still visualise this, but the table is also sufficient.
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1-5"
+#| output-location: column-fragment
+
+barplot(overall_data$OverallSuccessRate, 
+        names.arg = overall_data$Treatment,
+        main = "Overall Success Rates by Treatment" ,
+        ylab = "Overall Success Rate", 
+        xlab = "Treatment")
+```
+
+. . .
+
+**Treatment A** has a higher success rate than **Treatment B**.
+
+## Success Rates for Treatment by Hospital {style="font-size: 70%;"}
+
+Now, let's break down the success rates based on whether treatment was performed at Hospital X or Y.
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1-4"
+
+# Calculate the overall success rate for Treatment A and B
+hospital_data$SuccessRate <- 
+  hospital_data$Successes / hospital_data$Patients
+hospital_data
+```
+
+-   To visualise this with a barplot we need to manipulate the data a bit:
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1-3|4-9"
+#| output-location: column-fragment
+
+hospital_tab <- xtabs(SuccessRate ~ Treatment + Hospital, 
+                      data = hospital_data)
+
+barplot(hospital_tab,
+        legend.text = TRUE,
+        beside = TRUE,
+        main = "Success Rates by Treatment & Hospital" ,
+        ylab = "Success Rate", 
+        xlab = "Hospital")
+```
+
+. . .
+
+**Treatment A** has a higher success rate than **Treatment B** in both hospitals.
+
+## Example: Student Admissions at UC Berkeley {style="font-size: 70%;"}
+
+Aggregate data on applicants to graduate school at Berkeley for the six largest departments in 1973 classified by admission and sex.
+
+The variables and their levels are as follows:
+
+1.  Admit: Admitted, Rejected
+
+2.  Gender: Male, Female
+
+3.  Dept: A, B, C, D, E, F
+
+```{r, echo=FALSE, include=FALSE}
+
+# gender <- c(rep("Female",200), rep("Male",190))
+# admission <- c(rep("success", 100), rep("failure",100),rep("success",110),rep("failure",80))
+# 
+# dept <- c(rep("Natural Science", 60), rep("Social Science", 40), rep("Natural Science",20), rep("Social Science",80), rep("Natural Science", 100), rep("Social Science", 10), rep("Natural Science",50), rep("Social Science",30))
+admission_dat <- readRDS("ucbadmit.rds")
+admission_dat <- admission_dat %>% 
+  mutate(admit = factor(admit, levels = c("Admitted","Rejected")))
+#saveRDS(admission_dat, file = "admission_dat.rds")
+```
+
+```{r, echo = TRUE}
+admission_dat
+```
+
+## Odds and Odds Ratio {style="font-size: 70%;"}
+
+### 🔍 What Are Odds?
+
+When comparing two groups (e.g., Treatment vs. Control), the *odds of success* for each are calculated by:
+
+-   **Category 1**:\
+    $w1 = \frac{\text{Success in Group 1}}{\text{Failure in Group 1}}$
+
+-   **Category 2**:\
+    $w2 = \frac{\text{Success in Group 2}}{\text{Failure in Group 2}}$
+
+### 🔗 What is the Odds Ratio?
+
+The *odds ratio* tells us how much more likely success odds are in one group compared to the other:
+
+$\text{Odds Ratio} = \frac{w1}{w2}$
+
+## Example: Student Admissions at UC Berkeley {style="font-size: 70%;"}
+
+Let's assume, upon an initial look at the data, that the tables are collapsed over department (natural science, social science).
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1"
+
+xtabs( ~ gender + admit, data = admission_dat)
+```
+
+. . .
+
+**Odds**
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1"
+#| output-location: column-fragment
+
+admission_odds <- lodds(~  admit + gender, 
+                        data = admission_dat, 
+                        log = FALSE)
+coef(admission_odds)
+confint(admission_odds)
+```
+
+. . .
+
+**and Odds Ratios**
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1"
+#| output-location: column-fragment
+
+
+admission_OR <- loddsratio(~  admit + gender, 
+                           data = admission_dat, 
+                           log = FALSE)
+coef(admission_OR)
+confint(admission_OR)
+```
+
+<!-- - **Category 1 - Female**:   -->
+
+<!--   $w1 = \frac{\text{Success in Female Group}}{\text{Failure in Female Group}}$ -->
+
+<!-- - **Category 2 - Male**:   -->
+
+<!--   $w2 = \frac{\text{Success in Male Group}}{\text{Failure in Male Group}}$ -->
+
+<!-- - $\text{Odds Ratio} = \frac{w1}{w2}$ -->
+
+## Example: Student Admissions at UC Berkeley {style="font-size: 70%;"}
+
+Let us look at the same data but divided into groups by department.
+
+```{r, echo=TRUE}
+admission_tab <- xtabs(~ gender + admit + dept, 
+                       data = admission_dat)
+
+addmargins(admission_tab)
+
+```
+
+## Example: Student Admissions at UC Berkeley {style="font-size: 70%;"}
+
+**Odds**
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1"
+
+admission_odds <- lodds(~  admit + gender + dept, data = admission_dat, 
+                        log = FALSE)
+coef(admission_odds)
+confint(admission_odds)
+```
+
+## Example: Student Admissions at UC Berkeley {style="font-size: 70%;"}
+
+**and Odds Ratios**
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1"
+
+
+admission_OR <- loddsratio(~  admit + gender + dept, data = admission_dat, 
+                        log = FALSE)
+coef(admission_OR)
+confint(admission_OR)
+```
+
+## What's going on? {style="font-size: 70%;"}
+
+In this example, Simpson's paradox occurred because
+
+-   both gender identity and admissions were related to a third variable, namely, the department.
+
+-   First, women were more likely to apply to social science departments, whereas men were more likely to apply to natural science departments.
+
+-   Second, the acceptance rate in social science departments was less than that in natural science departments.
+
+Because women were more likely than men to apply to programs with lower acceptance rates, when department was ignored (i.e., when the data were aggregated over dept), it seemed that women were less likely than men to be admitted to graduate school, whereas the reverse was actually true.
+
+## Lurking Variable {style="font-size: 70%;"}
+
+A lurking variable is a variable that is not included as an explanatory variable in the analysis but can affect the interpretation of relationships between variables.
+
+-   A lurking variable can falsely identify a strong relationship between variables or it can hide the true relationship.
+
+-   To discover lurking variables, you must take the time to understand your data and the important variables that can affect a process.
+
+## 2-way mosaic plots {style="font-size: 70%;"}
+
+::: columns
+::: {.column width="50%"}
+```{r, fig.height=6}
+mosaic(~ gender + admit, 
+      data = admission_dat, 
+      shade = TRUE,
+      legend = TRUE)
+```
+:::
+
+::: {.column width="50%"}
+```{r, echo = TRUE, include=TRUE}
+admission_OR <- loddsratio(~  admit + gender, 
+                           data = admission_dat, 
+                           log = FALSE)
+coef(admission_OR)
+```
+:::
+:::
+
+## 3-way mosaic plots {style="font-size: 60%;"}
+
+::: columns
+::: {.column width="50%"}
+```{r, fig.height=12}
+mosaic(~ dept + gender + admit , 
+      data = admission_dat, 
+      shade = TRUE,
+      legend = TRUE)
+```
+:::
+
+::: {.column width="50%"}
+```{r, echo = TRUE, include=TRUE}
+admission_OR <- loddsratio(~  admit + gender + dept, 
+                           data = admission_dat, 
+                           log = FALSE)
+coef(admission_OR)
+```
+:::
+:::
+
+## Example: Titanic Survival Data {style="font-size: 70%;"}
+
+This data set provides information on the fate of passengers on the fatal maiden voyage of the ocean liner ‘Titanic’, summarized according to economic status (class), sex, age and survival.
+
+```{r, echo=FALSE, warning=FALSE}
+# Load dataset
+data(Titanic)
+titanic_df <- as.data.frame(Titanic)
+knitr::kable(head(titanic_df))
+
+```
+
+## Example: Titanic Survival Data {style="font-size: 70%;"}
+
+```{r, echo=TRUE}
+xtabs(Freq ~ Sex + Survived , data = Titanic)
+```
+
+```{r, echo=TRUE}
+xtabs(Freq ~ + Sex + Survived + Class, data = Titanic)
+```

@@ -1,6 +1,6 @@
 ---
 title: "ST201 Data Analysis"
-subtitle:  "Association between Categorical Variables"
+subtitle:  "Association between Categorical Variables (2)"
 author: "Prof. Niamh Cahill (she/her)"
 format: 
   revealjs:

@@ -207,7 +207,6 @@ barplot(t(tab),
 :::
 :::
 
-
 ## Barplots {style="font-size: 80%;"}
 
 ::: panel-tabset
@@ -238,7 +237,6 @@ barplot(t(tab),
 
 ```
 :::
-
 
 ## Barplots {style="font-size: 80%;"}
 

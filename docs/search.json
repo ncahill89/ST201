@@ -172,7 +172,7 @@
     "href": "index.html#lecture-slides",
     "title": "Welcome to Data Analysis!",
     "section": "Lecture Slides",
-    "text": "Lecture Slides\n\nWeek 1\n1a. Data\n1b. Code lecture; check the Rstudio Sever for Week1_Data.R\n\n\nWeek 2\n2a. Numerical Data\n2b. Code lecture; check the Rstudio Sever for Week2_NumericalData.R\n\n\nWeek 3\n3a. Association between Categorical Variables\n3b. Code lecture; check the Rstudio Sever for Week3_Categorical.R\n\n\nWeek 4\n4a. Association between Categorical Variables (2)\n4b. Code lecture; check the Rstudio Sever for Week4_Categorical(2).R"
+    "text": "Lecture Slides\n\nWeek 1\n1a. Data\n1b. Code lecture; check the Rstudio Sever for Week1_Data.R\n\n\nWeek 2\n2a. Numerical Data\n2b. Code lecture; check the Rstudio Sever for Week2_NumericalData.R\n\n\nWeek 3\n3a. Association between Categorical Variables\n3b. Code lecture; check the Rstudio Sever for Week3_Categorical.R\n\n\nWeek 4\n4a. Association between Categorical Variables (2)\n4b. Code lecture; check the Rstudio Sever for Week4_Categorical(2).R\n\n\nWeek 5\n4a. Association between Categorical Variables (3)\n4b. Code lecture; check the Rstudio Sever for Week5_Categorical(3).R"
   },
   {
     "objectID": "2-Numerical.html#watt-test-challenge-7-rounds",
@@ -500,8 +500,8 @@
     "objectID": "3-Categorical.html#association-of-two-variables",
     "href": "3-Categorical.html#association-of-two-variables",
     "title": "ST201 Data Analysis",
-    "section": "Association of Two Variables",
-    "text": "Association of Two Variables\nWe are often interested in the interdependence of two or more categorical variables\n\ne.g., we might be interested in whether the satisfaction of airline customers varies w.r.t the travel class (Economy, Business)\ne.g., we may want to find out of female employees at a company are paid less than male employees or vice versa. Assume in this example we have two salary categories (low, high).\n\nWhen both variables are categorical then it is possible to list all combinations of the variables and count how often the combinations occur in the data."
+    "section": "",
+    "text": "We are often interested in the interdependence of two or more categorical variables\n\ne.g., we might be interested in whether the satisfaction of airline customers varies w.r.t the travel class (Economy, Business)\ne.g., we may want to find out of female employees at a company are paid less than male employees or vice versa. Assume in this example we have two salary categories (low, high).\n\nWhen both variables are categorical then it is possible to list all combinations of the variables and count how often the combinations occur in the data."
   },
   {
     "objectID": "3-Categorical.html#airline-satisfaction-example",
@@ -515,35 +515,35 @@
     "href": "3-Categorical.html#contingency-tables",
     "title": "ST201 Data Analysis",
     "section": "Contingency Tables",
-    "text": "Contingency Tables\nThis data can be described in a two-dimensional contingency table.\n\nContingency TableCode\n\n\n\n\n\n\n\n\npoor\nfair\ngood\nv. good\n\n\n\n\nB\n0\n1\n2\n2\n\n\nE\n2\n2\n2\n1\n\n\n\n\n\n\n\n\n\ntab &lt;- table(airline_subset)\ntab\n\n\n     satisfaction\nclass poor fair good v. good\n    B    0    1    2       2\n    E    2    2    2       1"
+    "text": "Contingency Tables\nThis data can be described in a two-dimensional contingency table.\n\nContingency TableCode\n\n\n\n\n\n\n\n\npoor\nfair\ngood\nv. good\n\n\n\n\nB\n0\n1\n2\n2\n\n\nE\n2\n2\n2\n1\n\n\n\n\n\n\n\n\ntab &lt;- table(airline_subset)\ntab\n\n     satisfaction\nclass poor fair good v. good\n    B    0    1    2       2\n    E    2    2    2       1"
   },
   {
     "objectID": "3-Categorical.html#marginal-and-conditional-distributions",
     "href": "3-Categorical.html#marginal-and-conditional-distributions",
     "title": "ST201 Data Analysis",
     "section": "Marginal and Conditional Distributions",
-    "text": "Marginal and Conditional Distributions\nAirline data; N = 100\n\n\n\n\n\n\npoor\nfair\ngood\nv. good\n\n\n\n\nB\n3\n3\n8\n14\n\n\nE\n12\n34\n15\n11\n\n\n\n\n\n\n\n\n\n\n\nMarginal frequency\n\n\nMarginal frequency distributions are displayed in the last column and last row.\n\n\n\n\n\n\n\n\n\nConditional frequency\n\n\nConditional frequency distributions give us an idea about the behaviour of one variable when the other one is kept fixed."
+    "text": "Marginal and Conditional Distributions\nAirline data; N = 100\n\n\n\n\n\n\npoor\nfair\ngood\nv. good\n\n\n\n\nB\n3\n3\n8\n14\n\n\nE\n12\n34\n15\n11\n\n\n\n\n\n\n\n\n\n\n\nMarginal frequency\n\n\n\nMarginal frequency distributions are displayed in the last column and last row.\n\n\n\n\n\n\n\n\nConditional frequency\n\n\n\nConditional frequency distributions give us an idea about the behaviour of one variable when the other one is kept fixed."
   },
   {
     "objectID": "3-Categorical.html#marginal-distributions",
     "href": "3-Categorical.html#marginal-distributions",
     "title": "ST201 Data Analysis",
     "section": "Marginal Distributions",
-    "text": "Marginal Distributions\n\n\n\n\n\n\npoor\nfair\ngood\nv. good\n\n\n\n\nB\n3\n3\n8\n14\n\n\nE\n12\n34\n15\n11\n\n\n\n\n\n\nAdding the marginal frequencies to the tableCode\n\n\n\n\n\n\n\n\npoor\nfair\ngood\nv. good\nSum\n\n\n\n\nB\n3\n3\n8\n14\n28\n\n\nE\n12\n34\n15\n11\n72\n\n\nSum\n15\n37\n23\n25\n100\n\n\n\n\n\n\n\n\n\ntab &lt;- table(airline)\naddmargins(tab)\n\n\n     satisfaction\nclass poor fair good v. good Sum\n  B      3    3    8      14  28\n  E     12   34   15      11  72\n  Sum   15   37   23      25 100"
+    "text": "Marginal Distributions\n\n\n\n\n\n\npoor\nfair\ngood\nv. good\n\n\n\n\nB\n3\n3\n8\n14\n\n\nE\n12\n34\n15\n11\n\n\n\n\n\n\nAdding the marginal frequencies to the tableCode\n\n\n\n\n\n\n\n\npoor\nfair\ngood\nv. good\nSum\n\n\n\n\nB\n3\n3\n8\n14\n28\n\n\nE\n12\n34\n15\n11\n72\n\n\nSum\n15\n37\n23\n25\n100\n\n\n\n\n\n\n\n\ntab &lt;- table(airline)\naddmargins(tab)\n\n     satisfaction\nclass poor fair good v. good Sum\n  B      3    3    8      14  28\n  E     12   34   15      11  72\n  Sum   15   37   23      25 100"
   },
   {
     "objectID": "3-Categorical.html#marginal-distributions-1",
     "href": "3-Categorical.html#marginal-distributions-1",
     "title": "ST201 Data Analysis",
     "section": "Marginal Distributions",
-    "text": "Marginal Distributions\n\n\n\n\n\n\npoor\nfair\ngood\nv. good\n\n\n\n\nB\n3\n3\n8\n14\n\n\nE\n12\n34\n15\n11\n\n\n\n\n\n\nAdding the marginal relative frequencies to the tableCode\n\n\n\n\n\n\n\n\npoor\nfair\ngood\nv. good\nSum\n\n\n\n\nB\n0.03\n0.03\n0.08\n0.14\n0.28\n\n\nE\n0.12\n0.34\n0.15\n0.11\n0.72\n\n\nSum\n0.15\n0.37\n0.23\n0.25\n1.00\n\n\n\n\n\n\n\n\n\ntab &lt;- table(airline)\nrel_tab &lt;- prop.table(tab)\naddmargins(rel_tab)\n\n\n     satisfaction\nclass poor fair good v. good  Sum\n  B   0.03 0.03 0.08    0.14 0.28\n  E   0.12 0.34 0.15    0.11 0.72\n  Sum 0.15 0.37 0.23    0.25 1.00"
+    "text": "Marginal Distributions\n\n\n\n\n\n\npoor\nfair\ngood\nv. good\n\n\n\n\nB\n3\n3\n8\n14\n\n\nE\n12\n34\n15\n11\n\n\n\n\n\n\nAdding the marginal relative frequencies to the tableCode\n\n\n\n\n\n\n\n\npoor\nfair\ngood\nv. good\nSum\n\n\n\n\nB\n0.03\n0.03\n0.08\n0.14\n0.28\n\n\nE\n0.12\n0.34\n0.15\n0.11\n0.72\n\n\nSum\n0.15\n0.37\n0.23\n0.25\n1.00\n\n\n\n\n\n\n\n\ntab &lt;- table(airline)\nrel_tab &lt;- prop.table(tab)\naddmargins(rel_tab)\n\n     satisfaction\nclass poor fair good v. good  Sum\n  B   0.03 0.03 0.08    0.14 0.28\n  E   0.12 0.34 0.15    0.11 0.72\n  Sum 0.15 0.37 0.23    0.25 1.00"
   },
   {
     "objectID": "3-Categorical.html#conditional-distributions",
     "href": "3-Categorical.html#conditional-distributions",
     "title": "ST201 Data Analysis",
     "section": "Conditional Distributions",
-    "text": "Conditional Distributions\n\n\n\n\n\n\npoor\nfair\ngood\nv. good\n\n\n\n\nB\n3\n3\n8\n14\n\n\nE\n12\n34\n15\n11\n\n\n\n\n\n\nConditioning on classCode\n\n\nThe probability of satisfaction conditional on Business class\n\n\n     poor      fair      good   v. good \n0.1071429 0.1071429 0.2857143 0.5000000 \n\n\nThe probability of satisfaction conditional on Economy class\n\n\n     poor      fair      good   v. good \n0.1666667 0.4722222 0.2083333 0.1527778 \n\n\n\n\n\n\ntab &lt;- table(airline)\n\n# The probability of satisfaction conditional on Business class\ncond_prob_B &lt;- tab[1,]/sum(tab[1,])\n\n# The probability of satisfaction conditional on Economy class\ncond_prob_E &lt;- tab[2,]/sum(tab[2,])\n\ncond_prob_B; cond_prob_E\n\n\n     poor      fair      good   v. good \n0.1071429 0.1071429 0.2857143 0.5000000 \n\n\n     poor      fair      good   v. good \n0.1666667 0.4722222 0.2083333 0.1527778"
+    "text": "Conditional Distributions\n\n\n\n\n\n\npoor\nfair\ngood\nv. good\n\n\n\n\nB\n3\n3\n8\n14\n\n\nE\n12\n34\n15\n11\n\n\n\n\n\n\nConditioning on classCode\n\n\nThe probability of satisfaction conditional on Business class\n\n\n     poor      fair      good   v. good \n0.1071429 0.1071429 0.2857143 0.5000000 \n\n\nThe probability of satisfaction conditional on Economy class\n\n\n     poor      fair      good   v. good \n0.1666667 0.4722222 0.2083333 0.1527778 \n\n\n\n\n\ntab &lt;- table(airline)\n\n# The probability of satisfaction conditional on Business class\ncond_prob_B &lt;- tab[1,]/sum(tab[1,])\n\n# The probability of satisfaction conditional on Economy class\ncond_prob_E &lt;- tab[2,]/sum(tab[2,])\n\ncond_prob_B; cond_prob_E\n\n     poor      fair      good   v. good \n0.1071429 0.1071429 0.2857143 0.5000000 \n\n\n     poor      fair      good   v. good \n0.1666667 0.4722222 0.2083333 0.1527778"
   },
   {
     "objectID": "3-Categorical.html#visualisation---barplots",
@@ -557,56 +557,56 @@
     "href": "3-Categorical.html#barplots",
     "title": "ST201 Data Analysis",
     "section": "Barplots",
-    "text": "Barplots\n\nBarplot of rating by class - stackedCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntab &lt;- table(airline)\n\nbarplot(t(tab), \n        legend = TRUE,\n        args.legend = list(x = \"top\", ncol = 2), \n        ylim = c(0,95))"
+    "text": "Barplots\n\nBarplot of rating by class - stackedCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntab &lt;- table(airline)\n\nbarplot(t(tab), \n        legend = TRUE,\n        args.legend = list(x = \"top\", ncol = 2), \n        ylim = c(0,95))"
   },
   {
     "objectID": "3-Categorical.html#barplots-1",
     "href": "3-Categorical.html#barplots-1",
     "title": "ST201 Data Analysis",
     "section": "Barplots",
-    "text": "Barplots\n\nBarplot of rating by classCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntab &lt;- table(airline)\n\nbarplot(t(tab), \n        beside = TRUE,\n        legend = TRUE, \n        args.legend = list(x = \"topleft\", ncol = 1),\n        ylim = c(0,40))"
+    "text": "Barplots\n\nBarplot of rating by classCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntab &lt;- table(airline)\n\nbarplot(t(tab), \n        beside = TRUE,\n        legend = TRUE, \n        args.legend = list(x = \"topleft\", ncol = 1),\n        ylim = c(0,40))"
   },
   {
     "objectID": "3-Categorical.html#expected-counts-in-two-way-tables",
     "href": "3-Categorical.html#expected-counts-in-two-way-tables",
     "title": "ST201 Data Analysis",
     "section": "Expected counts in two-way tables",
-    "text": "Expected counts in two-way tables\n\n\n\n\n\n\nThinking about a hypothesis\n\n\nWhile we would not expect the satisfaction to be exactly the same across the classes, the rate of satistaction seems different across the two groups. In order to investigate whether the differences in satisfaction is due to natural variability in people’s honesty or due to a treatment effect (i.e., what seat that sat in), we need to compute expected (estimated) counts for each cell in a two-way table.\n\n\n\n\n\n\nOverall what proportion gave a poor satisfaction rating?\n\n\nWe see from the marginal distribution that the overall proportion of people that gave a poor satisfaction rating is 0.15 or 15%.\nIf class didn’t matter (i.e, satisfaction is independent of class), 15% of respondents would disclose this satisfaction rating regardless of their seat, so 15% in economy and 15% in business.\nBased on this line of thinking, we can compute an expected count under an independence assumption."
+    "text": "Expected counts in two-way tables\n\n\n\n\n\n\nThinking about a hypothesis\n\n\n\nWhile we would not expect the satisfaction to be exactly the same across the classes, the rate of satistaction seems different across the two groups. In order to investigate whether the differences in satisfaction is due to natural variability in people’s honesty or due to a treatment effect (i.e., what seat that sat in), we need to compute expected (estimated) counts for each cell in a two-way table.\n\n\n\n\n\n\n\n\nOverall what proportion gave a poor satisfaction rating?\n\n\n\nWe see from the marginal distribution that the overall proportion of people that gave a poor satisfaction rating is 0.15 or 15%.\nIf class didn’t matter (i.e, satisfaction is independent of class), 15% of respondents would disclose this satisfaction rating regardless of their seat, so 15% in economy and 15% in business.\nBased on this line of thinking, we can compute an expected count under an independence assumption."
   },
   {
     "objectID": "3-Categorical.html#independence-and-expected-frequencies",
     "href": "3-Categorical.html#independence-and-expected-frequencies",
     "title": "ST201 Data Analysis",
     "section": "Independence and Expected Frequencies",
-    "text": "Independence and Expected Frequencies\n\nTwo variables are considered to be independent if the observations on one variable do not effect the observation on another variable.\n\n\n\n\n\n\n\nExpected Frequencies\n\n\nThe expected frequencies under independence are given by\n\\[E_{\\text{row } i, \\text{col } j} = \\frac{(\\text{row i total})(\\text{column j total})}{\\text{grand total}} \\]\n\n\n\n\nFor the airline data these are\n\n\n\n\n\n\n\npoor\nfair\ngood\nv. good\n\n\n\n\nB\n4.2\n10.36\n6.44\n7\n\n\nE\n10.8\n26.64\n16.56\n18"
+    "text": "Independence and Expected Frequencies\n\nTwo variables are considered to be independent if the observations on one variable do not effect the observation on another variable.\n\n\n\n\n\n\n\nExpected Frequencies\n\n\n\n\n\nThe expected frequencies under independence are given by\n\\[E_{\\text{row } i, \\text{col } j} = \\frac{(\\text{row i total})(\\text{column j total})}{\\text{grand total}} \\]\n\n\n\n\nFor the airline data these are\n\n\n\n\n\n\n\npoor\nfair\ngood\nv. good\n\n\n\n\nB\n4.2\n10.36\n6.44\n7\n\n\nE\n10.8\n26.64\n16.56\n18"
   },
   {
     "objectID": "3-Categorical.html#pearsons-chi2-statistic",
     "href": "3-Categorical.html#pearsons-chi2-statistic",
     "title": "ST201 Data Analysis",
     "section": "Pearson’s \\(\\chi^2\\) Statistic",
-    "text": "Pearson’s \\(\\chi^2\\) Statistic\n\nPearson’s \\(\\chi^2\\) statistics is used for measuring association between variables in a contingency table.\nThe chi-squared test statistic for a two-way table is found by finding the ratio of how far the observed counts are from the expected counts, as compared to the expected counts, for every cell in the table.\n\n\n\n\n\n\n\n\\(\\chi^2\\) statistic\n\n\nThe \\(\\chi^2\\) statistic is given as:\n\\[\\chi^2 = \\sum_i \\sum_j\\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\\]"
+    "text": "Pearson’s \\(\\chi^2\\) Statistic\n\nPearson’s \\(\\chi^2\\) statistics is used for measuring association between variables in a contingency table.\nThe chi-squared test statistic for a two-way table is found by finding the ratio of how far the observed counts are from the expected counts, as compared to the expected counts, for every cell in the table.\n\n\n\n\n\n\n\n\\(\\chi^2\\) statistic\n\n\n\n\n\nThe \\(\\chi^2\\) statistic is given as:\n\\[\\chi^2 = \\sum_i \\sum_j\\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\\]"
   },
   {
     "objectID": "3-Categorical.html#chi-squared-distribution",
     "href": "3-Categorical.html#chi-squared-distribution",
     "title": "ST201 Data Analysis",
     "section": "Chi-squared distribution",
-    "text": "Chi-squared distribution\nThe chi-squared test statistic has a mathematical distribution called the Chi-squared distribution.\n\n\n\nThe important specification to make in describing the chi-squared distribution is something called degrees of freedom.\nDifferent chi-squared distributions correspond to different degrees of freedom.\n\n\n\n\n\n\n\n\n\n\n\n\nFor two way tables, the degrees of freedom is equal to: \\(df\\) = (number of rows minus 1) \\(\\times\\) (number of columns minus 1).\n\nIn our airline example, the degrees of freedom parameter is: \\(df = (2-1)*(4-1) = 3\\) ."
+    "text": "Chi-squared distribution\nThe chi-squared test statistic has a mathematical distribution called the Chi-squared distribution.\n\n\n\nThe important specification to make in describing the chi-squared distribution is something called degrees of freedom.\nDifferent chi-squared distributions correspond to different degrees of freedom.\n\n\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\n\n\n\n\n\n\n\n\n\nFor two way tables, the degrees of freedom is equal to: \\(df\\) = (number of rows minus 1) \\(\\times\\) (number of columns minus 1).\n\nIn our airline example, the degrees of freedom parameter is: \\(df = (2-1)*(4-1) = 3\\) ."
   },
   {
     "objectID": "3-Categorical.html#chi-squared-test-of-independence",
     "href": "3-Categorical.html#chi-squared-test-of-independence",
     "title": "ST201 Data Analysis",
     "section": "Chi-squared test of independence",
-    "text": "Chi-squared test of independence\nWe will use the chi-squared test statistic and the chi-squared distribution to do a hypothesis test for independence for a two-way table.\n\nthe null hypothesis is independence\nthe alternative hypothesis is no independence\n\n\n\n\n\n\n\nThe test statistic for assessing the independence between two categorical variables is a chi-squared (\\(\\chi^2\\)) test statistic\n\n\nThe statistic is a ratio of how the observed counts vary from the expected counts as compared to the expected counts.\nWhen the null hypothesis is true and some conditions are met, the test statistic has a Chi-squared distribution with \\(df = (R-1) \\times (C-1).\\)\nConditions:\n\nIndependent observations\nLarge samples: 5 expected counts in each cell"
+    "text": "Chi-squared test of independence\nWe will use the chi-squared test statistic and the chi-squared distribution to do a hypothesis test for independence for a two-way table.\n\nthe null hypothesis is independence\nthe alternative hypothesis is no independence\n\n\n\n\n\n\n\nThe test statistic for assessing the independence between two categorical variables is a chi-squared (\\(\\chi^2\\)) test statistic\n\n\n\nThe statistic is a ratio of how the observed counts vary from the expected counts as compared to the expected counts.\nWhen the null hypothesis is true and some conditions are met, the test statistic has a Chi-squared distribution with \\(df = (R-1) \\times (C-1).\\)\nConditions:\n\nIndependent observations\nLarge samples: 5 expected counts in each cell"
   },
   {
     "objectID": "3-Categorical.html#chi-squared-test-of-independence-1",
     "href": "3-Categorical.html#chi-squared-test-of-independence-1",
     "title": "ST201 Data Analysis",
     "section": "Chi-squared test of independence",
-    "text": "Chi-squared test of independence\nFor the airline data, if the null hypothesis is true (i.e., class has no impact on satisfaction), then the test statistic (\\(\\chi^2 = 17.99\\)) is expected to follow a Chi-squared distribution with 3 degrees of freedom.\n\nUsing this information, we can compute the p-value for the test.\n\nCode\n\n\n\n\ntab &lt;- table(airline)\nchisq.test(tab)\n\n\n\n    Pearson's Chi-squared test\n\ndata:  tab\nX-squared = 17.985, df = 3, p-value = 0.0004429"
+    "text": "Chi-squared test of independence\nFor the airline data, if the null hypothesis is true (i.e., class has no impact on satisfaction), then the test statistic (\\(\\chi^2 = 17.99\\)) is expected to follow a Chi-squared distribution with 3 degrees of freedom.\n\n\n\n\n\n\n\n\n\nUsing this information, we can compute the p-value for the test.\n\nCode\n\n\n\ntab &lt;- table(airline)\nchisq.test(tab)\n\nWarning in chisq.test(tab): Chi-squared approximation may be incorrect\n\n\n\n    Pearson's Chi-squared test\n\ndata:  tab\nX-squared = 17.985, df = 3, p-value = 0.0004429"
   },
   {
     "objectID": "3-Categorical.html#in-summsry",
@@ -633,8 +633,8 @@
     "objectID": "4-Categorical2.html#pearsons-chi-squared-test-recap",
     "href": "4-Categorical2.html#pearsons-chi-squared-test-recap",
     "title": "ST201 Data Analysis",
-    "section": "Pearson’s Chi-squared test (recap)",
-    "text": "Pearson’s Chi-squared test (recap)\n\nPearson’s \\(\\chi^2\\) statistic is used for measuring association between variables in a contingency table.\n\n\n\n\n\n\n\n\\(\\chi^2\\) test of association\n\n\n\nThe \\(\\chi^2\\) statistic is given as\n\n\\[\\chi^2 = \\sum_i \\sum_j\\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\\] We use the chi-squared test statistic and the chi-squared distribution to do a hypothesis test for independence for a two-way table.\n\nDifferent chi-squared distributions correspond to different degrees of freedom.\nFor two way tables, the degrees of freedom is equal to: \\(df\\) = (number of rows minus 1) \\(\\times\\) (number of columns minus 1).\n\nConditions:\n\nIndependent observations\nLarge samples: 5 expected counts in each cell"
+    "section": "",
+    "text": "Pearson’s \\(\\chi^2\\) statistic is used for measuring association between variables in a contingency table.\n\n\n\n\n\n\n\n\\(\\chi^2\\) test of association\n\n\n\n\nThe \\(\\chi^2\\) statistic is given as\n\n\\[\\chi^2 = \\sum_i \\sum_j\\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\\] We use the chi-squared test statistic and the chi-squared distribution to do a hypothesis test for independence for a two-way table.\n\nDifferent chi-squared distributions correspond to different degrees of freedom.\nFor two way tables, the degrees of freedom is equal to: \\(df\\) = (number of rows minus 1) \\(\\times\\) (number of columns minus 1).\n\nConditions:\n\nIndependent observations\nLarge samples: 5 expected counts in each cell"
   },
   {
     "objectID": "4-Categorical2.html#pearsons-chi-squared-test-recap-1",
@@ -655,21 +655,21 @@
     "href": "4-Categorical2.html#chi-squared-test-in-r",
     "title": "ST201 Data Analysis",
     "section": "Chi-squared test in R",
-    "text": "Chi-squared test in R\n\n\n# 1. Create a two-way contingency table\ncontingency_table &lt;- \n  xtabs(Count ~ Generation + Response, \n        data = clim_data)\n\n# 2. Do the chi-sq test\nclim_chisq_test &lt;- chisq.test(contingency_table)\n\ncontingency_table;clim_chisq_test\n\n\n                Response\nGeneration       Didn't take action Took action\n  Boomer & older               4798        1276\n  Gen X                        2709         809\n  Gen Z                         620         292\n  Millenial                    2275         885\n\n\n\n    Pearson's Chi-squared test\n\ndata:  contingency_table\nX-squared = 91.924, df = 3, p-value &lt; 2.2e-16"
+    "text": "Chi-squared test in R\n\n# 1. Create a two-way contingency table\ncontingency_table &lt;- \n  xtabs(Count ~ Generation + Response, \n        data = clim_data)\n\n# 2. Do the chi-sq test\nclim_chisq_test &lt;- chisq.test(contingency_table)\n\ncontingency_table;clim_chisq_test\n\n                Response\nGeneration       Didn't take action Took action\n  Boomer & older               4798        1276\n  Gen X                        2709         809\n  Gen Z                         620         292\n  Millenial                    2275         885\n\n\n\n    Pearson's Chi-squared test\n\ndata:  contingency_table\nX-squared = 91.924, df = 3, p-value &lt; 2.2e-16\n\n\n. . .\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead."
   },
   {
     "objectID": "4-Categorical2.html#mosaic-plot",
     "href": "4-Categorical2.html#mosaic-plot",
     "title": "ST201 Data Analysis",
     "section": "Mosaic Plot",
-    "text": "Mosaic Plot\nA mosaic plot is a visualization technique suitable for contingency tables that resembles a standardized stacked bar plot with the benefit that we still see the relative group sizes of the primary variable as well.\n\n\nmosaic(contingency_table, \n       shade=TRUE, \n       legend=TRUE)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPearson’s residual\n\n\n\\(r_i = \\frac{O_i - E_i}{\\sqrt{E_i}}\\)\n\n\\(r_i\\) is the Pearson residual for the i-th observation. \\(O_i\\) is the observed frequency for the i-th category. \\(E_i\\) is the expected frequency for the i-th category."
+    "text": "Mosaic Plot\nA mosaic plot is a visualization technique suitable for contingency tables that resembles a standardized stacked bar plot with the benefit that we still see the relative group sizes of the primary variable as well.\n\nmosaic(contingency_table, \n       shade=TRUE, \n       legend=TRUE)\n\n\n\n\n\n\n\n\n. . .\n\n\n\n\n\n\nPearson’s residual\n\n\n\n\\(r_i = \\frac{O_i - E_i}{\\sqrt{E_i}}\\)\n\n\\(r_i\\) is the Pearson residual for the i-th observation. \\(O_i\\) is the observed frequency for the i-th category. \\(E_i\\) is the expected frequency for the i-th category."
   },
   {
     "objectID": "4-Categorical2.html#reporting-on-results",
     "href": "4-Categorical2.html#reporting-on-results",
     "title": "ST201 Data Analysis",
     "section": "Reporting on results",
-    "text": "Reporting on results\n\n\n\nIf I wanted to write this result up for a paper I could write:\n\n\nOf the Boomer generation, 21% indicated that they have taken action on climate change. This compares to 32% for Gen Z. A chi-square goodness of fit test was conducted to test whether taking action was independent of generation. The results were significant (\\(\\chi^2(3) = 91.92\\),\\(p &lt;&lt; 0.05\\)), suggesting that your likelihood of taking climate action is dependent on what generation you belong to.\n\n\n\n\nNotes:\n\nThe result of the statistical test is preceded by the descriptive statistics. That is, I told the reader something about what the data look like before going on to do the test.\nThe description tells you what the null hypothesis being tested is.\nA “stat block” is included given some specific information about the results of the test.\nThe results are interpreted."
+    "text": "Reporting on results\n\n\n\n\n\n\nIf I wanted to write this result up for a paper I could write:\n\n\n\nOf the Boomer generation, 21% indicated that they have taken action on climate change. This compares to 32% for Gen Z. A chi-square goodness of fit test was conducted to test whether taking action was independent of generation. The results were significant (\\(\\chi^2(3) = 91.92\\),\\(p &lt;&lt; 0.05\\)), suggesting that your likelihood of taking climate action is dependent on what generation you belong to.\n\n\n. . .\nNotes:\n\nThe result of the statistical test is preceded by the descriptive statistics. That is, I told the reader something about what the data look like before going on to do the test.\nThe description tells you what the null hypothesis being tested is.\nA “stat block” is included given some specific information about the results of the test.\nThe results are interpreted."
   },
   {
     "objectID": "4-Categorical2.html#fishers-exact-test-independence-test-for-a-small-sample",
@@ -683,7 +683,7 @@
     "href": "4-Categorical2.html#fishers-exact-test",
     "title": "ST201 Data Analysis",
     "section": "Fisher’s exact test",
-    "text": "Fisher’s exact test\nFishers exact test is based upon calculating directly the probability of obtaining the observed data results (or results more extreme) if the null hypothesis is actually true, using all possible 2 × 2 tables that could have been observed, for the same row and column totals as the observed data.\n\n\n\n\n\n\nFisher’s test of association\n\n\nFor a given 2x2 table, the probability of obtaining the frequencies a, b, c and d is\n\\[P(Table) = \\frac{{a+b \\choose a}{c+d \\choose c}}{{n \\choose a+c}} =  \\frac{(a+b)!(c+d)!(a+c)!(b+d)!}\n{N!a!b!c!d!}\\]\nThe p-value is the sum of the probabilities of all tables as extreme (or more extreme) than the observed one.\n\nThis tells us the probability of getting the observed table (or more extreme) if the null hypothesis is true."
+    "text": "Fisher’s exact test\nFishers exact test is based upon calculating directly the probability of obtaining the observed data results (or results more extreme) if the null hypothesis is actually true, using all possible 2 × 2 tables that could have been observed, for the same row and column totals as the observed data.\n\n\n\n\n\n\nFisher’s test of association\n\n\n\nFor a given 2x2 table, the probability of obtaining the frequencies a, b, c and d is\n\\[P(Table) = \\frac{{a+b \\choose a}{c+d \\choose c}}{{n \\choose a+c}} =  \\frac{(a+b)!(c+d)!(a+c)!(b+d)!}\n{N!a!b!c!d!}\\]\nThe p-value is the sum of the probabilities of all tables as extreme (or more extreme) than the observed one.\n\nThis tells us the probability of getting the observed table (or more extreme) if the null hypothesis is true."
   },
   {
     "objectID": "4-Categorical2.html#fishers-test",
@@ -697,21 +697,21 @@
     "href": "4-Categorical2.html#smoking-example",
     "title": "ST201 Data Analysis",
     "section": "Smoking Example",
-    "text": "Smoking Example\nFor our example, we want to determine whether there is a statistically significant association between smoking and being a professional athlete. Smoking can only be “yes” or “no” and being a professional athlete can only be “yes” or “no”. The two variables of interest are qualitative variables and we collected data on 14 persons.\n\n\n\n\n\n\n\n\nnon-smoker\nsmoker\n\n\n\n\nathlete\n7\n2\n\n\nnon-athlete\n2\n3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExpected Frequencies\nRemember that the Fisher’s exact test is used when there is at least one cell in the contingency table with the expected frequencies below 5.\n\n\n\n\n\n\nnon-smoker\nsmoker\n\n\n\n\nathlete\n5.785714\n3.214286\n\n\nnon-athlete\n3.214286\n1.785714"
+    "text": "Smoking Example\nFor our example, we want to determine whether there is a statistically significant association between smoking and being a professional athlete. Smoking can only be “yes” or “no” and being a professional athlete can only be “yes” or “no”. The two variables of interest are qualitative variables and we collected data on 14 persons.\n\n\n\n\n\n\n\n\nnon-smoker\nsmoker\n\n\n\n\nathlete\n7\n2\n\n\nnon-athlete\n2\n3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n. . .\nExpected Frequencies\nRemember that the Fisher’s exact test is used when there is at least one cell in the contingency table with the expected frequencies below 5.\n\n\n\n\n\n\nnon-smoker\nsmoker\n\n\n\n\nathlete\n5.785714\n3.214286\n\n\nnon-athlete\n3.214286\n1.785714"
   },
   {
     "objectID": "4-Categorical2.html#smoking-example-in-r",
     "href": "4-Categorical2.html#smoking-example-in-r",
     "title": "ST201 Data Analysis",
     "section": "Smoking example in R",
-    "text": "Smoking example in R\nFisher’s test\n\n\nsmoking_tab &lt;- table(smoking_dat)\nfisher.test(smoking_tab)\n\n\n\n    Fisher's Exact Test for Count Data\n\ndata:  smoking_tab\np-value = 0.2657\nalternative hypothesis: true odds ratio is not equal to 1\n95 percent confidence interval:\n  0.2990134 99.1958282\nsample estimates:\nodds ratio \n  4.575127 \n\n\nMosaic Plot\n\n\nmosaic(smoking_tab, \n       shade=TRUE, \n       legend=FALSE)"
+    "text": "Smoking example in R\n\nFisher’s test\n\nsmoking_tab &lt;- table(smoking_dat)\nfisher.test(smoking_tab)\n\n\n    Fisher's Exact Test for Count Data\n\ndata:  smoking_tab\np-value = 0.2657\nalternative hypothesis: true odds ratio is not equal to 1\n95 percent confidence interval:\n  0.2990134 99.1958282\nsample estimates:\nodds ratio \n  4.575127 \n\n\n\n\nMosaic Plot\n\nmosaic(smoking_tab, \n       shade=TRUE, \n       legend=FALSE)"
   },
   {
     "objectID": "4-Categorical2.html#reporting-on-results-1",
     "href": "4-Categorical2.html#reporting-on-results-1",
     "title": "ST201 Data Analysis",
     "section": "Reporting on results",
-    "text": "Reporting on results\n\n\n\nIf I wanted to write this result up for a paper I could write:\n\n\nOf the 9 athletes, 2 were smokers (22%) and of the 5 Non-athletes, 3 were smokers (60%), indicating that non-athletes are almost 3 times more likely than athletes to be smokers. However, given the small sample size, Fisher’s exact test was conducted to test whether being an athlete influenced smoking habits. The results were not significant (\\(p &gt; 0.05\\)) and we concluded there is no evidence of a relationship between smoking and being an athlete based on these data.\n\n\n\n\nNotes:\n\nThe result of the statistical test is preceded by the descriptive statistics. That is, I told the reader something about what the data look like before going on to do the test.\nThe description tells you what the null hypothesis being tested is.\nA “stat block” is included given some specific information about the results of the test.\nThe results are interpreted.\n\n\n\n\n\n\n\n\n\nBeware!! The headline might read:\n\n\n“Study finds that being an Athlete reduces your chance of smoking!”"
+    "text": "Reporting on results\n\n\n\n\n\n\nIf I wanted to write this result up for a paper I could write:\n\n\n\nOf the 9 athletes, 2 were smokers (22%) and of the 5 Non-athletes, 3 were smokers (60%), indicating that non-athletes are almost 3 times more likely than athletes to be smokers. However, given the small sample size, Fisher’s exact test was conducted to test whether being an athlete influenced smoking habits. The results were not significant (\\(p &gt; 0.05\\)) and we concluded there is no evidence of a relationship between smoking and being an athlete based on these data.\n\n\n. . .\nNotes:\n\nThe result of the statistical test is preceded by the descriptive statistics. That is, I told the reader something about what the data look like before going on to do the test.\nThe description tells you what the null hypothesis being tested is.\nA “stat block” is included given some specific information about the results of the test.\nThe results are interpreted.\n\n. . .\n\n\n\n\n\n\nBeware!! The headline might read:\n\n\n\n“Study finds that being an Athlete reduces your chance of smoking!”"
   },
   {
     "objectID": "4-Categorical2.html#class-example",
@@ -719,5 +719,124 @@
     "title": "ST201 Data Analysis",
     "section": "Class Example",
     "text": "Class Example\n\n\n\n\n\n\nCancer\nNo cancer\nTotal\n\n\n\n\nCoffee drinkers\n3\n11\n14\n\n\nNon-coffee drinkers\n1\n15\n16\n\n\nTotal\n4\n26\n30\n\n\n\n\n\n\nPresent the null and alternative hypotheses\nCalculate the exact probability in the observed contingency table\nObtain other more extreme tables\nObtain p-values of other tables\nObtain p-value for the test\nInterpret"
+  },
+  {
+    "objectID": "5-Categorical3.html#what-is-simpsons-paradox",
+    "href": "5-Categorical3.html#what-is-simpsons-paradox",
+    "title": "ST201 Data Analysis",
+    "section": "What is Simpson’s Paradox?",
+    "text": "What is Simpson’s Paradox?\nIgnoring an important variable can lead to Simpson’s Paradox, especially when analyzing categorical data. This paradox occurs when the relationship between two variables reverses or changes after considering a third variable.\nHow do we explore Simpsons’ paradox with categorical data?\n\nVisualisation\nProportions and Relative Risk\nOdds and Odds Ratios"
+  },
+  {
+    "objectID": "5-Categorical3.html#example-scenario-medical-treatment-success-rates",
+    "href": "5-Categorical3.html#example-scenario-medical-treatment-success-rates",
+    "title": "ST201 Data Analysis",
+    "section": "Example Scenario: Medical Treatment Success Rates",
+    "text": "Example Scenario: Medical Treatment Success Rates\nLet’s consider two treatments, Treatment A and Treatment B, and their successes. Assume we also have information on where the treatments are carried out, either Hospital X or Hospital Y.\nData\n\n\n  Hospital Treatment Patients Successes\n1        X         A       10         5\n2        X         B       90        30\n3        Y         A       10         9\n4        Y         B       90        60\n\n\nTurning this data into contingency tables\n\n\nlibrary(vcd)\nhospital_data$Failures &lt;- \n  hospital_data$Patients -  hospital_data$Successes\n\ntreatment_tab &lt;- \n  xtabs(cbind(Successes, Failures) ~ Treatment, \n      data = hospital_data)\n\nhospital_tab &lt;- \n  xtabs(cbind(Successes, Failures)  ~ Hospital, \n      data = hospital_data)\n\ntreatment_tab;hospital_tab\n\n\n         \nTreatment Successes Failures\n        A        14        6\n        B        90       90\n\n\n        \nHospital Successes Failures\n       X        35       65\n       Y        69       31"
+  },
+  {
+    "objectID": "5-Categorical3.html#overall-success-rates-ignoring-hospital",
+    "href": "5-Categorical3.html#overall-success-rates-ignoring-hospital",
+    "title": "ST201 Data Analysis",
+    "section": "Overall Success Rates (ignoring hospital)",
+    "text": "Overall Success Rates (ignoring hospital)\nLet’s first compare the overall success rates for both treatments, ignoring the hospital.\n\nGiven the format of this data we might deal with it a little differently in R than we’ve seen before.\n\n\n# Calculate the overall success rate for Treatment A and B\noverall_data &lt;- aggregate(cbind(Patients, Successes) ~ Treatment, \n                          data = hospital_data, sum)\noverall_data$OverallSuccessRate &lt;- \n  overall_data$Successes / overall_data$Patients\noverall_data\n\n  Treatment Patients Successes OverallSuccessRate\n1         A       20        14                0.7\n2         B      180        90                0.5\n\n\n\nWe can still visualise this, but the table is also sufficient.\n\n\n\nbarplot(overall_data$OverallSuccessRate, \n        names.arg = overall_data$Treatment,\n        main = \"Overall Success Rates by Treatment\" ,\n        ylab = \"Overall Success Rate\", \n        xlab = \"Treatment\")\n\n\n\n\n\n\n\n\n\n\nTreatment A has a higher success rate than Treatment B."
+  },
+  {
+    "objectID": "5-Categorical3.html#success-rates-for-treatment-by-hospital",
+    "href": "5-Categorical3.html#success-rates-for-treatment-by-hospital",
+    "title": "ST201 Data Analysis",
+    "section": "Success Rates for Treatment by Hospital",
+    "text": "Success Rates for Treatment by Hospital\nNow, let’s break down the success rates based on whether treatment was performed at Hospital X or Y.\n\n# Calculate the overall success rate for Treatment A and B\nhospital_data$SuccessRate &lt;- \n  hospital_data$Successes / hospital_data$Patients\nhospital_data\n\n  Hospital Treatment Patients Successes Failures SuccessRate\n1        X         A       10         5        5   0.5000000\n2        X         B       90        30       60   0.3333333\n3        Y         A       10         9        1   0.9000000\n4        Y         B       90        60       30   0.6666667\n\n\n\nTo visualise this with a barplot we need to manipulate the data a bit:\n\n\n\nhospital_tab &lt;- xtabs(SuccessRate ~ Treatment + Hospital, \n                      data = hospital_data)\n\nbarplot(hospital_tab,\n        legend.text = TRUE,\n        beside = TRUE,\n        main = \"Success Rates by Treatment & Hospital\" ,\n        ylab = \"Success Rate\", \n        xlab = \"Hospital\")\n\n\n\n\n\n\n\n\n\n\nTreatment A has a higher success rate than Treatment B in both hospitals."
+  },
+  {
+    "objectID": "5-Categorical3.html#example-student-admissions-at-uc-berkeley",
+    "href": "5-Categorical3.html#example-student-admissions-at-uc-berkeley",
+    "title": "ST201 Data Analysis",
+    "section": "Example: Student Admissions at UC Berkeley",
+    "text": "Example: Student Admissions at UC Berkeley\nAggregate data on applicants to graduate school at Berkeley for the six largest departments in 1973 classified by admission and sex.\nThe variables and their levels are as follows:\n\nAdmit: Admitted, Rejected\nGender: Male, Female\nDept: A, B, C, D, E, F\n\n\nadmission_dat\n\n# A tibble: 4,526 × 3\n   admit    gender dept \n   &lt;fct&gt;    &lt;fct&gt;  &lt;ord&gt;\n 1 Admitted Male   A    \n 2 Admitted Male   A    \n 3 Admitted Male   A    \n 4 Admitted Male   A    \n 5 Admitted Male   A    \n 6 Admitted Male   A    \n 7 Admitted Male   A    \n 8 Admitted Male   A    \n 9 Admitted Male   A    \n10 Admitted Male   A    \n# ℹ 4,516 more rows"
+  },
+  {
+    "objectID": "5-Categorical3.html#odds-and-odds-ratio",
+    "href": "5-Categorical3.html#odds-and-odds-ratio",
+    "title": "ST201 Data Analysis",
+    "section": "Odds and Odds Ratio",
+    "text": "Odds and Odds Ratio\n🔍 What Are Odds?\nWhen comparing two groups (e.g., Treatment vs. Control), the odds of success for each are calculated by:\n\nCategory 1:\n\\(w1 = \\frac{\\text{Success in Group 1}}{\\text{Failure in Group 1}}\\)\nCategory 2:\n\\(w2 = \\frac{\\text{Success in Group 2}}{\\text{Failure in Group 2}}\\)\n\n🔗 What is the Odds Ratio?\nThe odds ratio tells us how much more likely success odds are in one group compared to the other:\n\\(\\text{Odds Ratio} = \\frac{w1}{w2}\\)"
+  },
+  {
+    "objectID": "5-Categorical3.html#example-student-admissions-at-uc-berkeley-1",
+    "href": "5-Categorical3.html#example-student-admissions-at-uc-berkeley-1",
+    "title": "ST201 Data Analysis",
+    "section": "Example: Student Admissions at UC Berkeley",
+    "text": "Example: Student Admissions at UC Berkeley\nLet’s assume, upon an initial look at the data, that the tables are collapsed over department (natural science, social science).\n\nxtabs( ~ gender + admit, data = admission_dat)\n\n        admit\ngender   Admitted Rejected\n  Female      557     1278\n  Male       1198     1493\n\n\n\nOdds\n\n\nadmission_odds &lt;- lodds(~  admit + gender, \n                        data = admission_dat, \n                        log = FALSE)\ncoef(admission_odds)\n\n\nAdmitted:Rejected|Female   Admitted:Rejected|Male \n               0.4358372                0.8024113 \n\nconfint(admission_odds)\n\n                             2.5 %    97.5 %\nAdmitted:Rejected|Female 0.3945546 0.4814394\nAdmitted:Rejected|Male   0.7436704 0.8657919\n\n\n\n\nand Odds Ratios\n\n\nadmission_OR &lt;- loddsratio(~  admit + gender, \n                           data = admission_dat, \n                           log = FALSE)\ncoef(admission_OR)\n\n\nAdmitted:Rejected/Female:Male \n                    0.5431594 \n\nconfint(admission_OR)\n\n                                  2.5 %    97.5 %\nAdmitted:Rejected/Female:Male 0.4792272 0.6156207"
+  },
+  {
+    "objectID": "5-Categorical3.html#example-student-admissions-at-uc-berkeley-2",
+    "href": "5-Categorical3.html#example-student-admissions-at-uc-berkeley-2",
+    "title": "ST201 Data Analysis",
+    "section": "Example: Student Admissions at UC Berkeley",
+    "text": "Example: Student Admissions at UC Berkeley\nLet us look at the same data but divided into groups by department.\n\nadmission_tab &lt;- xtabs(~ gender + admit + dept, \n                       data = admission_dat)\n\naddmargins(admission_tab)\n\n, , dept = A\n\n        admit\ngender   Admitted Rejected  Sum\n  Female       89       19  108\n  Male        512      313  825\n  Sum         601      332  933\n\n, , dept = B\n\n        admit\ngender   Admitted Rejected  Sum\n  Female       17        8   25\n  Male        353      207  560\n  Sum         370      215  585\n\n, , dept = C\n\n        admit\ngender   Admitted Rejected  Sum\n  Female      202      391  593\n  Male        120      205  325\n  Sum         322      596  918\n\n, , dept = D\n\n        admit\ngender   Admitted Rejected  Sum\n  Female      131      244  375\n  Male        138      279  417\n  Sum         269      523  792\n\n, , dept = E\n\n        admit\ngender   Admitted Rejected  Sum\n  Female       94      299  393\n  Male         53      138  191\n  Sum         147      437  584\n\n, , dept = F\n\n        admit\ngender   Admitted Rejected  Sum\n  Female       24      317  341\n  Male         22      351  373\n  Sum          46      668  714\n\n, , dept = Sum\n\n        admit\ngender   Admitted Rejected  Sum\n  Female      557     1278 1835\n  Male       1198     1493 2691\n  Sum        1755     2771 4526"
+  },
+  {
+    "objectID": "5-Categorical3.html#example-student-admissions-at-uc-berkeley-3",
+    "href": "5-Categorical3.html#example-student-admissions-at-uc-berkeley-3",
+    "title": "ST201 Data Analysis",
+    "section": "Example: Student Admissions at UC Berkeley",
+    "text": "Example: Student Admissions at UC Berkeley\nOdds\n\nadmission_odds &lt;- lodds(~  admit + gender + dept, data = admission_dat, \n                        log = FALSE)\ncoef(admission_odds)\n\nAdmitted:Rejected|Female:A   Admitted:Rejected|Male:A \n                4.68421053                 1.63578275 \nAdmitted:Rejected|Female:B   Admitted:Rejected|Male:B \n                2.12500000                 1.70531401 \nAdmitted:Rejected|Female:C   Admitted:Rejected|Male:C \n                0.51662404                 0.58536585 \nAdmitted:Rejected|Female:D   Admitted:Rejected|Male:D \n                0.53688525                 0.49462366 \nAdmitted:Rejected|Female:E   Admitted:Rejected|Male:E \n                0.31438127                 0.38405797 \nAdmitted:Rejected|Female:F   Admitted:Rejected|Male:F \n                0.07570978                 0.06267806 \n\nconfint(admission_odds)\n\n                                2.5 %     97.5 %\nAdmitted:Rejected|Female:A 2.85443740 7.68691870\nAdmitted:Rejected|Male:A   1.42119020 1.88277768\nAdmitted:Rejected|Female:B 0.91708435 4.92389276\nAdmitted:Rejected|Male:B   1.43644040 2.02451551\nAdmitted:Rejected|Female:C 0.43593215 0.61225216\nAdmitted:Rejected|Male:C   0.46729337 0.73327208\nAdmitted:Rejected|Female:D 0.43419451 0.66386323\nAdmitted:Rejected|Male:D   0.40335753 0.60654021\nAdmitted:Rejected|Female:E 0.24934640 0.39637863\nAdmitted:Rejected|Male:E   0.27979716 0.52716949\nAdmitted:Rejected|Female:F 0.04999699 0.11464631\nAdmitted:Rejected|Male:F   0.04074158 0.09642579"
+  },
+  {
+    "objectID": "5-Categorical3.html#example-student-admissions-at-uc-berkeley-4",
+    "href": "5-Categorical3.html#example-student-admissions-at-uc-berkeley-4",
+    "title": "ST201 Data Analysis",
+    "section": "Example: Student Admissions at UC Berkeley",
+    "text": "Example: Student Admissions at UC Berkeley\nand Odds Ratios\n\nadmission_OR &lt;- loddsratio(~  admit + gender + dept, data = admission_dat, \n                        log = FALSE)\ncoef(admission_OR)\n\n        A         B         C         D         E         F \n2.8635896 1.2461048 0.8825661 1.0854419 0.8185776 1.2079151 \n\nconfint(admission_OR)\n\n      2.5 %   97.5 %\nA 1.7111703 4.792127\nB 0.5285366 2.937880\nC 0.6656152 1.170230\nD 0.8086284 1.457016\nE 0.5528574 1.212011\nF 0.6641723 2.196808"
+  },
+  {
+    "objectID": "5-Categorical3.html#whats-going-on",
+    "href": "5-Categorical3.html#whats-going-on",
+    "title": "ST201 Data Analysis",
+    "section": "What’s going on?",
+    "text": "What’s going on?\nIn this example, Simpson’s paradox occurred because\n\nboth gender identity and admissions were related to a third variable, namely, the department.\nFirst, women were more likely to apply to social science departments, whereas men were more likely to apply to natural science departments.\nSecond, the acceptance rate in social science departments was less than that in natural science departments.\n\nBecause women were more likely than men to apply to programs with lower acceptance rates, when department was ignored (i.e., when the data were aggregated over dept), it seemed that women were less likely than men to be admitted to graduate school, whereas the reverse was actually true."
+  },
+  {
+    "objectID": "5-Categorical3.html#lurking-variable",
+    "href": "5-Categorical3.html#lurking-variable",
+    "title": "ST201 Data Analysis",
+    "section": "Lurking Variable",
+    "text": "Lurking Variable\nA lurking variable is a variable that is not included as an explanatory variable in the analysis but can affect the interpretation of relationships between variables.\n\nA lurking variable can falsely identify a strong relationship between variables or it can hide the true relationship.\nTo discover lurking variables, you must take the time to understand your data and the important variables that can affect a process."
+  },
+  {
+    "objectID": "5-Categorical3.html#way-mosaic-plots",
+    "href": "5-Categorical3.html#way-mosaic-plots",
+    "title": "ST201 Data Analysis",
+    "section": "2-way mosaic plots",
+    "text": "2-way mosaic plots\n\n\n\n\n\n\n\n\n\n\n\n\n\nadmission_OR &lt;- loddsratio(~  admit + gender, \n                           data = admission_dat, \n                           log = FALSE)\ncoef(admission_OR)\n\nAdmitted:Rejected/Female:Male \n                    0.5431594"
+  },
+  {
+    "objectID": "5-Categorical3.html#way-mosaic-plots-1",
+    "href": "5-Categorical3.html#way-mosaic-plots-1",
+    "title": "ST201 Data Analysis",
+    "section": "3-way mosaic plots",
+    "text": "3-way mosaic plots\n\n\n\n\n\n\n\n\n\n\n\n\n\nadmission_OR &lt;- loddsratio(~  admit + gender + dept, \n                           data = admission_dat, \n                           log = FALSE)\ncoef(admission_OR)\n\n        A         B         C         D         E         F \n2.8635896 1.2461048 0.8825661 1.0854419 0.8185776 1.2079151"
+  },
+  {
+    "objectID": "5-Categorical3.html#example-titanic-survival-data",
+    "href": "5-Categorical3.html#example-titanic-survival-data",
+    "title": "ST201 Data Analysis",
+    "section": "Example: Titanic Survival Data",
+    "text": "Example: Titanic Survival Data\nThis data set provides information on the fate of passengers on the fatal maiden voyage of the ocean liner ‘Titanic’, summarized according to economic status (class), sex, age and survival.\n\n\n\n\n\nClass\nSex\nAge\nSurvived\nFreq\n\n\n\n\n1st\nMale\nChild\nNo\n0\n\n\n2nd\nMale\nChild\nNo\n0\n\n\n3rd\nMale\nChild\nNo\n35\n\n\nCrew\nMale\nChild\nNo\n0\n\n\n1st\nFemale\nChild\nNo\n0\n\n\n2nd\nFemale\nChild\nNo\n0"
+  },
+  {
+    "objectID": "5-Categorical3.html#example-titanic-survival-data-1",
+    "href": "5-Categorical3.html#example-titanic-survival-data-1",
+    "title": "ST201 Data Analysis",
+    "section": "Example: Titanic Survival Data",
+    "text": "Example: Titanic Survival Data\n\nxtabs(Freq ~ Sex + Survived , data = Titanic)\n\n        Survived\nSex        No  Yes\n  Male   1364  367\n  Female  126  344\n\n\n\nxtabs(Freq ~ + Sex + Survived + Class, data = Titanic)\n\n, , Class = 1st\n\n        Survived\nSex       No Yes\n  Male   118  62\n  Female   4 141\n\n, , Class = 2nd\n\n        Survived\nSex       No Yes\n  Male   154  25\n  Female  13  93\n\n, , Class = 3rd\n\n        Survived\nSex       No Yes\n  Male   422  88\n  Female 106  90\n\n, , Class = Crew\n\n        Survived\nSex       No Yes\n  Male   670 192\n  Female   3  20"
+  },
+  {
+    "objectID": "4-Categorical2.html",
+    "href": "4-Categorical2.html",
+    "title": "ST201 Data Analysis",
+    "section": "",
+    "text": "Pearson’s \\(\\chi^2\\) statistic is used for measuring association between variables in a contingency table.\n\n\n\n\n\n\n\n\\(\\chi^2\\) test of association\n\n\n\n\nThe \\(\\chi^2\\) statistic is given as\n\n\\[\\chi^2 = \\sum_i \\sum_j\\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\\] We use the chi-squared test statistic and the chi-squared distribution to do a hypothesis test for independence for a two-way table.\n\nDifferent chi-squared distributions correspond to different degrees of freedom.\nFor two way tables, the degrees of freedom is equal to: \\(df\\) = (number of rows minus 1) \\(\\times\\) (number of columns minus 1).\n\nConditions:\n\nIndependent observations\nLarge samples: 5 expected counts in each cell"
   }
 ]
