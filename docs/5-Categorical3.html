@@ -385,6 +385,16 @@
       margin-right: 0; 
     }
   </style>
+  <link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+  <script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+  <link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+  <script src="site_libs/datatables-binding-0.33/datatables.js"></script>
+  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+  <link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+  <script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+  <link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+  <script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -403,10 +413,9 @@ Prof.&nbsp;Niamh Cahill (she/her)
 </div>
 
 </section>
-<section id="what-is-simpsons-paradox" class="slide level2" style="font-size: 70%;">
-<h2>What is Simpson’s Paradox?</h2>
-<p>Ignoring an important variable can lead to <strong>Simpson’s Paradox</strong>, especially when analyzing <strong>categorical data</strong>. This paradox occurs when the relationship between two variables reverses or changes after considering a third variable.</p>
-<p><strong>How do we explore Simpsons’ paradox with categorical data?</strong></p>
+<section id="considering-associations-with-two-categorical-variables" class="slide level2" style="font-size: 70%;">
+<h2>Considering associations with &gt; two categorical variables</h2>
+<p><strong>How do we consider associations with categorical data?</strong></p>
 <ul>
 <li>Visualisation</li>
 <li>Proportions and Relative Risk</li>
@@ -457,7 +466,7 @@ Hospital Successes Failures
 </div>
 </div></div>
 </section>
-<section id="overall-success-rates-ignoring-hospital" class="slide level2" style="font-size: 70%;">
+<section id="overall-success-rates-ignoring-hospital" class="slide level2" style="font-size: 60%;">
 <h2>Overall Success Rates (ignoring hospital)</h2>
 <p>Let’s first compare the <strong>overall success rates</strong> for both treatments, ignoring the hospital.</p>
 <ul>
@@ -499,7 +508,7 @@ Hospital Successes Failures
 <p><strong>Treatment A</strong> has a higher success rate than <strong>Treatment B</strong>.</p>
 </div>
 </section>
-<section id="success-rates-for-treatment-by-hospital" class="slide level2" style="font-size: 70%;">
+<section id="success-rates-for-treatment-by-hospital" class="slide level2" style="font-size: 60%;">
 <h2>Success Rates for Treatment by Hospital</h2>
 <p>Now, let’s break down the success rates based on whether treatment was performed at Hospital X or Y.</p>
 <div class="cell">
@@ -520,20 +529,30 @@ Hospital Successes Failures
 </ul>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="1-3|4-9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>hospital_tab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(SuccessRate <span class="sc">~</span> Treatment <span class="sc">+</span> Hospital, </span>
+<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="1-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>hospital_tab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(SuccessRate <span class="sc">~</span> Treatment <span class="sc">+</span> Hospital, </span>
 <span id="cb10-2"><a></a>                      <span class="at">data =</span> hospital_data)</span>
-<span id="cb10-3"><a></a></span>
-<span id="cb10-4"><a></a><span class="fu">barplot</span>(hospital_tab,</span>
-<span id="cb10-5"><a></a>        <span class="at">legend.text =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb10-6"><a></a>        <span class="at">beside =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb10-7"><a></a>        <span class="at">main =</span> <span class="st">"Success Rates by Treatment &amp; Hospital"</span> ,</span>
-<span id="cb10-8"><a></a>        <span class="at">ylab =</span> <span class="st">"Success Rate"</span>, </span>
-<span id="cb10-9"><a></a>        <span class="at">xlab =</span> <span class="st">"Hospital"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a></a>hospital_tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code>         Hospital
+Treatment         X         Y
+        A 0.5000000 0.9000000
+        B 0.3333333 0.6666667</code></pre>
+</div>
+</div></div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="1-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">barplot</span>(hospital_tab,</span>
+<span id="cb12-2"><a></a>        <span class="at">legend.text =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-3"><a></a>        <span class="at">beside =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-4"><a></a>        <span class="at">main =</span> <span class="st">"Success Rates by Treatment &amp; Hospital"</span> ,</span>
+<span id="cb12-5"><a></a>        <span class="at">ylab =</span> <span class="st">"Success Rate"</span>, </span>
+<span id="cb12-6"><a></a>        <span class="at">xlab =</span> <span class="st">"Hospital"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="5-Categorical3_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<p><img data-src="5-Categorical3_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -552,7 +571,7 @@ Hospital Successes Failures
 <li><p>Dept: A, B, C, D, E, F</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>admission_dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>admission_dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4,526 × 3
    admit    gender dept 
@@ -587,9 +606,9 @@ Hospital Successes Failures
 </section>
 <section id="example-student-admissions-at-uc-berkeley-1" class="slide level2" style="font-size: 70%;">
 <h2>Example: Student Admissions at UC Berkeley</h2>
-<p>Let’s assume, upon an initial look at the data, that the tables are collapsed over department (natural science, social science).</p>
+<p>Let’s assume, upon an initial look at the data, that the tables are collapsed over department.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">xtabs</span>( <span class="sc">~</span> gender <span class="sc">+</span> admit, <span class="at">data =</span> admission_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">xtabs</span>( <span class="sc">~</span> gender <span class="sc">+</span> admit, <span class="at">data =</span> admission_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        admit
 gender   Admitted Rejected
@@ -601,16 +620,16 @@ gender   Admitted Rejected
 <p><strong>Odds</strong></p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>admission_odds <span class="ot">&lt;-</span> <span class="fu">lodds</span>(<span class="sc">~</span>  admit <span class="sc">+</span> gender, </span>
-<span id="cb15-2"><a></a>                        <span class="at">data =</span> admission_dat, </span>
-<span id="cb15-3"><a></a>                        <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb15-4"><a></a><span class="fu">coef</span>(admission_odds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>admission_odds <span class="ot">&lt;-</span> <span class="fu">lodds</span>(<span class="sc">~</span>  admit <span class="sc">+</span> gender, </span>
+<span id="cb17-2"><a></a>                        <span class="at">data =</span> admission_dat, </span>
+<span id="cb17-3"><a></a>                        <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb17-4"><a></a><span class="fu">coef</span>(admission_odds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>Admitted:Rejected|Female   Admitted:Rejected|Male 
                0.4358372                0.8024113 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">confint</span>(admission_odds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">confint</span>(admission_odds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                             2.5 %    97.5 %
 Admitted:Rejected|Female 0.3945546 0.4814394
@@ -622,16 +641,16 @@ Admitted:Rejected|Male   0.7436704 0.8657919</code></pre>
 <p><strong>and Odds Ratios</strong></p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>admission_OR <span class="ot">&lt;-</span> <span class="fu">loddsratio</span>(<span class="sc">~</span>  admit <span class="sc">+</span> gender, </span>
-<span id="cb19-2"><a></a>                           <span class="at">data =</span> admission_dat, </span>
-<span id="cb19-3"><a></a>                           <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb19-4"><a></a><span class="fu">coef</span>(admission_OR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>admission_OR <span class="ot">&lt;-</span> <span class="fu">loddsratio</span>(<span class="sc">~</span>  admit <span class="sc">+</span> gender, </span>
+<span id="cb21-2"><a></a>                           <span class="at">data =</span> admission_dat, </span>
+<span id="cb21-3"><a></a>                           <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb21-4"><a></a><span class="fu">coef</span>(admission_OR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>Admitted:Rejected/Female:Male 
                     0.5431594 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">confint</span>(admission_OR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">confint</span>(admission_OR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                  2.5 %    97.5 %
 Admitted:Rejected/Female:Male 0.4792272 0.6156207</code></pre>
@@ -648,10 +667,10 @@ Admitted:Rejected/Female:Male 0.4792272 0.6156207</code></pre>
 <h2>Example: Student Admissions at UC Berkeley</h2>
 <p>Let us look at the same data but divided into groups by department.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>admission_tab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span> gender <span class="sc">+</span> admit <span class="sc">+</span> dept, </span>
-<span id="cb23-2"><a></a>                       <span class="at">data =</span> admission_dat)</span>
-<span id="cb23-3"><a></a></span>
-<span id="cb23-4"><a></a><span class="fu">addmargins</span>(admission_tab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>admission_tab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span> gender <span class="sc">+</span> admit <span class="sc">+</span> dept, </span>
+<span id="cb25-2"><a></a>                       <span class="at">data =</span> admission_dat)</span>
+<span id="cb25-3"><a></a></span>
+<span id="cb25-4"><a></a><span class="fu">addmargins</span>(admission_tab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>, , dept = A
 
@@ -715,9 +734,9 @@ gender   Admitted Rejected  Sum
 <h2>Example: Student Admissions at UC Berkeley</h2>
 <p><strong>Odds</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>admission_odds <span class="ot">&lt;-</span> <span class="fu">lodds</span>(<span class="sc">~</span>  admit <span class="sc">+</span> gender <span class="sc">+</span> dept, <span class="at">data =</span> admission_dat, </span>
-<span id="cb25-2"><a></a>                        <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb25-3"><a></a><span class="fu">coef</span>(admission_odds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>admission_odds <span class="ot">&lt;-</span> <span class="fu">lodds</span>(<span class="sc">~</span>  admit <span class="sc">+</span> gender <span class="sc">+</span> dept, <span class="at">data =</span> admission_dat, </span>
+<span id="cb27-2"><a></a>                        <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb27-3"><a></a><span class="fu">coef</span>(admission_odds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Admitted:Rejected|Female:A   Admitted:Rejected|Male:A 
                 4.68421053                 1.63578275 
@@ -732,7 +751,7 @@ Admitted:Rejected|Female:E   Admitted:Rejected|Male:E
 Admitted:Rejected|Female:F   Admitted:Rejected|Male:F 
                 0.07570978                 0.06267806 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">confint</span>(admission_odds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">confint</span>(admission_odds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                2.5 %     97.5 %
 Admitted:Rejected|Female:A 2.85443740 7.68691870
@@ -754,14 +773,14 @@ Admitted:Rejected|Male:F   0.04074158 0.09642579</code></pre>
 <h2>Example: Student Admissions at UC Berkeley</h2>
 <p><strong>and Odds Ratios</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>admission_OR <span class="ot">&lt;-</span> <span class="fu">loddsratio</span>(<span class="sc">~</span>  admit <span class="sc">+</span> gender <span class="sc">+</span> dept, <span class="at">data =</span> admission_dat, </span>
-<span id="cb29-2"><a></a>                        <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb29-3"><a></a><span class="fu">coef</span>(admission_OR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>admission_OR <span class="ot">&lt;-</span> <span class="fu">loddsratio</span>(<span class="sc">~</span>  admit <span class="sc">+</span> gender <span class="sc">+</span> dept, <span class="at">data =</span> admission_dat, </span>
+<span id="cb31-2"><a></a>                        <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb31-3"><a></a><span class="fu">coef</span>(admission_OR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        A         B         C         D         E         F 
 2.8635896 1.2461048 0.8825661 1.0854419 0.8185776 1.2079151 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">confint</span>(admission_OR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">confint</span>(admission_OR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      2.5 %   97.5 %
 A 1.7111703 4.792127
@@ -775,7 +794,7 @@ F 0.6641723 2.196808</code></pre>
 </section>
 <section id="whats-going-on" class="slide level2" style="font-size: 70%;">
 <h2>What’s going on?</h2>
-<p>In this example, Simpson’s paradox occurred because</p>
+<p>In this example, <strong>Simpson’s Paradox</strong> has occurred because</p>
 <ul>
 <li><p>both gender identity and admissions were related to a third variable, namely, the department.</p></li>
 <li><p>First, women were more likely to apply to social science departments, whereas men were more likely to apply to natural science departments.</p></li>
@@ -790,26 +809,27 @@ F 0.6641723 2.196808</code></pre>
 <li><p>A lurking variable can falsely identify a strong relationship between variables or it can hide the true relationship.</p></li>
 <li><p>To discover lurking variables, you must take the time to understand your data and the important variables that can affect a process.</p></li>
 </ul>
+<p>Ignoring an important lurking variable can lead to <strong>Simpson’s Paradox</strong>, especially when analyzing <strong>categorical data</strong>. This paradox occurs when the relationship between two variables reverses or changes after considering a third variable.</p>
 </section>
-<section id="way-mosaic-plots" class="slide level2" style="font-size: 70%;">
-<h2>2-way mosaic plots</h2>
+<section id="visualisation-2-way-mosaic-plots" class="slide level2" style="font-size: 70%;">
+<h2>Visualisation: 2-way mosaic plots</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="5-Categorical3_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+<p><img data-src="5-Categorical3_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>admission_OR <span class="ot">&lt;-</span> <span class="fu">loddsratio</span>(<span class="sc">~</span>  admit <span class="sc">+</span> gender, </span>
-<span id="cb33-2"><a></a>                           <span class="at">data =</span> admission_dat, </span>
-<span id="cb33-3"><a></a>                           <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb33-4"><a></a><span class="fu">coef</span>(admission_OR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>admission_OR <span class="ot">&lt;-</span> <span class="fu">loddsratio</span>(<span class="sc">~</span>  admit <span class="sc">+</span> gender, </span>
+<span id="cb35-2"><a></a>                           <span class="at">data =</span> admission_dat, </span>
+<span id="cb35-3"><a></a>                           <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb35-4"><a></a><span class="fu">coef</span>(admission_OR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Admitted:Rejected/Female:Male 
                     0.5431594 </code></pre>
@@ -817,25 +837,25 @@ F 0.6641723 2.196808</code></pre>
 </div>
 </div></div>
 </section>
-<section id="way-mosaic-plots-1" class="slide level2" style="font-size: 60%;">
-<h2>3-way mosaic plots</h2>
+<section id="visualisation-3-way-mosaic-plots" class="slide level2" style="font-size: 60%;">
+<h2>Visualisation: 3-way mosaic plots</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="5-Categorical3_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+<p><img data-src="5-Categorical3_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>admission_OR <span class="ot">&lt;-</span> <span class="fu">loddsratio</span>(<span class="sc">~</span>  admit <span class="sc">+</span> gender <span class="sc">+</span> dept, </span>
-<span id="cb35-2"><a></a>                           <span class="at">data =</span> admission_dat, </span>
-<span id="cb35-3"><a></a>                           <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb35-4"><a></a><span class="fu">coef</span>(admission_OR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>admission_OR <span class="ot">&lt;-</span> <span class="fu">loddsratio</span>(<span class="sc">~</span>  admit <span class="sc">+</span> gender <span class="sc">+</span> dept, </span>
+<span id="cb37-2"><a></a>                           <span class="at">data =</span> admission_dat, </span>
+<span id="cb37-3"><a></a>                           <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb37-4"><a></a><span class="fu">coef</span>(admission_OR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        A         B         C         D         E         F 
 2.8635896 1.2461048 0.8825661 1.0854419 0.8185776 1.2079151 </code></pre>
@@ -843,110 +863,57 @@ F 0.6641723 2.196808</code></pre>
 </div>
 </div></div>
 </section>
-<section id="example-titanic-survival-data" class="slide level2" style="font-size: 70%;">
+<section id="example-titanic-survival-data" class="slide level2" style="font-size: 60%;">
 <h2>Example: Titanic Survival Data</h2>
 <p>This data set provides information on the fate of passengers on the fatal maiden voyage of the ocean liner ‘Titanic’, summarized according to economic status (class), sex, age and survival.</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Class</th>
-<th style="text-align: left;">Sex</th>
-<th style="text-align: left;">Age</th>
-<th style="text-align: left;">Survived</th>
-<th style="text-align: right;">Freq</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">1st</td>
-<td style="text-align: left;">Male</td>
-<td style="text-align: left;">Child</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2nd</td>
-<td style="text-align: left;">Male</td>
-<td style="text-align: left;">Child</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">3rd</td>
-<td style="text-align: left;">Male</td>
-<td style="text-align: left;">Child</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: right;">35</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Crew</td>
-<td style="text-align: left;">Male</td>
-<td style="text-align: left;">Child</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">1st</td>
-<td style="text-align: left;">Female</td>
-<td style="text-align: left;">Child</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2nd</td>
-<td style="text-align: left;">Female</td>
-<td style="text-align: left;">Child</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: right;">0</td>
-</tr>
-</tbody>
-</table>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-97a14728e7fe6501993f" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-97a14728e7fe6501993f">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32"],["1st","2nd","3rd","Crew","1st","2nd","3rd","Crew","1st","2nd","3rd","Crew","1st","2nd","3rd","Crew","1st","2nd","3rd","Crew","1st","2nd","3rd","Crew","1st","2nd","3rd","Crew","1st","2nd","3rd","Crew"],["Male","Male","Male","Male","Female","Female","Female","Female","Male","Male","Male","Male","Female","Female","Female","Female","Male","Male","Male","Male","Female","Female","Female","Female","Male","Male","Male","Male","Female","Female","Female","Female"],["Child","Child","Child","Child","Child","Child","Child","Child","Adult","Adult","Adult","Adult","Adult","Adult","Adult","Adult","Child","Child","Child","Child","Child","Child","Child","Child","Adult","Adult","Adult","Adult","Adult","Adult","Adult","Adult"],["No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"],[0,0,35,0,0,0,17,0,118,154,387,670,4,13,89,3,5,11,13,0,1,13,14,0,57,14,75,192,140,80,76,20]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Class<\/th>\n      <th>Sex<\/th>\n      <th>Age<\/th>\n      <th>Survived<\/th>\n      <th>Freq<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":5},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Class","targets":1},{"name":"Sex","targets":2},{"name":"Age","targets":3},{"name":"Survived","targets":4},{"name":"Freq","targets":5}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
 <section id="example-titanic-survival-data-1" class="slide level2" style="font-size: 70%;">
 <h2>Example: Titanic Survival Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">xtabs</span>(Freq <span class="sc">~</span> Sex <span class="sc">+</span> Survived , <span class="at">data =</span> Titanic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">xtabs</span>(Freq <span class="sc">~</span> Sex <span class="sc">+</span> Survived , <span class="at">data =</span> titanic_df )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        Survived
-Sex        No  Yes
-  Male   1364  367
-  Female  126  344</code></pre>
+Sex       Yes   No
+  Male    367 1364
+  Female  344  126</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">xtabs</span>(Freq <span class="sc">~</span> <span class="sc">+</span> Sex <span class="sc">+</span> Survived <span class="sc">+</span> Class, <span class="at">data =</span> Titanic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">xtabs</span>(Freq <span class="sc">~</span> <span class="sc">+</span> Sex <span class="sc">+</span> Survived <span class="sc">+</span> Class, <span class="at">data =</span> titanic_df )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>, , Class = 1st
 
         Survived
-Sex       No Yes
-  Male   118  62
-  Female   4 141
+Sex      Yes  No
+  Male    62 118
+  Female 141   4
 
 , , Class = 2nd
 
         Survived
-Sex       No Yes
-  Male   154  25
-  Female  13  93
+Sex      Yes  No
+  Male    25 154
+  Female  93  13
 
 , , Class = 3rd
 
         Survived
-Sex       No Yes
-  Male   422  88
-  Female 106  90
+Sex      Yes  No
+  Male    88 422
+  Female  90 106
 
 , , Class = Crew
 
         Survived
-Sex       No Yes
-  Male   670 192
-  Female   3  20</code></pre>
+Sex      Yes  No
+  Male   192 670
+  Female  20   3</code></pre>
 </div>
 </div>
 

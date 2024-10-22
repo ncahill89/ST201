@@ -15,11 +15,9 @@ library(vcd)
 
 ```
 
-## What is Simpson's Paradox? {style="font-size: 70%;"}
+## Considering associations with  > two categorical variables {style="font-size: 70%;"}
 
-Ignoring an important variable can lead to **Simpson's Paradox**, especially when analyzing **categorical data**. This paradox occurs when the relationship between two variables reverses or changes after considering a third variable.
-
-**How do we explore Simpsons' paradox with categorical data?**
+**How do we consider associations with categorical data?**
 
 -   Visualisation
 -   Proportions and Relative Risk
@@ -65,7 +63,7 @@ treatment_tab;hospital_tab
 
 ```
 
-## Overall Success Rates (ignoring hospital) {style="font-size: 70%;"}
+## Overall Success Rates (ignoring hospital) {style="font-size: 60%;"}
 
 Let’s first compare the **overall success rates** for both treatments, ignoring the hospital.
 
@@ -99,7 +97,7 @@ barplot(overall_data$OverallSuccessRate,
 
 **Treatment A** has a higher success rate than **Treatment B**.
 
-## Success Rates for Treatment by Hospital {style="font-size: 70%;"}
+## Success Rates for Treatment by Hospital {style="font-size: 60%;"}
 
 Now, let's break down the success rates based on whether treatment was performed at Hospital X or Y.
 
@@ -115,18 +113,24 @@ hospital_data
 -   To visualise this with a barplot we need to manipulate the data a bit:
 
 ```{r, echo = TRUE, include=TRUE}
-#| code-line-numbers: "1-3|4-9"
+#| code-line-numbers: "1-3"
 #| output-location: column-fragment
 
 hospital_tab <- xtabs(SuccessRate ~ Treatment + Hospital, 
                       data = hospital_data)
+hospital_tab
+```
 
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: "1-6"
+#| output-location: column-fragment
 barplot(hospital_tab,
         legend.text = TRUE,
         beside = TRUE,
         main = "Success Rates by Treatment & Hospital" ,
         ylab = "Success Rate", 
         xlab = "Hospital")
+
 ```
 
 . . .
@@ -181,7 +185,7 @@ $\text{Odds Ratio} = \frac{w1}{w2}$
 
 ## Example: Student Admissions at UC Berkeley {style="font-size: 70%;"}
 
-Let's assume, upon an initial look at the data, that the tables are collapsed over department (natural science, social science).
+Let's assume, upon an initial look at the data, that the tables are collapsed over department.
 
 ```{r, echo = TRUE, include=TRUE}
 #| code-line-numbers: "1"
@@ -271,7 +275,7 @@ confint(admission_OR)
 
 ## What's going on? {style="font-size: 70%;"}
 
-In this example, Simpson's paradox occurred because
+In this example, **Simpson's Paradox** has occurred because
 
 -   both gender identity and admissions were related to a third variable, namely, the department.
 
@@ -289,7 +293,10 @@ A lurking variable is a variable that is not included as an explanatory variable
 
 -   To discover lurking variables, you must take the time to understand your data and the important variables that can affect a process.
 
-## 2-way mosaic plots {style="font-size: 70%;"}
+Ignoring an important lurking variable can lead to **Simpson's Paradox**, especially when analyzing **categorical data**. This paradox occurs when the relationship between two variables reverses or changes after considering a third variable.
+
+
+## Visualisation: 2-way mosaic plots {style="font-size: 70%;"}
 
 ::: columns
 ::: {.column width="50%"}
@@ -311,7 +318,7 @@ coef(admission_OR)
 :::
 :::
 
-## 3-way mosaic plots {style="font-size: 60%;"}
+## Visualisation: 3-way mosaic plots {style="font-size: 60%;"}
 
 ::: columns
 ::: {.column width="50%"}
@@ -333,24 +340,24 @@ coef(admission_OR)
 :::
 :::
 
-## Example: Titanic Survival Data {style="font-size: 70%;"}
+## Example: Titanic Survival Data {style="font-size: 60%;"}
 
 This data set provides information on the fate of passengers on the fatal maiden voyage of the ocean liner ‘Titanic’, summarized according to economic status (class), sex, age and survival.
 
 ```{r, echo=FALSE, warning=FALSE}
 # Load dataset
 data(Titanic)
-titanic_df <- as.data.frame(Titanic)
-knitr::kable(head(titanic_df))
+titanic_df <- as.data.frame(Titanic) %>% mutate(Survived = factor(Survived, levels = c("Yes","No")))
+DT::datatable(titanic_df)
 
 ```
 
 ## Example: Titanic Survival Data {style="font-size: 70%;"}
 
 ```{r, echo=TRUE}
-xtabs(Freq ~ Sex + Survived , data = Titanic)
+xtabs(Freq ~ Sex + Survived , data = titanic_df )
 ```
 
 ```{r, echo=TRUE}
-xtabs(Freq ~ + Sex + Survived + Class, data = Titanic)
+xtabs(Freq ~ + Sex + Survived + Class, data = titanic_df )
 ```

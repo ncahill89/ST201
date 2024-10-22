@@ -746,7 +746,7 @@
     "href": "5-Categorical3.html#success-rates-for-treatment-by-hospital",
     "title": "ST201 Data Analysis",
     "section": "Success Rates for Treatment by Hospital",
-    "text": "Success Rates for Treatment by Hospital\nNow, let’s break down the success rates based on whether treatment was performed at Hospital X or Y.\n\n# Calculate the overall success rate for Treatment A and B\nhospital_data$SuccessRate &lt;- \n  hospital_data$Successes / hospital_data$Patients\nhospital_data\n\n  Hospital Treatment Patients Successes Failures SuccessRate\n1        X         A       10         5        5   0.5000000\n2        X         B       90        30       60   0.3333333\n3        Y         A       10         9        1   0.9000000\n4        Y         B       90        60       30   0.6666667\n\n\n\nTo visualise this with a barplot we need to manipulate the data a bit:\n\n\n\nhospital_tab &lt;- xtabs(SuccessRate ~ Treatment + Hospital, \n                      data = hospital_data)\n\nbarplot(hospital_tab,\n        legend.text = TRUE,\n        beside = TRUE,\n        main = \"Success Rates by Treatment & Hospital\" ,\n        ylab = \"Success Rate\", \n        xlab = \"Hospital\")\n\n\n\n\n\n\n\n\n\n\nTreatment A has a higher success rate than Treatment B in both hospitals."
+    "text": "Success Rates for Treatment by Hospital\nNow, let’s break down the success rates based on whether treatment was performed at Hospital X or Y.\n\n# Calculate the overall success rate for Treatment A and B\nhospital_data$SuccessRate &lt;- \n  hospital_data$Successes / hospital_data$Patients\nhospital_data\n\n  Hospital Treatment Patients Successes Failures SuccessRate\n1        X         A       10         5        5   0.5000000\n2        X         B       90        30       60   0.3333333\n3        Y         A       10         9        1   0.9000000\n4        Y         B       90        60       30   0.6666667\n\n\n\nTo visualise this with a barplot we need to manipulate the data a bit:\n\n\n\nhospital_tab &lt;- xtabs(SuccessRate ~ Treatment + Hospital, \n                      data = hospital_data)\nhospital_tab\n\n\n         Hospital\nTreatment         X         Y\n        A 0.5000000 0.9000000\n        B 0.3333333 0.6666667\n\n\n\n\nbarplot(hospital_tab,\n        legend.text = TRUE,\n        beside = TRUE,\n        main = \"Success Rates by Treatment & Hospital\" ,\n        ylab = \"Success Rate\", \n        xlab = \"Hospital\")\n\n\n\n\n\n\n\n\n\n\nTreatment A has a higher success rate than Treatment B in both hospitals."
   },
   {
     "objectID": "5-Categorical3.html#example-student-admissions-at-uc-berkeley",
@@ -767,7 +767,7 @@
     "href": "5-Categorical3.html#example-student-admissions-at-uc-berkeley-1",
     "title": "ST201 Data Analysis",
     "section": "Example: Student Admissions at UC Berkeley",
-    "text": "Example: Student Admissions at UC Berkeley\nLet’s assume, upon an initial look at the data, that the tables are collapsed over department (natural science, social science).\n\nxtabs( ~ gender + admit, data = admission_dat)\n\n        admit\ngender   Admitted Rejected\n  Female      557     1278\n  Male       1198     1493\n\n\n\nOdds\n\n\nadmission_odds &lt;- lodds(~  admit + gender, \n                        data = admission_dat, \n                        log = FALSE)\ncoef(admission_odds)\n\n\nAdmitted:Rejected|Female   Admitted:Rejected|Male \n               0.4358372                0.8024113 \n\nconfint(admission_odds)\n\n                             2.5 %    97.5 %\nAdmitted:Rejected|Female 0.3945546 0.4814394\nAdmitted:Rejected|Male   0.7436704 0.8657919\n\n\n\n\nand Odds Ratios\n\n\nadmission_OR &lt;- loddsratio(~  admit + gender, \n                           data = admission_dat, \n                           log = FALSE)\ncoef(admission_OR)\n\n\nAdmitted:Rejected/Female:Male \n                    0.5431594 \n\nconfint(admission_OR)\n\n                                  2.5 %    97.5 %\nAdmitted:Rejected/Female:Male 0.4792272 0.6156207"
+    "text": "Example: Student Admissions at UC Berkeley\nLet’s assume, upon an initial look at the data, that the tables are collapsed over department.\n\nxtabs( ~ gender + admit, data = admission_dat)\n\n        admit\ngender   Admitted Rejected\n  Female      557     1278\n  Male       1198     1493\n\n\n\nOdds\n\n\nadmission_odds &lt;- lodds(~  admit + gender, \n                        data = admission_dat, \n                        log = FALSE)\ncoef(admission_odds)\n\n\nAdmitted:Rejected|Female   Admitted:Rejected|Male \n               0.4358372                0.8024113 \n\nconfint(admission_odds)\n\n                             2.5 %    97.5 %\nAdmitted:Rejected|Female 0.3945546 0.4814394\nAdmitted:Rejected|Male   0.7436704 0.8657919\n\n\n\n\nand Odds Ratios\n\n\nadmission_OR &lt;- loddsratio(~  admit + gender, \n                           data = admission_dat, \n                           log = FALSE)\ncoef(admission_OR)\n\n\nAdmitted:Rejected/Female:Male \n                    0.5431594 \n\nconfint(admission_OR)\n\n                                  2.5 %    97.5 %\nAdmitted:Rejected/Female:Male 0.4792272 0.6156207"
   },
   {
     "objectID": "5-Categorical3.html#example-student-admissions-at-uc-berkeley-2",
@@ -795,14 +795,14 @@
     "href": "5-Categorical3.html#whats-going-on",
     "title": "ST201 Data Analysis",
     "section": "What’s going on?",
-    "text": "What’s going on?\nIn this example, Simpson’s paradox occurred because\n\nboth gender identity and admissions were related to a third variable, namely, the department.\nFirst, women were more likely to apply to social science departments, whereas men were more likely to apply to natural science departments.\nSecond, the acceptance rate in social science departments was less than that in natural science departments.\n\nBecause women were more likely than men to apply to programs with lower acceptance rates, when department was ignored (i.e., when the data were aggregated over dept), it seemed that women were less likely than men to be admitted to graduate school, whereas the reverse was actually true."
+    "text": "What’s going on?\nIn this example, Simpson’s Paradox has occurred because\n\nboth gender identity and admissions were related to a third variable, namely, the department.\nFirst, women were more likely to apply to social science departments, whereas men were more likely to apply to natural science departments.\nSecond, the acceptance rate in social science departments was less than that in natural science departments.\n\nBecause women were more likely than men to apply to programs with lower acceptance rates, when department was ignored (i.e., when the data were aggregated over dept), it seemed that women were less likely than men to be admitted to graduate school, whereas the reverse was actually true."
   },
   {
     "objectID": "5-Categorical3.html#lurking-variable",
     "href": "5-Categorical3.html#lurking-variable",
     "title": "ST201 Data Analysis",
     "section": "Lurking Variable",
-    "text": "Lurking Variable\nA lurking variable is a variable that is not included as an explanatory variable in the analysis but can affect the interpretation of relationships between variables.\n\nA lurking variable can falsely identify a strong relationship between variables or it can hide the true relationship.\nTo discover lurking variables, you must take the time to understand your data and the important variables that can affect a process."
+    "text": "Lurking Variable\nA lurking variable is a variable that is not included as an explanatory variable in the analysis but can affect the interpretation of relationships between variables.\n\nA lurking variable can falsely identify a strong relationship between variables or it can hide the true relationship.\nTo discover lurking variables, you must take the time to understand your data and the important variables that can affect a process.\n\nIgnoring an important lurking variable can lead to Simpson’s Paradox, especially when analyzing categorical data. This paradox occurs when the relationship between two variables reverses or changes after considering a third variable."
   },
   {
     "objectID": "5-Categorical3.html#way-mosaic-plots",
@@ -823,14 +823,14 @@
     "href": "5-Categorical3.html#example-titanic-survival-data",
     "title": "ST201 Data Analysis",
     "section": "Example: Titanic Survival Data",
-    "text": "Example: Titanic Survival Data\nThis data set provides information on the fate of passengers on the fatal maiden voyage of the ocean liner ‘Titanic’, summarized according to economic status (class), sex, age and survival.\n\n\n\n\n\nClass\nSex\nAge\nSurvived\nFreq\n\n\n\n\n1st\nMale\nChild\nNo\n0\n\n\n2nd\nMale\nChild\nNo\n0\n\n\n3rd\nMale\nChild\nNo\n35\n\n\nCrew\nMale\nChild\nNo\n0\n\n\n1st\nFemale\nChild\nNo\n0\n\n\n2nd\nFemale\nChild\nNo\n0"
+    "text": "Example: Titanic Survival Data\nThis data set provides information on the fate of passengers on the fatal maiden voyage of the ocean liner ‘Titanic’, summarized according to economic status (class), sex, age and survival."
   },
   {
     "objectID": "5-Categorical3.html#example-titanic-survival-data-1",
     "href": "5-Categorical3.html#example-titanic-survival-data-1",
     "title": "ST201 Data Analysis",
     "section": "Example: Titanic Survival Data",
-    "text": "Example: Titanic Survival Data\n\nxtabs(Freq ~ Sex + Survived , data = Titanic)\n\n        Survived\nSex        No  Yes\n  Male   1364  367\n  Female  126  344\n\n\n\nxtabs(Freq ~ + Sex + Survived + Class, data = Titanic)\n\n, , Class = 1st\n\n        Survived\nSex       No Yes\n  Male   118  62\n  Female   4 141\n\n, , Class = 2nd\n\n        Survived\nSex       No Yes\n  Male   154  25\n  Female  13  93\n\n, , Class = 3rd\n\n        Survived\nSex       No Yes\n  Male   422  88\n  Female 106  90\n\n, , Class = Crew\n\n        Survived\nSex       No Yes\n  Male   670 192\n  Female   3  20"
+    "text": "Example: Titanic Survival Data\n\nxtabs(Freq ~ Sex + Survived , data = titanic_df )\n\n        Survived\nSex       Yes   No\n  Male    367 1364\n  Female  344  126\n\n\n\nxtabs(Freq ~ + Sex + Survived + Class, data = titanic_df )\n\n, , Class = 1st\n\n        Survived\nSex      Yes  No\n  Male    62 118\n  Female 141   4\n\n, , Class = 2nd\n\n        Survived\nSex      Yes  No\n  Male    25 154\n  Female  93  13\n\n, , Class = 3rd\n\n        Survived\nSex      Yes  No\n  Male    88 422\n  Female  90 106\n\n, , Class = Crew\n\n        Survived\nSex      Yes  No\n  Male   192 670\n  Female  20   3"
   },
   {
     "objectID": "4-Categorical2.html",
@@ -838,5 +838,33 @@
     "title": "ST201 Data Analysis",
     "section": "",
     "text": "Pearson’s \\(\\chi^2\\) statistic is used for measuring association between variables in a contingency table.\n\n\n\n\n\n\n\n\\(\\chi^2\\) test of association\n\n\n\n\nThe \\(\\chi^2\\) statistic is given as\n\n\\[\\chi^2 = \\sum_i \\sum_j\\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\\] We use the chi-squared test statistic and the chi-squared distribution to do a hypothesis test for independence for a two-way table.\n\nDifferent chi-squared distributions correspond to different degrees of freedom.\nFor two way tables, the degrees of freedom is equal to: \\(df\\) = (number of rows minus 1) \\(\\times\\) (number of columns minus 1).\n\nConditions:\n\nIndependent observations\nLarge samples: 5 expected counts in each cell"
+  },
+  {
+    "objectID": "5-Categorical3.html#considering-associations-with-more-than-two-categorical-variables",
+    "href": "5-Categorical3.html#considering-associations-with-more-than-two-categorical-variables",
+    "title": "ST201 Data Analysis",
+    "section": "Considering Associations with more than two categorical variables",
+    "text": "Considering Associations with more than two categorical variables\nHow do we consider associations with categorical data?\n\nVisualisation\nProportions and Relative Risk\nOdds and Odds Ratios"
+  },
+  {
+    "objectID": "5-Categorical3.html#considering-associations-with-two-categorical-variables",
+    "href": "5-Categorical3.html#considering-associations-with-two-categorical-variables",
+    "title": "ST201 Data Analysis",
+    "section": "Considering associations with > two categorical variables",
+    "text": "Considering associations with &gt; two categorical variables\nHow do we consider associations with categorical data?\n\nVisualisation\nProportions and Relative Risk\nOdds and Odds Ratios"
+  },
+  {
+    "objectID": "5-Categorical3.html#visualisation-2-way-mosaic-plots",
+    "href": "5-Categorical3.html#visualisation-2-way-mosaic-plots",
+    "title": "ST201 Data Analysis",
+    "section": "Visualisation: 2-way mosaic plots",
+    "text": "Visualisation: 2-way mosaic plots\n\n\n\n\n\n\n\n\n\n\n\n\n\nadmission_OR &lt;- loddsratio(~  admit + gender, \n                           data = admission_dat, \n                           log = FALSE)\ncoef(admission_OR)\n\nAdmitted:Rejected/Female:Male \n                    0.5431594"
+  },
+  {
+    "objectID": "5-Categorical3.html#visualisation-3-way-mosaic-plots",
+    "href": "5-Categorical3.html#visualisation-3-way-mosaic-plots",
+    "title": "ST201 Data Analysis",
+    "section": "Visualisation: 3-way mosaic plots",
+    "text": "Visualisation: 3-way mosaic plots\n\n\n\n\n\n\n\n\n\n\n\n\n\nadmission_OR &lt;- loddsratio(~  admit + gender + dept, \n                           data = admission_dat, \n                           log = FALSE)\ncoef(admission_OR)\n\n        A         B         C         D         E         F \n2.8635896 1.2461048 0.8825661 1.0854419 0.8185776 1.2079151"
   }
 ]
