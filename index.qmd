@@ -44,9 +44,9 @@ Contact: Niamh Cahill (niamh.cahill\@mu.ie)
 
 ### Week 5
 
-4a. [Association between Categorical Variables (3)](https://ncahill89.github.io/ST201/5-Categorical3.html)
+5a. [Association between Categorical Variables (3)](https://ncahill89.github.io/ST201/5-Categorical3.html)
 
-4b. Code lecture; check the [Rstudio Sever](https://rstudio.maths.nuim.ie) for Week5_Categorical(3).R
+5b. Code lecture; check the [Rstudio Sever](https://rstudio.maths.nuim.ie) for Week5_Categorical(3).R
 
 
 ## Tutorial Sheets
