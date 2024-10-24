@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Welcome to Data Analysis! – Data Analysis</title>
+<title>ST201 Tutorial Sheet 2 – Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -66,6 +100,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -82,15 +145,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lecture-slides" id="toc-lecture-slides" class="nav-link active" data-scroll-target="#lecture-slides">Lecture Slides</a>
-  <ul class="collapse">
-  <li><a href="#week-1" id="toc-week-1" class="nav-link" data-scroll-target="#week-1">Week 1</a></li>
-  <li><a href="#week-2" id="toc-week-2" class="nav-link" data-scroll-target="#week-2">Week 2</a></li>
-  <li><a href="#week-3" id="toc-week-3" class="nav-link" data-scroll-target="#week-3">Week 3</a></li>
-  <li><a href="#week-4" id="toc-week-4" class="nav-link" data-scroll-target="#week-4">Week 4</a></li>
-  <li><a href="#week-5" id="toc-week-5" class="nav-link" data-scroll-target="#week-5">Week 5</a></li>
-  </ul></li>
-  <li><a href="#tutorial-sheets" id="toc-tutorial-sheets" class="nav-link" data-scroll-target="#tutorial-sheets">Tutorial Sheets</a></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#the-dataset" id="toc-the-dataset" class="nav-link" data-scroll-target="#the-dataset">The Dataset</a></li>
+  <li><a href="#reading-the-the-data" id="toc-reading-the-the-data" class="nav-link" data-scroll-target="#reading-the-the-data">Reading the the Data</a></li>
+  <li><a href="#contingency-tables" id="toc-contingency-tables" class="nav-link" data-scroll-target="#contingency-tables">Contingency Tables</a></li>
+  <li><a href="#barplots" id="toc-barplots" class="nav-link" data-scroll-target="#barplots">Barplots</a></li>
+  <li><a href="#conditional-distributions" id="toc-conditional-distributions" class="nav-link" data-scroll-target="#conditional-distributions">Conditional Distributions</a></li>
+  <li><a href="#odds" id="toc-odds" class="nav-link" data-scroll-target="#odds">Odds</a></li>
+  <li><a href="#chi-squared-test" id="toc-chi-squared-test" class="nav-link" data-scroll-target="#chi-squared-test">Chi-squared test</a></li>
+  <li><a href="#mosaic-plot" id="toc-mosaic-plot" class="nav-link" data-scroll-target="#mosaic-plot">Mosaic Plot</a></li>
   </ul>
 </nav>
     </div>
@@ -99,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome to Data Analysis!</h1>
+<h1 class="title">ST201 Tutorial Sheet 2</h1>
 </div>
 
 
@@ -116,42 +179,129 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Welcome to the course website for ST201 Data Analysis!</p>
-<p><a href="https://ncahill89.github.io/ST201/0-Information.html">Module information</a></p>
-<p>Lecture material (slides, notes, videos) are licensed under CC-BY-NC 4.0.</p>
-<p>Contact: Niamh Cahill (niamh.cahill@mu.ie)</p>
-<section id="lecture-slides" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-slides">Lecture Slides</h2>
-<section id="week-1" class="level3">
-<h3 class="anchored" data-anchor-id="week-1">Week 1</h3>
-<p>1a. <a href="https://ncahill89.github.io/ST201/1-Data.html">Data</a></p>
-<p>1b. Code lecture; check the <a href="https://rstudio.maths.nuim.ie">Rstudio Sever</a> for Week1_Data.R</p>
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<ul>
+<li>Attempt the questions below before your tutorial in the week beginning 4th November 2024.</li>
+</ul>
 </section>
-<section id="week-2" class="level3">
-<h3 class="anchored" data-anchor-id="week-2">Week 2</h3>
-<p>2a. <a href="https://ncahill89.github.io/ST201/2-Numerical.html">Numerical Data</a></p>
-<p>2b. Code lecture; check the <a href="https://rstudio.maths.nuim.ie">Rstudio Sever</a> for Week2_NumericalData.R</p>
+<section id="the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="the-dataset">The Dataset</h2>
+<p>A total of 150 customers of a petrol station are asked about their satisfaction with their car or motorbike insurance. The customers were asked if their vehicle type was a petrol car, a diesel car or a motorbike and if they were satisfied or unsatisfied with their insurance cover.</p>
 </section>
-<section id="week-3" class="level3">
-<h3 class="anchored" data-anchor-id="week-3">Week 3</h3>
-<p>3a. <a href="https://ncahill89.github.io/ST201/3-Categorical.html">Association between Categorical Variables</a></p>
-<p>3b. Code lecture; check the <a href="https://rstudio.maths.nuim.ie">Rstudio Sever</a> for Week3_Categorical.R</p>
+<section id="reading-the-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="reading-the-the-data">Reading the the Data</h2>
+<p><strong>Open a new R script.</strong> The insurance satisfaction dataset is available on the Rstudio server in the ST201 folder in a file called <code>insurance_dat.rds</code>. Load the file into R and look at the data.</p>
 </section>
-<section id="week-4" class="level3">
-<h3 class="anchored" data-anchor-id="week-4">Week 4</h3>
-<p>4a. <a href="https://ncahill89.github.io/ST201/4-Categorical2.html">Association between Categorical Variables (2)</a></p>
-<p>4b. Code lecture; check the <a href="https://rstudio.maths.nuim.ie">Rstudio Sever</a> for Week4_Categorical(2).R</p>
+<section id="contingency-tables" class="level2">
+<h2 class="anchored" data-anchor-id="contingency-tables">Contingency Tables</h2>
+<p><strong>Exercise 1</strong></p>
+<ol type="a">
+<li><p>Use the <code>xtabs()</code> function to create a contingency table for the insurance data called <code>insurance_tab</code>.</p></li>
+<li><p>Add the marginal distributions to this contingency table using the function <code>addmargins()</code>.</p></li>
+</ol>
+<p><strong>Exercise 2</strong></p>
+<p>Now, suppose we are interested in looking at the table of proportions (the relative frequencies) rather than the raw frequencies as given by the contingency table above.</p>
+<ol type="a">
+<li><p>Create a table of proportions called <code>insurance_prob_tab</code> by applying the <code>prop.table()</code> function to the contingency table.</p></li>
+<li><p>Use the <code>addmargins()</code> function to add the marginal distributions to the proportion table created in part (a).</p></li>
+<li><p>What proportion of customers were satisfied with their insurance cover?</p></li>
+</ol>
 </section>
-<section id="week-5" class="level3">
-<h3 class="anchored" data-anchor-id="week-5">Week 5</h3>
-<p>5a. <a href="https://ncahill89.github.io/ST201/5-Categorical3.html">Association between Categorical Variables (3)</a></p>
-<p>5b. Code lecture; check the <a href="https://rstudio.maths.nuim.ie">Rstudio Sever</a> for Week5_Categorical(3).R</p>
+<section id="barplots" class="level2">
+<h2 class="anchored" data-anchor-id="barplots">Barplots</h2>
+<p>To visualise the data in the contingency table we can produce a stacked barplot of the data in the table using the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(insurance_tab,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"topleft"</span>),<span class="co"># This is changing the legend position</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">110</span>)) <span class="co"># This is changing the y-axis limits</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note the arguments in the function:</p>
+<ol type="1">
+<li><code>t</code> transposes the table to put vehicle on the x-axis</li>
+<li><code>legend = TRUE</code>. This tells the function to add a legend to the plot</li>
+<li><code>args.legend = list(x = "topleft")</code>. This tell the function where to place the legend.</li>
+<li><code>ylim = c(0,100)</code>. This tells the function to make the y-axis limits go from 0 to 100. This is useful for improving the position of the legend.</li>
+</ol>
+<p><strong>Exercise 3</strong></p>
+<ol type="a">
+<li><p>Instead of the stacked barplot, change the plot so that the bars are side by side. Change the ylim argument to improve the legend position.</p></li>
+<li><p>Based on the barplots, describe what you have learned about the relationship between the type of vehicle and satisfaction with insurance cover.</p></li>
+</ol>
 </section>
+<section id="conditional-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="conditional-distributions">Conditional Distributions</h2>
+<p>What proportion of people that owned diesel cars are satisfied with their insurance? To answer this we want the conditional distribution for <code>satisfaction</code> given <code>diesel_car</code>. We can get this using our contingency table as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>insurance_tab[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">/</span>(insurance_tab[<span class="dv">1</span>,<span class="dv">1</span>] <span class="sc">+</span> insurance_tab[<span class="dv">1</span>,<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Exercise 4</strong></p>
+<ol type="a">
+<li><p>Modify the code above to find the proportion of people that owned petrol cars that were satisfied.</p></li>
+<li><p>What proportion of people that owned motorbikes were satisfied?</p></li>
+<li><p>Based on (b) and (c) does there appear to be a relationship between the type of vehicle and the satisfaction with insurance cover? Give a reason for your answer.</p></li>
+</ol>
 </section>
-<section id="tutorial-sheets" class="level2">
-<h2 class="anchored" data-anchor-id="tutorial-sheets">Tutorial Sheets</h2>
-<p><a href="https://ncahill89.github.io/ST201/Tutorial1.html">Tutorial Sheet 1: Numerical Data</a></p>
-<p><a href="https://ncahill89.github.io/ST201/Tutorial2.html">Tutorial Sheet 2: Categorical Data</a></p>
+<section id="odds" class="level2">
+<h2 class="anchored" data-anchor-id="odds">Odds</h2>
+<p>We can use the following code to find the odds of being satisfied for each vehicle type on the log scale:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>satisfaction_odds <span class="ot">&lt;-</span> <span class="fu">lodds</span>( <span class="sc">~</span> satisfaction <span class="sc">+</span> vehicle, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> insurance_dat)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(satisfaction_odds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>satisfied:unsatisfied|diesel_car  satisfied:unsatisfied|motorbike 
+                     -0.06669137                      -0.51082562 
+satisfied:unsatisfied|petrol_car 
+                      0.27763174 </code></pre>
+</div>
+</div>
+<p><strong>Exercise 5</strong></p>
+<ol type="a">
+<li><p>Modify the code to put the odds on the original scale.</p></li>
+<li><p>What are the odds of satisfaction for petrol car users? Provide an interpretation.</p></li>
+<li><p>What is the odds ratio for petrol compared to diesel car users? Provide an interpretation.</p></li>
+</ol>
+</section>
+<section id="chi-squared-test" class="level2">
+<h2 class="anchored" data-anchor-id="chi-squared-test">Chi-squared test</h2>
+<p>If we want to test whether vehicle type and satisfaction are independent then we can perform Pearson’s Chi-squared test using R as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>my_chisq_test <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(insurance_tab)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>my_chisq_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The key components of the Chi-squared test are the test statistics and the p-value which are provided when you run the R code above. If you want to access specific parts of the <code>my_chisq_test</code> object created above then you can use the <code>$</code> as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>my_chisq_test<span class="sc">$</span>statistic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will give you the chi-squared test statistic.</p>
+<p><strong>Exercise 6</strong></p>
+<ol type="a">
+<li><p>Access the part of <code>my_chisq_test</code> that provides the expected contingency table. Assuming vehicle type and satisfaction are independent, how many motorbike drivers would you expect to be unsatisfied with their insurance?</p></li>
+<li><p>Calculate the Pearson residual for the number of motorbike drivers that were unsatisfied with their insurance. Note that Pearson’s residuals are defined as</p></li>
+</ol>
+<p><span class="math display">\[\frac{observed - expected}{\sqrt{expected}}.\]</span></p>
+<ol start="3" type="a">
+<li>What is the p-value for the Chi-squared test? Based on this would you conclude that vehicle type and satisfaction are independent? Give a reason for your answer.</li>
+</ol>
+</section>
+<section id="mosaic-plot" class="level2">
+<h2 class="anchored" data-anchor-id="mosaic-plot">Mosaic Plot</h2>
+<p>You can also use a mosaic plot to visualise the data in the contingency table as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(<span class="sc">~</span> vehicle <span class="sc">+</span> satisfaction ,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> insurance_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Exercise 7</strong></p>
+<ol type="a">
+<li><p>Add an appropriate argument to colour the mosaic plot based on the values of the Pearson residuals.</p></li>
+<li><p>What have your learned from this plot?</p></li>
+</ol>
+<p><strong>SAVE YOUR R SCRIPT!</strong></p>
+<p>Click: file - save as</p>
 
 
 </section>

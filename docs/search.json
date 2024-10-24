@@ -45,29 +45,29 @@
     "objectID": "1-Data.html#data-basics",
     "href": "1-Data.html#data-basics",
     "title": "ST201 Data Analysis",
-    "section": "Data basics",
-    "text": "Data basics\n\nLoans DataDataset\n\n\nWe will consider a dataset with information for 50 loans\n\nEach row in the dataset represents a single loan\n\nformally, an observational unit\n\nEach column represents characteristics associated with the loan\n\nformally, a variable"
+    "section": "",
+    "text": "Loans DataDataset\n\n\nWe will consider a dataset with information for 50 loans\n\nEach row in the dataset represents a single loan\n\nformally, an observational unit\n\nEach column represents characteristics associated with the loan\n\nformally, a variable"
   },
   {
     "objectID": "1-Data.html#variables",
     "href": "1-Data.html#variables",
     "title": "ST201 Data Analysis",
     "section": "Variables",
-    "text": "Variables\nObservations or data points can be collected in a statistical variable.\n\n\nQualitative Variables\nDescriptive or categorical variables that define characteristics.\n\n\n🌎 US State: Identifies geographic locations.\n🏷️ Loan Grade: Categorizes the quality of loans.\n🏠 Homeownership: Indicates property ownership status.\n\n\n\nQuantitative Variables\nMeasurable or numerical variables that quantify data.\n\n\n💵 Loan Amount: The total value of the loan.\n📈 Interest Rate: The cost of borrowing expressed as a percentage.\n🗓️ Loan Term: The duration for repayment.\n💰 Total Income: The amount of income earned."
+    "text": "Variables\nObservations or data points can be collected in a statistical variable.\n\n\n\nQualitative Variables\nDescriptive or categorical variables that define characteristics.\n\n\n🌎 US State: Identifies geographic locations.\n🏷️ Loan Grade: Categorizes the quality of loans.\n🏠 Homeownership: Indicates property ownership status.\n\n\n\n\n\nQuantitative Variables\nMeasurable or numerical variables that quantify data.\n\n\n💵 Loan Amount: The total value of the loan.\n📈 Interest Rate: The cost of borrowing expressed as a percentage.\n🗓️ Loan Term: The duration for repayment.\n💰 Total Income: The amount of income earned."
   },
   {
     "objectID": "1-Data.html#variables-1",
     "href": "1-Data.html#variables-1",
     "title": "ST201 Data Analysis",
     "section": "Variables",
-    "text": "Variables\nVariables can be categorized as either discrete or continuous.\n\n\nDiscrete Variables\nDistinct and countable variables that represent individual values.\n\n\n📅 Loan Term: The number of periods for repayment.\n🏷️ Loan Grade: Categories such as 1 = A, 2 = B, 3 = C, 4 = D…\n\n\n\nContinuous Variables\nVariables that can take an infinite number of values, representing measurable quantities.\n\n\n💵 Loan Amount: The exact value of the loan.\n📈 Interest Rate: The precise percentage of borrowing cost."
+    "text": "Variables\nVariables can be categorized as either discrete or continuous.\n\n\n\nDiscrete Variables\nDistinct and countable variables that represent individual values.\n\n\n📅 Loan Term: The number of periods for repayment.\n🏷️ Loan Grade: Categories such as 1 = A, 2 = B, 3 = C, 4 = D…\n\n\n\n\n\nContinuous Variables\nVariables that can take an infinite number of values, representing measurable quantities.\n\n\n💵 Loan Amount: The exact value of the loan.\n📈 Interest Rate: The precise percentage of borrowing cost."
   },
   {
     "objectID": "1-Data.html#scales",
     "href": "1-Data.html#scales",
     "title": "ST201 Data Analysis",
     "section": "Scales",
-    "text": "Scales\nUnderstanding the different scales of measurement helps in analyzing data accurately.\n\n\nNominal Scale\nValues cannot be ordered and represent distinct categories.\n\n\n🌎 US State: Identifies states without any order.\n🏠 Homeownership: Categories (rent, mortgage), with no inherent ranking.\n\n\n\nOrdinal Scale\nValues can be ordered and reflect a natural ranking.\n\n\n🎓 Loan Grade: Categories like A, B, C, D, E, which represent a quality spectrum."
+    "text": "Scales\nUnderstanding the different scales of measurement helps in analyzing data accurately.\n\n\n\nNominal Scale\nValues cannot be ordered and represent distinct categories.\n\n\n🌎 US State: Identifies states without any order.\n🏠 Homeownership: Categories (rent, mortgage), with no inherent ranking.\n\n\n\n\n\nOrdinal Scale\nValues can be ordered and reflect a natural ranking.\n\n\n🎓 Loan Grade: Categories like A, B, C, D, E, which represent a quality spectrum."
   },
   {
     "objectID": "1-Data.html#grouped-data",
@@ -95,28 +95,28 @@
     "href": "1-Data.html#numerical-representations-of-categorical-data",
     "title": "ST201 Data Analysis",
     "section": "Numerical representations of categorical data",
-    "text": "Numerical representations of categorical data\nLet’s consider the number (frequency) of loans made among renters vs mortgage holders vs those who own their home outright in this dataset\n\nFrequency TableCode\n\n\n\n\n\n\n\n.\nFreq\n\n\n\n\nrent\n21\n\n\nmortgage\n26\n\n\nown\n3\n\n\n\n\n\n\n\n\n\nhome &lt;- loan50$homeownership\nloan_tab &lt;- table(home)\nloan_tab\n\n\nhome\n    rent mortgage      own \n      21       26        3"
+    "text": "Numerical representations of categorical data\nLet’s consider the number (frequency) of loans made among renters vs mortgage holders vs those who own their home outright in this dataset\n\nFrequency TableCode\n\n\n\n\n\n\n\n.\nFreq\n\n\n\n\nrent\n21\n\n\nmortgage\n26\n\n\nown\n3\n\n\n\n\n\n\n\n\nhome &lt;- loan50$homeownership\nloan_tab &lt;- table(home)\nloan_tab\n\nhome\n    rent mortgage      own \n      21       26        3"
   },
   {
     "objectID": "1-Data.html#numerical-representations-of-categorical-data-1",
     "href": "1-Data.html#numerical-representations-of-categorical-data-1",
     "title": "ST201 Data Analysis",
     "section": "Numerical Representations of Categorical Data",
-    "text": "Numerical Representations of Categorical Data\nLet’s consider the proportion (relative frequency) of loans made within each homeowner category in this dataset\n\nRelative Frequency TableCode\n\n\n\n\n\n\n\nhome\nFreq\n\n\n\n\nrent\n0.42\n\n\nmortgage\n0.52\n\n\nown\n0.06\n\n\n\n\n\n\n\n\n\nN &lt;- nrow(loan50)\nhome &lt;- loan50$homeownership\nloan_tab &lt;- table(home)\nloan_tab/N\n\n\nhome\n    rent mortgage      own \n    0.42     0.52     0.06"
+    "text": "Numerical Representations of Categorical Data\nLet’s consider the proportion (relative frequency) of loans made within each homeowner category in this dataset\n\nRelative Frequency TableCode\n\n\n\n\n\n\n\nhome\nFreq\n\n\n\n\nrent\n0.42\n\n\nmortgage\n0.52\n\n\nown\n0.06\n\n\n\n\n\n\n\n\nN &lt;- nrow(loan50)\nhome &lt;- loan50$homeownership\nloan_tab &lt;- table(home)\nloan_tab/N\n\nhome\n    rent mortgage      own \n    0.42     0.52     0.06"
   },
   {
     "objectID": "1-Data.html#graphical-representations-of-categorical-data",
     "href": "1-Data.html#graphical-representations-of-categorical-data",
     "title": "ST201 Data Analysis",
     "section": "Graphical representations of categorical data",
-    "text": "Graphical representations of categorical data\nLet’s consider the number (frequency) of loans made among renters vs mortgage holders vs those who own their home outright in this dataset\n\nBarplotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhome &lt;- loan50$homeownership\nloan_tab &lt;- table(home)\nbarplot(loan_tab)"
+    "text": "Graphical representations of categorical data\nLet’s consider the number (frequency) of loans made among renters vs mortgage holders vs those who own their home outright in this dataset\n\nBarplotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhome &lt;- loan50$homeownership\nloan_tab &lt;- table(home)\nbarplot(loan_tab)"
   },
   {
     "objectID": "1-Data.html#graphical-representations-of-categorical-data-1",
     "href": "1-Data.html#graphical-representations-of-categorical-data-1",
     "title": "ST201 Data Analysis",
     "section": "Graphical representations of categorical data",
-    "text": "Graphical representations of categorical data\nLet’s consider the proportion (relative frequency) of loans made within each homeowner category in this dataset\n\nBarplotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nN &lt;- nrow(loan50)\nhome &lt;- loan50$homeownership\nloan_tab &lt;- table(home)\nbarplot(loan_tab/N)"
+    "text": "Graphical representations of categorical data\nLet’s consider the proportion (relative frequency) of loans made within each homeowner category in this dataset\n\nBarplotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nN &lt;- nrow(loan50)\nhome &lt;- loan50$homeownership\nloan_tab &lt;- table(home)\nbarplot(loan_tab/N)"
   },
   {
     "objectID": "1-Data.html#numerical-representations-of-numerical-data",
@@ -130,21 +130,21 @@
     "href": "1-Data.html#graphical-representations-of-numerical-data",
     "title": "ST201 Data Analysis",
     "section": "Graphical representations of numerical data",
-    "text": "Graphical representations of numerical data\n\nHistogramCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(loan50$loan_amount,\n     breaks = 34,\n     main = \"Histogram\",\n     xlab = \"Loan Amounts\")"
+    "text": "Graphical representations of numerical data\n\nHistogramCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(loan50$loan_amount,\n     breaks = 34,\n     main = \"Histogram\",\n     xlab = \"Loan Amounts\")"
   },
   {
     "objectID": "1-Data.html#graphical-representations-of-numerical-data-1",
     "href": "1-Data.html#graphical-representations-of-numerical-data-1",
     "title": "ST201 Data Analysis",
     "section": "Graphical representations of numerical data",
-    "text": "Graphical representations of numerical data\n\nHistogramCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(loan50$loan_amount,\n     breaks = 16,\n     main = \"Histogram\",\n     xlab = \"Loan Amounts\")"
+    "text": "Graphical representations of numerical data\n\nHistogramCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(loan50$loan_amount,\n     breaks = 16,\n     main = \"Histogram\",\n     xlab = \"Loan Amounts\")"
   },
   {
     "objectID": "1-Data.html#graphical-representations-of-numerical-data-2",
     "href": "1-Data.html#graphical-representations-of-numerical-data-2",
     "title": "ST201 Data Analysis",
     "section": "Graphical representations of numerical data",
-    "text": "Graphical representations of numerical data\n\nHistogramCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(loan50$loan_amount,\n     breaks = 8,\n     main = \"Histogram\",\n     xlab = \"Loan Amounts\")"
+    "text": "Graphical representations of numerical data\n\nHistogramCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(loan50$loan_amount,\n     breaks = 8,\n     main = \"Histogram\",\n     xlab = \"Loan Amounts\")"
   },
   {
     "objectID": "1-Data.html#empirical-cumulative-distribution-function-ecdf",
@@ -165,7 +165,7 @@
     "href": "1-Data.html#ecdf-plot-of-loan-amounts-all-data",
     "title": "ST201 Data Analysis",
     "section": "ECDF plot of loan amounts (all data)",
-    "text": "ECDF plot of loan amounts (all data)\n\nECDF PlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nloan_amount &lt;- loan50$loan_amount\nplot.ecdf(loan_amount)"
+    "text": "ECDF plot of loan amounts (all data)\n\nECDF PlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nloan_amount &lt;- loan50$loan_amount\nplot.ecdf(loan_amount)"
   },
   {
     "objectID": "index.html#lecture-slides",
@@ -494,7 +494,7 @@
     "href": "index.html#tutorial-sheets",
     "title": "Welcome to Data Analysis!",
     "section": "Tutorial Sheets",
-    "text": "Tutorial Sheets\nTutorial Sheet 1: Numerical Data"
+    "text": "Tutorial Sheets\nTutorial Sheet 1: Numerical Data\nTutorial Sheet 2: Categorical Data"
   },
   {
     "objectID": "3-Categorical.html#association-of-two-variables",
@@ -866,5 +866,82 @@
     "title": "ST201 Data Analysis",
     "section": "Visualisation: 3-way mosaic plots",
     "text": "Visualisation: 3-way mosaic plots\n\n\n\n\n\n\n\n\n\n\n\n\n\nadmission_OR &lt;- loddsratio(~  admit + gender + dept, \n                           data = admission_dat, \n                           log = FALSE)\ncoef(admission_OR)\n\n        A         B         C         D         E         F \n2.8635896 1.2461048 0.8825661 1.0854419 0.8185776 1.2079151"
+  },
+  {
+    "objectID": "Tutorial2.html",
+    "href": "Tutorial2.html",
+    "title": "ST201 Tutorial Sheet 2",
+    "section": "",
+    "text": "Attempt the questions below before your tutorial in the week beginning 4th November 2024."
+  },
+  {
+    "objectID": "Tutorial2.html#instructions",
+    "href": "Tutorial2.html#instructions",
+    "title": "ST201 Tutorial Sheet 2",
+    "section": "",
+    "text": "Attempt the questions below before your tutorial in the week beginning 4th November 2024."
+  },
+  {
+    "objectID": "Tutorial2.html#the-dataset",
+    "href": "Tutorial2.html#the-dataset",
+    "title": "ST201 Tutorial Sheet 2",
+    "section": "The Dataset",
+    "text": "The Dataset\nA total of 150 customers of a petrol station are asked about their satisfaction with their car or motorbike insurance. The customers were asked if their vehicle type was a petrol car, a diesel car or a motorbike and if they were satisfied or unsatisfied with their insurance cover."
+  },
+  {
+    "objectID": "Tutorial2.html#reading-the-the-data",
+    "href": "Tutorial2.html#reading-the-the-data",
+    "title": "ST201 Tutorial Sheet 2",
+    "section": "Reading the the Data",
+    "text": "Reading the the Data\nOpen a new R script. The insurance satisfaction dataset is available on the Rstudio server in the ST201 folder in a file called insurance_dat.rds. Load the file into R and look at the data."
+  },
+  {
+    "objectID": "Tutorial2.html#contingency-tables",
+    "href": "Tutorial2.html#contingency-tables",
+    "title": "ST201 Tutorial Sheet 2",
+    "section": "Contingency Tables",
+    "text": "Contingency Tables\nExercise 1\n\nUse the xtabs() function to create a contingency table for the insurance data called insurance_tab.\nAdd the marginal distributions to this contingency table using the function addmargins().\n\nExercise 2\nNow, suppose we are interested in looking at the table of proportions (the relative frequencies) rather than the raw frequencies as given by the contingency table above.\n\nCreate a table of proportions called insurance_prob_tab by applying the prop.table() function to the contingency table.\nUse the addmargins() function to add the marginal distributions to the proportion table created in part (a).\nWhat proportion of customers were satisfied with their insurance cover?"
+  },
+  {
+    "objectID": "Tutorial2.html#barplots",
+    "href": "Tutorial2.html#barplots",
+    "title": "ST201 Tutorial Sheet 2",
+    "section": "Barplots",
+    "text": "Barplots\nTo visualise the data in the contingency table we can produce a stacked barplot of the data in the table using the following code:\n\nbarplot(insurance_tab,\n        legend = TRUE,\n        args.legend = list(x = \"topleft\"),# This is changing the legend position\n        ylim = c(0,110)) # This is changing the y-axis limits\n\nNote the arguments in the function:\n\nt transposes the table to put vehicle on the x-axis\nlegend = TRUE. This tells the function to add a legend to the plot\nargs.legend = list(x = \"topleft\"). This tell the function where to place the legend.\nylim = c(0,100). This tells the function to make the y-axis limits go from 0 to 100. This is useful for improving the position of the legend.\n\nExercise 3\n\nInstead of the stacked barplot, change the plot so that the bars are side by side. Change the ylim argument to improve the legend position.\nBased on the barplots, describe what you have learned about the relationship between the type of vehicle and satisfaction with insurance cover."
+  },
+  {
+    "objectID": "Tutorial2.html#conditional-distributions",
+    "href": "Tutorial2.html#conditional-distributions",
+    "title": "ST201 Tutorial Sheet 2",
+    "section": "Conditional Distributions",
+    "text": "Conditional Distributions\nWhat proportion of people that owned diesel cars are satisfied with their insurance? To answer this we want the conditional distribution for satisfaction given diesel_car. We can get this using our contingency table as follows:\n\ninsurance_tab[1,1]/(insurance_tab[1,1] + insurance_tab[1,2])\n\nExercise 4\n\nModify the code above to find the proportion of people that owned petrol cars that were satisfied.\nWhat proportion of people that owned motorbikes were satisfied?\nBased on (b) and (c) does there appear to be a relationship between the type of vehicle and the satisfaction with insurance cover? Give a reason for your answer."
+  },
+  {
+    "objectID": "Tutorial2.html#odds",
+    "href": "Tutorial2.html#odds",
+    "title": "ST201 Tutorial Sheet 2",
+    "section": "Odds",
+    "text": "Odds\nWe can use the following code to find the odds of being satisfied for each vehicle type on the log scale:\n\nlibrary(vcd)\nsatisfaction_odds &lt;- lodds( ~ satisfaction + vehicle, \n                            data = insurance_dat)\ncoef(satisfaction_odds)\n\nsatisfied:unsatisfied|diesel_car  satisfied:unsatisfied|motorbike \n                     -0.06669137                      -0.51082562 \nsatisfied:unsatisfied|petrol_car \n                      0.27763174 \n\n\nExercise 5\n\nModify the code to put the odds on the original scale.\nWhat are the odds of satisfaction for petrol car users? Provide an interpretation.\nWhat is the odds ratio for petrol compared to diesel car users? Provide an interpretation."
+  },
+  {
+    "objectID": "Tutorial2.html#chi-squared-test",
+    "href": "Tutorial2.html#chi-squared-test",
+    "title": "ST201 Tutorial Sheet 2",
+    "section": "Chi-squared test",
+    "text": "Chi-squared test\nIf we want to test whether vehicle type and satisfaction are independent then we can perform Pearson’s Chi-squared test using R as follows:\n\nmy_chisq_test &lt;- chisq.test(insurance_tab)\nmy_chisq_test\n\nThe key components of the Chi-squared test are the test statistics and the p-value which are provided when you run the R code above. If you want to access specific parts of the my_chisq_test object created above then you can use the $ as follows:\n\nmy_chisq_test$statistic\n\nThis will give you the chi-squared test statistic.\nExercise 6\n\nAccess the part of my_chisq_test that provides the expected contingency table. Assuming vehicle type and satisfaction are independent, how many motorbike drivers would you expect to be unsatisfied with their insurance?\nCalculate the Pearson residual for the number of motorbike drivers that were unsatisfied with their insurance. Note that Pearson’s residuals are defined as\n\n\\[\\frac{observed - expected}{\\sqrt{expected}}.\\]\n\nWhat is the p-value for the Chi-squared test? Based on this would you conclude that vehicle type and satisfaction are independent? Give a reason for your answer."
+  },
+  {
+    "objectID": "Tutorial2.html#mosaic-plot",
+    "href": "Tutorial2.html#mosaic-plot",
+    "title": "ST201 Tutorial Sheet 2",
+    "section": "Mosaic Plot",
+    "text": "Mosaic Plot\nYou can also use a mosaic plot to visualise the data in the contingency table as follows:\n\nlibrary(vcd)\nmosaic(~ vehicle + satisfaction ,\n       data = insurance_dat)\n\nExercise 7\n\nAdd an appropriate argument to colour the mosaic plot based on the values of the Pearson residuals.\nWhat have your learned from this plot?\n\nSAVE YOUR R SCRIPT!\nClick: file - save as"
+  },
+  {
+    "objectID": "1-Data.html",
+    "href": "1-Data.html",
+    "title": "ST201 Data Analysis",
+    "section": "",
+    "text": "Loans DataDataset\n\n\nWe will consider a dataset with information for 50 loans\n\nEach row in the dataset represents a single loan\n\nformally, an observational unit\n\nEach column represents characteristics associated with the loan\n\nformally, a variable"
   }
 ]

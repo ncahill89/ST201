@@ -1,0 +1,214 @@
+---
+title: "ST201 Tutorial Sheet 2 "
+format: html
+editor: visual
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+INCLUDE = FALSE
+
+vehicle <- c(rep("petrol_car",58), 
+rep("diesel_car",60),
+rep("motorbike", 32))
+
+satisfaction <- 
+  c(rep("satisfied",33),
+  rep("unsatisfied",25),
+  rep("satisfied",29),
+  rep("unsatisfied",31),
+  rep("satisfied",12),
+  rep("unsatisfied",20))
+
+insurance_dat <- tibble::tibble(satisfaction,vehicle)
+
+#saveRDS(insurance_dat, "insurance_dat.rds")
+insurance_tab <- xtabs(~ vehicle + satisfaction, data = insurance_dat)
+
+library(vcd)
+```
+
+## Instructions
+
+-   Attempt the questions below before your tutorial in the week beginning 4th November 2024.
+
+## The Dataset
+
+A total of 150 customers of a petrol station are asked about their satisfaction with their car or motorbike insurance. The customers were asked if their vehicle type was a petrol car, a diesel car or a motorbike and if they were satisfied or unsatisfied with their insurance cover.
+
+## Reading the the Data
+
+**Open a new R script.** The insurance satisfaction dataset is available on the Rstudio server in the ST201 folder in a file called `insurance_dat.rds`. Load the file into R and look at the data.
+
+```{r, eval = FALSE, include = FALSE}
+insurance_dat <- readRDS("insurance_dat.rds")
+```
+
+## Contingency Tables
+
+**Exercise 1**
+
+(a) Use the `xtabs()` function to create a contingency table for the insurance data called `insurance_tab`.
+
+(b) Add the marginal distributions to this contingency table using the function `addmargins()`.
+
+**Exercise 2**
+
+Now, suppose we are interested in looking at the table of proportions (the relative frequencies) rather than the raw frequencies as given by the contingency table above.
+
+(a) Create a table of proportions called `insurance_prob_tab` by applying the `prop.table()` function to the contingency table.
+
+```{r,include = INCLUDE, echo = FALSE}
+insurance_prop_tab <- prop.table(insurance_tab)
+```
+
+(b) Use the `addmargins()` function to add the marginal distributions to the proportion table created in part (a).
+
+```{r,include = INCLUDE, echo = FALSE}
+addmargins(insurance_prop_tab)
+```
+
+(c) What proportion of customers were satisfied with their insurance cover?
+
+## Barplots
+
+To visualise the data in the contingency table we can produce a stacked barplot of the data in the table using the following code:
+
+```{r, eval = FALSE}
+barplot(insurance_tab,
+        legend = TRUE,
+        args.legend = list(x = "topleft"),# This is changing the legend position
+        ylim = c(0,110)) # This is changing the y-axis limits
+```
+
+Note the arguments in the function:
+
+1.  `t` transposes the table to put vehicle on the x-axis
+2.  `legend = TRUE`. This tells the function to add a legend to the plot
+3.  `args.legend = list(x = "topleft")`. This tell the function where to place the legend.
+4.  `ylim = c(0,100)`. This tells the function to make the y-axis limits go from 0 to 100. This is useful for improving the position of the legend.
+
+**Exercise 3**
+
+(a) Instead of the stacked barplot, change the plot so that the bars are side by side. Change the ylim argument to improve the legend position.
+
+```{r,include = INCLUDE, echo = FALSE}
+barplot(insurance_tab,
+        legend = TRUE,
+        beside = TRUE,
+        args.legend = list(x = "topleft"),# This is changing the legend position
+        ylim = c(0,45)) # This is changing the y-axis limits to improve the legend position
+```
+
+(b) Based on the barplots, describe what you have learned about the relationship between the type of vehicle and satisfaction with insurance cover.
+
+## Conditional Distributions
+
+What proportion of people that owned diesel cars are satisfied with their insurance? To answer this we want the conditional distribution for `satisfaction` given `diesel_car`. We can get this using our contingency table as follows:
+
+```{r,eval = FALSE}
+insurance_tab[1,1]/(insurance_tab[1,1] + insurance_tab[1,2])
+```
+
+**Exercise 4**
+
+(a) Modify the code above to find the proportion of people that owned petrol cars that were satisfied.
+
+```{r,include = INCLUDE, echo = FALSE}
+insurance_tab[3,1]/(insurance_tab[3,1] + insurance_tab[3,2])
+```
+
+(b) What proportion of people that owned motorbikes were satisfied?
+
+```{r,include = INCLUDE, echo = FALSE}
+insurance_tab[2,1]/(insurance_tab[2,1] + insurance_tab[2,2])
+```
+
+(c) Based on (b) and (c) does there appear to be a relationship between the type of vehicle and the satisfaction with insurance cover? Give a reason for your answer.
+
+## Odds
+
+We can use the following code to find the odds of being satisfied for each vehicle type on the log scale:
+
+```{r, eval = TRUE}
+library(vcd)
+satisfaction_odds <- lodds( ~ satisfaction + vehicle, 
+                            data = insurance_dat)
+coef(satisfaction_odds)
+```
+
+**Exercise 5**
+
+(a) Modify the code to put the odds on the original scale.
+
+(b) What are the odds of satisfaction for petrol car users? Provide an interpretation.
+
+(c) What is the odds ratio for petrol compared to diesel car users? Provide an interpretation.
+
+## Chi-squared test
+
+If we want to test whether vehicle type and satisfaction are independent then we can perform Pearson's Chi-squared test using R as follows:
+
+```{r, eval = FALSE}
+my_chisq_test <- chisq.test(insurance_tab)
+my_chisq_test
+```
+
+The key components of the Chi-squared test are the test statistics and the p-value which are provided when you run the R code above. If you want to access specific parts of the `my_chisq_test` object created above then you can use the `$` as follows:
+
+```{r, eval = FALSE}
+my_chisq_test$statistic
+```
+
+This will give you the chi-squared test statistic.
+
+**Exercise 6**
+
+(a) Access the part of `my_chisq_test` that provides the expected contingency table. Assuming vehicle type and satisfaction are independent, how many motorbike drivers would you expect to be unsatisfied with their insurance?
+
+```{r,eval = FALSE, include = INCLUDE, echo = FALSE}
+## Expected table
+my_chisq_test$expected
+
+## Expected motorbike drivers unsatisfied
+my_chisq_test$expected[2,2]
+```
+
+(b) Calculate the Pearson residual for the number of motorbike drivers that were unsatisfied with their insurance. Note that Pearson's residuals are defined as
+
+$$\frac{observed - expected}{\sqrt{expected}}.$$
+
+```{r,eval = FALSE,include = INCLUDE, echo = FALSE}
+expected <- my_chisq_test$expected[2,2]
+observed <- insurance_tab[2,2]
+
+(observed - expected)/sqrt(expected)
+```
+
+(c) What is the p-value for the Chi-squared test? Based on this would you conclude that vehicle type and satisfaction are independent? Give a reason for your answer.
+
+## Mosaic Plot
+
+You can also use a mosaic plot to visualise the data in the contingency table as follows:
+
+```{r, eval = FALSE}
+library(vcd)
+mosaic(~ vehicle + satisfaction ,
+       data = insurance_dat)
+```
+
+**Exercise 7**
+
+(a) Add an appropriate argument to colour the mosaic plot based on the values of the Pearson residuals.
+
+```{r, include = INCLUDE, echo = FALSE}
+library(vcd)
+mosaic(insurance_tab,
+       shade = TRUE)
+```
+
+(b) What have your learned from this plot?
+
+**SAVE YOUR R SCRIPT!**
+
+Click: file - save as

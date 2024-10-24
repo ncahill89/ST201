@@ -52,3 +52,6 @@ Contact: Niamh Cahill (niamh.cahill\@mu.ie)
 ## Tutorial Sheets
 
 [Tutorial Sheet 1: Numerical Data](https://ncahill89.github.io/ST201/Tutorial1.html)
+
+[Tutorial Sheet 2: Categorical Data](https://ncahill89.github.io/ST201/Tutorial2.html)
+
