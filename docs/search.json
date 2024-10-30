@@ -172,7 +172,7 @@
     "href": "index.html#lecture-slides",
     "title": "Welcome to Data Analysis!",
     "section": "Lecture Slides",
-    "text": "Lecture Slides\n\nWeek 1\n1a. Data\n1b. Code lecture; check the Rstudio Sever for Week1_Data.R\n\n\nWeek 2\n2a. Numerical Data\n2b. Code lecture; check the Rstudio Sever for Week2_NumericalData.R\n\n\nWeek 3\n3a. Association between Categorical Variables\n3b. Code lecture; check the Rstudio Sever for Week3_Categorical.R\n\n\nWeek 4\n4a. Association between Categorical Variables (2)\n4b. Code lecture; check the Rstudio Sever for Week4_Categorical(2).R\n\n\nWeek 5\n5a. Association between Categorical Variables (3)\n5b. Code lecture; check the Rstudio Sever for Week5_Categorical(3).R"
+    "text": "Lecture Slides\n\nWeek 1\n1a. Data\n1b. Code lecture; check the Rstudio Sever for Week1_Data.R\n\n\nWeek 2\n2a. Numerical Data\n2b. Code lecture; check the Rstudio Sever for Week2_NumericalData.R\n\n\nWeek 3\n3a. Association between Categorical Variables\n3b. Code lecture; check the Rstudio Sever for Week3_Categorical.R\n\n\nWeek 4\n4a. Association between Categorical Variables (2)\n4b. Code lecture; check the Rstudio Sever for Week4_Categorical(2).R\n\n\nWeek 5\n5a. Association between Categorical Variables (3)\n5b. Code lecture; check the Rstudio Sever for Week5_Categorical(3).R\n\n\nWeek 6\n6a. Discrete Probability Distributions\n6b. Code lecture; check the Rstudio Sever for Week6_Discrete.R"
   },
   {
     "objectID": "2-Numerical.html#watt-test-challenge-7-rounds",
@@ -943,5 +943,117 @@
     "title": "ST201 Data Analysis",
     "section": "",
     "text": "Loans DataDataset\n\n\nWe will consider a dataset with information for 50 loans\n\nEach row in the dataset represents a single loan\n\nformally, an observational unit\n\nEach column represents characteristics associated with the loan\n\nformally, a variable"
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#discrete-random-variables",
+    "href": "6-DiscretePDFs.html#discrete-random-variables",
+    "title": "ST201 Data Analysis",
+    "section": "Discrete Random Variables",
+    "text": "Discrete Random Variables\nA discrete random variable represents outcomes that take on distinct integer values, often counted or listed.\nExample: Coin Tossing Experiment\nImagine tossing a coin 3 times:\n\nPossible Outcomes: [ {HHH, HHT, HTH, THH, HTT, THT, TTH, TTT} ] There are 8 equally likely outcomes.\nDefine ( X ): the number of heads observed.\n\nProperties of \\(X\\)\n\nPossible Values of \\(X\\):\n\n\\(X = 0, 1, 2,\\) or \\(3\\) (number of heads from 0 to 3).\n\nInterpretation:\n\n\\(X\\) is a discrete random variable because it counts a finite set of outcomes."
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#probability-mass-function",
+    "href": "6-DiscretePDFs.html#probability-mass-function",
+    "title": "ST201 Data Analysis",
+    "section": "Probability Mass Function",
+    "text": "Probability Mass Function\nA Probability Mass Function (PMF) is a function that provides the probability that a discrete random variable is exactly equal to a particular value.\nFor a discrete random variable \\(X\\) with possible values \\(x_1, x_2, \\dots, x_n\\), the PMF, denoted as \\(P(X = x)\\) or \\(f(x)\\), assigns a probability to each possible outcome \\(x\\) such that:\n\\[P(X = x) = f(x)\\]\n\n\n\n\n\n\nProperties of a Probability Mass Function:\n\n\n\nNon-negativity: \\(f(x) \\geq 0\\) for all \\(x\\).\nNormalization: The sum of all probabilities equals 1, so \\(\\sum_x f(x) = 1\\)."
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#types-of-discrete-distributions",
+    "href": "6-DiscretePDFs.html#types-of-discrete-distributions",
+    "title": "ST201 Data Analysis",
+    "section": "Types of Discrete Distributions",
+    "text": "Types of Discrete Distributions\nWe’ll explore three important types of discrete distributions, each with unique characteristics and applications:\n\nBernoulli Distribution:\n\nDefinition: Models a single trial with two possible outcomes, typically “success” (1) or “failure” (0).\nExample: Testing for a defect in a manufactured product. Each product can either be defective (1) or non-defective (0).\nParameter: Probability of success, ( p ).\n\nBinomial Distribution:\n\nDefinition: Represents the number of successes in a fixed number of independent Bernoulli trials.\nExample: Counting the number of defective products in a batch of 20 items inspected on an assembly line.\nParameters: Number of trials, \\(n\\), and probability of success, \\(p\\).\n\nPoisson Distribution:\n\nDefinition: Models the number of times an event occurs within a fixed interval of time or space, given the average rate of occurrence.\nExample: Number of emails received in an hour.\nParameter: Average rate of occurrence, \\(\\lambda\\).\n\n\nThese distributions help model various types of discrete events."
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#the-bernoulli-distribution",
+    "href": "6-DiscretePDFs.html#the-bernoulli-distribution",
+    "title": "ST201 Data Analysis",
+    "section": "The Bernoulli Distribution",
+    "text": "The Bernoulli Distribution\nA ‘Bernoulli trial’ or ‘Bernoulli random variable’ is where there are just two possible outcomes which we denote either a ‘success’ or a ‘failure’.\nExample X = Defect in a manufactured product. The product can either be defective (1) or non-defective (0).\nProbability Mass Function\n\\[\\begin{eqnarray*}\nf(x)  & = & \\left\\{\\begin{array}{ll} p & \\mbox{ if $x$ = 1}\\\\\n1-p & \\mbox{ if $x$ = 0 }\\\\\n0 & \\mbox{ otherwise}  \\end{array}\\right.\n\\end{eqnarray*}\\]"
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#expected-value-and-variance",
+    "href": "6-DiscretePDFs.html#expected-value-and-variance",
+    "title": "ST201 Data Analysis",
+    "section": "Expected Value and Variance",
+    "text": "Expected Value and Variance\nDefinition: The expected value of a discrete random variable is defined as\n\\[E[X] = \\sum_xxP(X=x) \\] Definition: The variance of a discrete random variable is defined as\n\\[Var[X] = E[X^2] - E[X]^2\\]\nExpected value for a Bernoulli Random Variable\n\nE[\\(X\\)] = \\((0 \\times P[X=0]) + (1 \\times P[X=1]) = p\\)\n\nVariance for a Bernoulli Random Variable\n\nE[\\(X^2\\)] = \\((0^2 \\times p(0)) + (1^2 \\times p(1)) = p\\)\nVar(\\(X\\)) = E[\\(X^2\\)] - \\((E[X])^2 = p - p^2 = p(1-p)\\)"
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#the-binomial-distribution",
+    "href": "6-DiscretePDFs.html#the-binomial-distribution",
+    "title": "ST201 Data Analysis",
+    "section": "The Binomial Distribution",
+    "text": "The Binomial Distribution\nIf \\(n\\) Bernoulli trials all with probability \\(p\\) are performed independently, then \\(X\\), the number of successes out of the \\(n\\) trials is said to be a binomial random variable with parameters \\(n\\) and \\(p\\).\nExample 200 patients take a drug that has success probability 0.75. Let \\(X\\) = # successes. We write: \\[X \\sim Binomial(n=200, p=0.75).\\]\nProbability mass function\nIf \\(X \\sim\\) Binomial(\\(n,p\\)), the possible outcomes are k = 0, 1, 2, …, \\(n\\).\n\\[P(X=k) = {n \\choose k}p^k(1-p)^{n-k}\\]\nExpected value\nE[\\(X\\)] = \\(np\\)\nVariance\nVar(\\(X\\)) = \\(np(1-p)\\)"
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#assumptions-for-a-binomial-random-variable",
+    "href": "6-DiscretePDFs.html#assumptions-for-a-binomial-random-variable",
+    "title": "ST201 Data Analysis",
+    "section": "Assumptions for a Binomial Random Variable",
+    "text": "Assumptions for a Binomial Random Variable\nFor a random variable to follow a Binomial distribution, these key assumptions must hold:\n\nTwo Possible Outcomes per Trial\nEach trial has only two possible outcomes, typically labeled as “success” or “failure”.\nIndependence of Trials\nThe outcome of one trial does not influence the outcome of another; trials are independent.\nConstant Probability of Success (( p ))\nThe probability of success remains the same for each trial.\nFixed Number of Trials (( n ))\nThe process consists of a pre-determined, fixed number of identical trials."
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#binomial-example",
+    "href": "6-DiscretePDFs.html#binomial-example",
+    "title": "ST201 Data Analysis",
+    "section": "Binomial Example",
+    "text": "Binomial Example\nHospital records show that of patients suffering from a certain disease, 10% die of it. Assume we monitor 50 randomly selected patients with the disease. What is the probability mass function?\n\n\nn &lt;- 50\np &lt;- 0.9\nk &lt;- 0:n\npmf &lt;- dbinom(k,n,p)\nround(pmf,2)\n\n\n [1] 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00\n[16] 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00\n[31] 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.02 0.03 0.06 0.11 0.15\n[46] 0.18 0.18 0.14 0.08 0.03 0.01\n\n\n\n\nplot(k,pmf, type = \"h\")"
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#cumulative-distribution-function-cdf",
+    "href": "6-DiscretePDFs.html#cumulative-distribution-function-cdf",
+    "title": "ST201 Data Analysis",
+    "section": "Cumulative Distribution Function (CDF)",
+    "text": "Cumulative Distribution Function (CDF)\n\n\n\n\n\n\nCumulative Distribution Function (CDF)\n\n\nThe Cumulative Distribution Function (CDF) gives the probability that the variable takes on a value less than or equal to a specified value.\n\n\n\nDefinition\nThe CDF of a binomial random variable \\(X\\), denoted as \\(F(x)\\), is given by:\n\\[\nF(x) = P(X \\leq x) = \\sum_{k=0}^{\\lfloor x \\rfloor} P(X = k) = \\sum_{k=0}^{\\lfloor x \\rfloor} \\binom{n}{k} p^k (1 - p)^{n - k}\n\\]\n\n\n\n\n\n\n\nKey Points\n\nThe CDF is a non-decreasing function that ranges from 0 to 1.\nAs \\(x\\) increases, \\(F(x)\\) approaches 1.\nThe CDF can be used to calculate probabilities for a range of outcomes and is useful in hypothesis testing and statistical inference."
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#binomial-example-1",
+    "href": "6-DiscretePDFs.html#binomial-example-1",
+    "title": "ST201 Data Analysis",
+    "section": "Binomial Example",
+    "text": "Binomial Example\nHospital records show that of patients suffering from a certain disease, 10% die of it. Assume we monitor 50 randomly selected patients with the disease. What is the cumulative distribution function?\n\n\nn &lt;- 50\np &lt;- 0.9\nk &lt;- 0:n\ncdf &lt;- pbinom(k,n,p)\nround(cdf,2)\n\n\n [1] 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00\n[16] 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00\n[31] 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.02 0.06 0.12 0.23 0.38\n[46] 0.57 0.75 0.89 0.97 0.99 1.00\n\n\n\n\nplot(k,cdf)"
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#binomial-example-2",
+    "href": "6-DiscretePDFs.html#binomial-example-2",
+    "title": "ST201 Data Analysis",
+    "section": "Binomial Example",
+    "text": "Binomial Example\nWhat is the probability that of 50 randomly selected patients, exactly 40 will recover?\n\ndbinom(x = 40, size = 50, prob = 0.9)\n\n[1] 0.01518333\n\n\nWhat is the probability that of 50 randomly selected patients, 45 or more will recover?\n\n1 - pbinom(q = 44,size = 50, prob = 0.9)\n\n[1] 0.616123\n\n\nWhat is the 80th percentile of this distribution?\n\nqbinom(p = 0.8,size = 50, prob = 0.9)\n\n[1] 47"
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#the-poisson-distribution",
+    "href": "6-DiscretePDFs.html#the-poisson-distribution",
+    "title": "ST201 Data Analysis",
+    "section": "The Poisson Distribution",
+    "text": "The Poisson Distribution\nThe Poisson distribution is a probability model for count data. You can use a Poisson distribution to predict or explain the number of events occurring within a given interval of time or space\nExample\nSuppose the average number road deaths per month is estimated to be 12. The we say X, the number of road deaths per months has a Poisson distribution with mean \\(\\lambda = 12\\).\n\\[X \\sim Poisson(\\lambda = 12).\\]\nProbability Mass Function\n\\[P(X=k) = \\frac{e^{-\\lambda}\\lambda^k}{k!}, \\hspace{1em} k = 1,2, \\ldots\\]\nExpected value and variance\n\n\\(E[X] = \\lambda\\), \\(Var(X) = \\lambda\\)"
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#example",
+    "href": "6-DiscretePDFs.html#example",
+    "title": "ST201 Data Analysis",
+    "section": "Example",
+    "text": "Example\nSuppose a country experiences 4 tropical storms on average per year. What is the probability mass function?\n\n\nn &lt;- 40\nlambda &lt;- 4\nk &lt;- 0:n\npmf &lt;- dpois(k,lambda)\nround(pmf,2)\n\n\n [1] 0.02 0.07 0.15 0.20 0.20 0.16 0.10 0.06 0.03 0.01 0.01 0.00 0.00 0.00 0.00\n[16] 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00\n[31] 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00\n\n\n\n\nplot(k,pmf, type = \"h\")"
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#cumulative-distribution-function-cdf-2",
+    "href": "6-DiscretePDFs.html#cumulative-distribution-function-cdf-2",
+    "title": "ST201 Data Analysis",
+    "section": "Cumulative Distribution Function (CDF)",
+    "text": "Cumulative Distribution Function (CDF)\nDefinition\nFor a Poisson random variable \\(X\\) that represents the number of events occurring in a fixed interval of time or space, given an average rate of occurrence \\(\\lambda\\), the CDF is defined as follows:\n\\[\nF(x) = P(X \\leq x) = \\sum_{k=0}^{\\lfloor x \\rfloor} P(X = k) = \\sum_{k=0}^{\\lfloor x \\rfloor} \\frac{e^{-\\lambda} \\lambda^k}{k!}\n\\]\nKey Points\n\nThe CDF is a non-decreasing function ranging from 0 to 1.\nAs \\(x\\) increases, \\(F(x)\\) approaches 1.\nThe CDF can be used to determine probabilities for various outcomes and is useful in statistical analysis, such as hypothesis testing and confidence intervals for count data."
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#poisson-example",
+    "href": "6-DiscretePDFs.html#poisson-example",
+    "title": "ST201 Data Analysis",
+    "section": "Poisson Example",
+    "text": "Poisson Example\nSuppose a country experiences 4 tropical storms on average per year. What is the cumulative distribution function?\n\n\nn &lt;- 40\nlambda &lt;- 4\nk &lt;- 0:n\ncdf &lt;- ppois(k, lambda)\nround(cdf,2)\n\n\n [1] 0.02 0.09 0.24 0.43 0.63 0.79 0.89 0.95 0.98 0.99 1.00 1.00 1.00 1.00 1.00\n[16] 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00\n[31] 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00\n\n\n\n\nplot(k,cdf)"
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#poisson-example-1",
+    "href": "6-DiscretePDFs.html#poisson-example-1",
+    "title": "ST201 Data Analysis",
+    "section": "Poisson Example",
+    "text": "Poisson Example\nWhat is the probability the country experiences 6 tropical storms in a given year.\n\ndpois(x = 6,lambda)\n\n[1] 0.1041956\n\n\nWhat is the probability more than 4 storms will occur?\n\n1- ppois(q = 4,lambda)\n\n[1] 0.3711631\n\n\nWhat is the 80th percentile of this distribution?\n\nqpois(p = 0.8,lambda)\n\n[1] 6"
   }
 ]

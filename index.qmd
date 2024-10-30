@@ -48,6 +48,12 @@ Contact: Niamh Cahill (niamh.cahill\@mu.ie)
 
 5b. Code lecture; check the [Rstudio Sever](https://rstudio.maths.nuim.ie) for Week5_Categorical(3).R
 
+### Week 6
+
+6a. [Discrete Probability Distributions](https://ncahill89.github.io/ST201/6-DiscretePDFs.html)
+
+6b. Code lecture; check the [Rstudio Sever](https://rstudio.maths.nuim.ie) for Week6_Discrete.R
+
 
 ## Tutorial Sheets
 
