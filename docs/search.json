@@ -949,7 +949,7 @@
     "href": "6-DiscretePDFs.html#discrete-random-variables",
     "title": "ST201 Data Analysis",
     "section": "Discrete Random Variables",
-    "text": "Discrete Random Variables\nA discrete random variable represents outcomes that take on distinct integer values, often counted or listed.\nExample: Coin Tossing Experiment\nImagine tossing a coin 3 times:\n\nPossible Outcomes: [ {HHH, HHT, HTH, THH, HTT, THT, TTH, TTT} ] There are 8 equally likely outcomes.\nDefine ( X ): the number of heads observed.\n\nProperties of \\(X\\)\n\nPossible Values of \\(X\\):\n\n\\(X = 0, 1, 2,\\) or \\(3\\) (number of heads from 0 to 3).\n\nInterpretation:\n\n\\(X\\) is a discrete random variable because it counts a finite set of outcomes."
+    "text": "Discrete Random Variables\nA discrete random variable represents outcomes that take on distinct integer values, often counted or listed.\nExample: Coin Tossing Experiment\nImagine tossing a coin 3 times:\n\nPossible Outcomes: HHH, HHT, HTH, THH, HTT, THT, TTH, TTT There are 8 equally likely outcomes.\nDefine ( X ): the number of heads observed.\n\nProperties of \\(X\\)\n\nPossible Values of \\(X\\):\n\n\\(X = 0, 1, 2,\\) or \\(3\\) (number of heads from 0 to 3).\n\nInterpretation:\n\n\\(X\\) is a discrete random variable because it counts a finite set of outcomes."
   },
   {
     "objectID": "6-DiscretePDFs.html#probability-mass-function",
