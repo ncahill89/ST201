@@ -45,7 +45,7 @@ $$P(X = x) = f(x)$$
 2.  **Normalization**: The sum of all probabilities equals 1, so $\sum_x f(x) = 1$.
 :::
 
-## Types of Discrete Distributions {style="font-size: 60%;"}
+## Types of Discrete Distributions {style="font-size: 50%;"}
 
 We'll explore **three important types** of discrete distributions, each with unique characteristics and applications:
 
@@ -109,7 +109,7 @@ $$Var[X] = E[X^2] - E[X]^2$$
 
 <!-- -   $Var[X] = \frac{1}{6} \times \frac{5}{6} = \frac{5}{36}$ -->
 
-## The Binomial Distribution {style="font-size: 70%;"}
+## The Binomial Distribution {style="font-size: 60%;"}
 
 If $n$ Bernoulli trials all with probability $p$ are performed independently, then $X$, the number of successes out of the $n$ trials is said to be a binomial random variable with parameters $n$ and $p$.
 
@@ -129,7 +129,7 @@ E\[$X$\] = $np$
 
 Var($X$) = $np(1-p)$
 
-## Assumptions for a Binomial Random Variable {style="font-size: 70%;"}
+## Assumptions for a Binomial Random Variable {style="font-size: 60%;"}
 
 For a random variable to follow a **Binomial distribution**, these key assumptions must hold:
 
@@ -166,7 +166,7 @@ round(pmf,2)
 plot(k,pmf, type = "h")
 ```
 
-## Cumulative Distribution Function (CDF) {style="font-size: 70%;"}
+## Cumulative Distribution Function (CDF) {style="font-size: 60%;"}
 
 ::: callout-note
 ### Cumulative Distribution Function (CDF)
@@ -243,7 +243,7 @@ What is the 80th percentile of this distribution?
 qbinom(p = 0.8,size = 50, prob = 0.9)
 ```
 
-## The Poisson Distribution {style="font-size: 70%;"}
+## The Poisson Distribution {style="font-size: 60%;"}
 
 The Poisson distribution is a probability model for count data. You can use a Poisson distribution to predict or explain the number of events occurring within a given interval of time or space
 
@@ -282,7 +282,7 @@ round(pmf,2)
 plot(k,pmf, type = "h")
 ```
 
-## Cumulative Distribution Function (CDF) {style="font-size: 70%;"}
+## Cumulative Distribution Function (CDF) {style="font-size: 60%;"}
 
 ### Definition
 
