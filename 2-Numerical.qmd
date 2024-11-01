@@ -157,7 +157,6 @@ data <- data.frame(watts = round(watts))
 We could achieve a similar average in a different way:
 
 ![](images/Concept2-BikeERG-Exercise-Bike.jpg)
-
 :::
 
 ::: {.column width="55%"}
@@ -220,7 +219,6 @@ image_write(animation, path = "images/stripchart_animation2.gif", format = "gif"
 We could achieve a similar average in a different way:
 
 ![](images/Concept2-BikeERG-Exercise-Bike.jpg)
-
 :::
 
 ::: {.column width="55%"}
@@ -405,7 +403,6 @@ plot(time, watt2,ylab = "Watt", xlab = "Time (seconds)", pch = 19, cex = 0.7, co
 :::
 :::
 
-
 ## Scatter Plots {style="font-size: 80%;"}
 
 We can change the strategy and still maintain the same average.
@@ -466,7 +463,6 @@ image_write(animation, path = "images/scatter_animation3.gif", format = "gif")
 ## Scatter Plots {style="font-size: 80%;"}
 
 We can change the strategy and still maintain the same average.
-
 
 ::: columns
 ::: {.column width="50%"}
@@ -582,13 +578,12 @@ When working with data we often have a **sample** from a larger population.
 -   labeled $\tilde{x}^{(0.5)}$
 -   **Formula:** $$
     \tilde{x}^{(0.5)} = 
-\begin{cases}
+    \begin{cases}
     x_{(n+1)/2},& \text{if n is odd}\\
     \frac{1}{2}(x_{n/2} + x_{(n/2) + 1}), & \text{if n is even}
-\end{cases}$$
+    \end{cases}$$
 :::
 :::
-
 
 -   Consider 10 interest rates from the loan data and calculate the median
 
@@ -640,7 +635,6 @@ abline(h = 0.5)
 ## Quantiles {style="font-size: 80%;"}
 
 -   Let's look at the ECDF for the interest rate data and get an idea of where the 80th percentile is.
-
 
 ```{r, fig.align='center'}
 plot.ecdf(loan50$interest_rate) 
@@ -714,13 +708,12 @@ boxplot(loan50$interest_rate,
     $$s^2 = \frac{1}{n-1}\sum_{i = 1}^{n}(x_i - \bar{x})^2$$
 
     -   the variance of the interest rates in the loan dataset is 25.52
-    
-        - the standard deviation, $s$, is 5.05
+
+        -   the standard deviation, $s$, is 5.05
 
 ```{r,include = FALSE}
 var(loan50$interest_rate)
 ```
-
 
 ## Changing variances/standard deviations {style="font-size: 80%;"}
 
@@ -790,7 +783,6 @@ par(mfrow = c(1, 1))
 
 ```
 
-
 <!-- ## Robust statistics - Mean vs Median {style="font-size: 80%;"} -->
 
 ```{r, fig.width=6, fig.height=4, fig.align='center', eval = FALSE}
@@ -807,9 +799,8 @@ stripchart(loan1, method = "stack", at = 0, pch = 19, cex=2,
 
 ## Robust statistics - Mean vs Median {style="font-size: 80%;"}
 
-  - red = mean
-  - green = median
-
+-   red = mean
+-   green = median
 
 ```{r, fig.width=6, fig.height=4, fig.align='center'}
 loan1 <- sort(round(loan50$interest_rate))
@@ -827,15 +818,19 @@ abline(v = median(loan1), col = "green")
 <!-- ## Robust statistics - Mean vs Median {style="font-size: 80%;"} -->
 
 <!-- ```{r, fig.width=6, fig.height=4, fig.align='center'} -->
+
 <!-- stripchart(loan2, method = "stack", at = 0, pch = 19, cex=2, -->
+
 <!--            col = "steelblue", main = "", -->
+
 <!--            xlab = "Loan interest rates", ylab="",xlim = c(5,45)) -->
+
 <!-- ``` -->
 
 ## Robust statistics - Mean vs Median {style="font-size: 80%;"}
 
-  - red = mean
-  - green = median
+-   red = mean
+-   green = median
 
 ```{r, fig.width=6, fig.height=4, fig.align='center'}
 stripchart(loan2, method = "stack", at = 0, pch = 19, cex=2,

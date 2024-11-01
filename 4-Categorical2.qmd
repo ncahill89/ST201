@@ -307,8 +307,6 @@ Of the 9 athletes, 2 were smokers (22%) and of the 5 Non-athletes, 3 were smoker
 
 ## Class Example {style="font-size: 70%;"}
 
-
-
 ```{r}
 # Creating a matrix with the data
 data_matrix <- matrix(c(3, 11, 14, 1, 15, 16, 4, 26, 30),
