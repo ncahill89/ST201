@@ -963,7 +963,7 @@
     "href": "6-DiscretePDFs.html#types-of-discrete-distributions",
     "title": "ST201 Data Analysis",
     "section": "Types of Discrete Distributions",
-    "text": "Types of Discrete Distributions\nWe’ll explore three important types of discrete distributions, each with unique characteristics and applications:\n\nBernoulli Distribution:\n\nDefinition: Models a single trial with two possible outcomes, typically “success” (1) or “failure” (0).\nExample: Testing for a defect in a manufactured product. Each product can either be defective (1) or non-defective (0).\nParameter: Probability of success, ( p ).\n\nBinomial Distribution:\n\nDefinition: Represents the number of successes in a fixed number of independent Bernoulli trials.\nExample: Counting the number of defective products in a batch of 20 items inspected on an assembly line.\nParameters: Number of trials, \\(n\\), and probability of success, \\(p\\).\n\nPoisson Distribution:\n\nDefinition: Models the number of times an event occurs within a fixed interval of time or space, given the average rate of occurrence.\nExample: Number of emails received in an hour.\nParameter: Average rate of occurrence, \\(\\lambda\\).\n\n\nThese distributions help model various types of discrete events."
+    "text": "Types of Discrete Distributions\nWe’ll explore three important types of discrete distributions, each with unique characteristics and applications:\n\nBernoulli Distribution:\n\nDefinition: Models a single trial with two possible outcomes, typically “success” (1) or “failure” (0).\nExample: Testing for a defect in a manufactured product. Each product can either be defective (1) or non-defective (0).\nParameter: Probability of success, \\(p\\).\n\nBinomial Distribution:\n\nDefinition: Represents the number of successes in a fixed number of independent Bernoulli trials.\nExample: Counting the number of defective products in a batch of 20 items inspected on an assembly line.\nParameters: Number of trials, \\(n\\), and probability of success, \\(p\\).\n\nPoisson Distribution:\n\nDefinition: Models the number of times an event occurs within a fixed interval of time or space, given the average rate of occurrence.\nExample: Number of emails received in an hour.\nParameter: Average rate of occurrence, \\(\\lambda\\).\n\n\nThese distributions help model various types of discrete events."
   },
   {
     "objectID": "6-DiscretePDFs.html#the-bernoulli-distribution",
@@ -977,7 +977,7 @@
     "href": "6-DiscretePDFs.html#expected-value-and-variance",
     "title": "ST201 Data Analysis",
     "section": "Expected Value and Variance",
-    "text": "Expected Value and Variance\nDefinition: The expected value of a discrete random variable is defined as\n\\[E[X] = \\sum_xxP(X=x) \\] Definition: The variance of a discrete random variable is defined as\n\\[Var[X] = E[X^2] - E[X]^2\\]\nExpected value for a Bernoulli Random Variable\n\nE[\\(X\\)] = \\((0 \\times P[X=0]) + (1 \\times P[X=1]) = p\\)\n\nVariance for a Bernoulli Random Variable\n\nE[\\(X^2\\)] = \\((0^2 \\times p(0)) + (1^2 \\times p(1)) = p\\)\nVar(\\(X\\)) = E[\\(X^2\\)] - \\((E[X])^2 = p - p^2 = p(1-p)\\)"
+    "text": "Expected Value and Variance\nDefinition: The expected value of a discrete random variable is defined as\n\\[E[X] = \\sum_xxP(X=x) \\] Definition: The variance of a discrete random variable is defined as\n\\[Var[X] = E[X^2] - E[X]^2\\]"
   },
   {
     "objectID": "6-DiscretePDFs.html#the-binomial-distribution",
@@ -991,7 +991,7 @@
     "href": "6-DiscretePDFs.html#assumptions-for-a-binomial-random-variable",
     "title": "ST201 Data Analysis",
     "section": "Assumptions for a Binomial Random Variable",
-    "text": "Assumptions for a Binomial Random Variable\nFor a random variable to follow a Binomial distribution, these key assumptions must hold:\n\nTwo Possible Outcomes per Trial\nEach trial has only two possible outcomes, typically labeled as “success” or “failure”.\nIndependence of Trials\nThe outcome of one trial does not influence the outcome of another; trials are independent.\nConstant Probability of Success (( p ))\nThe probability of success remains the same for each trial.\nFixed Number of Trials (( n ))\nThe process consists of a pre-determined, fixed number of identical trials."
+    "text": "Assumptions for a Binomial Random Variable\nFor a random variable to follow a Binomial distribution, these key assumptions must hold:\n\nTwo Possible Outcomes per Trial\nEach trial has only two possible outcomes, typically labeled as “success” or “failure”.\nIndependence of Trials\nThe outcome of one trial does not influence the outcome of another; trials are independent.\nConstant Probability of Success (p) The probability of success remains the same for each trial.\nFixed Number of Trials (n) The process consists of a pre-determined, fixed number of identical trials."
   },
   {
     "objectID": "6-DiscretePDFs.html#binomial-example",
@@ -1026,7 +1026,7 @@
     "href": "6-DiscretePDFs.html#the-poisson-distribution",
     "title": "ST201 Data Analysis",
     "section": "The Poisson Distribution",
-    "text": "The Poisson Distribution\nThe Poisson distribution is a probability model for count data. You can use a Poisson distribution to predict or explain the number of events occurring within a given interval of time or space\nExample\nSuppose the average number road deaths per month is estimated to be 12. The we say X, the number of road deaths per months has a Poisson distribution with mean \\(\\lambda = 12\\).\n\\[X \\sim Poisson(\\lambda = 12).\\]\nProbability Mass Function\n\\[P(X=k) = \\frac{e^{-\\lambda}\\lambda^k}{k!}, \\hspace{1em} k = 1,2, \\ldots\\]\nExpected value and variance\n\n\\(E[X] = \\lambda\\), \\(Var(X) = \\lambda\\)"
+    "text": "The Poisson Distribution\nThe Poisson distribution is a probability model for count data. You can use a Poisson distribution to predict or explain the number of events occurring within a given interval of time or space\nPoisson Example\nSuppose the average number road deaths per month is estimated to be 12. The we say X, the number of road deaths per months has a Poisson distribution with rate \\(\\lambda = 12\\).\n\\[X \\sim Poisson(\\lambda = 12).\\]\nProbability Mass Function\n\\[P(X=k) = \\frac{e^{-\\lambda}\\lambda^k}{k!}, \\hspace{1em} k = 1,2, \\ldots\\]\nExpected value and variance\n\n\\(E[X] = \\lambda\\), \\(Var(X) = \\lambda\\)"
   },
   {
     "objectID": "6-DiscretePDFs.html#example",
@@ -1047,13 +1047,27 @@
     "href": "6-DiscretePDFs.html#poisson-example",
     "title": "ST201 Data Analysis",
     "section": "Poisson Example",
-    "text": "Poisson Example\nSuppose a country experiences 4 tropical storms on average per year. What is the cumulative distribution function?\n\n\nn &lt;- 40\nlambda &lt;- 4\nk &lt;- 0:n\ncdf &lt;- ppois(k, lambda)\nround(cdf,2)\n\n\n [1] 0.02 0.09 0.24 0.43 0.63 0.79 0.89 0.95 0.98 0.99 1.00 1.00 1.00 1.00 1.00\n[16] 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00\n[31] 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00\n\n\n\n\nplot(k,cdf)"
+    "text": "Poisson Example\nSuppose a country experiences 4 tropical storms on average per year. What is the probability mass function?\n\n\nn &lt;- 40\nlambda &lt;- 4\nk &lt;- 0:n\npmf &lt;- dpois(k,lambda)\nround(pmf,2)\n\n\n [1] 0.02 0.07 0.15 0.20 0.20 0.16 0.10 0.06 0.03 0.01 0.01 0.00 0.00 0.00 0.00\n[16] 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00\n[31] 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00\n\n\n\n\nplot(k,pmf, type = \"h\")"
   },
   {
     "objectID": "6-DiscretePDFs.html#poisson-example-1",
     "href": "6-DiscretePDFs.html#poisson-example-1",
     "title": "ST201 Data Analysis",
     "section": "Poisson Example",
-    "text": "Poisson Example\nWhat is the probability the country experiences 6 tropical storms in a given year.\n\ndpois(x = 6,lambda)\n\n[1] 0.1041956\n\n\nWhat is the probability more than 4 storms will occur?\n\n1- ppois(q = 4,lambda)\n\n[1] 0.3711631\n\n\nWhat is the 80th percentile of this distribution?\n\nqpois(p = 0.8,lambda)\n\n[1] 6"
+    "text": "Poisson Example\nSuppose a country experiences 4 tropical storms on average per year. What is the cumulative distribution function?\n\n\nn &lt;- 40\nlambda &lt;- 4\nk &lt;- 0:n\ncdf &lt;- ppois(k, lambda)\nround(cdf,2)\n\n\n [1] 0.02 0.09 0.24 0.43 0.63 0.79 0.89 0.95 0.98 0.99 1.00 1.00 1.00 1.00 1.00\n[16] 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00\n[31] 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00\n\n\n\n\nplot(k,cdf)"
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#expected-value-and-variance-1",
+    "href": "6-DiscretePDFs.html#expected-value-and-variance-1",
+    "title": "ST201 Data Analysis",
+    "section": "Expected Value and Variance",
+    "text": "Expected Value and Variance\nDefinition: The expected value of a discrete random variable is defined as\n\\[E[X] = \\sum_xxP(X=x) \\] Definition: The variance of a discrete random variable is defined as\n\\[Var[X] = E[X^2] - E[X]^2\\]\nExpected value for a Bernoulli Random Variable\n\nE[\\(X\\)] = \\((0 \\times P[X=0]) + (1 \\times P[X=1]) = p\\)\n\nVariance for a Bernoulli Random Variable\n\nE[\\(X^2\\)] = \\((0^2 \\times p(0)) + (1^2 \\times p(1)) = p\\)\nVar(\\(X\\)) = E[\\(X^2\\)] - \\((E[X])^2 = p - p^2 = p(1-p)\\)"
+  },
+  {
+    "objectID": "6-DiscretePDFs.html#poisson-example-2",
+    "href": "6-DiscretePDFs.html#poisson-example-2",
+    "title": "ST201 Data Analysis",
+    "section": "Poisson Example",
+    "text": "Poisson Example\nWhat is the probability the country experiences 6 tropical storms in a given year.\n\ndpois(x = 6,lambda)\n\n[1] 0.1041956\n\n\nWhat is the probability more than 4 storms will occur?\n\n1 - ppois(q = 4,lambda)\n\n[1] 0.3711631\n\n\nWhat is the 80th percentile of this distribution?\n\nqpois(p = 0.8,lambda)\n\n[1] 6"
   }
 ]

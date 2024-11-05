@@ -45,6 +45,15 @@ $$P(X = x) = f(x)$$
 2.  **Normalization**: The sum of all probabilities equals 1, so $\sum_x f(x) = 1$.
 :::
 
+## Expected Value and Variance {style="font-size: 70%;"}
+
+**Definition:** The expected value of a discrete random variable is defined as
+
+$$E[X] = \sum_xxP(X=x) $$ **Definition:** The variance of a discrete random variable is defined as
+
+$$Var[X] = E[X^2] - E[X]^2$$
+
+
 ## Types of Discrete Distributions {style="font-size: 50%;"}
 
 We'll explore **three important types** of discrete distributions, each with unique characteristics and applications:
@@ -52,7 +61,7 @@ We'll explore **three important types** of discrete distributions, each with uni
 1.  **Bernoulli Distribution**:
     -   **Definition**: Models a single trial with two possible outcomes, typically "success" (1) or "failure" (0).
     -   **Example**: Testing for a defect in a manufactured product. Each product can either be defective (1) or non-defective (0).
-    -   **Parameter**: Probability of success, ( p ).
+    -   **Parameter**: Probability of success, $p$.
 2.  **Binomial Distribution**:
     -   **Definition**: Represents the number of successes in a fixed number of independent Bernoulli trials.
     -   **Example**: Counting the number of defective products in a batch of 20 items inspected on an assembly line.
@@ -79,6 +88,7 @@ f(x)  & = & \left\{\begin{array}{ll} p & \mbox{ if $x$ = 1}\\
 0 & \mbox{ otherwise}  \end{array}\right.
 \end{eqnarray*}
 ```
+
 ## Expected Value and Variance {style="font-size: 70%;"}
 
 **Definition:** The expected value of a discrete random variable is defined as
@@ -139,10 +149,10 @@ For a random variable to follow a **Binomial distribution**, these key assumptio
 2.  **Independence of Trials**\
     The outcome of one trial does not influence the outcome of another; trials are **independent**.
 
-3.  **Constant Probability of Success (( p ))**\
+3.  **Constant Probability of Success (p)**
     The probability of success remains the **same** for each trial.
 
-4.  **Fixed Number of Trials (( n ))**\
+4.  **Fixed Number of Trials (n)**
     The process consists of a **pre-determined, fixed number** of identical trials.
 
 ## Binomial Example {style="font-size: 70%;"}
@@ -247,9 +257,9 @@ qbinom(p = 0.8,size = 50, prob = 0.9)
 
 The Poisson distribution is a probability model for count data. You can use a Poisson distribution to predict or explain the number of events occurring within a given interval of time or space
 
-**Example**
+**Poisson Example**
 
-Suppose the average number road deaths per month is estimated to be 12. The we say X, the number of road deaths per months has a Poisson distribution with mean $\lambda = 12$.
+Suppose the average number road deaths per month is estimated to be 12. The we say X, the number of road deaths per months has a Poisson distribution with rate $\lambda = 12$.
 
 $$X \sim Poisson(\lambda = 12).$$
 
@@ -261,7 +271,7 @@ $$P(X=k) = \frac{e^{-\lambda}\lambda^k}{k!}, \hspace{1em} k = 1,2, \ldots$$
 
 -   $E[X] = \lambda$, $Var(X) = \lambda$
 
-## Example {style="font-size: 70%;"}
+## Poisson Example {style="font-size: 70%;"}
 
 Suppose a country experiences 4 tropical storms on average per year. What is the probability mass function?
 
@@ -330,7 +340,7 @@ dpois(x = 6,lambda)
 What is the probability more than 4 storms will occur?
 
 ```{r, echo = TRUE, include=TRUE}
-1- ppois(q = 4,lambda)
+1 - ppois(q = 4,lambda)
 ```
 
 What is the 80th percentile of this distribution?

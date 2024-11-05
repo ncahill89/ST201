@@ -446,6 +446,12 @@ Prof.&nbsp;Niamh Cahill (she/her)
 </div>
 </div>
 </section>
+<section id="expected-value-and-variance" class="slide level2" style="font-size: 70%;">
+<h2>Expected Value and Variance</h2>
+<p><strong>Definition:</strong> The expected value of a discrete random variable is defined as</p>
+<p><span class="math display">\[E[X] = \sum_xxP(X=x) \]</span> <strong>Definition:</strong> The variance of a discrete random variable is defined as</p>
+<p><span class="math display">\[Var[X] = E[X^2] - E[X]^2\]</span></p>
+</section>
 <section id="types-of-discrete-distributions" class="slide level2" style="font-size: 50%;">
 <h2>Types of Discrete Distributions</h2>
 <p>We’ll explore <strong>three important types</strong> of discrete distributions, each with unique characteristics and applications:</p>
@@ -454,7 +460,7 @@ Prof.&nbsp;Niamh Cahill (she/her)
 <ul>
 <li><strong>Definition</strong>: Models a single trial with two possible outcomes, typically “success” (1) or “failure” (0).</li>
 <li><strong>Example</strong>: Testing for a defect in a manufactured product. Each product can either be defective (1) or non-defective (0).</li>
-<li><strong>Parameter</strong>: Probability of success, ( p ).</li>
+<li><strong>Parameter</strong>: Probability of success, <span class="math inline">\(p\)</span>.</li>
 </ul></li>
 <li><strong>Binomial Distribution</strong>:
 <ul>
@@ -482,7 +488,7 @@ f(x)  &amp; = &amp; \left\{\begin{array}{ll} p &amp; \mbox{ if $x$ = 1}\\
 0 &amp; \mbox{ otherwise}  \end{array}\right.
 \end{eqnarray*}\]</span>
 </section>
-<section id="expected-value-and-variance" class="slide level2" style="font-size: 70%;">
+<section id="expected-value-and-variance-1" class="slide level2" style="font-size: 70%;">
 <h2>Expected Value and Variance</h2>
 <p><strong>Definition:</strong> The expected value of a discrete random variable is defined as</p>
 <p><span class="math display">\[E[X] = \sum_xxP(X=x) \]</span> <strong>Definition:</strong> The variance of a discrete random variable is defined as</p>
@@ -523,10 +529,8 @@ f(x)  &amp; = &amp; \left\{\begin{array}{ll} p &amp; \mbox{ if $x$ = 1}\\
 Each trial has only two possible outcomes, typically labeled as <strong>“success”</strong> or <strong>“failure”</strong>.</p></li>
 <li><p><strong>Independence of Trials</strong><br>
 The outcome of one trial does not influence the outcome of another; trials are <strong>independent</strong>.</p></li>
-<li><p><strong>Constant Probability of Success (( p ))</strong><br>
-The probability of success remains the <strong>same</strong> for each trial.</p></li>
-<li><p><strong>Fixed Number of Trials (( n ))</strong><br>
-The process consists of a <strong>pre-determined, fixed number</strong> of identical trials.</p></li>
+<li><p><strong>Constant Probability of Success (p)</strong> The probability of success remains the <strong>same</strong> for each trial.</p></li>
+<li><p><strong>Fixed Number of Trials (n)</strong> The process consists of a <strong>pre-determined, fixed number</strong> of identical trials.</p></li>
 </ol>
 </section>
 <section id="binomial-example" class="slide level2" style="font-size: 70%;">
@@ -652,8 +656,8 @@ F(x) = P(X \leq x) = \sum_{k=0}^{\lfloor x \rfloor} P(X = k) = \sum_{k=0}^{\lflo
 <section id="the-poisson-distribution" class="slide level2" style="font-size: 60%;">
 <h2>The Poisson Distribution</h2>
 <p>The Poisson distribution is a probability model for count data. You can use a Poisson distribution to predict or explain the number of events occurring within a given interval of time or space</p>
-<p><strong>Example</strong></p>
-<p>Suppose the average number road deaths per month is estimated to be 12. The we say X, the number of road deaths per months has a Poisson distribution with mean <span class="math inline">\(\lambda = 12\)</span>.</p>
+<p><strong>Poisson Example</strong></p>
+<p>Suppose the average number road deaths per month is estimated to be 12. The we say X, the number of road deaths per months has a Poisson distribution with rate <span class="math inline">\(\lambda = 12\)</span>.</p>
 <p><span class="math display">\[X \sim Poisson(\lambda = 12).\]</span></p>
 <p><strong>Probability Mass Function</strong></p>
 <p><span class="math display">\[P(X=k) = \frac{e^{-\lambda}\lambda^k}{k!}, \hspace{1em} k = 1,2, \ldots\]</span></p>
@@ -662,8 +666,8 @@ F(x) = P(X \leq x) = \sum_{k=0}^{\lfloor x \rfloor} P(X = k) = \sum_{k=0}^{\lflo
 <li><span class="math inline">\(E[X] = \lambda\)</span>, <span class="math inline">\(Var(X) = \lambda\)</span></li>
 </ul>
 </section>
-<section id="example" class="slide level2" style="font-size: 70%;">
-<h2>Example</h2>
+<section id="poisson-example" class="slide level2" style="font-size: 70%;">
+<h2>Poisson Example</h2>
 <p>Suppose a country experiences 4 tropical storms on average per year. What is the probability mass function?</p>
 <div class="cell columns column-output-location">
 <div class="column">
@@ -706,7 +710,7 @@ F(x) = P(X \leq x) = \sum_{k=0}^{\lfloor x \rfloor} P(X = k) = \sum_{k=0}^{\lflo
 <li>The CDF can be used to determine probabilities for various outcomes and is useful in statistical analysis, such as hypothesis testing and confidence intervals for count data.</li>
 </ul>
 </section>
-<section id="poisson-example" class="slide level2" style="font-size: 70%;">
+<section id="poisson-example-1" class="slide level2" style="font-size: 70%;">
 <h2>Poisson Example</h2>
 <p>Suppose a country experiences 4 tropical storms on average per year. What is the cumulative distribution function?</p>
 <div class="cell columns column-output-location">
@@ -736,7 +740,7 @@ F(x) = P(X \leq x) = \sum_{k=0}^{\lfloor x \rfloor} P(X = k) = \sum_{k=0}^{\lflo
 </div>
 </div></div>
 </section>
-<section id="poisson-example-1" class="slide level2" style="font-size: 70%;">
+<section id="poisson-example-2" class="slide level2" style="font-size: 70%;">
 <h2>Poisson Example</h2>
 <p>What is the probability the country experiences 6 tropical storms in a given year.</p>
 <div class="cell">
@@ -747,7 +751,7 @@ F(x) = P(X \leq x) = \sum_{k=0}^{\lfloor x \rfloor} P(X = k) = \sum_{k=0}^{\lflo
 </div>
 <p>What is the probability more than 4 storms will occur?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="dv">1</span><span class="sc">-</span> <span class="fu">ppois</span>(<span class="at">q =</span> <span class="dv">4</span>,lambda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">ppois</span>(<span class="at">q =</span> <span class="dv">4</span>,lambda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3711631</code></pre>
 </div>
