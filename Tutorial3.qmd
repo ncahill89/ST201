@@ -1,0 +1,218 @@
+---
+title: "ST201 Tutorial Sheet 3 "
+format: html
+editor: visual
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+ECHO = FALSE
+INCLUDE = FALSE
+```
+
+## Instructions
+
+-   Attempt the questions below before your tutorial in the week beginning 18th November 2024.
+
+**Exercise 1**
+
+A multiple choice exam has 8 questions, with four choices given in each question. Suppose that a student hasn't studied and guesses the answers by choosing an answer at random.
+
+If we say that X is the number of times the student answers the question correctly, where
+
+$X \sim Binomial(n = 8, p = 0.25)$
+
+then we can find probabilities and quantiles using the `dbinom()`, `pbinom()` and `qbinom()` functions.
+
+------------------------------------------------------------------------
+
+**Note:** To think about why we choose these values for $n$ and $p$ in the binomial distribution we need to consider the following:
+
+-   In terms of answers to the questions, they can either be right or wrong, so for each question we have a binary outcome.
+
+-   The number of "trials" you have is 8 (i.e., 8 questions)
+
+-   The probability of getting a question correct by chance is 1/4 (i.e., for each question there are 4 possible answers with 1 being the correct answer)
+
+------------------------------------------------------------------------
+
+(a) Compute the probability that the student answers all questions correctly?
+
+```{r, echo = ECHO, include = INCLUDE}
+dbinom(x = 8,
+       size = 8,
+       prob = 0.25)
+```
+
+(b) Compute the probability that the student answers all questions incorrectly.
+
+```{r, echo = ECHO, include = INCLUDE}
+## just get the probability of failure instead of success
+## so use p = 0.75 (probability of an incorrect answer) instead
+
+dbinom(x = 8,
+       size = 8,
+       prob = 0.75)
+
+## or...get the probability of zero correct answers (keeping p = 0.25)
+
+dbinom(x = 0,
+       size = 8,
+       prob = 0.25)
+
+```
+
+(c) Compute the probability that the student answers 2 or more correctly.
+
+```{r, echo = ECHO, include = INCLUDE}
+## First consider the probability of 1 or less and then find 1 - that value
+1 - pbinom(q = 1,
+       size = 8,
+       prob = 0.25)
+```
+
+(d) What is the 60th percentile for this distribution?
+
+```{r, echo = ECHO, include = INCLUDE}
+## First consider the probability of 1 or less and then find 1 - that value
+qbinom(p = 0.6, 
+       size = 8, 
+       prob = 0.25)
+```
+
+(e) Suppose the student is able to eliminate one of the answers as incorrect and chooses randomly from the other three choices. What is the probability the student answers 2 or more questions correctly?
+
+```{r, echo = ECHO, include = INCLUDE}
+## here the success probability changes to 1/3
+1 - pbinom(q = 1,
+       size = 8,
+       prob = 0.33)
+```
+
+**Exercise 2**
+
+Assume that users are expected to arrive at an ATM to withdraw cash at a rate of 2.5 every 30 minutes.
+
+If we say that the random variable X, the number of people that use the ATM in a 30 minute interval has a Poisson distribution such that
+
+$$X \sim Poisson(\lambda = 2.5)$$
+
+We can find probabilities and quantiles using the `dpois()`, `ppois()` and `qpois()` functions.
+
+------------------------------------------------------------------------
+
+**Note:** To think about how we choose $\lambda$ in the Poisson distribution we need to consider the following:
+
+-   What is the interval we are assuming when calculating the probability?
+
+    -   If we are interested in a 30 minute interval the we use $\lambda = 2.5$
+
+    -   If we change the interval then we change $\lambda$, for example, if we are interested in a 15 minute interval the we use $\lambda = 1.25$.
+
+------------------------------------------------------------------------
+
+(a) Compute the probability that in a particular 30 minute interval, 1 person uses the machine.
+
+```{r,echo = ECHO, include = INCLUDE}
+## here the probabilty changes to 1/3
+dpois(x = 1, 
+      lambda = 2.5)
+```
+
+(b) Compute the probability that in a particular 30 minute interval, more than one person uses the machine.
+
+```{r, echo = ECHO, include = INCLUDE}
+## First consider the probability of 1 or less and then find 1 - that value
+
+1- ppois(q = 1, 
+        lambda = 2.5)
+```
+
+(c) Compute the probability that 3 or more people use the machine in an hour interval.
+
+```{r, echo = ECHO, include = INCLUDE}
+## if lambda = 2.5 per 30 minutes then lambda = 5 per hour
+## consider the probability of 2 or less and then find 1 - that value
+
+1- ppois(q = 2, 
+        lambda = 5)
+```
+
+(d) What is the 90th percentile value for the number of machine users in an hour interval?
+
+```{r, echo = ECHO, include = INCLUDE}
+## as above if lambda = 2.5 per 30 minutes then lambda = 5 per hour
+
+qpois(p = 0.9, 
+      lambda = 5)
+```
+
+**Exercise 3**
+
+A fisherman catches, on average, 24 fish in a 4 hour time period. Let Y be a random variable denoting the number of fish caught per hour hour.
+
+(a) What is the E(Y)?
+
+```{r,echo = ECHO, include = INCLUDE}
+## Expected no. of fish per hour = 6
+```
+
+(b) What is the probability that the fisherman catches exactly 5 fish in an hour?
+
+```{r,echo = ECHO, include = INCLUDE}
+## lambda = expected no. per hour
+lambda = 6
+dpois(5,lambda)
+```
+
+(b) What is the probability that the fisherman catches 7 or more fish in a 2 hour period?
+
+```{r,echo = ECHO, include = INCLUDE}
+## lambda = expected no. per two hour
+lambda = 6*2
+## 7 or more = 1 - (6 or less)
+1 - ppois(6,lambda)
+```
+
+**Exercise 4**
+
+Assume that 20% of the emails that a University lecturer receives come from students. Let X be a random variable denoting the number of non-student emails.
+
+(a) If the lecturer receives a total of 50 emails on a given day. What is the expected number of non-student emails that the lecturer receives.
+
+```{r,echo = ECHO, include = INCLUDE}
+## Expected no. of non student emails
+n <- 50 
+p <- 0.8
+n*p
+```
+
+(b) What is the probability exactly 10 of the emails are from students?
+
+```{r,echo = ECHO, include = INCLUDE}
+## 10 emails from students = 40 non-student emails
+dbinom(40,n,p)
+
+## or answer directly using 1-p
+dbinom(10,n,1-p)
+```
+
+(c) What is the probability the lecturer receives more than 40 non-student emails.
+
+```{r,echo = ECHO, include = INCLUDE}
+## more than 40 = 1 - (40 or less)
+1- pbinom(40,n,p)
+```
+
+(d) Simulate 100 samples from the Binomial distribution specified above. What is the mean of the samples, how does that compare to (a). Work out the probability from (c) using the simulated samples. Repeat but by simulating 10000 samples. Does this change the results?
+
+```{r, echo = ECHO, include = INCLUDE}
+n_samps <- 100
+
+sim_samps <- rbinom(n_samps,n,p)
+mean(sim_samps)
+
+sum(sim_samps > 40)/n_samps
+
+## get more accuracy with 10000 samples
+```
