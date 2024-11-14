@@ -58,7 +58,7 @@ Midterm exam week
 
 ### Week 8
 
-8a. [Continuous Probability Distributions](https://ncahill89.github.io/ST201/6-ContinuousPDFs.html)
+8a. [Continuous Probability Distributions](https://ncahill89.github.io/ST201/8-ContinuousPDFs.html)
 
 8b. Code lecture; check the [Rstudio Sever](https://rstudio.maths.nuim.ie) for Week8_Continuous.R
 
