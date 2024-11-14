@@ -1,0 +1,247 @@
+---
+title: "ST201 Data Analysis"
+subtitle:  "Continuous Probability Distributions"
+author: "Prof. Niamh Cahill (she/her)"
+format: 
+  revealjs:
+    highlight-style: github
+editor: visual
+---
+
+## Continuous Random Variables {style="font-size: 65%;"}
+
+A **continuous random variable** is a variable that can take any real value within an interval, meaning it can assume an infinite number of possible values across the specified range. Common intervals include:
+
+-   **Whole real line:** $(- \infty, \infty)$
+-   **Positive real line:** $(0, \infty)$
+-   **Finite intervals:** $(5, 25)$, $(a, b)$, etc.
+
+#### Key Characteristics
+
+-   Values are not countable—there’s an infinite number of possible outcomes.
+
+-   Typically modeled with a probability density function (PDF).
+
+**Examples:**
+
+-   Amount of rainfall in a day (measured in mm)
+
+-   Distance covered in a training session (km)
+
+-   Weight of a book (grams)
+
+## Properties of Continuous Probability Distributions {style="font-size: 65%;"}
+
+-   The graph of a continuous probability distribution is a curve. Probability is represented by area under the curve.
+
+-   The curve is called the probability density function (abbreviated as pdf). We use the symbol f(x) to represent the curve.
+
+-   Area under the curve is given by a different function called the cumulative distribution function (abbreviated as cdf). The cumulative distribution function, F(x), is used to evaluate probability as area.
+
+-   In technical terms
+
+$$F(x) = P(X \le x) = \displaystyle\int_{-\infty}^{x} f(u) du$$.
+
+## Properties of Continuous Probability Distributions {style="font-size: 65%;"}
+
+-   The outcomes are measured, not counted.
+
+-   The entire area under the curve and above the x-axis is equal to one.
+
+-   In technical terms
+
+$$\displaystyle\int_{-\infty}^{\infty} f(x) dx = 1$$.
+
+-   Probability is found for intervals of x values rather than for individual x values.
+
+-   $P(c < x < d)$ is the probability that the random variable X is in the interval between the values c and d. This equates to the area under the curve, above the x-axis, to the right of c and the left of d.
+
+-   $P(x = c) = 0$. The probability that x takes on any single individual value is zero.
+
+## Types of continuous distributions {style="font-size: 65%;"}
+
+We will look at 3 'special' types of continuous distributions. These are the:
+
+-   Uniform distribution
+
+-   Exponential distribution
+
+-   Normal distribution
+
+For continuous probability distributions, PROBABILITY = AREA.
+
+::: {layout-ncol="2"}
+![](images/_uniform.png){width="600"}
+
+![](images/_exponential.png){width="600"}
+:::
+
+![](images/_normal.png){fig-align="center" width="600"}
+
+<!-- \includegraphics[scale = 0.35]{_uniform.png} -->
+
+<!-- \includegraphics[scale = 0.35]{_exponential.png} -->
+
+<!-- \includegraphics[scale = 0.35]{_normal.png} -->
+
+## The Uniform Distribution {style="font-size: 70%;"}
+
+Suppose I choose a number randomly from \[a,b\].
+
+-   Let $X$ be the resulting number, then $X \sim$ Uniform \[a,b\]
+
+**PDF and CDF**
+
+```{=tex}
+\begin{eqnarray*}
+f(x)  & = & \left\{\begin{array}{ll} 
+0 & \mbox{ if $x < a$}\\ 
+\frac{1}{b-a} & \mbox{ if $a \le x \le b$}\\ 
+0 & \mbox{ if $x > b$}  
+\end{array}\right.
+\end{eqnarray*}
+```
+```{=tex}
+\begin{eqnarray*}
+F(x) = P(X \leq x)   & = & \left\{\begin{array}{ll} 
+0 & \mbox{ if $x < a$}\\ 
+\frac{x-a}{b-a} & \mbox{ if $a \le x \le b$}\\ 
+1 & \mbox{ if $x > b$}  
+\end{array}\right.
+\end{eqnarray*}
+```
+## Expected Value and Variance {style="font-size: 70%;"}
+
+**Definition:** The expected value of a discrete random variable is defined as
+
+$$E[X] = \int_a^bxf(x) $$ **Definition:** The variance of a discrete random variable is defined as
+
+$$Var[X] = E[X^2] - E[X]^2$$
+
+**E\[X\] and Var\[X\] for a uniform random variable:** Formulas for the theoretical mean and standard deviation are
+
+-   $E(X) = \mu = \frac{a+b}{2}$
+
+-   $Var(X) = \sigma^2 = \frac{(b-a)^2}{12}$
+
+## Example {style="font-size: 70%;"}
+
+The net weight of a packages has a uniform distribution over the interval 980 g to 1030 g.
+
+-   What is the expected weight of a package?
+
+-   What is the probability that a package weighs less than 1000 g?
+
+-   What is the probability that a package weighs between 990 and 1010 g?
+
+-   What is the 75th percentile of this distribution?
+
+```{r, echo = TRUE}
+punif(1000, 980, 1030)
+
+punif(1010, 980, 1030) - punif(990, 980, 1030)
+
+qunif(0.75, 980, 1030)
+```
+
+## The Exponential Distribution {style="font-size: 70%;"}
+
+The exponential distribution is often concerned with the amount of time until some specific event occurs.
+
+**Example**
+
+Let $X$ = time in minutes between arrivals at a supermarket checkout. On average there are 2 arrivals per minute. We can model this as $X \sim$ exponential($\lambda=2$).
+
+**PDF and CDF**
+
+$$f(x) = \lambda e^{-\lambda x} \mbox{ with }x \ge 0$$
+
+```{=tex}
+\begin{eqnarray*}
+F(x) &=& P(X \le x) = \int_{0}^{x}\lambda e^{-\lambda u} du\\
+&=& 1 - e^{-\lambda x}
+\end{eqnarray*}
+```
+$E[X] = \frac{1}{\lambda}$ \hspace{1em} $Var(X) = \frac{1}{\lambda^2}$
+
+## Example {style="font-size: 70%;"}
+
+Let Y be the random variable which counts the “number of accesses per second for a search engine”. Assume that Y is Poisson distributed with parameter $\lambda = 10$ (E\[Y\] = 10, Var\[Y\] = 10). The random variable X, “waiting time until the next access”, is then exponentially distributed with parameter $\lambda = 10$
+
+-   What is the expected waiting time for next access?
+
+-   What is the probability that the waiting time is $\le$ 0.6 seconds?
+
+-   What is the probability that the waiting time is in \[0.05, 0.2\] seconds?
+
+-   What is the 80th percentile of this distribution?
+
+```{r, echo = TRUE}
+pexp(0.6, rate = 10)
+
+pexp(0.2, rate = 10) - pexp(0.05, rate = 10)
+
+qexp(0.8, 10)
+```
+
+## The Normal Distribution {style="font-size: 70%;"}
+
+This continuous distribution is one of the most commonly used distributions in statistics. It is used to model, for example,
+
+-   experimental errors in scientific measurements
+
+-   test scores in aptitude tests
+
+-   heights of people selected at random from a population.
+
+The normal distribution has two parameters (two numerical descriptive measures), the mean ($\mu$) and the standard deviation ($\sigma$). If X is a quantity to be measured that has a normal distribution with mean ($\mu$) and standard deviation ($\sigma$), we designate this by writing
+
+$$X \sim N(\mu, \sigma)$$
+
+## The Normal Distribution {style="font-size: 70%;"}
+
+**Probability density function**
+
+This is a rather complicated function.
+
+$$f(x) = \frac{1}{ \sqrt{2\pi\sigma^2} }e^{-\frac{(x-\mu)^{2}}{2 \sigma^{2}}}$$ with $-\infty < x < \infty$.
+
+The shape of the function is:
+
+![](_normal.png)
+
+-   The parameters $\mu$ and $\sigma$ are the mean and standard deviation respectively. E\[$X$\] = $\mu$ and Var($X$) = $\sigma^2$.
+
+## Properties of the normal distribution {style="font-size: 70%;"}
+
+-   The shape of the normal pdf is described as bell shaped. It is symmetric about $\mu$ (half of the area under the curve is above and half below $\mu$).
+
+-   Approximately 68% of the area under the curves lies in ($\mu-\sigma$, $\mu+\sigma$).
+
+-   Approximately 95% of the area under the curves lies in ($\mu-2\sigma$, $\mu+2\sigma$).
+
+-   Approximately 99.7% of the area under the curves lies in ($\mu-3\sigma$, $\mu+3\sigma$).
+
+-   This is known as the 68-95-99.7 rule. Graphically it is represented by:
+
+![](images/normal_rule.png){fig-align="center"}
+
+## Example {style="font-size: 70%;"}
+
+An orange farmer sells his oranges in wooden boxes. The weights of the boxes vary and are assumed to be normally distributed with $\mu = 15$ kg and $\sigma^2 =2.25$ kg$^2$.
+
+-   What is the probability that a box with a weight of less than 13 kg is sold?
+
+-   What is the probability that the weight is between 12 and 14 kg?
+
+-   What is the 68th percentile of this distribution?
+
+```{r, echo=TRUE}
+
+pnorm(13, 15, sqrt(2.25))
+
+pnorm(14, 15, sqrt(2.25)) - pnorm(12, 15, sqrt(2.25))
+
+qexp(0.68, 15, sqrt(2.25))
+
+```

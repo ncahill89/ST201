@@ -52,6 +52,18 @@ Contact: Niamh Cahill (niamh.cahill\@mu.ie)
 
 6b. Code lecture; check the [Rstudio Sever](https://rstudio.maths.nuim.ie) for Week6_Discrete.R
 
+### Week 7
+
+Midterm exam week
+
+### Week 8
+
+8a. [Continuous Probability Distributions](https://ncahill89.github.io/ST201/6-ContinuousPDFs.html)
+
+8b. Code lecture; check the [Rstudio Sever](https://rstudio.maths.nuim.ie) for Week8_Continuous.R
+
+
+
 ## Tutorial Sheets
 
 [Tutorial Sheet 1: Numerical Data](https://ncahill89.github.io/ST201/Tutorial1.html)

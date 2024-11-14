@@ -172,7 +172,7 @@
     "href": "index.html#lecture-slides",
     "title": "Welcome to Data Analysis!",
     "section": "Lecture Slides",
-    "text": "Lecture Slides\n\nWeek 1\n1a. Data\n1b. Code lecture; check the Rstudio Sever for Week1_Data.R\n\n\nWeek 2\n2a. Numerical Data\n2b. Code lecture; check the Rstudio Sever for Week2_NumericalData.R\n\n\nWeek 3\n3a. Association between Categorical Variables\n3b. Code lecture; check the Rstudio Sever for Week3_Categorical.R\n\n\nWeek 4\n4a. Association between Categorical Variables (2)\n4b. Code lecture; check the Rstudio Sever for Week4_Categorical(2).R\n\n\nWeek 5\n5a. Association between Categorical Variables (3)\n5b. Code lecture; check the Rstudio Sever for Week5_Categorical(3).R\n\n\nWeek 6\n6a. Discrete Probability Distributions\n6b. Code lecture; check the Rstudio Sever for Week6_Discrete.R"
+    "text": "Lecture Slides\n\nWeek 1\n1a. Data\n1b. Code lecture; check the Rstudio Sever for Week1_Data.R\n\n\nWeek 2\n2a. Numerical Data\n2b. Code lecture; check the Rstudio Sever for Week2_NumericalData.R\n\n\nWeek 3\n3a. Association between Categorical Variables\n3b. Code lecture; check the Rstudio Sever for Week3_Categorical.R\n\n\nWeek 4\n4a. Association between Categorical Variables (2)\n4b. Code lecture; check the Rstudio Sever for Week4_Categorical(2).R\n\n\nWeek 5\n5a. Association between Categorical Variables (3)\n5b. Code lecture; check the Rstudio Sever for Week5_Categorical(3).R\n\n\nWeek 6\n6a. Discrete Probability Distributions\n6b. Code lecture; check the Rstudio Sever for Week6_Discrete.R\n\n\nWeek 7\nMidterm exam week\n\n\nWeek 8\n8a. Continuous Probability Distributions\n8b. Code lecture; check the Rstudio Sever for Week8_Continuous.R"
   },
   {
     "objectID": "2-Numerical.html#watt-test-challenge-7-rounds",
@@ -1083,5 +1083,96 @@
     "title": "ST201 Tutorial Sheet 3",
     "section": "",
     "text": "Attempt the questions below before your tutorial in the week beginning 18th November 2024.\n\nExercise 1\nA multiple choice exam has 8 questions, with four choices given in each question. Suppose that a student hasn’t studied and guesses the answers by choosing an answer at random.\nIf we say that X is the number of times the student answers the question correctly, where\n\\(X \\sim Binomial(n = 8, p = 0.25)\\)\nthen we can find probabilities and quantiles using the dbinom(), pbinom() and qbinom() functions.\n\nNote: To think about why we choose these values for \\(n\\) and \\(p\\) in the binomial distribution we need to consider the following:\n\nIn terms of answers to the questions, they can either be right or wrong, so for each question we have a binary outcome.\nThe number of “trials” you have is 8 (i.e., 8 questions)\nThe probability of getting a question correct by chance is 1/4 (i.e., for each question there are 4 possible answers with 1 being the correct answer)\n\n\n\nCompute the probability that the student answers all questions correctly?\nCompute the probability that the student answers all questions incorrectly.\nCompute the probability that the student answers 2 or more correctly.\nWhat is the 60th percentile for this distribution?\nSuppose the student is able to eliminate one of the answers as incorrect and chooses randomly from the other three choices. What is the probability the student answers 2 or more questions correctly?\n\nExercise 2\nAssume that users are expected to arrive at an ATM to withdraw cash at a rate of 2.5 every 30 minutes.\nIf we say that the random variable X, the number of people that use the ATM in a 30 minute interval has a Poisson distribution such that\n\\[X \\sim Poisson(\\lambda = 2.5)\\]\nWe can find probabilities and quantiles using the dpois(), ppois() and qpois() functions.\n\nNote: To think about how we choose \\(\\lambda\\) in the Poisson distribution we need to consider the following:\n\nWhat is the interval we are assuming when calculating the probability?\n\nIf we are interested in a 30 minute interval the we use \\(\\lambda = 2.5\\)\nIf we change the interval then we change \\(\\lambda\\), for example, if we are interested in a 15 minute interval the we use \\(\\lambda = 1.25\\).\n\n\n\n\nCompute the probability that in a particular 30 minute interval, 1 person uses the machine.\nCompute the probability that in a particular 30 minute interval, more than one person uses the machine.\nCompute the probability that 3 or more people use the machine in an hour interval.\nWhat is the 90th percentile value for the number of machine users in an hour interval?\n\nExercise 3\nA fisherman catches, on average, 24 fish in a 4 hour time period. Let Y be a random variable denoting the number of fish caught per hour hour.\n\nWhat is the E(Y)?\nWhat is the probability that the fisherman catches exactly 5 fish in an hour?\nWhat is the probability that the fisherman catches 7 or more fish in a 2 hour period?\n\nExercise 4\nAssume that 20% of the emails that a University lecturer receives come from students. Let X be a random variable denoting the number of non-student emails.\n\nIf the lecturer receives a total of 50 emails on a given day. What is the expected number of non-student emails that the lecturer receives.\nWhat is the probability exactly 10 of the emails are from students?\nWhat is the probability the lecturer receives more than 40 non-student emails.\nSimulate 100 samples from the Binomial distribution specified above. What is the mean of the samples, how does that compare to (a). Work out the probability from (c) using the simulated samples. Repeat but by simulating 10000 samples. Does this change the results?"
+  },
+  {
+    "objectID": "8-ContinuousPDFs.html#continuous-random-variables",
+    "href": "8-ContinuousPDFs.html#continuous-random-variables",
+    "title": "ST201 Data Analysis",
+    "section": "Continuous Random Variables",
+    "text": "Continuous Random Variables\nA continuous random variable is a variable that can take any real value within an interval, meaning it can assume an infinite number of possible values across the specified range. Common intervals include:\n\nWhole real line: \\((- \\infty, \\infty)\\)\nPositive real line: \\((0, \\infty)\\)\nFinite intervals: \\((5, 25)\\), \\((a, b)\\), etc.\n\nKey Characteristics\n\nValues are not countable—there’s an infinite number of possible outcomes.\nTypically modeled with a probability density function (PDF).\n\nExamples:\n\nAmount of rainfall in a day (measured in mm)\nDistance covered in a training session (km)\nWeight of a book (grams)"
+  },
+  {
+    "objectID": "8-ContinuousPDFs.html#properties-of-continuous-probability-distributions",
+    "href": "8-ContinuousPDFs.html#properties-of-continuous-probability-distributions",
+    "title": "ST201 Data Analysis",
+    "section": "Properties of Continuous Probability Distributions",
+    "text": "Properties of Continuous Probability Distributions\n\nThe graph of a continuous probability distribution is a curve. Probability is represented by area under the curve.\nThe curve is called the probability density function (abbreviated as pdf). We use the symbol f(x) to represent the curve.\nArea under the curve is given by a different function called the cumulative distribution function (abbreviated as cdf). The cumulative distribution function, F(x), is used to evaluate probability as area.\nIn technical terms\n\n\\[F(x) = P(X \\le x) = \\displaystyle\\int_{-\\infty}^{x} f(u) du\\]."
+  },
+  {
+    "objectID": "8-ContinuousPDFs.html#properties-of-continuous-probability-distributions-1",
+    "href": "8-ContinuousPDFs.html#properties-of-continuous-probability-distributions-1",
+    "title": "ST201 Data Analysis",
+    "section": "Properties of Continuous Probability Distributions",
+    "text": "Properties of Continuous Probability Distributions\n\nThe outcomes are measured, not counted.\nThe entire area under the curve and above the x-axis is equal to one.\nIn technical terms\n\n\\[\\displaystyle\\int_{-\\infty}^{\\infty} f(x) dx = 1\\].\n\nProbability is found for intervals of x values rather than for individual x values.\n\\(P(c &lt; x &lt; d)\\) is the probability that the random variable X is in the interval between the values c and d. This equates to the area under the curve, above the x-axis, to the right of c and the left of d.\n\\(P(x = c) = 0\\). The probability that x takes on any single individual value is zero."
+  },
+  {
+    "objectID": "8-ContinuousPDFs.html#types-of-continuous-distributions",
+    "href": "8-ContinuousPDFs.html#types-of-continuous-distributions",
+    "title": "ST201 Data Analysis",
+    "section": "Types of continuous distributions",
+    "text": "Types of continuous distributions\nWe will look at 3 ‘special’ types of continuous distributions. These are the:\n\nUniform distribution\nExponential distribution\nNormal distribution\n\nFor continuous probability distributions, PROBABILITY = AREA."
+  },
+  {
+    "objectID": "8-ContinuousPDFs.html#the-uniform-distribution",
+    "href": "8-ContinuousPDFs.html#the-uniform-distribution",
+    "title": "ST201 Data Analysis",
+    "section": "The Uniform Distribution",
+    "text": "The Uniform Distribution\nSuppose I choose a number randomly from [a,b].\n\nLet \\(X\\) be the resulting number, then \\(X \\sim\\) Uniform [a,b]\n\nPDF and CDF\n\\[\\begin{eqnarray*}\nf(x)  & = & \\left\\{\\begin{array}{ll}\n0 & \\mbox{ if $x &lt; a$}\\\\\n\\frac{1}{b-a} & \\mbox{ if $a \\le x \\le b$}\\\\\n0 & \\mbox{ if $x &gt; b$}  \n\\end{array}\\right.\n\\end{eqnarray*}\\]\n\\[\\begin{eqnarray*}\nF(x) = P(X \\leq x)   & = & \\left\\{\\begin{array}{ll}\n0 & \\mbox{ if $x &lt; a$}\\\\\n\\frac{x-a}{b-a} & \\mbox{ if $a \\le x \\le b$}\\\\\n1 & \\mbox{ if $x &gt; b$}  \n\\end{array}\\right.\n\\end{eqnarray*}\\]"
+  },
+  {
+    "objectID": "8-ContinuousPDFs.html#expected-value-and-variance",
+    "href": "8-ContinuousPDFs.html#expected-value-and-variance",
+    "title": "ST201 Data Analysis",
+    "section": "Expected Value and Variance",
+    "text": "Expected Value and Variance\nDefinition: The expected value of a discrete random variable is defined as\n\\[E[X] = \\int_a^bxf(x) \\] Definition: The variance of a discrete random variable is defined as\n\\[Var[X] = E[X^2] - E[X]^2\\]\nE[X] and Var[X] for a uniform random variable: Formulas for the theoretical mean and standard deviation are\n\n\\(E(X) = \\mu = \\frac{a+b}{2}\\)\n\\(Var(X) = \\sigma^2 = \\frac{(b-a)^2}{12}\\)"
+  },
+  {
+    "objectID": "8-ContinuousPDFs.html#example",
+    "href": "8-ContinuousPDFs.html#example",
+    "title": "ST201 Data Analysis",
+    "section": "Example",
+    "text": "Example\nThe net weight of a packages has a uniform distribution over the interval 980 g to 1030 g.\n\nWhat is the expected weight of a package?\nWhat is the probability that a package weighs less than 1000 g?\nWhat is the probability that a package weighs between 990 and 1010 g?\nWhat is the 75th percentile of this distribution?\n\n\npunif(1000, 980, 1030)\n\n[1] 0.4\n\npunif(1010, 980, 1030) - punif(990, 980, 1030)\n\n[1] 0.4\n\nqunif(0.75, 980, 1030)\n\n[1] 1017.5"
+  },
+  {
+    "objectID": "8-ContinuousPDFs.html#the-exponential-distribution",
+    "href": "8-ContinuousPDFs.html#the-exponential-distribution",
+    "title": "ST201 Data Analysis",
+    "section": "The Exponential Distribution",
+    "text": "The Exponential Distribution\nThe exponential distribution is often concerned with the amount of time until some specific event occurs.\nExample\nLet \\(X\\) = time in minutes between arrivals at a supermarket checkout. On average there are 2 arrivals per minute. We can model this as \\(X \\sim\\) exponential(\\(\\lambda=2\\)).\nPDF and CDF\n\\[f(x) = \\lambda e^{-\\lambda x} \\mbox{ with }x \\ge 0\\]\n\\[\\begin{eqnarray*}\nF(x) &=& P(X \\le x) = \\int_{0}^{x}\\lambda e^{-\\lambda u} du\\\\\n&=& 1 - e^{-\\lambda x}\n\\end{eqnarray*}\\]\n\\(E[X] = \\frac{1}{\\lambda}\\) \\(Var(X) = \\frac{1}{\\lambda^2}\\)"
+  },
+  {
+    "objectID": "8-ContinuousPDFs.html#example-1",
+    "href": "8-ContinuousPDFs.html#example-1",
+    "title": "ST201 Data Analysis",
+    "section": "Example",
+    "text": "Example\nLet Y be the random variable which counts the “number of accesses per second for a search engine”. Assume that Y is Poisson distributed with parameter \\(\\lambda = 10\\) (E[Y] = 10, Var[Y] = 10). The random variable X, “waiting time until the next access”, is then exponentially distributed with parameter \\(\\lambda = 10\\)\n\nWhat is the expected waiting time for next access?\nWhat is the probability that the waiting time is \\(\\le\\) 0.6 seconds?\nWhat is the probability that the waiting time is in [0.05, 0.2] seconds?\nWhat is the 80th percentile of this distribution?\n\n\npexp(0.6, rate = 10)\n\n[1] 0.9975212\n\npexp(0.2, rate = 10) - pexp(0.05, rate = 10)\n\n[1] 0.4711954\n\nqexp(0.8, 10)\n\n[1] 0.1609438"
+  },
+  {
+    "objectID": "8-ContinuousPDFs.html#the-normal-distribution",
+    "href": "8-ContinuousPDFs.html#the-normal-distribution",
+    "title": "ST201 Data Analysis",
+    "section": "The Normal Distribution",
+    "text": "The Normal Distribution\nThis continuous distribution is one of the most commonly used distributions in statistics. It is used to model, for example,\n\nexperimental errors in scientific measurements\ntest scores in aptitude tests\nheights of people selected at random from a population.\n\nThe normal distribution has two parameters (two numerical descriptive measures), the mean (\\(\\mu\\)) and the standard deviation (\\(\\sigma\\)). If X is a quantity to be measured that has a normal distribution with mean (\\(\\mu\\)) and standard deviation (\\(\\sigma\\)), we designate this by writing\n\\[X \\sim N(\\mu, \\sigma)\\]"
+  },
+  {
+    "objectID": "8-ContinuousPDFs.html#the-normal-distribution-1",
+    "href": "8-ContinuousPDFs.html#the-normal-distribution-1",
+    "title": "ST201 Data Analysis",
+    "section": "The Normal Distribution",
+    "text": "The Normal Distribution\nProbability density function\nThis is a rather complicated function.\n\\[f(x) = \\frac{1}{ \\sqrt{2\\pi\\sigma^2} }e^{-\\frac{(x-\\mu)^{2}}{2 \\sigma^{2}}}\\] with \\(-\\infty &lt; x &lt; \\infty\\).\nThe shape of the function is:\n\n\nThe parameters \\(\\mu\\) and \\(\\sigma\\) are the mean and standard deviation respectively. E[\\(X\\)] = \\(\\mu\\) and Var(\\(X\\)) = \\(\\sigma^2\\)."
+  },
+  {
+    "objectID": "8-ContinuousPDFs.html#properties-of-the-normal-distribution",
+    "href": "8-ContinuousPDFs.html#properties-of-the-normal-distribution",
+    "title": "ST201 Data Analysis",
+    "section": "Properties of the normal distribution",
+    "text": "Properties of the normal distribution\n\nThe shape of the normal pdf is described as bell shaped. It is symmetric about \\(\\mu\\) (half of the area under the curve is above and half below \\(\\mu\\)).\nApproximately 68% of the area under the curves lies in (\\(\\mu-\\sigma\\), \\(\\mu+\\sigma\\)).\nApproximately 95% of the area under the curves lies in (\\(\\mu-2\\sigma\\), \\(\\mu+2\\sigma\\)).\nApproximately 99.7% of the area under the curves lies in (\\(\\mu-3\\sigma\\), \\(\\mu+3\\sigma\\)).\nThis is known as the 68-95-99.7 rule. Graphically it is represented by:"
+  },
+  {
+    "objectID": "8-ContinuousPDFs.html#example-2",
+    "href": "8-ContinuousPDFs.html#example-2",
+    "title": "ST201 Data Analysis",
+    "section": "Example",
+    "text": "Example\nAn orange farmer sells his oranges in wooden boxes. The weights of the boxes vary and are assumed to be normally distributed with \\(\\mu = 15\\) kg and \\(\\sigma^2 =2.25\\) kg\\(^2\\).\n\nWhat is the probability that a box with a weight of less than 13 kg is sold?\nWhat is the probability that the weight is between 12 and 14 kg?\nWhat is the 68th percentile of this distribution?\n\n\npnorm(13, 15, sqrt(2.25))\n\n[1] 0.09121122\n\npnorm(14, 15, sqrt(2.25)) - pnorm(12, 15, sqrt(2.25))\n\n[1] 0.2297424\n\nqexp(0.68, 15, sqrt(2.25))\n\n[1] 0.07596229"
   }
 ]
