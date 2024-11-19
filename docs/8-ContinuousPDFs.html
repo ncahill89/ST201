@@ -426,19 +426,22 @@ Prof.&nbsp;Niamh Cahill (she/her)
 <section id="properties-of-continuous-probability-distributions" class="slide level2" style="font-size: 65%;">
 <h2>Properties of Continuous Probability Distributions</h2>
 <ul>
+<li><p>The outcomes are measured, not counted.</p></li>
 <li><p>The graph of a continuous probability distribution is a curve. Probability is represented by area under the curve.</p></li>
 <li><p>The curve is called the probability density function (abbreviated as pdf). We use the symbol f(x) to represent the curve.</p></li>
-<li><p>Area under the curve is given by a different function called the cumulative distribution function (abbreviated as cdf). The cumulative distribution function, F(x), is used to evaluate probability as area.</p></li>
+<li><p>Area under the curve is given by a function called the cumulative distribution function (abbreviated as cdf). The cumulative distribution function, F(x), is used to evaluate probability as area.</p></li>
 <li><p>In technical terms</p></li>
 </ul>
 <p><span class="math display">\[F(x) = P(X \le x) = \displaystyle\int_{-\infty}^{x} f(u) du\]</span>.</p>
+<p><strong>The expected value</strong> of a continuous random variable is defined as</p>
+<p><span class="math display">\[E[X] = \int_{-\infty}^{-\infty}xf(x) dx\]</span></p>
+<p><strong>The variance</strong> of a discrete random variable is defined as</p>
+<p><span class="math display">\[Var[X] = E[X^2] - E[X]^2\]</span></p>
 </section>
 <section id="properties-of-continuous-probability-distributions-1" class="slide level2" style="font-size: 65%;">
 <h2>Properties of Continuous Probability Distributions</h2>
 <ul>
-<li><p>The outcomes are measured, not counted.</p></li>
-<li><p>The entire area under the curve and above the x-axis is equal to one.</p></li>
-<li><p>In technical terms</p></li>
+<li>The entire area under the curve and above the x-axis is equal to one. In technical terms</li>
 </ul>
 <p><span class="math display">\[\displaystyle\int_{-\infty}^{\infty} f(x) dx = 1\]</span>.</p>
 <ul>
@@ -449,7 +452,7 @@ Prof.&nbsp;Niamh Cahill (she/her)
 </section>
 <section id="types-of-continuous-distributions" class="slide level2" style="font-size: 65%;">
 <h2>Types of continuous distributions</h2>
-<p>We will look at 3 ‘special’ types of continuous distributions. These are the:</p>
+<p>We will look at 3 types of continuous distributions. These are the:</p>
 <ul>
 <li><p>Uniform distribution</p></li>
 <li><p>Exponential distribution</p></li>
@@ -478,7 +481,7 @@ Prof.&nbsp;Niamh Cahill (she/her)
 <!-- \includegraphics[scale = 0.35]{_exponential.png} -->
 <!-- \includegraphics[scale = 0.35]{_normal.png} -->
 </section>
-<section id="the-uniform-distribution" class="slide level2" style="font-size: 70%;">
+<section id="the-uniform-distribution" class="slide level2" style="font-size: 65%;">
 <h2>The Uniform Distribution</h2>
 <p>Suppose I choose a number randomly from [a,b].</p>
 <ul>
@@ -499,13 +502,7 @@ F(x) = P(X \leq x)   &amp; = &amp; \left\{\begin{array}{ll}
 1 &amp; \mbox{ if $x &gt; b$}  
 \end{array}\right.
 \end{eqnarray*}\]</span>
-</section>
-<section id="expected-value-and-variance" class="slide level2" style="font-size: 70%;">
-<h2>Expected Value and Variance</h2>
-<p><strong>Definition:</strong> The expected value of a discrete random variable is defined as</p>
-<p><span class="math display">\[E[X] = \int_a^bxf(x) \]</span> <strong>Definition:</strong> The variance of a discrete random variable is defined as</p>
-<p><span class="math display">\[Var[X] = E[X^2] - E[X]^2\]</span></p>
-<p><strong>E[X] and Var[X] for a uniform random variable:</strong> Formulas for the theoretical mean and standard deviation are</p>
+<p><strong>E[X] and Var[X] for a uniform random variable:</strong></p>
 <ul>
 <li><p><span class="math inline">\(E(X) = \mu = \frac{a+b}{2}\)</span></p></li>
 <li><p><span class="math inline">\(Var(X) = \sigma^2 = \frac{(b-a)^2}{12}\)</span></p></li>
@@ -535,17 +532,19 @@ F(x) = P(X \leq x)   &amp; = &amp; \left\{\begin{array}{ll}
 </div>
 </div>
 </section>
-<section id="the-exponential-distribution" class="slide level2" style="font-size: 70%;">
+<section id="the-exponential-distribution" class="slide level2" style="font-size: 65%;">
 <h2>The Exponential Distribution</h2>
 <p>The exponential distribution is often concerned with the amount of time until some specific event occurs.</p>
 <p><strong>Example</strong></p>
-<p>Let <span class="math inline">\(X\)</span> = time in minutes between arrivals at a supermarket checkout. On average there are 2 arrivals per minute. We can model this as <span class="math inline">\(X \sim\)</span> exponential(<span class="math inline">\(\lambda=2\)</span>).</p>
+<p>Let <span class="math inline">\(X\)</span> = time between events. On average there are <span class="math inline">\(\lambda\)</span> events per unit of time.</p>
+<p>We can model this as <span class="math inline">\(X \sim\)</span> exponential(<span class="math inline">\(\lambda\)</span>).</p>
 <p><strong>PDF and CDF</strong></p>
 <p><span class="math display">\[f(x) = \lambda e^{-\lambda x} \mbox{ with }x \ge 0\]</span></p>
 <span class="math display">\[\begin{eqnarray*}
 F(x) &amp;=&amp; P(X \le x) = \int_{0}^{x}\lambda e^{-\lambda u} du\\
 &amp;=&amp; 1 - e^{-\lambda x}
 \end{eqnarray*}\]</span>
+<p><strong>E[X] and Var[X] for an exponential random variable:</strong></p>
 <p><span class="math inline">\(E[X] = \frac{1}{\lambda}\)</span> <span class="math inline">\(Var(X) = \frac{1}{\lambda^2}\)</span></p>
 </section>
 <section id="example-1" class="slide level2" style="font-size: 70%;">
@@ -585,13 +584,13 @@ F(x) &amp;=&amp; P(X \le x) = \int_{0}^{x}\lambda e^{-\lambda u} du\\
 </section>
 <section id="the-normal-distribution-1" class="slide level2" style="font-size: 70%;">
 <h2>The Normal Distribution</h2>
-<p><strong>Probability density function</strong></p>
+<p><strong>PDF</strong></p>
 <p>This is a rather complicated function.</p>
 <p><span class="math display">\[f(x) = \frac{1}{ \sqrt{2\pi\sigma^2} }e^{-\frac{(x-\mu)^{2}}{2 \sigma^{2}}}\]</span> with <span class="math inline">\(-\infty &lt; x &lt; \infty\)</span>.</p>
-<p>The shape of the function is:</p>
-
-<img data-src="_normal.png" class="r-stretch"><ul>
-<li>The parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are the mean and standard deviation respectively. E[<span class="math inline">\(X\)</span>] = <span class="math inline">\(\mu\)</span> and Var(<span class="math inline">\(X\)</span>) = <span class="math inline">\(\sigma^2\)</span>.</li>
+<p><strong>E[X] and Var[X] for a normal random variable:</strong></p>
+<ul>
+<li><p>E[<span class="math inline">\(X\)</span>] = <span class="math inline">\(\mu\)</span></p></li>
+<li><p>Var(<span class="math inline">\(X\)</span>) = <span class="math inline">\(\sigma^2\)</span></p></li>
 </ul>
 </section>
 <section id="properties-of-the-normal-distribution" class="slide level2" style="font-size: 70%;">

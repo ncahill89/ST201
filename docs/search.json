@@ -1096,35 +1096,35 @@
     "href": "8-ContinuousPDFs.html#properties-of-continuous-probability-distributions",
     "title": "ST201 Data Analysis",
     "section": "Properties of Continuous Probability Distributions",
-    "text": "Properties of Continuous Probability Distributions\n\nThe graph of a continuous probability distribution is a curve. Probability is represented by area under the curve.\nThe curve is called the probability density function (abbreviated as pdf). We use the symbol f(x) to represent the curve.\nArea under the curve is given by a different function called the cumulative distribution function (abbreviated as cdf). The cumulative distribution function, F(x), is used to evaluate probability as area.\nIn technical terms\n\n\\[F(x) = P(X \\le x) = \\displaystyle\\int_{-\\infty}^{x} f(u) du\\]."
+    "text": "Properties of Continuous Probability Distributions\n\nThe outcomes are measured, not counted.\nThe graph of a continuous probability distribution is a curve. Probability is represented by area under the curve.\nThe curve is called the probability density function (abbreviated as pdf). We use the symbol f(x) to represent the curve.\nArea under the curve is given by a function called the cumulative distribution function (abbreviated as cdf). The cumulative distribution function, F(x), is used to evaluate probability as area.\nIn technical terms\n\n\\[F(x) = P(X \\le x) = \\displaystyle\\int_{-\\infty}^{x} f(u) du\\].\nThe expected value of a continuous random variable is defined as\n\\[E[X] = \\int_{-\\infty}^{-\\infty}xf(x) dx\\]\nThe variance of a discrete random variable is defined as\n\\[Var[X] = E[X^2] - E[X]^2\\]"
   },
   {
     "objectID": "8-ContinuousPDFs.html#properties-of-continuous-probability-distributions-1",
     "href": "8-ContinuousPDFs.html#properties-of-continuous-probability-distributions-1",
     "title": "ST201 Data Analysis",
     "section": "Properties of Continuous Probability Distributions",
-    "text": "Properties of Continuous Probability Distributions\n\nThe outcomes are measured, not counted.\nThe entire area under the curve and above the x-axis is equal to one.\nIn technical terms\n\n\\[\\displaystyle\\int_{-\\infty}^{\\infty} f(x) dx = 1\\].\n\nProbability is found for intervals of x values rather than for individual x values.\n\\(P(c &lt; x &lt; d)\\) is the probability that the random variable X is in the interval between the values c and d. This equates to the area under the curve, above the x-axis, to the right of c and the left of d.\n\\(P(x = c) = 0\\). The probability that x takes on any single individual value is zero."
+    "text": "Properties of Continuous Probability Distributions\n\nThe entire area under the curve and above the x-axis is equal to one. In technical terms\n\n\\[\\displaystyle\\int_{-\\infty}^{\\infty} f(x) dx = 1\\].\n\nProbability is found for intervals of x values rather than for individual x values.\n\\(P(c &lt; x &lt; d)\\) is the probability that the random variable X is in the interval between the values c and d. This equates to the area under the curve, above the x-axis, to the right of c and the left of d.\n\\(P(x = c) = 0\\). The probability that x takes on any single individual value is zero."
   },
   {
     "objectID": "8-ContinuousPDFs.html#types-of-continuous-distributions",
     "href": "8-ContinuousPDFs.html#types-of-continuous-distributions",
     "title": "ST201 Data Analysis",
     "section": "Types of continuous distributions",
-    "text": "Types of continuous distributions\nWe will look at 3 ‘special’ types of continuous distributions. These are the:\n\nUniform distribution\nExponential distribution\nNormal distribution\n\nFor continuous probability distributions, PROBABILITY = AREA."
+    "text": "Types of continuous distributions\nWe will look at 3 types of continuous distributions. These are the:\n\nUniform distribution\nExponential distribution\nNormal distribution\n\nFor continuous probability distributions, PROBABILITY = AREA."
   },
   {
     "objectID": "8-ContinuousPDFs.html#the-uniform-distribution",
     "href": "8-ContinuousPDFs.html#the-uniform-distribution",
     "title": "ST201 Data Analysis",
     "section": "The Uniform Distribution",
-    "text": "The Uniform Distribution\nSuppose I choose a number randomly from [a,b].\n\nLet \\(X\\) be the resulting number, then \\(X \\sim\\) Uniform [a,b]\n\nPDF and CDF\n\\[\\begin{eqnarray*}\nf(x)  & = & \\left\\{\\begin{array}{ll}\n0 & \\mbox{ if $x &lt; a$}\\\\\n\\frac{1}{b-a} & \\mbox{ if $a \\le x \\le b$}\\\\\n0 & \\mbox{ if $x &gt; b$}  \n\\end{array}\\right.\n\\end{eqnarray*}\\]\n\\[\\begin{eqnarray*}\nF(x) = P(X \\leq x)   & = & \\left\\{\\begin{array}{ll}\n0 & \\mbox{ if $x &lt; a$}\\\\\n\\frac{x-a}{b-a} & \\mbox{ if $a \\le x \\le b$}\\\\\n1 & \\mbox{ if $x &gt; b$}  \n\\end{array}\\right.\n\\end{eqnarray*}\\]"
+    "text": "The Uniform Distribution\nSuppose I choose a number randomly from [a,b].\n\nLet \\(X\\) be the resulting number, then \\(X \\sim\\) Uniform [a,b]\n\nPDF and CDF\n\\[\\begin{eqnarray*}\nf(x)  & = & \\left\\{\\begin{array}{ll}\n0 & \\mbox{ if $x &lt; a$}\\\\\n\\frac{1}{b-a} & \\mbox{ if $a \\le x \\le b$}\\\\\n0 & \\mbox{ if $x &gt; b$}  \n\\end{array}\\right.\n\\end{eqnarray*}\\]\n\\[\\begin{eqnarray*}\nF(x) = P(X \\leq x)   & = & \\left\\{\\begin{array}{ll}\n0 & \\mbox{ if $x &lt; a$}\\\\\n\\frac{x-a}{b-a} & \\mbox{ if $a \\le x \\le b$}\\\\\n1 & \\mbox{ if $x &gt; b$}  \n\\end{array}\\right.\n\\end{eqnarray*}\\]\nE[X] and Var[X] for a uniform random variable:\n\n\\(E(X) = \\mu = \\frac{a+b}{2}\\)\n\\(Var(X) = \\sigma^2 = \\frac{(b-a)^2}{12}\\)"
   },
   {
     "objectID": "8-ContinuousPDFs.html#expected-value-and-variance",
     "href": "8-ContinuousPDFs.html#expected-value-and-variance",
     "title": "ST201 Data Analysis",
     "section": "Expected Value and Variance",
-    "text": "Expected Value and Variance\nDefinition: The expected value of a discrete random variable is defined as\n\\[E[X] = \\int_a^bxf(x) \\] Definition: The variance of a discrete random variable is defined as\n\\[Var[X] = E[X^2] - E[X]^2\\]\nE[X] and Var[X] for a uniform random variable: Formulas for the theoretical mean and standard deviation are\n\n\\(E(X) = \\mu = \\frac{a+b}{2}\\)\n\\(Var(X) = \\sigma^2 = \\frac{(b-a)^2}{12}\\)"
+    "text": "Expected Value and Variance\nDefinition: The expected value of a continuous random variable is defined as\n\\[E[X] = \\int_a^bxf(x) \\]\nDefinition: The variance of a discrete random variable is defined as\n\\[Var[X] = E[X^2] - E[X]^2\\]"
   },
   {
     "objectID": "8-ContinuousPDFs.html#example",
@@ -1138,7 +1138,7 @@
     "href": "8-ContinuousPDFs.html#the-exponential-distribution",
     "title": "ST201 Data Analysis",
     "section": "The Exponential Distribution",
-    "text": "The Exponential Distribution\nThe exponential distribution is often concerned with the amount of time until some specific event occurs.\nExample\nLet \\(X\\) = time in minutes between arrivals at a supermarket checkout. On average there are 2 arrivals per minute. We can model this as \\(X \\sim\\) exponential(\\(\\lambda=2\\)).\nPDF and CDF\n\\[f(x) = \\lambda e^{-\\lambda x} \\mbox{ with }x \\ge 0\\]\n\\[\\begin{eqnarray*}\nF(x) &=& P(X \\le x) = \\int_{0}^{x}\\lambda e^{-\\lambda u} du\\\\\n&=& 1 - e^{-\\lambda x}\n\\end{eqnarray*}\\]\n\\(E[X] = \\frac{1}{\\lambda}\\) \\(Var(X) = \\frac{1}{\\lambda^2}\\)"
+    "text": "The Exponential Distribution\nThe exponential distribution is often concerned with the amount of time until some specific event occurs.\nExample\nLet \\(X\\) = time between events. On average there are \\(\\lambda\\) events per unit of time.\nWe can model this as \\(X \\sim\\) exponential(\\(\\lambda\\)).\nPDF and CDF\n\\[f(x) = \\lambda e^{-\\lambda x} \\mbox{ with }x \\ge 0\\]\n\\[\\begin{eqnarray*}\nF(x) &=& P(X \\le x) = \\int_{0}^{x}\\lambda e^{-\\lambda u} du\\\\\n&=& 1 - e^{-\\lambda x}\n\\end{eqnarray*}\\]\nE[X] and Var[X] for an exponential random variable:\n\\(E[X] = \\frac{1}{\\lambda}\\) \\(Var(X) = \\frac{1}{\\lambda^2}\\)"
   },
   {
     "objectID": "8-ContinuousPDFs.html#example-1",
@@ -1159,7 +1159,7 @@
     "href": "8-ContinuousPDFs.html#the-normal-distribution-1",
     "title": "ST201 Data Analysis",
     "section": "The Normal Distribution",
-    "text": "The Normal Distribution\nProbability density function\nThis is a rather complicated function.\n\\[f(x) = \\frac{1}{ \\sqrt{2\\pi\\sigma^2} }e^{-\\frac{(x-\\mu)^{2}}{2 \\sigma^{2}}}\\] with \\(-\\infty &lt; x &lt; \\infty\\).\nThe shape of the function is:\n\n\nThe parameters \\(\\mu\\) and \\(\\sigma\\) are the mean and standard deviation respectively. E[\\(X\\)] = \\(\\mu\\) and Var(\\(X\\)) = \\(\\sigma^2\\)."
+    "text": "The Normal Distribution\nPDF\nThis is a rather complicated function.\n\\[f(x) = \\frac{1}{ \\sqrt{2\\pi\\sigma^2} }e^{-\\frac{(x-\\mu)^{2}}{2 \\sigma^{2}}}\\] with \\(-\\infty &lt; x &lt; \\infty\\).\nE[X] and Var[X] for a normal random variable:\n\nE[\\(X\\)] = \\(\\mu\\)\nVar(\\(X\\)) = \\(\\sigma^2\\)"
   },
   {
     "objectID": "8-ContinuousPDFs.html#properties-of-the-normal-distribution",
