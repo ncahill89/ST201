@@ -256,6 +256,6 @@ pnorm(13, 15, sqrt(2.25))
 
 pnorm(14, 15, sqrt(2.25)) - pnorm(12, 15, sqrt(2.25))
 
-qexp(0.68, 15, sqrt(2.25))
+qnorm(0.68, 15, sqrt(2.25))
 
 ```

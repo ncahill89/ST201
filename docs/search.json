@@ -1173,6 +1173,6 @@
     "href": "8-ContinuousPDFs.html#example-2",
     "title": "ST201 Data Analysis",
     "section": "Example",
-    "text": "Example\nAn orange farmer sells his oranges in wooden boxes. The weights of the boxes vary and are assumed to be normally distributed with \\(\\mu = 15\\) kg and \\(\\sigma^2 =2.25\\) kg\\(^2\\).\n\nWhat is the probability that a box with a weight of less than 13 kg is sold?\nWhat is the probability that the weight is between 12 and 14 kg?\nWhat is the 68th percentile of this distribution?\n\n\npnorm(13, 15, sqrt(2.25))\n\n[1] 0.09121122\n\npnorm(14, 15, sqrt(2.25)) - pnorm(12, 15, sqrt(2.25))\n\n[1] 0.2297424\n\nqexp(0.68, 15, sqrt(2.25))\n\n[1] 0.07596229"
+    "text": "Example\nAn orange farmer sells his oranges in wooden boxes. The weights of the boxes vary and are assumed to be normally distributed with \\(\\mu = 15\\) kg and \\(\\sigma^2 =2.25\\) kg\\(^2\\).\n\nWhat is the probability that a box with a weight of less than 13 kg is sold?\nWhat is the probability that the weight is between 12 and 14 kg?\nWhat is the 68th percentile of this distribution?\n\n\npnorm(13, 15, sqrt(2.25))\n\n[1] 0.09121122\n\npnorm(14, 15, sqrt(2.25)) - pnorm(12, 15, sqrt(2.25))\n\n[1] 0.2297424\n\nqnorm(0.68, 15, sqrt(2.25))\n\n[1] 15.70155"
   }
 ]
