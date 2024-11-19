@@ -82,10 +82,10 @@ We will look at 3 types of continuous distributions. These are the:
 For continuous probability distributions, PROBABILITY = AREA.
 
 ::: {layout-ncol="3"}
-![](images/_uniform.png){width="250"}
+![](images/uniform.png){width="250"}
 
-![](images/_exponential.png){width="250"}
-![](images/_normal.png){width="250"}
+![](images/exponential.png){width="250"}
+![](images/normal.png){width="250"}
 
 :::
 
