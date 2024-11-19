@@ -30,7 +30,7 @@ A **continuous random variable** is a variable that can take any real value with
 
 -   Weight of a book (grams)
 
-## Properties of Continuous Probability Distributions {style="font-size: 65%;"}
+## Properties of Continuous Probability Distributions {style="font-size: 55%;"}
 
 -   The outcomes are measured, not counted.
 
