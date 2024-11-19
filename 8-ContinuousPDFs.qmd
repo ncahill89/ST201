@@ -96,7 +96,7 @@ For continuous probability distributions, PROBABILITY = AREA.
 
 <!-- \includegraphics[scale = 0.35]{_normal.png} -->
 
-## The Uniform Distribution {style="font-size: 65%;"}
+## The Uniform Distribution {style="font-size: 60%;"}
 
 Suppose I choose a number randomly from \[a,b\].
 
