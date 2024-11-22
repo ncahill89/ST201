@@ -63,6 +63,11 @@ Midterm exam week
 8b. Code lecture; check the [Rstudio Sever](https://rstudio.maths.nuim.ie) for Week8_Continuous.R
 
 
+### Week 9
+
+9a. [Single Samples](https://ncahill89.github.io/ST201/9-SingleSamples.html)
+
+9b. Code lecture; check the [Rstudio Sever](https://rstudio.maths.nuim.ie) for Week9_SingleSamples.R
 
 ## Tutorial Sheets
 
@@ -71,4 +76,6 @@ Midterm exam week
 [Tutorial Sheet 2: Categorical Data](https://ncahill89.github.io/ST201/Tutorial2.html)
 
 [Tutorial Sheet 3: Discrete Distributions](https://ncahill89.github.io/ST201/Tutorial3.html)
+
+[Tutorial Sheet 4: Continous Distributions, CLT and Confidence Intervals](https://ncahill89.github.io/ST201/Tutorial4.html)
 

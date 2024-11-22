@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Welcome to Data Analysis! – Data Analysis</title>
+<title>ST201 Tutorial Sheet 4 – Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,6 +66,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -82,19 +111,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lecture-slides" id="toc-lecture-slides" class="nav-link active" data-scroll-target="#lecture-slides">Lecture Slides</a>
-  <ul class="collapse">
-  <li><a href="#week-1" id="toc-week-1" class="nav-link" data-scroll-target="#week-1">Week 1</a></li>
-  <li><a href="#week-2" id="toc-week-2" class="nav-link" data-scroll-target="#week-2">Week 2</a></li>
-  <li><a href="#week-3" id="toc-week-3" class="nav-link" data-scroll-target="#week-3">Week 3</a></li>
-  <li><a href="#week-4" id="toc-week-4" class="nav-link" data-scroll-target="#week-4">Week 4</a></li>
-  <li><a href="#week-5" id="toc-week-5" class="nav-link" data-scroll-target="#week-5">Week 5</a></li>
-  <li><a href="#week-6" id="toc-week-6" class="nav-link" data-scroll-target="#week-6">Week 6</a></li>
-  <li><a href="#week-7" id="toc-week-7" class="nav-link" data-scroll-target="#week-7">Week 7</a></li>
-  <li><a href="#week-8" id="toc-week-8" class="nav-link" data-scroll-target="#week-8">Week 8</a></li>
-  <li><a href="#week-9" id="toc-week-9" class="nav-link" data-scroll-target="#week-9">Week 9</a></li>
-  </ul></li>
-  <li><a href="#tutorial-sheets" id="toc-tutorial-sheets" class="nav-link" data-scroll-target="#tutorial-sheets">Tutorial Sheets</a></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
   </ul>
 </nav>
     </div>
@@ -103,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome to Data Analysis!</h1>
+<h1 class="title">ST201 Tutorial Sheet 4</h1>
 </div>
 
 
@@ -120,63 +137,48 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Welcome to the course website for ST201 Data Analysis!</p>
-<p><a href="https://ncahill89.github.io/ST201/0-Information.html">Module information</a></p>
-<p>Lecture material (slides, notes, videos) are licensed under CC-BY-NC 4.0.</p>
-<p>Contact: Niamh Cahill (niamh.cahill@mu.ie)</p>
-<section id="lecture-slides" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-slides">Lecture Slides</h2>
-<section id="week-1" class="level3">
-<h3 class="anchored" data-anchor-id="week-1">Week 1</h3>
-<p>1a. <a href="https://ncahill89.github.io/ST201/1-Data.html">Data</a></p>
-<p>1b. Code lecture; check the <a href="https://rstudio.maths.nuim.ie">Rstudio Sever</a> for Week1_Data.R</p>
-</section>
-<section id="week-2" class="level3">
-<h3 class="anchored" data-anchor-id="week-2">Week 2</h3>
-<p>2a. <a href="https://ncahill89.github.io/ST201/2-Numerical.html">Numerical Data</a></p>
-<p>2b. Code lecture; check the <a href="https://rstudio.maths.nuim.ie">Rstudio Sever</a> for Week2_NumericalData.R</p>
-</section>
-<section id="week-3" class="level3">
-<h3 class="anchored" data-anchor-id="week-3">Week 3</h3>
-<p>3a. <a href="https://ncahill89.github.io/ST201/3-Categorical.html">Association between Categorical Variables</a></p>
-<p>3b. Code lecture; check the <a href="https://rstudio.maths.nuim.ie">Rstudio Sever</a> for Week3_Categorical.R</p>
-</section>
-<section id="week-4" class="level3">
-<h3 class="anchored" data-anchor-id="week-4">Week 4</h3>
-<p>4a. <a href="https://ncahill89.github.io/ST201/4-Categorical2.html">Association between Categorical Variables (2)</a></p>
-<p>4b. Code lecture; check the <a href="https://rstudio.maths.nuim.ie">Rstudio Sever</a> for Week4_Categorical(2).R</p>
-</section>
-<section id="week-5" class="level3">
-<h3 class="anchored" data-anchor-id="week-5">Week 5</h3>
-<p>5a. <a href="https://ncahill89.github.io/ST201/5-Categorical3.html">Association between Categorical Variables (3)</a></p>
-<p>5b. Code lecture; check the <a href="https://rstudio.maths.nuim.ie">Rstudio Sever</a> for Week5_Categorical(3).R</p>
-</section>
-<section id="week-6" class="level3">
-<h3 class="anchored" data-anchor-id="week-6">Week 6</h3>
-<p>6a. <a href="https://ncahill89.github.io/ST201/6-DiscretePDFs.html">Discrete Probability Distributions</a></p>
-<p>6b. Code lecture; check the <a href="https://rstudio.maths.nuim.ie">Rstudio Sever</a> for Week6_Discrete.R</p>
-</section>
-<section id="week-7" class="level3">
-<h3 class="anchored" data-anchor-id="week-7">Week 7</h3>
-<p>Midterm exam week</p>
-</section>
-<section id="week-8" class="level3">
-<h3 class="anchored" data-anchor-id="week-8">Week 8</h3>
-<p>8a. <a href="https://ncahill89.github.io/ST201/8-ContinuousPDFs.html">Continuous Probability Distributions</a></p>
-<p>8b. Code lecture; check the <a href="https://rstudio.maths.nuim.ie">Rstudio Sever</a> for Week8_Continuous.R</p>
-</section>
-<section id="week-9" class="level3">
-<h3 class="anchored" data-anchor-id="week-9">Week 9</h3>
-<p>9a. <a href="https://ncahill89.github.io/ST201/9-SingleSamples.html">Single Samples</a></p>
-<p>9b. Code lecture; check the <a href="https://rstudio.maths.nuim.ie">Rstudio Sever</a> for Week9_SingleSamples.R</p>
-</section>
-</section>
-<section id="tutorial-sheets" class="level2">
-<h2 class="anchored" data-anchor-id="tutorial-sheets">Tutorial Sheets</h2>
-<p><a href="https://ncahill89.github.io/ST201/Tutorial1.html">Tutorial Sheet 1: Numerical Data</a></p>
-<p><a href="https://ncahill89.github.io/ST201/Tutorial2.html">Tutorial Sheet 2: Categorical Data</a></p>
-<p><a href="https://ncahill89.github.io/ST201/Tutorial3.html">Tutorial Sheet 3: Discrete Distributions</a></p>
-<p><a href="https://ncahill89.github.io/ST201/Tutorial4.html">Tutorial Sheet 4: Continous Distributions, CLT and Confidence Intervals</a></p>
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<ul>
+<li>Attempt the questions below before your tutorial in the week beginning 2nd December 2024.</li>
+</ul>
+<p><strong>Exercise 1</strong></p>
+<p>Suppose the average time between checkouts for a supermarket cashier is three minutes. Let X be a random variable describing the the time between checkouts and assume X follows an exponential distribution.</p>
+<!-- To answer probability questions you need to consider what important information you can take from above. -->
+<!--   - The average time between checkouts is 3 minutes -->
+<!--   - We can infer from this that the rate of checkouts per minute is 1/3 -->
+<!-- So if we say that X is the time between checkouts, where -->
+<!-- $$X \sim exponential(rate = 1/3)$$ -->
+<!-- then we can find probabilities and percentiles using the `pexp()` and `qexp()` functions. We can simulate from this distribution using `rexp()` as shown in part (a) below. -->
+<ol type="a">
+<li><p>What is the value of the parameter <span class="math inline">\(\lambda\)</span> in the exponential distribution?</p></li>
+<li><p>Use <code>rexp()</code> to simulate 10,000 values from this distribution and plot the density curve.</p></li>
+<li><p>Calculate the probability of the time between checkouts being <span class="math inline">\(\leq\)</span> 2 minutes.</p></li>
+<li><p>What is the 80th percentile for this distribution?</p></li>
+</ol>
+<hr>
+<p><strong>Exercise 2</strong></p>
+<p>Suppose a Normal Distribution has <span class="math inline">\(\mu\)</span> = 0 and <span class="math inline">\(\sigma = 1\)</span>.</p>
+<ol type="a">
+<li><p>Use <code>rnorm()</code> to simulate 10,000 values from this distribution and plot the density curve.</p></li>
+<li><p>Using the <code>pnorm()</code> function, calculate the area below -1, above 2, between -1 and 2.</p></li>
+<li><p>Plot the cumulative probability distribution function for the sequence of values between -4 and 4 at intervals of 0.1.</p></li>
+<li><p>Using <code>qnorm()</code>, what is the median of the distribution? The upper and lower quartiles? Find the 2.5th and 97.5th percentile values.</p></li>
+<li><p>How do your answers in (d) compare to answers you get when you apply the <code>quantile()</code> function to your simulated values from (a)?</p></li>
+</ol>
+<hr>
+<p><strong>Exercise 3</strong></p>
+<ol type="a">
+<li><p>IQ tests are designed so that the average IQ is 100, the standard deviation of IQ scores is 15, and the distribution of IQ scores is normal. Run an experiment. Sample N = 5 people’s IQ scores (using the population characteristics). Check the mean IQ for your sample.</p></li>
+<li><p>Now replicate the experiment. That is, randomly sample 5 new people and measure their IQ. Check the mean IQ for your sample.</p></li>
+<li><p>Repeat the experiment 1000 times and store the means in an object called <code>IQ_means</code> (note we’ll see a similar example in Week9)</p></li>
+<li><p>Plot the distributions of sample means using a histogram. Overlay a density plot that reflects the population distribution. How does the distribution of the sample means compare to the population distribution for IQ scores?</p></li>
+<li><p>If you sampled N = 100 IQ scores instead of N = 5, how would this impact the sampling distributions?</p></li>
+</ol>
+<hr>
+<p><strong>Exercise 4</strong></p>
+<p>Suppose we get 40 students from Maynooth campus to sit through an IQ test. The test results can be found in IQ_dat.rda in the ST201 folder on the R studio server. Based on this sample, what is the 95% confidence interval for the population mean IQ?</p>
+<hr>
 
 
 </section>

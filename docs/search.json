@@ -172,7 +172,7 @@
     "href": "index.html#lecture-slides",
     "title": "Welcome to Data Analysis!",
     "section": "Lecture Slides",
-    "text": "Lecture Slides\n\nWeek 1\n1a. Data\n1b. Code lecture; check the Rstudio Sever for Week1_Data.R\n\n\nWeek 2\n2a. Numerical Data\n2b. Code lecture; check the Rstudio Sever for Week2_NumericalData.R\n\n\nWeek 3\n3a. Association between Categorical Variables\n3b. Code lecture; check the Rstudio Sever for Week3_Categorical.R\n\n\nWeek 4\n4a. Association between Categorical Variables (2)\n4b. Code lecture; check the Rstudio Sever for Week4_Categorical(2).R\n\n\nWeek 5\n5a. Association between Categorical Variables (3)\n5b. Code lecture; check the Rstudio Sever for Week5_Categorical(3).R\n\n\nWeek 6\n6a. Discrete Probability Distributions\n6b. Code lecture; check the Rstudio Sever for Week6_Discrete.R\n\n\nWeek 7\nMidterm exam week\n\n\nWeek 8\n8a. Continuous Probability Distributions\n8b. Code lecture; check the Rstudio Sever for Week8_Continuous.R"
+    "text": "Lecture Slides\n\nWeek 1\n1a. Data\n1b. Code lecture; check the Rstudio Sever for Week1_Data.R\n\n\nWeek 2\n2a. Numerical Data\n2b. Code lecture; check the Rstudio Sever for Week2_NumericalData.R\n\n\nWeek 3\n3a. Association between Categorical Variables\n3b. Code lecture; check the Rstudio Sever for Week3_Categorical.R\n\n\nWeek 4\n4a. Association between Categorical Variables (2)\n4b. Code lecture; check the Rstudio Sever for Week4_Categorical(2).R\n\n\nWeek 5\n5a. Association between Categorical Variables (3)\n5b. Code lecture; check the Rstudio Sever for Week5_Categorical(3).R\n\n\nWeek 6\n6a. Discrete Probability Distributions\n6b. Code lecture; check the Rstudio Sever for Week6_Discrete.R\n\n\nWeek 7\nMidterm exam week\n\n\nWeek 8\n8a. Continuous Probability Distributions\n8b. Code lecture; check the Rstudio Sever for Week8_Continuous.R\n\n\nWeek 9\n9a. Single Samples\n9b. Code lecture; check the Rstudio Sever for Week9_SingleSamples.R"
   },
   {
     "objectID": "2-Numerical.html#watt-test-challenge-7-rounds",
@@ -494,7 +494,7 @@
     "href": "index.html#tutorial-sheets",
     "title": "Welcome to Data Analysis!",
     "section": "Tutorial Sheets",
-    "text": "Tutorial Sheets\nTutorial Sheet 1: Numerical Data\nTutorial Sheet 2: Categorical Data\nTutorial Sheet 3: Discrete Distributions"
+    "text": "Tutorial Sheets\nTutorial Sheet 1: Numerical Data\nTutorial Sheet 2: Categorical Data\nTutorial Sheet 3: Discrete Distributions\nTutorial Sheet 4: Continous Distributions, CLT and Confidence Intervals"
   },
   {
     "objectID": "3-Categorical.html#association-of-two-variables",
@@ -1174,5 +1174,117 @@
     "title": "ST201 Data Analysis",
     "section": "Example",
     "text": "Example\nAn orange farmer sells his oranges in wooden boxes. The weights of the boxes vary and are assumed to be normally distributed with \\(\\mu = 15\\) kg and \\(\\sigma^2 =2.25\\) kg\\(^2\\).\n\nWhat is the probability that a box with a weight of less than 13 kg is sold?\nWhat is the probability that the weight is between 12 and 14 kg?\nWhat is the 68th percentile of this distribution?\n\n\npnorm(13, 15, sqrt(2.25))\n\n[1] 0.09121122\n\npnorm(14, 15, sqrt(2.25)) - pnorm(12, 15, sqrt(2.25))\n\n[1] 0.2297424\n\nqnorm(0.68, 15, sqrt(2.25))\n\n[1] 15.70155"
+  },
+  {
+    "objectID": "Tutorial4.html",
+    "href": "Tutorial4.html",
+    "title": "ST201 Tutorial Sheet 4",
+    "section": "",
+    "text": "Attempt the questions below before your tutorial in the week beginning 2nd December 2024.\n\nExercise 1\nSuppose the average time between checkouts for a supermarket cashier is three minutes. Let X be a random variable describing the the time between checkouts and assume X follows an exponential distribution.\n\n\n\n\n\n\n\nWhat is the value of the parameter \\(\\lambda\\) in the exponential distribution?\nUse rexp() to simulate 10,000 values from this distribution and plot the density curve.\nCalculate the probability of the time between checkouts being \\(\\leq\\) 2 minutes.\nWhat is the 80th percentile for this distribution?\n\n\nExercise 2\nSuppose a Normal Distribution has \\(\\mu\\) = 0 and \\(\\sigma = 1\\).\n\nUse rnorm() to simulate 10,000 values from this distribution and plot the density curve.\nUsing the pnorm() function, calculate the area below -1, above 2, between -1 and 2.\nPlot the cumulative probability distribution function for the sequence of values between -4 and 4 at intervals of 0.1.\nUsing qnorm(), what is the median of the distribution? The upper and lower quartiles? Find the 2.5th and 97.5th percentile values.\nHow do your answers in (d) compare to answers you get when you apply the quantile() function to your simulated values from (a)?\n\n\nExercise 3\n\nIQ tests are designed so that the average IQ is 100, the standard deviation of IQ scores is 15, and the distribution of IQ scores is normal. Run an experiment. Sample N = 5 people’s IQ scores (using the population characteristics). Check the mean IQ for your sample.\nNow replicate the experiment. That is, randomly sample 5 new people and measure their IQ. Check the mean IQ for your sample.\nRepeat the experiment 1000 times and store the means in an object called IQ_means (note we’ll see a similar example in Week9)\nPlot the distributions of sample means using a histogram. Overlay a density plot that reflects the population distribution. How does the distribution of the sample means compare to the population distribution for IQ scores?\nIf you sampled N = 100 IQ scores instead of N = 5, how would this impact the sampling distributions?\n\n\nExercise 4\nSuppose we get 40 students from Maynooth campus to sit through an IQ test. The test results can be found in IQ_dat.rda in the ST201 folder on the R studio server. Based on this sample, what is the 95% confidence interval for the population mean IQ?"
+  },
+  {
+    "objectID": "Tutorial4.html#instructions",
+    "href": "Tutorial4.html#instructions",
+    "title": "ST201 Tutorial Sheet 4",
+    "section": "",
+    "text": "Attempt the questions below before your tutorial in the week beginning 2nd December 2024.\n\nExercise 1\nSuppose the average time between checkouts for a supermarket cashier is three minutes. Let X be a random variable describing the the time between checkouts and assume X follows an exponential distribution.\n\n\n\n\n\n\n\nWhat is the value of the parameter \\(\\lambda\\) in the exponential distribution?\nUse rexp() to simulate 10,000 values from this distribution and plot the density curve.\nCalculate the probability of the time between checkouts being \\(\\leq\\) 2 minutes.\nWhat is the 80th percentile for this distribution?\n\n\nExercise 2\nSuppose a Normal Distribution has \\(\\mu\\) = 0 and \\(\\sigma = 1\\).\n\nUse rnorm() to simulate 10,000 values from this distribution and plot the density curve.\nUsing the pnorm() function, calculate the area below -1, above 2, between -1 and 2.\nPlot the cumulative probability distribution function for the sequence of values between -4 and 4 at intervals of 0.1.\nUsing qnorm(), what is the median of the distribution? The upper and lower quartiles? Find the 2.5th and 97.5th percentile values.\nHow do your answers in (d) compare to answers you get when you apply the quantile() function to your simulated values from (a)?\n\n\nExercise 3\n\nIQ tests are designed so that the average IQ is 100, the standard deviation of IQ scores is 15, and the distribution of IQ scores is normal. Run an experiment. Sample N = 5 people’s IQ scores (using the population characteristics). Check the mean IQ for your sample.\nNow replicate the experiment. That is, randomly sample 5 new people and measure their IQ. Check the mean IQ for your sample.\nRepeat the experiment 1000 times and store the means in an object called IQ_means (note we’ll see a similar example in Week9)\nPlot the distributions of sample means using a histogram. Overlay a density plot that reflects the population distribution. How does the distribution of the sample means compare to the population distribution for IQ scores?\nIf you sampled N = 100 IQ scores instead of N = 5, how would this impact the sampling distributions?\n\n\nExercise 4\nSuppose we get 40 students from Maynooth campus to sit through an IQ test. The test results can be found in IQ_dat.rda in the ST201 folder on the R studio server. Based on this sample, what is the 95% confidence interval for the population mean IQ?"
+  },
+  {
+    "objectID": "9-SingleSamples.html#the-central-limit-theorem-and-the-normal-distribution",
+    "href": "9-SingleSamples.html#the-central-limit-theorem-and-the-normal-distribution",
+    "title": "ST201 Data Analysis",
+    "section": "The Central Limit Theorem and the Normal Distribution",
+    "text": "The Central Limit Theorem and the Normal Distribution\n\nIf you take repeated samples from a population and calculate their averages, then these averages will be normally distributed.\nThis is called the central limit theorem\n\nExample\nConsider the distribution of dice rolls:\n\nPossible outcomes are 1,2,3,4,5,6 and they are all equally likely\nThe distribution is uniform\n\n\n\n\nThe mean is 3.5\nThe sd is 1.44"
+  },
+  {
+    "objectID": "9-SingleSamples.html#the-central-limit-theorem-and-the-normal-distribution-1",
+    "href": "9-SingleSamples.html#the-central-limit-theorem-and-the-normal-distribution-1",
+    "title": "ST201 Data Analysis",
+    "section": "The Central Limit Theorem and the Normal Distribution",
+    "text": "The Central Limit Theorem and the Normal Distribution\n\nLet X be a random variable representing a dice roll.\nAssume we have 100 samples of X and the distribution looks like this\n\n\n\nset.seed(1025)\ndice_samp &lt;- sample(1:6,\n                    size = 100,\n                    replace = TRUE)\nbarplot(table(dice_samp))\n\n\n\n\n\n\n\n\n\n\n\nThe mean of the sample is 3.47\nThe sd of the sample is 1.67"
+  },
+  {
+    "objectID": "9-SingleSamples.html#the-central-limit-theorem-and-the-normal-distribution-2",
+    "href": "9-SingleSamples.html#the-central-limit-theorem-and-the-normal-distribution-2",
+    "title": "ST201 Data Analysis",
+    "section": "The Central Limit Theorem and the Normal Distribution",
+    "text": "The Central Limit Theorem and the Normal Distribution\n\nWe know the true distribution is not normal.\nWe can see that the distribution of the samples is not normal.\nBut what does the distribution of sample means look like?\nLet’s take some 1000 random samples of dice rolls with a sample size 100 and calculate their means.\n\n\n\nsamp_means &lt;- rep(NA, 1000)\n\nfor(i in 1:1000)\n{\n  sample &lt;- sample(1:6,size = 100,replace = TRUE)\n  samp_means[i] &lt;- mean(sample)\n}\nhist(samp_means,\n     xlab = \"sample means\", \n     main = \"\")\n\n\n\n\n\n\n\n\n\n\n\nThe mean of the sample means is 3.5\nThe sd of the sample means is 0.17"
+  },
+  {
+    "objectID": "9-SingleSamples.html#the-central-limit-theorem",
+    "href": "9-SingleSamples.html#the-central-limit-theorem",
+    "title": "ST201 Data Analysis",
+    "section": "The Central Limit Theorem",
+    "text": "The Central Limit Theorem\n\\[\\bar{X}\\sim N(\\mu, \\frac{\\sigma}{\\sqrt{n}})  \\text{   approximately for large n}.\\]\nUsing \\(s\\) to estimate \\(\\sigma\\): \\[\\begin{eqnarray*}\n\\bar{X} &&{\\underset{\\text{ approx}}{\\sim}}  N(\\mu, \\frac{s}{\\sqrt{n}}) \\\\\n        \\\\\n\\end{eqnarray*}\\]\nStandardising \\(\\bar{x}\\) we get:\n\\[\\begin{eqnarray*}\n\n\\frac{\\bar{X}-\\mu}{s/\\sqrt{n}}&&{\\underset{\\text{ approx}}{\\sim}} N(0,1)\n\\end{eqnarray*}\\]\n\nThe quantity \\(\\frac{s}{\\sqrt{n}}\\) is called the standard error (SE) of \\(\\bar{X}\\)."
+  },
+  {
+    "objectID": "9-SingleSamples.html#confidence-intervals-for-mu",
+    "href": "9-SingleSamples.html#confidence-intervals-for-mu",
+    "title": "ST201 Data Analysis",
+    "section": "Confidence intervals for \\(\\mu\\)",
+    "text": "Confidence intervals for \\(\\mu\\)\nConsider that 95% of the area under the \\(N(0,1)\\) curve lies in \\(\\pm 1.96\\).\nWhat does this mean?\n\\[P(-1.96&lt;\\frac{\\bar{X}-\\mu}{s/\\sqrt{n}}&lt;1.96)=0.95\\]\nAnd,\n\\[P(\\bar{X}-1.96\\frac{s}{\\sqrt{n}}&lt;\\mu &lt;\\bar{X}+1.96\\frac{s}{\\sqrt{n}})=0.95\\]\ni.e., with probability 0.95 \\(\\mu\\) is contained in \\[\\bar{X} \\pm 1.96\\frac{s}{\\sqrt{n}}\\] which is called a 95% confidence interval for \\(\\mu\\)."
+  },
+  {
+    "objectID": "9-SingleSamples.html#what-if-we-have-a-small-sample-size",
+    "href": "9-SingleSamples.html#what-if-we-have-a-small-sample-size",
+    "title": "ST201 Data Analysis",
+    "section": "What if we have a small sample size?",
+    "text": "What if we have a small sample size?\nIf you draw a simple random sample of size n from a population that has an approximately a normal distribution with mean \\(\\mu\\) and unknown population standard deviation \\(\\sigma\\) then\n\\[\\frac{\\bar{X}-\\mu}{s/\\sqrt{n}} \\sim t_{n-1}\\]\nThe degrees of freedom, \\(\\nu = n - 1\\), come from the calculation of the sample standard deviation s. Because the sum of the deviations is zero, we can find the last deviation once we know the other n - 1 deviations. The other n -1 deviations can change or vary freely. We call the number n - 1 the degrees of freedom (df)."
+  },
+  {
+    "objectID": "9-SingleSamples.html#comparing-the-normal-and-t-distributions",
+    "href": "9-SingleSamples.html#comparing-the-normal-and-t-distributions",
+    "title": "ST201 Data Analysis",
+    "section": "Comparing the normal and t-distributions",
+    "text": "Comparing the normal and t-distributions\n\nThe t-distribution has “fatter tails” than the normal distribution\nBelow we see a standard normal density (i.e., X ~ N(0,1)) and overlayed is a t density with df = 5."
+  },
+  {
+    "objectID": "9-SingleSamples.html#comparing-the-normal-and-t-distributions-1",
+    "href": "9-SingleSamples.html#comparing-the-normal-and-t-distributions-1",
+    "title": "ST201 Data Analysis",
+    "section": "Comparing the normal and t-distributions",
+    "text": "Comparing the normal and t-distributions\n\nAs the degrees of freedom increases the t-distribution tends to the normal distribution.\nBelow we see a standard normal density (i.e., X ~ N(0,1)) and overlayed is a t density with df = 40."
+  },
+  {
+    "objectID": "9-SingleSamples.html#confidence-intervals-for-mu-1",
+    "href": "9-SingleSamples.html#confidence-intervals-for-mu-1",
+    "title": "ST201 Data Analysis",
+    "section": "Confidence intervals for \\(\\mu\\)",
+    "text": "Confidence intervals for \\(\\mu\\)\nConsider that 95% of the area under the \\(t_{n-1}\\) curve lies in \\(\\pm T_{n-1, \\alpha/2}\\).\nTherefore, \\[P(-T_{n-1, \\alpha/2}&lt;\\frac{\\bar{X}-\\mu}{s/\\sqrt{n}}&lt;T_{n-1, \\alpha/2})=0.95\\]\nAnd,\n\\[P(\\bar{X}-T_{n-1, \\alpha/2}\\frac{s}{\\sqrt{n}}&lt;\\mu &lt;\\bar{X}+T_{n-1, \\alpha/2}\\frac{s}{\\sqrt{n}})=0.95\\]\ni.e., with probability 0.95 \\(\\mu\\) is contained in \\[\\bar{X} \\pm T_{n-1, \\alpha/2}\\frac{s}{\\sqrt{n}}\\] which is called a 95% confidence interval for \\(\\mu\\)."
+  },
+  {
+    "objectID": "9-SingleSamples.html#example",
+    "href": "9-SingleSamples.html#example",
+    "title": "ST201 Data Analysis",
+    "section": "Example",
+    "text": "Example\nA study is conducted to measure the grams of protein for a sample of energy bars. The label claims that the bars have 20 grams of protein. We want to know if the labels are correct or not.\nThe histogram of the data for 20 samples are given below:"
+  },
+  {
+    "objectID": "9-SingleSamples.html#assessing-normality",
+    "href": "9-SingleSamples.html#assessing-normality",
+    "title": "ST201 Data Analysis",
+    "section": "Assessing Normality",
+    "text": "Assessing Normality\nVisual inspection is useful…\n\n..but subjective.\n\n\nIt’s possible to use a significance test comparing the sample distribution to a normal one in order to ascertain whether or not data show a serious deviation from normality."
+  },
+  {
+    "objectID": "9-SingleSamples.html#assessing-normality-1",
+    "href": "9-SingleSamples.html#assessing-normality-1",
+    "title": "ST201 Data Analysis",
+    "section": "Assessing Normality",
+    "text": "Assessing Normality\nShapiro-Wilk’s method is widely recommended for normality test and it is based on the correlation between the data and the corresponding normal scores.\n\\(H_0:\\) the data come from a normal distribution\n\\(H_a:\\) the data do not come from a normal distribution\n\nshapiro.test(x)\n\n\n    Shapiro-Wilk normality test\n\ndata:  x\nW = 0.96012, p-value = 0.4169"
+  },
+  {
+    "objectID": "9-SingleSamples.html#an-alternative-to-using-distributions",
+    "href": "9-SingleSamples.html#an-alternative-to-using-distributions",
+    "title": "ST201 Data Analysis",
+    "section": "An Alternative to using distributions",
+    "text": "An Alternative to using distributions\nBootstrapping\n\n\n\nBootstrap Example from Openintro"
+  },
+  {
+    "objectID": "9-SingleSamples.html#an-alternative-to-using-distributions-1",
+    "href": "9-SingleSamples.html#an-alternative-to-using-distributions-1",
+    "title": "ST201 Data Analysis",
+    "section": "An Alternative to using distributions",
+    "text": "An Alternative to using distributions\nBootstrapping\n\n\ncar_data &lt;- c(18300,20100, 9600, 10700, 27000)\n\nn_samps &lt;- 1000\nbootstrap_samp_means &lt;- rep(NA, n_samps)\n\nfor(i in 1:n_samps)\n{\n  bootstrap_samp &lt;- sample(car_data, replace = TRUE)\n  bootstrap_samp_means[i] &lt;- mean(bootstrap_samp)\n}\n\nhist(bootstrap_samp_means)\n\n\n\n\n\n\n\n\n\n\n\nThe histogram summarizes one thousand bootstrap samples of the bootstrap sample means.\nThe bootstrapped average car prices vary from about $10,000 to $25,000.\nThe bootstrap percentile confidence interval is found by locating the middle 90% (for a 90% confidence interval) or a 95% (for a 95% confidence interval) of the bootstrapped means.\n\n\n\n\n\nquantile(bootstrap_samp_means, c(0.025,0.975))\n\n\n 2.5% 97.5% \n12000 22360"
   }
 ]
