@@ -10,7 +10,7 @@ editor: visual
 
 ## The Central Limit Theorem and the Normal Distribution {style="font-size: 65%;"}
 
--   If you take repeated samples from a population and calculate their averages, then these averages will be normally distributed.
+-   For a large enough sample size, if you take repeated samples from a population and calculate their averages, then these averages will be normally distributed.
 
 -   This is called the central limit theorem
 

@@ -1194,7 +1194,7 @@
     "href": "9-SingleSamples.html#the-central-limit-theorem-and-the-normal-distribution",
     "title": "ST201 Data Analysis",
     "section": "The Central Limit Theorem and the Normal Distribution",
-    "text": "The Central Limit Theorem and the Normal Distribution\n\nIf you take repeated samples from a population and calculate their averages, then these averages will be normally distributed.\nThis is called the central limit theorem\n\nExample\nConsider the distribution of dice rolls:\n\nPossible outcomes are 1,2,3,4,5,6 and they are all equally likely\nThe distribution is uniform\n\n\n\n\nThe mean is 3.5\nThe sd is 1.44"
+    "text": "The Central Limit Theorem and the Normal Distribution\n\nFor a large enough sample size, if you take repeated samples from a population and calculate their averages, then these averages will be normally distributed.\nThis is called the central limit theorem\n\nExample\nConsider the distribution of dice rolls:\n\nPossible outcomes are 1,2,3,4,5,6 and they are all equally likely\nThe distribution is uniform\n\n\n\n\nThe mean is 3.5\nThe sd is 1.44"
   },
   {
     "objectID": "9-SingleSamples.html#the-central-limit-theorem-and-the-normal-distribution-1",
