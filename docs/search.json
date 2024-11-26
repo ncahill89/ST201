@@ -1278,7 +1278,7 @@
     "href": "9-SingleSamples.html#an-alternative-to-using-distributions",
     "title": "ST201 Data Analysis",
     "section": "An Alternative to using distributions",
-    "text": "An Alternative to using distributions\nBootstrapping\n\n\n\nBootstrap Example from Openintro"
+    "text": "An Alternative to using distributions\nConsider a situation where you want to know whether you should buy a franchise of the used car store Awesome Autos. As part of your planning, you’d like to know for how much an average car from Awesome Autos sells. In order to go through the example more clearly, let’s say that you are only able to randomly sample five cars from Awesome Auto. (If this were a real example, you would surely be able to take a much larger sample size, possibly even being able to measure the entire population!)\nBootstrapping\n\n\n\nBootstrap Example from Openintro"
   },
   {
     "objectID": "9-SingleSamples.html#an-alternative-to-using-distributions-1",
