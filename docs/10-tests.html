@@ -392,7 +392,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">ST201 Data Analysis</h1>
-  <p class="subtitle">Single Samples</p>
+  <p class="subtitle">Statistical Inference for Means</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -403,238 +403,476 @@ Prof.&nbsp;Niamh Cahill (she/her)
 </div>
 
 </section>
-<section id="the-central-limit-theorem-and-the-normal-distribution" class="slide level2" style="font-size: 65%;">
-<h2>The Central Limit Theorem and the Normal Distribution</h2>
-<ul>
-<li><p>For a large enough sample size, if you take repeated samples from a population and calculate their averages, then these averages will be normally distributed.</p></li>
-<li><p>This is called the central limit theorem</p></li>
-</ul>
+<section id="hypothesis-tests" class="slide level2" style="font-size: 65%;">
+<h2>Hypothesis Tests</h2>
+<p>Once an analyst estimates the parameters on the basis of a random sample, they would like to infer something about the value of the parameter in the population. Statistical hypothesis tests facilitate the comparison of estimated values with hypothetical values.</p>
 <p><strong>Example</strong></p>
-<p>Consider the distribution of dice rolls:</p>
+<p>A clinical study is conducted to compare the effectiveness of a new drug (B) to an established standard drug (A) for high blood pressure.</p>
 <ul>
-<li><p>Possible outcomes are 1,2,3,4,5,6 and they are all equally likely</p></li>
-<li><p>The distribution is uniform</p></li>
+<li><p>Assume that, as a first step, we want to find out whether the new drug causes a higher reduction in blood pressure than the already established older drug.</p></li>
+<li><p>A possible hypothesis is that the average change in the blood pressure in group B is higher than in group A.</p></li>
 </ul>
-
-<img data-src="9-SingleSamples_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"><div>
+</section>
+<section id="one--and-two-sample-problems" class="slide level2" style="font-size: 65%;">
+<h2>One- and Two-Sample Problems</h2>
+<p>In one-sample problems, the data is usually assumed to arise as one sample from a defined population. In two-sample problems, the data originates in the form of two samples possibly from two different populations.</p>
+<p>For an unknown population parameter (e.g., <span class="math inline">\(\mu\)</span>) and a fixed value (e.g.&nbsp;<span class="math inline">\(\mu_0\)</span>), the following three cases have to be distinguished:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Case</th>
+<th><span class="math inline">\(H_0\)</span></th>
+<th><span class="math inline">\(H_a\)</span></th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(a)</td>
+<td><span class="math inline">\(\mu = \mu_0\)</span></td>
+<td><span class="math inline">\(\mu \neq \mu_0\)</span></td>
+<td>2-sided</td>
+</tr>
+<tr class="even">
+<td>(b)</td>
+<td><span class="math inline">\(\mu \geq \mu_0\)</span></td>
+<td><span class="math inline">\(\mu &lt; \mu_0\)</span></td>
+<td>1-sided</td>
+</tr>
+<tr class="odd">
+<td>(c)</td>
+<td><span class="math inline">\(\mu \leq \mu_0\)</span></td>
+<td><span class="math inline">\(\mu &gt; \mu_0\)</span></td>
+<td>1-sided</td>
+</tr>
+</tbody>
+</table>
+<!-- \begin{center} -->
+<!-- \begin{tabular}{ |c|c|c|c| }  -->
+<!-- \hline -->
+<!-- Case & $H_0$ & $H_a$ & \\  -->
+<!-- \hline -->
+<!-- (a) & $\mu = \mu_0$ & $\mu \neq \mu_0$ & 2-sided \\  -->
+<!-- (b) & $\mu \geq \mu_0$ & $\mu < \mu_0$ & 1-sided   \\  -->
+<!-- (c) & $\mu \leq \mu_0$ & $\mu > \mu_0$ & 1-sided   \\  -->
+<!-- \hline -->
+<!-- \end{tabular} -->
+<!-- \end{center} -->
+</section>
+<section id="one-sample-problem-when-the-variance-is-unknown" class="slide level2" style="font-size: 65%;">
+<h2>One sample problem when the variance is unknown</h2>
+<p>Now that we have used the t-distribution for making a confidence interval for a mean, we can consider hypothesis tests for the mean.</p>
+<p>If the population variance <span class="math inline">\(\sigma^2\)</span> is unknown (which is most often the case in practice), hypotheses about the mean <span class="math inline">\(\mu\)</span> of a normal random variable <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span> can be tested. The unknown variance is estimated from the sample.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>The test statistic for assessing a single mean is a <span class="math inline">\(T\)</span>.</strong></p>
+</div>
+<div class="callout-content">
+<p>The <span class="math inline">\(T\)</span> score is a ratio of how the sample mean differs from the hypothesized mean as compared to how the observations vary.</p>
+<p>The test statistic is therefore</p>
+<p><span class="math display">\[T_{stat} = \frac{\bar{X}-\mu_0}{s/\sqrt{n}} \]</span></p>
+<p>When the null hypothesis is true and the conditions are met, T has a t-distribution with <span class="math inline">\(df = n-1\)</span></p>
+<p><span class="math display">\[T_{stat} \sim t_{n-1}\]</span></p>
+<p>Conditions:</p>
 <ul>
-<li class="fragment"><p>The mean is 3.5</p></li>
-<li class="fragment"><p>The sd is 1.71</p></li>
+<li><p>Independent observations.</p></li>
+<li><p>Large samples and no extreme outliers.</p></li>
 </ul>
 </div>
+</div>
+</div>
 </section>
-<section id="the-central-limit-theorem-and-the-normal-distribution-1" class="slide level2" style="font-size: 65%;">
-<h2>The Central Limit Theorem and the Normal Distribution</h2>
-<ul>
-<li><p>Let X be a random variable representing a dice roll.</p></li>
-<li><p>Assume we have 100 samples of X and the distribution looks like this</p></li>
-</ul>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb1" data-code-line-numbers=""><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">set.seed</span>(<span class="dv">1025</span>)</span>
-<span id="cb1-2"><a></a>dice_samp <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
-<span id="cb1-3"><a></a>                    <span class="at">size =</span> <span class="dv">100</span>,</span>
-<span id="cb1-4"><a></a>                    <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-5"><a></a><span class="fu">barplot</span>(<span class="fu">table</span>(dice_samp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column fragment">
+<section id="critical-regions-and-test-decisions" class="slide level2" style="font-size: 65%;">
+<h2>Critical regions and test decisions</h2>
+<p>Rules to make test decisions for the one-sample t-test</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Case</th>
+<th><span class="math inline">\(H_0\)</span></th>
+<th><span class="math inline">\(H_a\)</span></th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(a)</td>
+<td><span class="math inline">\(\mu = \mu_0\)</span></td>
+<td><span class="math inline">\(\mu \neq \mu_0\)</span></td>
+<td>2-sided</td>
+</tr>
+<tr class="even">
+<td>(b)</td>
+<td><span class="math inline">\(\mu \geq \mu_0\)</span></td>
+<td><span class="math inline">\(\mu &lt; \mu_0\)</span></td>
+<td>1-sided</td>
+</tr>
+<tr class="odd">
+<td>(c)</td>
+<td><span class="math inline">\(\mu \leq \mu_0\)</span></td>
+<td><span class="math inline">\(\mu &gt; \mu_0\)</span></td>
+<td>1-sided</td>
+</tr>
+</tbody>
+</table>
+<!-- \begin{center} -->
+<!-- \begin{tabular}{ |c|c|c|c| }  -->
+<!-- \hline -->
+<!-- Case & $H_0$ & $H_a$ & Reject $H_0$ if \\  -->
+<!-- \hline -->
+<!-- (a) & $\mu = \mu_0$ & $\mu \neq \mu_0$ & $|T_{stat}| > T_{n-1,1-\alpha/2}$ \\  -->
+<!-- (b) & $\mu \geq \mu_0$ & $\mu < \mu_0$ & $T_{stat} < T_{n-1,\alpha}$   \\  -->
+<!-- (c) & $\mu \leq \mu_0$ & $\mu > \mu_0$ & $T_{stat} > T_{n-1,1-\alpha}$   \\  -->
+<!-- \hline -->
+<!-- \end{tabular} -->
+<!-- \end{center} -->
+</section>
+<section id="sleep-example" class="slide level2" style="font-size: 65%;">
+<h2>Sleep Example</h2>
+<p>A study is conducted to see if the student populations gets on average 8 hours of sleep.</p>
+<p>Suppose a random sample of size n = 20 has a mean of <span class="math inline">\(\bar{x}\)</span> = 6.75 and a sample standard deviation of <span class="math inline">\(\sigma\)</span> = 2.40.</p>
+<p>Test whether the average hours of sleep differs from 8.</p>
+<div class="fragment">
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="9-SingleSamples_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+<p><img data-src="10-tests_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
 </figure>
 </div>
 </div>
-</div></div>
-<div>
-<ul>
-<li class="fragment"><p>The mean of the sample is 3.47</p></li>
-<li class="fragment"><p>The sd of the sample is 1.67</p></li>
-</ul>
+</div>
+<!-- A bakery supplies loaves of bread to supermarkets. The stated selling weight (and therefore the required minimum expected weight) is $\mu = 2$ kg. However, not every package weighs exactly 2 kg because there is variability in the weights. It is therefore important to find out if the average weight of the loaves is significantly different than 2 kg. -->
+<!-- - Suppose a random sample of size n = 20 has a mean of $\bar{x}$ = 1.98 and a sample variance of $\sigma$ = 0.093.  -->
+<!-- - We want to test whether this result contradicts the two-sided hypothesis $H_0: \mu = 2$. The significance level is fixed at $\alpha = 0.05$.  -->
 </div>
 </section>
-<section id="the-central-limit-theorem-and-the-normal-distribution-2" class="slide level2" style="font-size: 65%;">
-<h2>The Central Limit Theorem and the Normal Distribution</h2>
-<ul>
-<li><p>We know the true distribution is not normal.</p></li>
-<li><p>We can see that the distribution of the samples is not normal.</p></li>
-<li><p>But what does the distribution of sample means look like?</p></li>
-<li><p>Let’s take some 1000 random samples of dice rolls with a sample size 100 and calculate their means.</p></li>
-</ul>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb2" data-code-line-numbers=""><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>samp_means <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>)</span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>)</span>
-<span id="cb2-4"><a></a>{</span>
-<span id="cb2-5"><a></a>  sample <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="at">size =</span> <span class="dv">100</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-6"><a></a>  samp_means[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample)</span>
-<span id="cb2-7"><a></a>}</span>
-<span id="cb2-8"><a></a><span class="fu">hist</span>(samp_means,</span>
-<span id="cb2-9"><a></a>     <span class="at">xlab =</span> <span class="st">"sample means"</span>, </span>
-<span id="cb2-10"><a></a>     <span class="at">main =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column fragment">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="9-SingleSamples_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div></div>
-<div>
-<ul>
-<li class="fragment"><p>The mean of the sample means is 3.5</p></li>
-<li class="fragment"><p>The sd of the sample means is 0.17</p></li>
-</ul>
-</div>
+<section id="comparing-the-means-of-two-independent-samples" class="slide level2" style="font-size: 65%;">
+<h2>Comparing the Means of Two Independent Samples</h2>
+<p>In a two-sample problem, we may be interested in comparing the means of two independent samples. Assume that we have two samples of two normally distributed variables <span class="math inline">\(X \sim N(\mu_x, \sigma_x^2)\)</span> and <span class="math inline">\(Y \sim N(\mu_y, \sigma_y^2)\)</span> of size n and m.</p>
+<p>We can specify the following hypotheses:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Case</th>
+<th><span class="math inline">\(H_0\)</span></th>
+<th><span class="math inline">\(H_a\)</span></th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(a)</td>
+<td><span class="math inline">\(\mu_x = \mu_y\)</span></td>
+<td><span class="math inline">\(\mu_x \neq \mu_y\)</span></td>
+<td>2-sided</td>
+</tr>
+<tr class="even">
+<td>(b)</td>
+<td><span class="math inline">\(\mu_x \geq \mu_y\)</span></td>
+<td><span class="math inline">\(\mu_x &lt; \mu_y\)</span></td>
+<td>1-sided</td>
+</tr>
+<tr class="odd">
+<td>(c)</td>
+<td><span class="math inline">\(\mu_x \leq \mu_y\)</span></td>
+<td><span class="math inline">\(\mu_x &gt; \mu_y\)</span></td>
+<td>1-sided</td>
+</tr>
+</tbody>
+</table>
+<!-- \begin{center} -->
+<!-- \begin{tabular}{ |c|c|c|c| }  -->
+<!-- \hline -->
+<!-- Case & $H_0$ & $H_a$ & \\  -->
+<!-- \hline -->
+<!-- (a) & $\mu_x = \mu_y$ & $\mu_x \neq \mu_y$ & 2-sided \\  -->
+<!-- (b) & $\mu_x \geq \mu_y$ & $\mu_x < \mu_y$ & 1-sided \\  -->
+<!-- (c) & $\mu_x \leq \mu_y$ & $\mu_x > \mu_y$ & 1-sided \\  -->
+<!-- \hline -->
+<!-- \end{tabular} -->
+<!-- \end{center} -->
+<p>We will consider two cases.</p>
 </section>
-<section id="the-central-limit-theorem" class="slide level2" style="font-size: 65%;">
-<h2>The Central Limit Theorem</h2>
-<p><span class="math display">\[\bar{X}\sim N(\mu, \frac{\sigma}{\sqrt{n}})  \text{   approximately for large n}.\]</span></p>
-<p>Using <span class="math inline">\(s\)</span> to estimate <span class="math inline">\(\sigma\)</span>: <span class="math display">\[\begin{eqnarray*}
-\bar{X} &amp;&amp;{\underset{\text{ approx}}{\sim}}  N(\mu, \frac{s}{\sqrt{n}}) \\
-        \\
-\end{eqnarray*}\]</span></p>
-<p>Standardising <span class="math inline">\(\bar{x}\)</span> we get:</p>
-<span class="math display">\[\begin{eqnarray*}
-
-\frac{\bar{X}-\mu}{s/\sqrt{n}}&amp;&amp;{\underset{\text{ approx}}{\sim}} N(0,1)
-\end{eqnarray*}\]</span>
+<section id="the-variances-are-unknown-but-equal-two-sample-t-test." class="slide level2" style="font-size: 65%;">
+<h2>The variances are unknown, but equal (two-sample t-test).</h2>
+<p>If we have assumed that both populations have the same variance <span class="math inline">\(\sigma^2\)</span>.</p>
 <ul>
-<li>The quantity <span class="math inline">\(\frac{s}{\sqrt{n}}\)</span> is called the <strong>standard error</strong> (SE) of <span class="math inline">\(\bar{X}\)</span>.</li>
+<li><p>We can estimate this from either <span class="math inline">\(s_X\)</span> and <span class="math inline">\(s_Y\)</span>.</p></li>
+<li><p>However, it would be better to use both to estimate <span class="math inline">\(\sigma^2\)</span>.</p></li>
+<li><p>We `pool’ these two statistics into an overall estimate of <span class="math inline">\(\sigma^2\)</span>:</p></li>
 </ul>
+<p><span class="math display">\[s_p^2=\frac{(n-1)s_X^2+(m-1)s_Y^2}{n+m-2}.\]</span></p>
+<p>The test statistic in this case</p>
+<p><span class="math display">\[T_{stat} = \frac{\bar{X}-\bar{Y}}{s_p \sqrt{\frac{1}{n}+\frac{1}{m}}} \sim t_{n + m-2}\]</span></p>
+<p>where <span class="math inline">\(T_{stat}\)</span> follows a t-distribution with n + m - 2 degrees of freedom if <span class="math inline">\(H_0\)</span> is true.</p>
 </section>
-<section id="confidence-intervals-for-mu" class="slide level2" style="font-size: 65%;">
-<h2>Confidence intervals for <span class="math inline">\(\mu\)</span></h2>
-<p>Consider that 95% of the area under the <span class="math inline">\(N(0,1)\)</span> curve lies in <span class="math inline">\(\pm 1.96\)</span>.</p>
-<p>What does this mean?</p>
-<p><span class="math display">\[P(-1.96&lt;\frac{\bar{X}-\mu}{s/\sqrt{n}}&lt;1.96)=0.95\]</span></p>
-<p>And,</p>
-<p><span class="math display">\[P(\bar{X}-1.96\frac{s}{\sqrt{n}}&lt;\mu &lt;\bar{X}+1.96\frac{s}{\sqrt{n}})=0.95\]</span></p>
-<p>i.e., with probability 0.95 <span class="math inline">\(\mu\)</span> is contained in <span class="math display">\[\bar{X} \pm 1.96\frac{s}{\sqrt{n}}\]</span> which is called a <strong>95% confidence interval</strong> for <span class="math inline">\(\mu\)</span>.</p>
-</section>
-<section id="what-if-we-have-a-small-sample-size" class="slide level2" style="font-size: 65%;">
-<h2>What if we have a small sample size?</h2>
-<p>If you draw a simple random sample of size n from a population that has an approximately a normal distribution with mean <span class="math inline">\(\mu\)</span> and unknown population standard deviation <span class="math inline">\(\sigma\)</span> then</p>
-<p><span class="math display">\[\frac{\bar{X}-\mu}{s/\sqrt{n}} \sim t_{n-1}\]</span></p>
-<p>The degrees of freedom, <span class="math inline">\(\nu = n - 1\)</span>, come from the calculation of the sample standard deviation s. Because the sum of the deviations is zero, we can find the last deviation once we know the other n - 1 deviations. The other n -1 deviations can change or vary freely. We call the number n - 1 the degrees of freedom (df).</p>
-</section>
-<section id="comparing-the-normal-and-t-distributions" class="slide level2" style="font-size: 65%;">
-<h2>Comparing the normal and t-distributions</h2>
-<ul>
-<li><p>The t-distribution has “fatter tails” than the normal distribution</p></li>
-<li><p>Below we see a standard normal density (i.e., X ~ N(0,1)) and overlayed is a t density with df = 5.</p></li>
-</ul>
-
-<img data-src="9-SingleSamples_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="384"></section>
-<section id="comparing-the-normal-and-t-distributions-1" class="slide level2" style="font-size: 65%;">
-<h2>Comparing the normal and t-distributions</h2>
-<ul>
-<li><p>As the degrees of freedom increases the t-distribution tends to the normal distribution.</p></li>
-<li><p>Below we see a standard normal density (i.e., X ~ N(0,1)) and overlayed is a t density with df = 40.</p></li>
-</ul>
-
-<img data-src="9-SingleSamples_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="384"></section>
-<section id="confidence-intervals-for-mu-1" class="slide level2" style="font-size: 65%;">
-<h2>Confidence intervals for <span class="math inline">\(\mu\)</span></h2>
-<p>Consider that 95% of the area under the <span class="math inline">\(t_{n-1}\)</span> curve lies in <span class="math inline">\(\pm T_{n-1, \alpha/2}\)</span>.</p>
-<p>Therefore, <span class="math display">\[P(-T_{n-1, \alpha/2}&lt;\frac{\bar{X}-\mu}{s/\sqrt{n}}&lt;T_{n-1, \alpha/2})=0.95\]</span></p>
-<p>And,</p>
-<p><span class="math display">\[P(\bar{X}-T_{n-1, \alpha/2}\frac{s}{\sqrt{n}}&lt;\mu &lt;\bar{X}+T_{n-1, \alpha/2}\frac{s}{\sqrt{n}})=0.95\]</span></p>
-<p>i.e., with probability 0.95 <span class="math inline">\(\mu\)</span> is contained in <span class="math display">\[\bar{X} \pm T_{n-1, \alpha/2}\frac{s}{\sqrt{n}}\]</span> which is called a 95% confidence interval for <span class="math inline">\(\mu\)</span>.</p>
+<section id="the-variances-are-unknown-and-unequal-welch-test." class="slide level2" style="font-size: 65%;">
+<h2>The variances are unknown and unequal (Welch test).</h2>
+<p>The test statistic in this case</p>
+<p><span class="math display">\[T_{stat} = \frac{\bar{X}-\bar{Y}}{\sqrt{\frac{s_x^2}{n}+\frac{s_y^2}{m}}} \sim t_{\nu}\]</span></p>
+<p>where <span class="math inline">\(T_{stat}\)</span> follows a t-distribution with <span class="math inline">\(\nu\)</span> degrees of freedom if <span class="math inline">\(H_0\)</span> is true and</p>
+<p><span class="math display">\[\nu = \bigg(\frac{s_x^2}{n} + \frac{s_y^2}{m}\bigg)^2/ \bigg( \frac{(\frac{s_x^2}{n})^2}{n-1} + \frac{(\frac{s_y^2}{m})^2}{m-1}\bigg)\]</span></p>
 </section>
 <section id="example" class="slide level2" style="font-size: 65%;">
 <h2>Example</h2>
-<p>A study is conducted to measure the grams of protein for a sample of energy bars. The label claims that the bars have 20 grams of protein. We want to know if the labels are correct or not.</p>
-<p>The histogram of the data for 20 samples are given below:</p>
-
-<img data-src="9-SingleSamples_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="384"></section>
-<section id="assessing-normality" class="slide level2" style="font-size: 65%;">
-<h2>Assessing Normality</h2>
-<p>Visual inspection is useful…</p>
-
-<img data-src="9-SingleSamples_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="384"><p>..but subjective.</p>
-<div>
-<ul>
-<li class="fragment">It’s possible to use a significance test comparing the sample distribution to a normal one in order to ascertain whether or not data show a serious deviation from normality.</li>
-</ul>
-</div>
-</section>
-<section id="assessing-normality-1" class="slide level2" style="font-size: 65%;">
-<h2>Assessing Normality</h2>
-<p>Shapiro-Wilk’s method is widely recommended for normality test and it is based on the correlation between the data and the corresponding normal scores.</p>
-<p><span class="math inline">\(H_0:\)</span> the data come from a normal distribution</p>
-<p><span class="math inline">\(H_a:\)</span> the data do not come from a normal distribution</p>
+<p>Every year, the US releases to the public a large dataset containing information on births recorded in the country. This dataset has been of interest to medical researchers who are studying the relation between habits and practices of expectant mothers and the birth of their children. We will work with a random sample of 1,000 cases from the dataset released in 2014.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">shapiro.test</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 10%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 13%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">fage</th>
+<th style="text-align: right;">mage</th>
+<th style="text-align: left;">mature</th>
+<th style="text-align: right;">weeks</th>
+<th style="text-align: left;">premie</th>
+<th style="text-align: right;">visits</th>
+<th style="text-align: right;">gained</th>
+<th style="text-align: right;">weight</th>
+<th style="text-align: left;">lowbirthweight</th>
+<th style="text-align: left;">sex</th>
+<th style="text-align: left;">habit</th>
+<th style="text-align: left;">marital</th>
+<th style="text-align: left;">whitemom</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: left;">younger mom</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: left;">full term</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">6.96</td>
+<td style="text-align: left;">not low</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">nonsmoker</td>
+<td style="text-align: left;">married</td>
+<td style="text-align: left;">white</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: left;">younger mom</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: left;">full term</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">8.86</td>
+<td style="text-align: left;">not low</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">nonsmoker</td>
+<td style="text-align: left;">married</td>
+<td style="text-align: left;">white</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: left;">mature mom</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: left;">full term</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">7.51</td>
+<td style="text-align: left;">not low</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">nonsmoker</td>
+<td style="text-align: left;">married</td>
+<td style="text-align: left;">not white</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: left;">younger mom</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: left;">full term</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">6.19</td>
+<td style="text-align: left;">not low</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">nonsmoker</td>
+<td style="text-align: left;">not married</td>
+<td style="text-align: left;">white</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: left;">younger mom</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: left;">premie</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">6.75</td>
+<td style="text-align: left;">not low</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">nonsmoker</td>
+<td style="text-align: left;">married</td>
+<td style="text-align: left;">white</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="analysis-question" class="slide level2" style="font-size: 65%;">
+<h2>Analysis Question</h2>
+<p>We would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who do not smoke?</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>The Hypothesis</strong></p>
+</div>
+<div class="callout-content">
+<p>Set up appropriate hypotheses to evaluate whether there is a relationship between a mother smoking and average birth weight.</p>
+<p>The null hypothesis represents the case of no difference between the groups.</p>
+<p><span class="math inline">\(H_o: \mu_x = \mu_y\)</span> There is no difference in average birth weight for newborns from mothers who did and did not smoke.</p>
+<p><span class="math inline">\(H_a: \mu_x \neq \mu_y\)</span> There is some difference in average newborn weights from mothers who did and did not smoke.</p>
+</div>
+</div>
+</div>
+<p><strong>Sample Statistics</strong></p>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>
-    Shapiro-Wilk normality test
+<pre><code>      habit weight.mean weight.sd
+1 nonsmoker    7.269873  1.232846
+2    smoker    6.677193  1.596645</code></pre>
+</div>
+</div>
+</section>
+<section id="variability" class="slide level2" style="font-size: 65%;">
+<h2>Variability</h2>
+<p>We check the two conditions necessary to model the difference in sample means using the t-distribution.</p>
+<p>Because the data come from a simple random sample, the observations are independent, both within and between samples.</p>
+<p>With both groups over 30 observations, we inspect the data for any particularly extreme outliers</p>
 
-data:  x
-W = 0.96012, p-value = 0.4169</code></pre>
-</div>
-</div>
+<img data-src="10-tests_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Since both conditions are satisfied, the difference in sample means may be modeled using a t-distribution.</p>
 </section>
-<section id="an-alternative-to-using-distributions" class="slide level2" style="font-size: 60%;">
-<h2>An Alternative to using distributions</h2>
-<p>Consider a situation where you want to know whether you should buy a franchise of the used car store Awesome Autos. As part of your planning, you’d like to know for how much an average car from Awesome Autos sells. In order to go through the example more clearly, let’s say that you are only able to randomly sample five cars from Awesome Auto. (If this were a real example, you would surely be able to take a much larger sample size, possibly even being able to measure the entire population!)</p>
-<p><strong>Bootstrapping</strong></p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="https://openintro-ims.netlify.app/inference-one-mean"><img data-src="images/Screenshot 2024-11-18 at 10.28.16.png" width="700" alt="Bootstrap Example from Openintro"></a></p>
-<figcaption>Bootstrap Example from Openintro</figcaption>
-</figure>
-</div>
-</section>
-<section id="an-alternative-to-using-distributions-1" class="slide level2" style="font-size: 65%;">
-<h2>An Alternative to using distributions</h2>
-<p><strong>Bootstrapping</strong></p>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb5" data-code-line-numbers=""><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>car_data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18300</span>,<span class="dv">20100</span>, <span class="dv">9600</span>, <span class="dv">10700</span>, <span class="dv">27000</span>)</span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>n_samps <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb5-4"><a></a>bootstrap_samp_means <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n_samps)</span>
-<span id="cb5-5"><a></a></span>
-<span id="cb5-6"><a></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_samps)</span>
-<span id="cb5-7"><a></a>{</span>
-<span id="cb5-8"><a></a>  bootstrap_samp <span class="ot">&lt;-</span> <span class="fu">sample</span>(car_data, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-9"><a></a>  bootstrap_samp_means[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(bootstrap_samp)</span>
-<span id="cb5-10"><a></a>}</span>
-<span id="cb5-11"><a></a></span>
-<span id="cb5-12"><a></a><span class="fu">hist</span>(bootstrap_samp_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column fragment">
+<section id="results" class="slide level2" style="font-size: 65%;">
+<h2>Results</h2>
+<p><span class="math inline">\(\bar{x_1} - \bar{x_2} = 0.59\)</span>, <span class="math inline">\(SE = 0.16\)</span>, the sample sizes are <span class="math inline">\(n_1 = 867\)</span> and <span class="math inline">\(n_2 = 114\)</span> and <span class="math inline">\(df = 113\)</span>.</p>
+<p>We can find the test statistic for this test using:</p>
+<p><span class="math display">\[T = \frac{0.59 - 0}{0.16} = 3.82\]</span></p>
+<div class="fragment">
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="9-SingleSamples_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+<p><img data-src="10-tests_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
 </figure>
 </div>
 </div>
-</div></div>
-<div>
-<ul>
-<li class="fragment"><p>The histogram summarizes one thousand bootstrap samples of the bootstrap sample means.</p></li>
-<li class="fragment"><p>The bootstrapped average car prices vary from about $10,000 to $25,000.</p></li>
-<li class="fragment"><p>The bootstrap percentile confidence interval is found by locating the middle 90% (for a 90% confidence interval) or a 95% (for a 95% confidence interval) of the bootstrapped means.</p></li>
-</ul>
 </div>
-<div class="fragment">
+</div>
+</section>
+<section id="results-1" class="slide level2" style="font-size: 65%;">
+<h2>Results</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb6" data-code-line-numbers=""><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">quantile</span>(bootstrap_samp_means, <span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers=""><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Perform a t-test to compare the means of 'value' between 'category' A and B</span></span>
+<span id="cb2-2"><a></a>t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(weight <span class="sc">~</span> habit, </span>
+<span id="cb2-3"><a></a>                        <span class="at">data =</span> births14)</span>
+<span id="cb2-4"><a></a></span>
+<span id="cb2-5"><a></a><span class="co"># View the result of the t-test</span></span>
+<span id="cb2-6"><a></a><span class="fu">print</span>(t_test_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output cell-output-stdout">
-<pre><code> 2.5% 97.5% 
-12000 22360 </code></pre>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  weight by habit
+t = 3.8166, df = 131.31, p-value = 0.0002075
+alternative hypothesis: true difference in means between group nonsmoker and group smoker is not equal to 0
+95 percent confidence interval:
+ 0.2854852 0.8998751
+sample estimates:
+mean in group nonsmoker    mean in group smoker 
+               7.269873                6.677193 </code></pre>
 </div>
 </div></div>
+<div class="fragment">
+<p>The p-value is smaller than the confidence level, 0.05, so we reject the null hypothesis. The data provide statistical evidence of a difference in the average weights of babies born to mothers who smoked during pregnancy and those who did not.</p>
+</div>
+</section>
+<section id="confidence-intervals-for-mu_x---mu_y" class="slide level2" style="font-size: 65%;">
+<h2>Confidence intervals for <span class="math inline">\(\mu_x - \mu_y\)</span></h2>
+<ul>
+<li><p>Let <span class="math inline">\(\mu_d = \mu_x - \mu_y\)</span></p></li>
+<li><p>95% of the area under the <span class="math inline">\(t_{\nu}\)</span> curve lies in <span class="math inline">\(\pm T_{\nu, \alpha/2}\)</span>.</p></li>
+</ul>
+<p>Therefore, <span class="math display">\[P(-T_{\nu, \alpha/2}&lt;\frac{(\bar{X}-\bar{Y}) - \mu_d}{SE}&lt;T_{\nu, \alpha/2})=0.95\]</span></p>
+<p>And,</p>
+<p><span class="math display">\[P((\bar{X} - \bar{Y})-T_{\nu, \alpha/2}*SE&lt;\mu_d &lt;(\bar{X} - \bar{Y})+T_{\nu, \alpha/2}*SE)=0.95\]</span></p>
+<p>i.e.&nbsp;with probability 0.95 <span class="math inline">\(\mu_d\)</span> is contained in <span class="math display">\[(\bar{X} - \bar{Y}) \pm T_{\nu, \alpha/2}*SE\]</span> which is called a 95% confidence interval for <span class="math inline">\(\mu_d\)</span>.</p>
+</section>
+<section id="class-example" class="slide level2" style="font-size: 65%;">
+<h2>Class Example</h2>
+<p>We would like to find out the effect of a new drug on blood pressure. Patients with high blood pressure were randomly assigned into two groups, a placebo group and a treatment group. The placebo group received conventional treatment while the treatment group received a new drug that is expected to lower blood pressure. After treatment for a couple of months, the two-sample t test is used to compare the average blood pressure of the two groups. Note that each patient is measured once and belongs to one group.</p>
+<!-- A small bakery sells cookies in packages of 500 g. The cookies are handmade and the packaging is either done by the baker himself or his wife. Some customers conjecture that the wife is more generous than the baker. One customer does an experiment: he buys packages of cookies packed by the baker and his wife on 16 different days and weighs the packages. He gets the following two samples (one for the baker, one for his wife). -->
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">placebo</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">89</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: right;">85</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">91</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">89</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">80</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>We want to test whether drug <em>reduces</em> blood pressure.</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
-</div>
 </div>
 </div>
 </section>

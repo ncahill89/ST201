@@ -1,0 +1,516 @@
+---
+title: "ST201 Data Analysis"
+subtitle:  "Statistical Inference for Means"
+author: "Prof. Niamh Cahill (she/her)"
+format: 
+  revealjs:
+    highlight-style: github
+editor: visual
+---
+
+## Hypothesis Tests {style="font-size: 65%;"}
+
+Once an analyst estimates the parameters on the basis of a random sample, they would like to infer something about the value of the parameter in the population. Statistical hypothesis tests facilitate the comparison of estimated values with hypothetical values.
+
+**Example**
+
+A clinical study is conducted to compare the effectiveness of a new drug (B) to an established standard drug (A) for high blood pressure.
+
+-   Assume that, as a first step, we want to find out whether the new drug causes a higher reduction in blood pressure than the already established older drug.
+
+-   A possible hypothesis is that the average change in the blood pressure in group B is higher than in group A.
+
+## One- and Two-Sample Problems {style="font-size: 65%;"}
+
+In one-sample problems, the data is usually assumed to arise as one sample from a defined population. In two-sample problems, the data originates in the form of two samples possibly from two different populations.
+
+For an unknown population parameter (e.g., $\mu$) and a fixed value (e.g. $\mu_0$), the following three cases have to be distinguished:
+
+| Case  | $H_0$            | $H_a$            | Type    |
+|-------|------------------|------------------|---------|
+| \(a\) | $\mu = \mu_0$    | $\mu \neq \mu_0$ | 2-sided |
+| \(b\) | $\mu \geq \mu_0$ | $\mu < \mu_0$    | 1-sided |
+| \(c\) | $\mu \leq \mu_0$ | $\mu > \mu_0$    | 1-sided |
+
+<!-- \begin{center} -->
+
+<!-- \begin{tabular}{ |c|c|c|c| }  -->
+
+<!-- \hline -->
+
+<!-- Case & $H_0$ & $H_a$ & \\  -->
+
+<!-- \hline -->
+
+<!-- (a) & $\mu = \mu_0$ & $\mu \neq \mu_0$ & 2-sided \\  -->
+
+<!-- (b) & $\mu \geq \mu_0$ & $\mu < \mu_0$ & 1-sided   \\  -->
+
+<!-- (c) & $\mu \leq \mu_0$ & $\mu > \mu_0$ & 1-sided   \\  -->
+
+<!-- \hline -->
+
+<!-- \end{tabular} -->
+
+<!-- \end{center} -->
+
+## One sample problem when the variance is unknown {style="font-size: 65%;"}
+
+Now that we have used the t-distribution for making a confidence interval for a mean, we can consider hypothesis tests for the mean.
+
+If the population variance $\sigma^2$ is unknown (which is most often the case in practice), hypotheses about the mean $\mu$ of a normal random variable $X \sim N(\mu, \sigma^2)$ can be tested. The unknown variance is estimated from the sample.
+
+::: callout-note
+## The test statistic for assessing a single mean is a $T$.
+
+The $T$ score is a ratio of how the sample mean differs from the hypothesized mean as compared to how the observations vary.
+
+The test statistic is therefore
+
+$$T_{stat} = \frac{\bar{X}-\mu_0}{s/\sqrt{n}} $$
+
+When the null hypothesis is true and the conditions are met, T has a t-distribution with $df = n-1$
+
+$$T_{stat} \sim t_{n-1}$$
+
+Conditions:
+
+-   Independent observations.
+
+-   Large samples and no extreme outliers.
+:::
+
+## Critical regions and test decisions {style="font-size: 65%;"}
+
+Rules to make test decisions for the one-sample t-test
+
+| Case  | $H_0$            | $H_a$            | Type    |
+|-------|------------------|------------------|---------|
+| \(a\) | $\mu = \mu_0$    | $\mu \neq \mu_0$ | 2-sided |
+| \(b\) | $\mu \geq \mu_0$ | $\mu < \mu_0$    | 1-sided |
+| \(c\) | $\mu \leq \mu_0$ | $\mu > \mu_0$    | 1-sided |
+
+<!-- \begin{center} -->
+
+<!-- \begin{tabular}{ |c|c|c|c| }  -->
+
+<!-- \hline -->
+
+<!-- Case & $H_0$ & $H_a$ & Reject $H_0$ if \\  -->
+
+<!-- \hline -->
+
+<!-- (a) & $\mu = \mu_0$ & $\mu \neq \mu_0$ & $|T_{stat}| > T_{n-1,1-\alpha/2}$ \\  -->
+
+<!-- (b) & $\mu \geq \mu_0$ & $\mu < \mu_0$ & $T_{stat} < T_{n-1,\alpha}$   \\  -->
+
+<!-- (c) & $\mu \leq \mu_0$ & $\mu > \mu_0$ & $T_{stat} > T_{n-1,1-\alpha}$   \\  -->
+
+<!-- \hline -->
+
+<!-- \end{tabular} -->
+
+<!-- \end{center} -->
+
+## Sleep Example {style="font-size: 65%;"}
+
+A study is conducted to see if the student populations gets on average 8 hours of sleep.
+
+Suppose a random sample of size n = 20 has a mean of $\bar{x}$ = 6.75 and a sample standard deviation of $\sigma$ = 2.40.
+
+Test whether the average hours of sleep differs from 8.
+
+. . .
+
+```{r, echo = FALSE, include=TRUE}
+#| code-line-numbers: ""
+
+# Load required package
+library(ggplot2)
+
+# Set the degrees of freedom
+df <- 19
+
+# Create a sequence of x values for plotting
+x_vals <- seq(-4, 4, by = 0.01)
+
+# Compute the corresponding t-distribution density values
+y_vals <- dt(x_vals, df)
+
+# Calculate the 2.5th and 97.5th percentile values
+t_2_5 <- qt(0.025, df)
+t_97_5 <- qt(0.975, df)
+
+# Create the plot
+ggplot(data.frame(x = x_vals, y = y_vals), aes(x, y)) +
+  geom_line(color = "blue") +  # Plot the t-distribution curve
+  geom_vline(xintercept = t_2_5, linetype = "dashed", color = "red") +  # 2.5th percentile line
+  geom_vline(xintercept = t_97_5, linetype = "dashed", color = "red") +  # 97.5th percentile line
+  geom_text(aes(x = t_2_5, y = 0.05), label = paste("2.5th percentile\n", round(t_2_5, 2)), color = "red") +  # Label for 2.5th percentile
+  geom_text(aes(x = t_97_5, y = 0.05), label = paste("97.5th percentile\n", round(t_97_5, 2)), color = "red") +  # Label for 97.5th percentile
+  labs(title = "t-Distribution with 19 Degrees of Freedom", 
+       x = "t Value", 
+       y = "Density") +
+  theme_minimal()
+
+```
+
+```{r, echo = FALSE, include = FALSE, eval = FALSE}
+set.seed(10393)
+student_sleep <- round(rnorm(20, 6.5, 2),0)
+
+mean(student_sleep)
+sd(student_sleep)
+
+SE <- sd(student_sleep)/sqrt(20)
+
+
+test <- t.test(student_sleep, mu = 8)
+
+test$statistic
+(mean(bread_weight) - 2)/SE
+
+test$parameter
+
+test$estimate
+
+test$null.value
+
+test$p.value
+pt(-1.05796, df = 19)*2
+
+qt(0.975, df = 19)
+
+mean(bread_weight) - qt(0.975, df = 19)*SE
+mean(bread_weight) + qt(0.975, df = 19)*SE
+
+test$conf.int
+
+```
+
+<!-- A bakery supplies loaves of bread to supermarkets. The stated selling weight (and therefore the required minimum expected weight) is $\mu = 2$ kg. However, not every package weighs exactly 2 kg because there is variability in the weights. It is therefore important to find out if the average weight of the loaves is significantly different than 2 kg. -->
+
+<!-- - Suppose a random sample of size n = 20 has a mean of $\bar{x}$ = 1.98 and a sample variance of $\sigma$ = 0.093.  -->
+
+<!-- - We want to test whether this result contradicts the two-sided hypothesis $H_0: \mu = 2$. The significance level is fixed at $\alpha = 0.05$.  -->
+
+```{r, echo = FALSE, include = FALSE, eval = FALSE}
+set.seed(10393)
+bread_weight <- round(rnorm(20, 1.97, 0.093),2)
+mean(bread_weight)
+sd(bread_weight)
+
+SE <- sd(bread_weight)/sqrt(20)
+
+
+test <- t.test(bread_weight, mu = 2)
+
+test$statistic
+(mean(bread_weight) - 2)/SE
+
+test$parameter
+
+test$estimate
+
+test$null.value
+
+test$p.value
+pt(-1.05796, df = 19)*2
+
+qt(0.975, df = 19)
+
+mean(bread_weight) - qt(0.975, df = 19)*SE
+mean(bread_weight) + qt(0.975, df = 19)*SE
+
+test$conf.int
+
+```
+
+## Comparing the Means of Two Independent Samples {style="font-size: 65%;"}
+
+In a two-sample problem, we may be interested in comparing the means of two independent samples. Assume that we have two samples of two normally distributed variables $X \sim N(\mu_x, \sigma_x^2)$ and $Y \sim N(\mu_y, \sigma_y^2)$ of size n and m.
+
+We can specify the following hypotheses:
+
+| Case  | $H_0$              | $H_a$              | Type    |
+|-------|--------------------|--------------------|---------|
+| \(a\) | $\mu_x = \mu_y$    | $\mu_x \neq \mu_y$ | 2-sided |
+| \(b\) | $\mu_x \geq \mu_y$ | $\mu_x < \mu_y$    | 1-sided |
+| \(c\) | $\mu_x \leq \mu_y$ | $\mu_x > \mu_y$    | 1-sided |
+
+<!-- \begin{center} -->
+
+<!-- \begin{tabular}{ |c|c|c|c| }  -->
+
+<!-- \hline -->
+
+<!-- Case & $H_0$ & $H_a$ & \\  -->
+
+<!-- \hline -->
+
+<!-- (a) & $\mu_x = \mu_y$ & $\mu_x \neq \mu_y$ & 2-sided \\  -->
+
+<!-- (b) & $\mu_x \geq \mu_y$ & $\mu_x < \mu_y$ & 1-sided \\  -->
+
+<!-- (c) & $\mu_x \leq \mu_y$ & $\mu_x > \mu_y$ & 1-sided \\  -->
+
+<!-- \hline -->
+
+<!-- \end{tabular} -->
+
+<!-- \end{center} -->
+
+We will consider two cases.
+
+## The variances are unknown, but equal (two-sample t-test). {style="font-size: 65%;"}
+
+If we have assumed that both populations have the same variance $\sigma^2$.
+
+-   We can estimate this from either $s_X$ and $s_Y$.
+
+-   However, it would be better to use both to estimate $\sigma^2$.
+
+-   We \`pool' these two statistics into an overall estimate of $\sigma^2$:
+
+$$s_p^2=\frac{(n-1)s_X^2+(m-1)s_Y^2}{n+m-2}.$$
+
+The test statistic in this case
+
+$$T_{stat} = \frac{\bar{X}-\bar{Y}}{s_p \sqrt{\frac{1}{n}+\frac{1}{m}}} \sim t_{n + m-2}$$
+
+where $T_{stat}$ follows a t-distribution with n + m - 2 degrees of freedom if $H_0$ is true.
+
+## The variances are unknown and unequal (Welch test). {style="font-size: 65%;"}
+
+The test statistic in this case
+
+$$T_{stat} = \frac{\bar{X}-\bar{Y}}{\sqrt{\frac{s_x^2}{n}+\frac{s_y^2}{m}}} \sim t_{\nu}$$
+
+where $T_{stat}$ follows a t-distribution with $\nu$ degrees of freedom if $H_0$ is true and
+
+$$\nu = \bigg(\frac{s_x^2}{n} + \frac{s_y^2}{m}\bigg)^2/ \bigg( \frac{(\frac{s_x^2}{n})^2}{n-1} + \frac{(\frac{s_y^2}{m})^2}{m-1}\bigg)$$
+
+## Example {style="font-size: 65%;"}
+
+Every year, the US releases to the public a large dataset containing information on births recorded in the country. This dataset has been of interest to medical researchers who are studying the relation between habits and practices of expectant mothers and the birth of their children. We will work with a random sample of 1,000 cases from the dataset released in 2014.
+
+```{r}
+births14 <- openintro::births14
+knitr::kable(births14[1:5,])
+```
+
+## Analysis Question {style="font-size: 65%;"}
+
+We would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who do not smoke?
+
+::: callout-note
+## The Hypothesis
+
+Set up appropriate hypotheses to evaluate whether there is a relationship between a mother smoking and average birth weight.
+
+The null hypothesis represents the case of no difference between the groups.
+
+$H_o: \mu_x = \mu_y$ There is no difference in average birth weight for newborns from mothers who did and did not smoke.
+
+$H_a: \mu_x \neq \mu_y$ There is some difference in average newborn weights from mothers who did and did not smoke.
+:::
+
+**Sample Statistics**
+
+```{r}
+# Summarize the 'value' variable by 'category'
+summary <- aggregate(weight ~ habit, 
+                     data = births14, 
+                     FUN = function(x) c(mean = mean(x), 
+                                         sd = sd(x)))
+
+# View the summary
+print(summary)
+
+```
+
+## Variability {style="font-size: 65%;"}
+
+We check the two conditions necessary to model the difference in sample means using the t-distribution.
+
+Because the data come from a simple random sample, the observations are independent, both within and between samples.
+
+With both groups over 30 observations, we inspect the data for any particularly extreme outliers
+
+```{r, fig.align='center'}
+
+# Create a boxplot by group
+boxplot(weight ~ habit, data = births14, 
+        main = "Boxplot of Weight by Habit", 
+        xlab = "", 
+        ylab = "Weight", 
+        col = c("lightblue", "lightgreen"))
+```
+
+Since both conditions are satisfied, the difference in sample means may be modeled using a t-distribution.
+
+## Results {style="font-size: 65%;"}
+
+$\bar{x_1} - \bar{x_2} = 0.59$, $SE = 0.16$, the sample sizes are $n_1 = 867$ and $n_2 = 114$ and $df = 113$.
+
+We can find the test statistic for this test using:
+
+$$T = \frac{0.59 - 0}{0.16} = 3.82$$
+
+. . .
+
+```{r, echo = FALSE, include=TRUE}
+#| code-line-numbers: ""
+
+# Load required package
+library(ggplot2)
+
+# Set the degrees of freedom
+df <- 113
+
+# Create a sequence of x values for plotting
+x_vals <- seq(-4, 4, by = 0.01)
+
+# Compute the corresponding t-distribution density values
+y_vals <- dt(x_vals, df)
+
+# Calculate the 2.5th and 97.5th percentile values
+t_2_5 <- qt(0.025, df)
+t_97_5 <- qt(0.975, df)
+
+# Create the plot
+ggplot(data.frame(x = x_vals, y = y_vals), aes(x, y)) +
+  geom_line(color = "blue") +  # Plot the t-distribution curve
+  geom_vline(xintercept = t_2_5, linetype = "dashed", color = "red") +  # 2.5th percentile line
+  geom_vline(xintercept = t_97_5, linetype = "dashed", color = "red") +  # 97.5th percentile line
+  geom_text(aes(x = t_2_5, y = 0.05), label = paste("2.5th percentile\n", round(t_2_5, 2)), color = "red") +  # Label for 2.5th percentile
+  geom_text(aes(x = t_97_5, y = 0.05), label = paste("97.5th percentile\n", round(t_97_5, 2)), color = "red") +  # Label for 97.5th percentile
+  labs(title = "t-Distribution with 113 Degrees of Freedom", 
+       x = "t Value", 
+       y = "Density") +
+  theme_minimal()
+
+```
+
+## Results {style="font-size: 65%;"}
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: ""
+#| output-location: column-fragment
+
+
+# Perform a t-test to compare the means of 'value' between 'category' A and B
+t_test_result <- t.test(weight ~ habit, 
+                        data = births14)
+
+# View the result of the t-test
+print(t_test_result)
+
+```
+
+. . .
+
+The p-value is smaller than the confidence level, 0.05, so we reject the null hypothesis. The data provide statistical evidence of a difference in the average weights of babies born to mothers who smoked during pregnancy and those who did not.
+
+## Confidence intervals for $\mu_x - \mu_y$ {style="font-size: 65%;"}
+
+-   Let $\mu_d = \mu_x - \mu_y$
+
+-   95% of the area under the $t_{\nu}$ curve lies in $\pm T_{\nu, \alpha/2}$.
+
+Therefore, $$P(-T_{\nu, \alpha/2}<\frac{(\bar{X}-\bar{Y}) - \mu_d}{SE}<T_{\nu, \alpha/2})=0.95$$
+
+And,
+
+$$P((\bar{X} - \bar{Y})-T_{\nu, \alpha/2}*SE<\mu_d <(\bar{X} - \bar{Y})+T_{\nu, \alpha/2}*SE)=0.95$$
+
+i.e. with probability 0.95 $\mu_d$ is contained in $$(\bar{X} - \bar{Y}) \pm T_{\nu, \alpha/2}*SE$$ which is called a 95% confidence interval for $\mu_d$.
+
+## Class Example {style="font-size: 65%;"}
+
+We would like to find out the effect of a new drug on blood pressure. Patients with high blood pressure were randomly assigned into two groups, a placebo group and a treatment group. The placebo group received conventional treatment while the treatment group received a new drug that is expected to lower blood pressure. After treatment for a couple of months, the two-sample t test is used to compare the average blood pressure of the two groups. Note that each patient is measured once and belongs to one group.
+
+```{r, echo = FALSE, include=FALSE}
+placebo <- c(90, 95, 67, 120, 89, 92, 100, 82,79,85)
+treatment <- c(71,79,69,98,91,85,89,75,78,80)
+blood_pressure <- tibble::tibble(placebo, treatment)
+
+xbar <- mean(placebo)
+ybar <- mean(treatment)
+sx <- sd(placebo)
+sy <- sd(treatment)
+
+n <- m <- 10
+
+SE <- sqrt((sx^2)/n +(sy^2/m))
+
+test <- t.test(blood_pressure$placebo,blood_pressure$treatment, alternative='greater')
+test$parameter
+
+test$statistic
+
+(xbar - ybar)/SE
+test$statistic
+
+v <- (((sx^2/n) + (sy^2/m))^2)/( (((sx^2/n)^2)/(n-1)) + (((sy^2/m)^2)/(m-1)))
+test$parameter
+
+(1- pt(2.905794,df = 11.67205))*2
+test$p.value
+
+qt(0.025, df = 11.67205)
+
+( xbar - ybar ) - qt(0.975, df = 11.67205)*SE
+
+( xbar - ybar ) + qt(0.975, df = 11.67205)*SE
+
+```
+
+<!-- A small bakery sells cookies in packages of 500 g. The cookies are handmade and the packaging is either done by the baker himself or his wife. Some customers conjecture that the wife is more generous than the baker. One customer does an experiment: he buys packages of cookies packed by the baker and his wife on 16 different days and weighs the packages. He gets the following two samples (one for the baker, one for his wife). -->
+
+```{r, echo = FALSE, include=FALSE, eval = FALSE}
+weight_wife <- c(512, 530, 498, 540, 521, 528, 505, 523)
+weight_baker <- c(499, 500, 510, 495, 515, 503, 490, 511)
+cookies <- tibble::tibble(weight_wife, weight_baker)
+
+xbar <- mean(weight_wife)
+ybar <- mean(weight_baker)
+sx <- sd(weight_wife)
+sy <- sd(weight_baker)
+
+n <- m <- 8
+
+SE <- sqrt((sx^2)/n +(sy^2/m))
+
+test <- t.test(cookies$weight_wife,cookies$weight_baker, alternative='two.sided')
+
+
+test$statistic
+
+
+
+(xbar - ybar)/SE
+test$statistic
+
+v <- (((sx^2/n) + (sy^2/m))^2)/( (((sx^2/n)^2)/(n-1)) + (((sy^2/m)^2)/(m-1)))
+test$parameter
+
+(1- pt(2.905794,df = 11.67205))*2
+test$p.value
+
+qt(0.025, df = 11.67205)
+
+( xbar - ybar ) - qt(0.975, df = 11.67205)*SE
+
+( xbar - ybar ) + qt(0.975, df = 11.67205)*SE
+
+
+```
+
+```{r, echo = FALSE}
+
+suppressWarnings( knitr::kable(t(blood_pressure)) )
+
+```
+
+We want to test whether drug *reduces* blood pressure.

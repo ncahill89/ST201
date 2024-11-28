@@ -69,6 +69,20 @@ Midterm exam week
 
 9b. Code lecture; check the [Rstudio Sever](https://rstudio.maths.nuim.ie) for Week9_SingleSamples.R
 
+
+### Week 10
+
+10a. [Inference for Means](https://ncahill89.github.io/ST201/10-tests.html)
+
+10b. Code lecture; check the [Rstudio Sever](https://rstudio.maths.nuim.ie) for Week10_InferenceMeans.R
+
+
+### Week 11
+11a. [Simple Linear Regression]()
+
+11b. Code lecture; check the [Rstudio Sever](https://rstudio.maths.nuim.ie) for Week11_SLR.R
+
+
 ## Tutorial Sheets
 
 [Tutorial Sheet 1: Numerical Data](https://ncahill89.github.io/ST201/Tutorial1.html)

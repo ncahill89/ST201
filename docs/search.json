@@ -172,7 +172,7 @@
     "href": "index.html#lecture-slides",
     "title": "Welcome to Data Analysis!",
     "section": "Lecture Slides",
-    "text": "Lecture Slides\n\nWeek 1\n1a. Data\n1b. Code lecture; check the Rstudio Sever for Week1_Data.R\n\n\nWeek 2\n2a. Numerical Data\n2b. Code lecture; check the Rstudio Sever for Week2_NumericalData.R\n\n\nWeek 3\n3a. Association between Categorical Variables\n3b. Code lecture; check the Rstudio Sever for Week3_Categorical.R\n\n\nWeek 4\n4a. Association between Categorical Variables (2)\n4b. Code lecture; check the Rstudio Sever for Week4_Categorical(2).R\n\n\nWeek 5\n5a. Association between Categorical Variables (3)\n5b. Code lecture; check the Rstudio Sever for Week5_Categorical(3).R\n\n\nWeek 6\n6a. Discrete Probability Distributions\n6b. Code lecture; check the Rstudio Sever for Week6_Discrete.R\n\n\nWeek 7\nMidterm exam week\n\n\nWeek 8\n8a. Continuous Probability Distributions\n8b. Code lecture; check the Rstudio Sever for Week8_Continuous.R\n\n\nWeek 9\n9a. Single Samples\n9b. Code lecture; check the Rstudio Sever for Week9_SingleSamples.R"
+    "text": "Lecture Slides\n\nWeek 1\n1a. Data\n1b. Code lecture; check the Rstudio Sever for Week1_Data.R\n\n\nWeek 2\n2a. Numerical Data\n2b. Code lecture; check the Rstudio Sever for Week2_NumericalData.R\n\n\nWeek 3\n3a. Association between Categorical Variables\n3b. Code lecture; check the Rstudio Sever for Week3_Categorical.R\n\n\nWeek 4\n4a. Association between Categorical Variables (2)\n4b. Code lecture; check the Rstudio Sever for Week4_Categorical(2).R\n\n\nWeek 5\n5a. Association between Categorical Variables (3)\n5b. Code lecture; check the Rstudio Sever for Week5_Categorical(3).R\n\n\nWeek 6\n6a. Discrete Probability Distributions\n6b. Code lecture; check the Rstudio Sever for Week6_Discrete.R\n\n\nWeek 7\nMidterm exam week\n\n\nWeek 8\n8a. Continuous Probability Distributions\n8b. Code lecture; check the Rstudio Sever for Week8_Continuous.R\n\n\nWeek 9\n9a. Single Samples\n9b. Code lecture; check the Rstudio Sever for Week9_SingleSamples.R\n\n\nWeek 10\n10a. Inference for Means\n10b. Code lecture; check the Rstudio Sever for Week10_InferenceMeans.R\n\n\nWeek 11\n11a. Simple Linear Regression\n11b. Code lecture; check the Rstudio Sever for Week11_SLR.R"
   },
   {
     "objectID": "2-Numerical.html#watt-test-challenge-7-rounds",
@@ -1194,7 +1194,7 @@
     "href": "9-SingleSamples.html#the-central-limit-theorem-and-the-normal-distribution",
     "title": "ST201 Data Analysis",
     "section": "The Central Limit Theorem and the Normal Distribution",
-    "text": "The Central Limit Theorem and the Normal Distribution\n\nFor a large enough sample size, if you take repeated samples from a population and calculate their averages, then these averages will be normally distributed.\nThis is called the central limit theorem\n\nExample\nConsider the distribution of dice rolls:\n\nPossible outcomes are 1,2,3,4,5,6 and they are all equally likely\nThe distribution is uniform\n\n\n\n\nThe mean is 3.5\nThe sd is 1.44"
+    "text": "The Central Limit Theorem and the Normal Distribution\n\nFor a large enough sample size, if you take repeated samples from a population and calculate their averages, then these averages will be normally distributed.\nThis is called the central limit theorem\n\nExample\nConsider the distribution of dice rolls:\n\nPossible outcomes are 1,2,3,4,5,6 and they are all equally likely\nThe distribution is uniform\n\n\n\n\nThe mean is 3.5\nThe sd is 1.71"
   },
   {
     "objectID": "9-SingleSamples.html#the-central-limit-theorem-and-the-normal-distribution-1",
@@ -1286,5 +1286,110 @@
     "title": "ST201 Data Analysis",
     "section": "An Alternative to using distributions",
     "text": "An Alternative to using distributions\nBootstrapping\n\n\ncar_data &lt;- c(18300,20100, 9600, 10700, 27000)\n\nn_samps &lt;- 1000\nbootstrap_samp_means &lt;- rep(NA, n_samps)\n\nfor(i in 1:n_samps)\n{\n  bootstrap_samp &lt;- sample(car_data, replace = TRUE)\n  bootstrap_samp_means[i] &lt;- mean(bootstrap_samp)\n}\n\nhist(bootstrap_samp_means)\n\n\n\n\n\n\n\n\n\n\n\nThe histogram summarizes one thousand bootstrap samples of the bootstrap sample means.\nThe bootstrapped average car prices vary from about $10,000 to $25,000.\nThe bootstrap percentile confidence interval is found by locating the middle 90% (for a 90% confidence interval) or a 95% (for a 95% confidence interval) of the bootstrapped means.\n\n\n\n\n\nquantile(bootstrap_samp_means, c(0.025,0.975))\n\n\n 2.5% 97.5% \n12000 22360"
+  },
+  {
+    "objectID": "10-tests.html#hypothesis-tests",
+    "href": "10-tests.html#hypothesis-tests",
+    "title": "ST201 Data Analysis",
+    "section": "Hypothesis Tests",
+    "text": "Hypothesis Tests\nOnce an analyst estimates the parameters on the basis of a random sample, they would like to infer something about the value of the parameter in the population. Statistical hypothesis tests facilitate the comparison of estimated values with hypothetical values.\nExample\nA clinical study is conducted to compare the effectiveness of a new drug (B) to an established standard drug (A) for high blood pressure.\n\nAssume that, as a first step, we want to find out whether the new drug causes a higher reduction in blood pressure than the already established older drug.\nA possible hypothesis is that the average change in the blood pressure in group B is higher than in group A."
+  },
+  {
+    "objectID": "10-tests.html#one--and-two-sample-problems",
+    "href": "10-tests.html#one--and-two-sample-problems",
+    "title": "ST201 Data Analysis",
+    "section": "One- and Two-Sample Problems",
+    "text": "One- and Two-Sample Problems\nIn one-sample problems, the data is usually assumed to arise as one sample from a defined population. In two-sample problems, the data originates in the form of two samples possibly from two different populations.\nFor an unknown population parameter (e.g., \\(\\mu\\)) and a fixed value (e.g. \\(\\mu_0\\)), the following three cases have to be distinguished:\n\n\n\nCase\n\\(H_0\\)\n\\(H_a\\)\nType\n\n\n\n\n(a)\n\\(\\mu = \\mu_0\\)\n\\(\\mu \\neq \\mu_0\\)\n2-sided\n\n\n(b)\n\\(\\mu \\geq \\mu_0\\)\n\\(\\mu &lt; \\mu_0\\)\n1-sided\n\n\n(c)\n\\(\\mu \\leq \\mu_0\\)\n\\(\\mu &gt; \\mu_0\\)\n1-sided"
+  },
+  {
+    "objectID": "10-tests.html#one-sample-problem-when-the-variance-is-unknown",
+    "href": "10-tests.html#one-sample-problem-when-the-variance-is-unknown",
+    "title": "ST201 Data Analysis",
+    "section": "One sample problem when the variance is unknown",
+    "text": "One sample problem when the variance is unknown\nNow that we have used the t-distribution for making a confidence interval for a mean, we can consider hypothesis tests for the mean.\nIf the population variance \\(\\sigma^2\\) is unknown (which is most often the case in practice), hypotheses about the mean \\(\\mu\\) of a normal random variable \\(X \\sim N(\\mu, \\sigma^2)\\) can be tested. The unknown variance is estimated from the sample.\n\n\n\n\n\n\nThe test statistic for assessing a single mean is a \\(T\\).\n\n\nThe \\(T\\) score is a ratio of how the sample mean differs from the hypothesized mean as compared to how the observations vary.\nThe test statistic is therefore\n\\[T_{stat} = \\frac{\\bar{X}-\\mu_0}{s/\\sqrt{n}} \\]\nWhen the null hypothesis is true and the conditions are met, T has a t-distribution with \\(df = n-1\\)\n\\[T_{stat} \\sim t_{n-1}\\]\nConditions:\n\nIndependent observations.\nLarge samples and no extreme outliers."
+  },
+  {
+    "objectID": "10-tests.html#critical-regions-and-test-decisions",
+    "href": "10-tests.html#critical-regions-and-test-decisions",
+    "title": "ST201 Data Analysis",
+    "section": "Critical regions and test decisions",
+    "text": "Critical regions and test decisions\nRules to make test decisions for the one-sample t-test\n\n\n\nCase\n\\(H_0\\)\n\\(H_a\\)\nType\n\n\n\n\n(a)\n\\(\\mu = \\mu_0\\)\n\\(\\mu \\neq \\mu_0\\)\n2-sided\n\n\n(b)\n\\(\\mu \\geq \\mu_0\\)\n\\(\\mu &lt; \\mu_0\\)\n1-sided\n\n\n(c)\n\\(\\mu \\leq \\mu_0\\)\n\\(\\mu &gt; \\mu_0\\)\n1-sided"
+  },
+  {
+    "objectID": "10-tests.html#sleep-example",
+    "href": "10-tests.html#sleep-example",
+    "title": "ST201 Data Analysis",
+    "section": "Sleep Example",
+    "text": "Sleep Example\nA study is conducted to see if the student populations gets on average 8 hours of sleep.\nSuppose a random sample of size n = 20 has a mean of \\(\\bar{x}\\) = 6.75 and a sample standard deviation of \\(\\sigma\\) = 2.40.\nTest whether the average hours of sleep differs from 8."
+  },
+  {
+    "objectID": "10-tests.html#comparing-the-means-of-two-independent-samples",
+    "href": "10-tests.html#comparing-the-means-of-two-independent-samples",
+    "title": "ST201 Data Analysis",
+    "section": "Comparing the Means of Two Independent Samples",
+    "text": "Comparing the Means of Two Independent Samples\nIn a two-sample problem, we may be interested in comparing the means of two independent samples. Assume that we have two samples of two normally distributed variables \\(X \\sim N(\\mu_x, \\sigma_x^2)\\) and \\(Y \\sim N(\\mu_y, \\sigma_y^2)\\) of size n and m.\nWe can specify the following hypotheses:\n\n\n\nCase\n\\(H_0\\)\n\\(H_a\\)\nType\n\n\n\n\n(a)\n\\(\\mu_x = \\mu_y\\)\n\\(\\mu_x \\neq \\mu_y\\)\n2-sided\n\n\n(b)\n\\(\\mu_x \\geq \\mu_y\\)\n\\(\\mu_x &lt; \\mu_y\\)\n1-sided\n\n\n(c)\n\\(\\mu_x \\leq \\mu_y\\)\n\\(\\mu_x &gt; \\mu_y\\)\n1-sided\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe will consider two cases."
+  },
+  {
+    "objectID": "10-tests.html#the-variances-are-unknown-but-equal-two-sample-t-test.",
+    "href": "10-tests.html#the-variances-are-unknown-but-equal-two-sample-t-test.",
+    "title": "ST201 Data Analysis",
+    "section": "The variances are unknown, but equal (two-sample t-test).",
+    "text": "The variances are unknown, but equal (two-sample t-test).\nIf we have assumed that both populations have the same variance \\(\\sigma^2\\).\n\nWe can estimate this from either \\(s_X\\) and \\(s_Y\\).\nHowever, it would be better to use both to estimate \\(\\sigma^2\\).\nWe `pool’ these two statistics into an overall estimate of \\(\\sigma^2\\):\n\n\\[s_p^2=\\frac{(n-1)s_X^2+(m-1)s_Y^2}{n+m-2}.\\]\nThe test statistic in this case\n\\[T_{stat} = \\frac{\\bar{X}-\\bar{Y}}{s_p \\sqrt{\\frac{1}{n}+\\frac{1}{m}}} \\sim t_{n + m-2}\\]\nwhere \\(T_{stat}\\) follows a t-distribution with n + m - 2 degrees of freedom if \\(H_0\\) is true."
+  },
+  {
+    "objectID": "10-tests.html#the-variances-are-unknown-and-unequal-welch-test.",
+    "href": "10-tests.html#the-variances-are-unknown-and-unequal-welch-test.",
+    "title": "ST201 Data Analysis",
+    "section": "The variances are unknown and unequal (Welch test).",
+    "text": "The variances are unknown and unequal (Welch test).\nThe test statistic in this case\n\\[T_{stat} = \\frac{\\bar{X}-\\bar{Y}}{\\sqrt{\\frac{s_x^2}{n}+\\frac{s_y^2}{m}}} \\sim t_{\\nu}\\]\nwhere \\(T_{stat}\\) follows a t-distribution with \\(\\nu\\) degrees of freedom if \\(H_0\\) is true and\n\\[\\nu = \\bigg(\\frac{s_x^2}{n} + \\frac{s_y^2}{m}\\bigg)^2/ \\bigg( \\frac{(\\frac{s_x^2}{n})^2}{n-1} + \\frac{(\\frac{s_y^2}{m})^2}{m-1}\\bigg)\\]"
+  },
+  {
+    "objectID": "10-tests.html#example",
+    "href": "10-tests.html#example",
+    "title": "ST201 Data Analysis",
+    "section": "Example",
+    "text": "Example\nEvery year, the US releases to the public a large dataset containing information on births recorded in the country. This dataset has been of interest to medical researchers who are studying the relation between habits and practices of expectant mothers and the birth of their children. We will work with a random sample of 1,000 cases from the dataset released in 2014.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfage\nmage\nmature\nweeks\npremie\nvisits\ngained\nweight\nlowbirthweight\nsex\nhabit\nmarital\nwhitemom\n\n\n\n\n34\n34\nyounger mom\n37\nfull term\n14\n28\n6.96\nnot low\nmale\nnonsmoker\nmarried\nwhite\n\n\n36\n31\nyounger mom\n41\nfull term\n12\n41\n8.86\nnot low\nfemale\nnonsmoker\nmarried\nwhite\n\n\n37\n36\nmature mom\n37\nfull term\n10\n28\n7.51\nnot low\nfemale\nnonsmoker\nmarried\nnot white\n\n\nNA\n16\nyounger mom\n38\nfull term\nNA\n29\n6.19\nnot low\nmale\nnonsmoker\nnot married\nwhite\n\n\n32\n31\nyounger mom\n36\npremie\n12\n48\n6.75\nnot low\nfemale\nnonsmoker\nmarried\nwhite"
+  },
+  {
+    "objectID": "10-tests.html#analysis-question",
+    "href": "10-tests.html#analysis-question",
+    "title": "ST201 Data Analysis",
+    "section": "Analysis Question",
+    "text": "Analysis Question\nWe would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who do not smoke?\n\n\n\n\n\n\nThe Hypothesis\n\n\nSet up appropriate hypotheses to evaluate whether there is a relationship between a mother smoking and average birth weight.\nThe null hypothesis represents the case of no difference between the groups.\n\\(H_o: \\mu_x = \\mu_y\\) There is no difference in average birth weight for newborns from mothers who did and did not smoke.\n\\(H_a: \\mu_x \\neq \\mu_y\\) There is some difference in average newborn weights from mothers who did and did not smoke.\n\n\n\nSample Statistics\n\n\n      habit weight.mean weight.sd\n1 nonsmoker    7.269873  1.232846\n2    smoker    6.677193  1.596645"
+  },
+  {
+    "objectID": "10-tests.html#variability",
+    "href": "10-tests.html#variability",
+    "title": "ST201 Data Analysis",
+    "section": "Variability",
+    "text": "Variability\nWe check the two conditions necessary to model the difference in sample means using the t-distribution.\nBecause the data come from a simple random sample, the observations are independent, both within and between samples.\nWith both groups over 30 observations, we inspect the data for any particularly extreme outliers\n\nSince both conditions are satisfied, the difference in sample means may be modeled using a t-distribution."
+  },
+  {
+    "objectID": "10-tests.html#results",
+    "href": "10-tests.html#results",
+    "title": "ST201 Data Analysis",
+    "section": "Results",
+    "text": "Results\n\\(\\bar{x_1} - \\bar{x_2} = 0.59\\), \\(SE = 0.16\\), the sample sizes are \\(n_1 = 867\\) and \\(n_2 = 114\\) and \\(df = 113\\).\nWe can find the test statistic for this test using:\n\\[T = \\frac{0.59 - 0}{0.16} = 3.82\\]"
+  },
+  {
+    "objectID": "10-tests.html#results-1",
+    "href": "10-tests.html#results-1",
+    "title": "ST201 Data Analysis",
+    "section": "Results",
+    "text": "Results\n\n\n# Perform a t-test to compare the means of 'value' between 'category' A and B\nt_test_result &lt;- t.test(weight ~ habit, \n                        data = births14)\n\n# View the result of the t-test\nprint(t_test_result)\n\n\n\n    Welch Two Sample t-test\n\ndata:  weight by habit\nt = 3.8166, df = 131.31, p-value = 0.0002075\nalternative hypothesis: true difference in means between group nonsmoker and group smoker is not equal to 0\n95 percent confidence interval:\n 0.2854852 0.8998751\nsample estimates:\nmean in group nonsmoker    mean in group smoker \n               7.269873                6.677193 \n\n\n\nThe p-value is smaller than the confidence level, 0.05, so we reject the null hypothesis. The data provide statistical evidence of a difference in the average weights of babies born to mothers who smoked during pregnancy and those who did not."
+  },
+  {
+    "objectID": "10-tests.html#confidence-intervals-for-mu_x---mu_y",
+    "href": "10-tests.html#confidence-intervals-for-mu_x---mu_y",
+    "title": "ST201 Data Analysis",
+    "section": "Confidence intervals for \\(\\mu_x - \\mu_y\\)",
+    "text": "Confidence intervals for \\(\\mu_x - \\mu_y\\)\n\nLet \\(\\mu_d = \\mu_x - \\mu_y\\)\n95% of the area under the \\(t_{\\nu}\\) curve lies in \\(\\pm T_{\\nu, \\alpha/2}\\).\n\nTherefore, \\[P(-T_{\\nu, \\alpha/2}&lt;\\frac{(\\bar{X}-\\bar{Y}) - \\mu_d}{SE}&lt;T_{\\nu, \\alpha/2})=0.95\\]\nAnd,\n\\[P((\\bar{X} - \\bar{Y})-T_{\\nu, \\alpha/2}*SE&lt;\\mu_d &lt;(\\bar{X} - \\bar{Y})+T_{\\nu, \\alpha/2}*SE)=0.95\\]\ni.e. with probability 0.95 \\(\\mu_d\\) is contained in \\[(\\bar{X} - \\bar{Y}) \\pm T_{\\nu, \\alpha/2}*SE\\] which is called a 95% confidence interval for \\(\\mu_d\\)."
+  },
+  {
+    "objectID": "10-tests.html#class-example",
+    "href": "10-tests.html#class-example",
+    "title": "ST201 Data Analysis",
+    "section": "Class Example",
+    "text": "Class Example\nWe would like to find out the effect of a new drug on blood pressure. Patients with high blood pressure were randomly assigned into two groups, a placebo group and a treatment group. The placebo group received conventional treatment while the treatment group received a new drug that is expected to lower blood pressure. After treatment for a couple of months, the two-sample t test is used to compare the average blood pressure of the two groups. Note that each patient is measured once and belongs to one group.\n\n\n\n\n\n\nplacebo\n90\n95\n67\n120\n89\n92\n100\n82\n79\n85\n\n\ntreatment\n71\n79\n69\n98\n91\n85\n89\n75\n78\n80\n\n\n\n\n\nWe want to test whether drug reduces blood pressure."
   }
 ]
