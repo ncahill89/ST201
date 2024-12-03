@@ -45,14 +45,14 @@ For an unknown population parameter (e.g., $\mu$) and a fixed value (e.g. $\mu_0
 
 <!-- \end{center} -->
 
-## One sample problem when the variance is unknown {style="font-size: 65%;"}
+## One sample problem when the variance is unknown {style="font-size: 60%;"}
 
 Now that we have used the t-distribution for making a confidence interval for a mean, we can consider hypothesis tests for the mean.
 
 If the population variance $\sigma^2$ is unknown (which is most often the case in practice), hypotheses about the mean $\mu$ of a normal random variable $X \sim N(\mu, \sigma^2)$ can be tested. The unknown variance is estimated from the sample.
 
 ::: callout-note
-## The test statistic for assessing a single mean is a $T$.
+## The test statistic for assessing a single mean.
 
 The $T$ score is a ratio of how the sample mean differs from the hypothesized mean as compared to how the observations vary.
 
@@ -71,16 +71,75 @@ Conditions:
 -   Large samples and no extreme outliers.
 :::
 
-## Critical regions and test decisions {style="font-size: 65%;"}
+## Critical regions and test decisions {style="font-size: 60%;"}
 
 Rules to make test decisions for the one-sample t-test
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
 
 | Case  | $H_0$            | $H_a$            | Type    |
 |-------|------------------|------------------|---------|
 | \(a\) | $\mu = \mu_0$    | $\mu \neq \mu_0$ | 2-sided |
-| \(b\) | $\mu \geq \mu_0$ | $\mu < \mu_0$    | 1-sided |
-| \(c\) | $\mu \leq \mu_0$ | $\mu > \mu_0$    | 1-sided |
+| \(b\) | $\mu \geq \mu_0$ | $\mu < \mu_0$    | 1-sided (left) |
+| \(c\) | $\mu \leq \mu_0$ | $\mu > \mu_0$    | 1-sided (right) |
 
+:::
+
+::: {.column width="50%"}
+
+
+```{r, fig.height=10}
+library(ggplot2)
+
+# Function to create a normal distribution plot
+plot_tail_test <- function(direction = "Left", alpha = 0.05, two_tailed = FALSE) {
+  x <- seq(-4, 4, by = 0.01)
+  y <- dnorm(x)
+  
+  ggplot(data = data.frame(x, y), aes(x, y)) +
+    geom_line(color = "blue", size = 1) +
+    geom_area(data = subset(data.frame(x, y), (direction == "Left" & x < qnorm(alpha)) |
+                              (direction == "Right" & x > qnorm(1 - alpha)) |
+                              (two_tailed & (x < qnorm(alpha / 2)) &  (x > qnorm(1 - alpha / 2)))),
+              aes(x, y), fill = "red", alpha = 0.5) +
+    annotate("text", x = -3, y = 0.1, label = ifelse(direction == "Left", "Reject null hypothesis", ""), size = 3, hjust = 0) +
+    annotate("text", x = 3, y = 0.1, label = ifelse(direction == "Right", "Reject null hypothesis", ""), size = 3, hjust = 1) +
+    annotate("text", x = 0, y = 0.2, label = "Fail to reject\nnull hypothesis", size = 3, hjust = 0.5) +
+    theme_minimal() +
+    labs(title = ifelse(two_tailed, "Two-Sided Test", paste(direction, "Sided Test")), x = "Test Statistic", y = "Density")
+}
+
+# Left-tailed test
+p1 <- plot_tail_test(direction = "Left")
+
+# Right-tailed test
+p2 <- plot_tail_test(direction = "Right")
+
+# Two-tailed test
+x <- seq(-4, 4, by = 0.01)
+y <- dnorm(x)
+alpha <- 0.05
+
+p3 <-     ggplot(data = data.frame(x, y), aes(x, y)) +
+      geom_line(color = "blue", size = 1) +
+      geom_area(data = subset(data.frame(x, y), ( x < qnorm(alpha/2))),aes(x, y), fill = "red", alpha = 0.5) +
+      geom_area(data = subset(data.frame(x, y), ( x > (-qnorm(alpha/2)))), aes(x, y), fill = "red", alpha = 0.5) +
+      annotate("text", x = 0, y = 0.2, label = "Fail to reject\nnull hypothesis", size = 3, hjust = 0.5) +
+      theme_minimal() +
+      labs(title =  "Two-Sided Test", x = "Test Statistic", y = "Density")
+
+# Combine the plots using gridExtra
+library(gridExtra)
+grid.arrange(p3,p1, p2, ncol = 1, top = "Hypothesis Testing")
+
+```
+
+
+:::
+:::
 <!-- \begin{center} -->
 
 <!-- \begin{tabular}{ |c|c|c|c| }  -->
@@ -103,7 +162,7 @@ Rules to make test decisions for the one-sample t-test
 
 <!-- \end{center} -->
 
-## Sleep Example {style="font-size: 65%;"}
+## Sleep Example {style="font-size: 50%;"}
 
 A study is conducted to see if the student populations gets on average 8 hours of sleep.
 
@@ -146,10 +205,12 @@ ggplot(data.frame(x = x_vals, y = y_vals), aes(x, y)) +
 
 ```
 
-```{r, echo = FALSE, include = FALSE, eval = FALSE}
+```{r, echo = FALSE, include = FALSE, eval = TRUE}
 set.seed(10393)
 student_sleep <- round(rnorm(20, 6.5, 2),0)
+```
 
+```{r, echo = FALSE, include = FALSE, eval = FALSE}
 mean(student_sleep)
 sd(student_sleep)
 
@@ -179,11 +240,37 @@ test$conf.int
 
 ```
 
+
+. . . 
+
+Where does Tstat lie? 
+
 <!-- A bakery supplies loaves of bread to supermarkets. The stated selling weight (and therefore the required minimum expected weight) is $\mu = 2$ kg. However, not every package weighs exactly 2 kg because there is variability in the weights. It is therefore important to find out if the average weight of the loaves is significantly different than 2 kg. -->
 
 <!-- - Suppose a random sample of size n = 20 has a mean of $\bar{x}$ = 1.98 and a sample variance of $\sigma$ = 0.093.  -->
 
 <!-- - We want to test whether this result contradicts the two-sided hypothesis $H_0: \mu = 2$. The significance level is fixed at $\alpha = 0.05$.  -->
+
+
+## Results in R {style="font-size: 60%;"}
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: ""
+#| output-location: column-fragment
+
+
+# Perform a t-test to compare the mean to 8
+t_test_result <- t.test(student_sleep, mu = 8)
+
+# View the result of the t-test
+print(t_test_result)
+
+```
+
+. . .
+
+The p-value is smaller than the confidence level, 0.05, so we reject the null hypothesis. The data provide statistical evidence that the average hours of sleep is different from 8. 
+
 
 ```{r, echo = FALSE, include = FALSE, eval = FALSE}
 set.seed(10393)
@@ -217,9 +304,9 @@ test$conf.int
 
 ```
 
-## Comparing the Means of Two Independent Samples {style="font-size: 65%;"}
+## Comparing the Means of Two Independent Samples {style="font-size: 60%;"}
 
-In a two-sample problem, we may be interested in comparing the means of two independent samples. Assume that we have two samples of two normally distributed variables $X \sim N(\mu_x, \sigma_x^2)$ and $Y \sim N(\mu_y, \sigma_y^2)$ of size n and m.
+In a two-sample problem, we may be interested in comparing the means of two independent samples. Assume that we have two samples of two normally distributed variables $X \sim N(\mu_x, \sigma_x^2)$ and $Y \sim N(\mu_y, \sigma_y^2)$  of size n and m.
 
 We can specify the following hypotheses:
 
@@ -253,7 +340,7 @@ We can specify the following hypotheses:
 
 We will consider two cases.
 
-## The variances are unknown, but equal (two-sample t-test). {style="font-size: 65%;"}
+## The variances are unknown, but equal (two-sample t-test). {style="font-size: 60%;"}
 
 If we have assumed that both populations have the same variance $\sigma^2$.
 
@@ -271,7 +358,14 @@ $$T_{stat} = \frac{\bar{X}-\bar{Y}}{s_p \sqrt{\frac{1}{n}+\frac{1}{m}}} \sim t_{
 
 where $T_{stat}$ follows a t-distribution with n + m - 2 degrees of freedom if $H_0$ is true.
 
-## The variances are unknown and unequal (Welch test). {style="font-size: 65%;"}
+**Conditions:**
+
+-   Independent observations.
+
+-   Large samples and no extreme outliers.
+
+
+## The variances are unknown and unequal (Welch test). {style="font-size: 60%;"}
 
 The test statistic in this case
 
@@ -281,7 +375,14 @@ where $T_{stat}$ follows a t-distribution with $\nu$ degrees of freedom if $H_0$
 
 $$\nu = \bigg(\frac{s_x^2}{n} + \frac{s_y^2}{m}\bigg)^2/ \bigg( \frac{(\frac{s_x^2}{n})^2}{n-1} + \frac{(\frac{s_y^2}{m})^2}{m-1}\bigg)$$
 
-## Example {style="font-size: 65%;"}
+**Conditions:**
+
+-   Independent observations.
+
+-   Large samples and no extreme outliers.
+
+
+## Example {style="font-size: 60%;"}
 
 Every year, the US releases to the public a large dataset containing information on births recorded in the country. This dataset has been of interest to medical researchers who are studying the relation between habits and practices of expectant mothers and the birth of their children. We will work with a random sample of 1,000 cases from the dataset released in 2014.
 
@@ -340,13 +441,13 @@ boxplot(weight ~ habit, data = births14,
 
 Since both conditions are satisfied, the difference in sample means may be modeled using a t-distribution.
 
-## Results {style="font-size: 65%;"}
+## Results {style="font-size: 60%;"}
 
-$\bar{x_1} - \bar{x_2} = 0.59$, $SE = 0.16$, the sample sizes are $n_1 = 867$ and $n_2 = 114$ and $df = 113$.
+$\bar{x_1} - \bar{x_2} = 0.59$, $SE = 0.16$, the sample sizes are $n_1 = 867$ and $n_2 = 114$ and $df = 131$.
 
 We can find the test statistic for this test using:
 
-$$T = \frac{0.59 - 0}{0.16} = 3.82$$
+$$Tstat = \frac{0.59 - 0}{0.16} = 3.82$$
 
 . . .
 
@@ -357,7 +458,7 @@ $$T = \frac{0.59 - 0}{0.16} = 3.82$$
 library(ggplot2)
 
 # Set the degrees of freedom
-df <- 113
+df <- 131
 
 # Create a sequence of x values for plotting
 x_vals <- seq(-4, 4, by = 0.01)
@@ -376,18 +477,17 @@ ggplot(data.frame(x = x_vals, y = y_vals), aes(x, y)) +
   geom_vline(xintercept = t_97_5, linetype = "dashed", color = "red") +  # 97.5th percentile line
   geom_text(aes(x = t_2_5, y = 0.05), label = paste("2.5th percentile\n", round(t_2_5, 2)), color = "red") +  # Label for 2.5th percentile
   geom_text(aes(x = t_97_5, y = 0.05), label = paste("97.5th percentile\n", round(t_97_5, 2)), color = "red") +  # Label for 97.5th percentile
-  labs(title = "t-Distribution with 113 Degrees of Freedom", 
+  labs(title = "t-Distribution with 131 Degrees of Freedom", 
        x = "t Value", 
        y = "Density") +
   theme_minimal()
 
 ```
 
-## Results {style="font-size: 65%;"}
+## Results in R {style="font-size: 65%;"}
 
 ```{r, echo = TRUE, include=TRUE}
 #| code-line-numbers: ""
-#| output-location: column-fragment
 
 
 # Perform a t-test to compare the means of 'value' between 'category' A and B

@@ -1306,21 +1306,21 @@
     "href": "10-tests.html#one-sample-problem-when-the-variance-is-unknown",
     "title": "ST201 Data Analysis",
     "section": "One sample problem when the variance is unknown",
-    "text": "One sample problem when the variance is unknown\nNow that we have used the t-distribution for making a confidence interval for a mean, we can consider hypothesis tests for the mean.\nIf the population variance \\(\\sigma^2\\) is unknown (which is most often the case in practice), hypotheses about the mean \\(\\mu\\) of a normal random variable \\(X \\sim N(\\mu, \\sigma^2)\\) can be tested. The unknown variance is estimated from the sample.\n\n\n\n\n\n\nThe test statistic for assessing a single mean is a \\(T\\).\n\n\nThe \\(T\\) score is a ratio of how the sample mean differs from the hypothesized mean as compared to how the observations vary.\nThe test statistic is therefore\n\\[T_{stat} = \\frac{\\bar{X}-\\mu_0}{s/\\sqrt{n}} \\]\nWhen the null hypothesis is true and the conditions are met, T has a t-distribution with \\(df = n-1\\)\n\\[T_{stat} \\sim t_{n-1}\\]\nConditions:\n\nIndependent observations.\nLarge samples and no extreme outliers."
+    "text": "One sample problem when the variance is unknown\nNow that we have used the t-distribution for making a confidence interval for a mean, we can consider hypothesis tests for the mean.\nIf the population variance \\(\\sigma^2\\) is unknown (which is most often the case in practice), hypotheses about the mean \\(\\mu\\) of a normal random variable \\(X \\sim N(\\mu, \\sigma^2)\\) can be tested. The unknown variance is estimated from the sample.\n\n\n\n\n\n\nThe test statistic for assessing a single mean.\n\n\nThe \\(T\\) score is a ratio of how the sample mean differs from the hypothesized mean as compared to how the observations vary.\nThe test statistic is therefore\n\\[T_{stat} = \\frac{\\bar{X}-\\mu_0}{s/\\sqrt{n}} \\]\nWhen the null hypothesis is true and the conditions are met, T has a t-distribution with \\(df = n-1\\)\n\\[T_{stat} \\sim t_{n-1}\\]\nConditions:\n\nIndependent observations.\nLarge samples and no extreme outliers."
   },
   {
     "objectID": "10-tests.html#critical-regions-and-test-decisions",
     "href": "10-tests.html#critical-regions-and-test-decisions",
     "title": "ST201 Data Analysis",
     "section": "Critical regions and test decisions",
-    "text": "Critical regions and test decisions\nRules to make test decisions for the one-sample t-test\n\n\n\nCase\n\\(H_0\\)\n\\(H_a\\)\nType\n\n\n\n\n(a)\n\\(\\mu = \\mu_0\\)\n\\(\\mu \\neq \\mu_0\\)\n2-sided\n\n\n(b)\n\\(\\mu \\geq \\mu_0\\)\n\\(\\mu &lt; \\mu_0\\)\n1-sided\n\n\n(c)\n\\(\\mu \\leq \\mu_0\\)\n\\(\\mu &gt; \\mu_0\\)\n1-sided"
+    "text": "Critical regions and test decisions\nRules to make test decisions for the one-sample t-test\n\n\n\n\n\nCase\n\\(H_0\\)\n\\(H_a\\)\nType\n\n\n\n\n(a)\n\\(\\mu = \\mu_0\\)\n\\(\\mu \\neq \\mu_0\\)\n2-sided\n\n\n(b)\n\\(\\mu \\geq \\mu_0\\)\n\\(\\mu &lt; \\mu_0\\)\n1-sided (left)\n\n\n(c)\n\\(\\mu \\leq \\mu_0\\)\n\\(\\mu &gt; \\mu_0\\)\n1-sided (right)"
   },
   {
     "objectID": "10-tests.html#sleep-example",
     "href": "10-tests.html#sleep-example",
     "title": "ST201 Data Analysis",
     "section": "Sleep Example",
-    "text": "Sleep Example\nA study is conducted to see if the student populations gets on average 8 hours of sleep.\nSuppose a random sample of size n = 20 has a mean of \\(\\bar{x}\\) = 6.75 and a sample standard deviation of \\(\\sigma\\) = 2.40.\nTest whether the average hours of sleep differs from 8."
+    "text": "Sleep Example\nA study is conducted to see if the student populations gets on average 8 hours of sleep.\nSuppose a random sample of size n = 20 has a mean of \\(\\bar{x}\\) = 6.75 and a sample standard deviation of \\(\\sigma\\) = 2.40.\nTest whether the average hours of sleep differs from 8.\n\n\n\n\n\n\n\n\n\n\n\n\nWhere does Tstat lie?"
   },
   {
     "objectID": "10-tests.html#comparing-the-means-of-two-independent-samples",
@@ -1334,14 +1334,14 @@
     "href": "10-tests.html#the-variances-are-unknown-but-equal-two-sample-t-test.",
     "title": "ST201 Data Analysis",
     "section": "The variances are unknown, but equal (two-sample t-test).",
-    "text": "The variances are unknown, but equal (two-sample t-test).\nIf we have assumed that both populations have the same variance \\(\\sigma^2\\).\n\nWe can estimate this from either \\(s_X\\) and \\(s_Y\\).\nHowever, it would be better to use both to estimate \\(\\sigma^2\\).\nWe `pool’ these two statistics into an overall estimate of \\(\\sigma^2\\):\n\n\\[s_p^2=\\frac{(n-1)s_X^2+(m-1)s_Y^2}{n+m-2}.\\]\nThe test statistic in this case\n\\[T_{stat} = \\frac{\\bar{X}-\\bar{Y}}{s_p \\sqrt{\\frac{1}{n}+\\frac{1}{m}}} \\sim t_{n + m-2}\\]\nwhere \\(T_{stat}\\) follows a t-distribution with n + m - 2 degrees of freedom if \\(H_0\\) is true."
+    "text": "The variances are unknown, but equal (two-sample t-test).\nIf we have assumed that both populations have the same variance \\(\\sigma^2\\).\n\nWe can estimate this from either \\(s_X\\) and \\(s_Y\\).\nHowever, it would be better to use both to estimate \\(\\sigma^2\\).\nWe `pool’ these two statistics into an overall estimate of \\(\\sigma^2\\):\n\n\\[s_p^2=\\frac{(n-1)s_X^2+(m-1)s_Y^2}{n+m-2}.\\]\nThe test statistic in this case\n\\[T_{stat} = \\frac{\\bar{X}-\\bar{Y}}{s_p \\sqrt{\\frac{1}{n}+\\frac{1}{m}}} \\sim t_{n + m-2}\\]\nwhere \\(T_{stat}\\) follows a t-distribution with n + m - 2 degrees of freedom if \\(H_0\\) is true.\nConditions:\n\nIndependent observations.\nLarge samples and no extreme outliers."
   },
   {
     "objectID": "10-tests.html#the-variances-are-unknown-and-unequal-welch-test.",
     "href": "10-tests.html#the-variances-are-unknown-and-unequal-welch-test.",
     "title": "ST201 Data Analysis",
     "section": "The variances are unknown and unequal (Welch test).",
-    "text": "The variances are unknown and unequal (Welch test).\nThe test statistic in this case\n\\[T_{stat} = \\frac{\\bar{X}-\\bar{Y}}{\\sqrt{\\frac{s_x^2}{n}+\\frac{s_y^2}{m}}} \\sim t_{\\nu}\\]\nwhere \\(T_{stat}\\) follows a t-distribution with \\(\\nu\\) degrees of freedom if \\(H_0\\) is true and\n\\[\\nu = \\bigg(\\frac{s_x^2}{n} + \\frac{s_y^2}{m}\\bigg)^2/ \\bigg( \\frac{(\\frac{s_x^2}{n})^2}{n-1} + \\frac{(\\frac{s_y^2}{m})^2}{m-1}\\bigg)\\]"
+    "text": "The variances are unknown and unequal (Welch test).\nThe test statistic in this case\n\\[T_{stat} = \\frac{\\bar{X}-\\bar{Y}}{\\sqrt{\\frac{s_x^2}{n}+\\frac{s_y^2}{m}}} \\sim t_{\\nu}\\]\nwhere \\(T_{stat}\\) follows a t-distribution with \\(\\nu\\) degrees of freedom if \\(H_0\\) is true and\n\\[\\nu = \\bigg(\\frac{s_x^2}{n} + \\frac{s_y^2}{m}\\bigg)^2/ \\bigg( \\frac{(\\frac{s_x^2}{n})^2}{n-1} + \\frac{(\\frac{s_y^2}{m})^2}{m-1}\\bigg)\\]\nConditions:\n\nIndependent observations.\nLarge samples and no extreme outliers."
   },
   {
     "objectID": "10-tests.html#example",
@@ -1369,7 +1369,7 @@
     "href": "10-tests.html#results",
     "title": "ST201 Data Analysis",
     "section": "Results",
-    "text": "Results\n\\(\\bar{x_1} - \\bar{x_2} = 0.59\\), \\(SE = 0.16\\), the sample sizes are \\(n_1 = 867\\) and \\(n_2 = 114\\) and \\(df = 113\\).\nWe can find the test statistic for this test using:\n\\[T = \\frac{0.59 - 0}{0.16} = 3.82\\]"
+    "text": "Results\n\\(\\bar{x_1} - \\bar{x_2} = 0.59\\), \\(SE = 0.16\\), the sample sizes are \\(n_1 = 867\\) and \\(n_2 = 114\\) and \\(df = 131\\).\nWe can find the test statistic for this test using:\n\\[Tstat = \\frac{0.59 - 0}{0.16} = 3.82\\]"
   },
   {
     "objectID": "10-tests.html#results-1",
@@ -1398,5 +1398,19 @@
     "title": "ST201 Data Analysis",
     "section": "Hypothesis Tests for Means - One-Sample Problems",
     "text": "Hypothesis Tests for Means - One-Sample Problems\nStatistical hypothesis tests facilitate the comparison of estimated values with hypothetical values.\nIn one-sample problems, the data is usually assumed to arise as one sample from a defined population. In two-sample problems, the data originates in the form of two samples possibly from two different populations (more on this later).\nFor an unknown population parameter (e.g., \\(\\mu\\)) and a fixed value (e.g. \\(\\mu_0\\)), the following three cases have to be distinguished:\n\n\n\nCase\n\\(H_0\\)\n\\(H_a\\)\nType\n\n\n\n\n(a)\n\\(\\mu = \\mu_0\\)\n\\(\\mu \\neq \\mu_0\\)\n2-sided\n\n\n(b)\n\\(\\mu \\geq \\mu_0\\)\n\\(\\mu &lt; \\mu_0\\)\n1-sided\n\n\n(c)\n\\(\\mu \\leq \\mu_0\\)\n\\(\\mu &gt; \\mu_0\\)\n1-sided"
+  },
+  {
+    "objectID": "10-tests.html#results-in-r",
+    "href": "10-tests.html#results-in-r",
+    "title": "ST201 Data Analysis",
+    "section": "Results in R",
+    "text": "Results in R\n\n\n# Perform a t-test to compare the mean to 8\nt_test_result &lt;- t.test(student_sleep, mu = 8)\n\n# View the result of the t-test\nprint(t_test_result)\n\n\n\n    One Sample t-test\n\ndata:  student_sleep\nt = -2.8297, df = 19, p-value = 0.01071\nalternative hypothesis: true mean is not equal to 8\n95 percent confidence interval:\n 5.738455 7.661545\nsample estimates:\nmean of x \n      6.7 \n\n\n\nThe p-value is smaller than the confidence level, 0.05, so we reject the null hypothesis. The data provide statistical evidence that the average hours of sleep is different from 8."
+  },
+  {
+    "objectID": "10-tests.html#results-in-r-1",
+    "href": "10-tests.html#results-in-r-1",
+    "title": "ST201 Data Analysis",
+    "section": "Results in R",
+    "text": "Results in R\n\n# Perform a t-test to compare the means of 'value' between 'category' A and B\nt_test_result &lt;- t.test(weight ~ habit, \n                        data = births14)\n\n# View the result of the t-test\nprint(t_test_result)\n\n\n    Welch Two Sample t-test\n\ndata:  weight by habit\nt = 3.8166, df = 131.31, p-value = 0.0002075\nalternative hypothesis: true difference in means between group nonsmoker and group smoker is not equal to 0\n95 percent confidence interval:\n 0.2854852 0.8998751\nsample estimates:\nmean in group nonsmoker    mean in group smoker \n               7.269873                6.677193 \n\n\n\nThe p-value is smaller than the confidence level, 0.05, so we reject the null hypothesis. The data provide statistical evidence of a difference in the average weights of babies born to mothers who smoked during pregnancy and those who did not."
   }
 ]
