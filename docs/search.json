@@ -1391,5 +1391,12 @@
     "title": "ST201 Data Analysis",
     "section": "Class Example",
     "text": "Class Example\nWe would like to find out the effect of a new drug on blood pressure. Patients with high blood pressure were randomly assigned into two groups, a placebo group and a treatment group. The placebo group received conventional treatment while the treatment group received a new drug that is expected to lower blood pressure. After treatment for a couple of months, the two-sample t test is used to compare the average blood pressure of the two groups. Note that each patient is measured once and belongs to one group.\n\n\n\n\n\n\nplacebo\n90\n95\n67\n120\n89\n92\n100\n82\n79\n85\n\n\ntreatment\n71\n79\n69\n98\n91\n85\n89\n75\n78\n80\n\n\n\n\n\nWe want to test whether drug reduces blood pressure."
+  },
+  {
+    "objectID": "10-tests.html#hypothesis-tests-for-means---one-sample-problems",
+    "href": "10-tests.html#hypothesis-tests-for-means---one-sample-problems",
+    "title": "ST201 Data Analysis",
+    "section": "Hypothesis Tests for Means - One-Sample Problems",
+    "text": "Hypothesis Tests for Means - One-Sample Problems\nStatistical hypothesis tests facilitate the comparison of estimated values with hypothetical values.\nIn one-sample problems, the data is usually assumed to arise as one sample from a defined population. In two-sample problems, the data originates in the form of two samples possibly from two different populations (more on this later).\nFor an unknown population parameter (e.g., \\(\\mu\\)) and a fixed value (e.g. \\(\\mu_0\\)), the following three cases have to be distinguished:\n\n\n\nCase\n\\(H_0\\)\n\\(H_a\\)\nType\n\n\n\n\n(a)\n\\(\\mu = \\mu_0\\)\n\\(\\mu \\neq \\mu_0\\)\n2-sided\n\n\n(b)\n\\(\\mu \\geq \\mu_0\\)\n\\(\\mu &lt; \\mu_0\\)\n1-sided\n\n\n(c)\n\\(\\mu \\leq \\mu_0\\)\n\\(\\mu &gt; \\mu_0\\)\n1-sided"
   }
 ]

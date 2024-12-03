@@ -8,21 +8,12 @@ format:
 editor: visual
 ---
 
-## Hypothesis Tests {style="font-size: 65%;"}
 
-Once an analyst estimates the parameters on the basis of a random sample, they would like to infer something about the value of the parameter in the population. Statistical hypothesis tests facilitate the comparison of estimated values with hypothetical values.
+## Hypothesis Tests for Means -  One-Sample Problems {style="font-size: 65%;"}
 
-**Example**
+Statistical hypothesis tests facilitate the comparison of estimated values with hypothetical values.
 
-A clinical study is conducted to compare the effectiveness of a new drug (B) to an established standard drug (A) for high blood pressure.
-
--   Assume that, as a first step, we want to find out whether the new drug causes a higher reduction in blood pressure than the already established older drug.
-
--   A possible hypothesis is that the average change in the blood pressure in group B is higher than in group A.
-
-## One- and Two-Sample Problems {style="font-size: 65%;"}
-
-In one-sample problems, the data is usually assumed to arise as one sample from a defined population. In two-sample problems, the data originates in the form of two samples possibly from two different populations.
+In one-sample problems, the data is usually assumed to arise as one sample from a defined population. In two-sample problems, the data originates in the form of two samples possibly from two different populations (more on this later).
 
 For an unknown population parameter (e.g., $\mu$) and a fixed value (e.g. $\mu_0$), the following three cases have to be distinguished:
 
