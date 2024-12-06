@@ -1412,5 +1412,117 @@
     "title": "ST201 Data Analysis",
     "section": "Results in R",
     "text": "Results in R\n\n# Perform a t-test to compare the means of 'value' between 'category' A and B\nt_test_result &lt;- t.test(weight ~ habit, \n                        data = births14)\n\n# View the result of the t-test\nprint(t_test_result)\n\n\n    Welch Two Sample t-test\n\ndata:  weight by habit\nt = 3.8166, df = 131.31, p-value = 0.0002075\nalternative hypothesis: true difference in means between group nonsmoker and group smoker is not equal to 0\n95 percent confidence interval:\n 0.2854852 0.8998751\nsample estimates:\nmean in group nonsmoker    mean in group smoker \n               7.269873                6.677193 \n\n\n\nThe p-value is smaller than the confidence level, 0.05, so we reject the null hypothesis. The data provide statistical evidence of a difference in the average weights of babies born to mothers who smoked during pregnancy and those who did not."
+  },
+  {
+    "objectID": "11-SLR.html#correlation",
+    "href": "11-SLR.html#correlation",
+    "title": "ST201 Data Analysis",
+    "section": "Correlation",
+    "text": "Correlation\nCorrelation is defined as\n\\[Cor(X, Y ) = \\frac{\\sum_{i=1}^n (xi - \\bar{x})(yi - \\bar{y})}{\\sqrt{\\sum_{i=1}^n(xi - \\bar{x})^2} \\sqrt{\\sum_{i = 1}^n(yi - \\bar{y})^2}}\\]\nis a measure of the linear relationship between X and Y.\n\nCorrelation tells you about the direction and strength of the linear relationship but it does not imply a causal relationship.\nCorrelation takes on values in the range [-1,1]\nCorrelation cannot be used to predict \\(Y\\) based on values of \\(X\\)."
+  },
+  {
+    "objectID": "11-SLR.html#simple-linear-regression",
+    "href": "11-SLR.html#simple-linear-regression",
+    "title": "ST201 Data Analysis",
+    "section": "Simple Linear Regression",
+    "text": "Simple Linear Regression\nSimple linear regression is a very straightforward approach for predicting a quantitative response Y on the basis of a single predictor variable X.\n\nIt assumes that there is approximately a linear relationship between X and Y.\nMathematically, we can write this linear relationship as\n\n\\[Y \\approx \\beta_0 + \\beta_1X\\]\nBased on the relationship between \\(X\\) and \\(Y\\) data, we will have some uncertainty regarding our estimates of the model parameters \\(\\beta_0\\) and \\(\\beta_1\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor instance, we might wonder, should we move the line up or down a little, or should we tilt it more or less?"
+  },
+  {
+    "objectID": "11-SLR.html#example",
+    "href": "11-SLR.html#example",
+    "title": "ST201 Data Analysis",
+    "section": "Example",
+    "text": "Example\nAs an example, assume we have data where X represents TV advertising and Y represent sales, in n = 200 different markets.\n\nThen we can regress sales onto TV by fitting the model\n\\[sales \\approx \\beta_0 + \\beta_1TV\\]\n\n\\(\\beta_0\\) and \\(\\beta_1\\) are two unknown constants that represent the intercept and slope terms in the linear model.\nThese are known as the model coefficients or parameters.\nOnce we produce estimates of \\(\\beta_0\\) and \\(\\beta_1\\) we can predict future sales on the basis of a particular value of TV advertising by computing\n\n\\[\\hat{y} =  \\hat{\\beta}_0 + \\hat{\\beta}_1x\\]\n\nwhere \\(\\hat{y}\\) indicates a prediction of Y on the basis of X = x."
+  },
+  {
+    "objectID": "11-SLR.html#estimating-the-parameters",
+    "href": "11-SLR.html#estimating-the-parameters",
+    "title": "ST201 Data Analysis",
+    "section": "Estimating the parameters",
+    "text": "Estimating the parameters\n\n\\(\\beta_0\\) and \\(\\beta_1\\) are unknown so we must use data to estimate them. Let\n\n\\[(x_1, y_1), (x_2, y_2), \\ldots, (x_n, y_n)\\] represent n observation pairs, each of which consists of a measurement of X and a measurement of Y .\n\nIn the Advertising example, this data set consists of the TV advertising budget and product sales in n = 200 different markets.\nOur goal is to obtain coefficient estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) such that the linear model fits the available data closely.\nThere are a number of ways of measuring closeness. However, by far the most common approach involves minimizing minimizing the sum of squared errors."
+  },
+  {
+    "objectID": "11-SLR.html#estimating-the-parameters-1",
+    "href": "11-SLR.html#estimating-the-parameters-1",
+    "title": "ST201 Data Analysis",
+    "section": "Estimating the parameters",
+    "text": "Estimating the parameters\n\nThe best model fit for the data is found by minimizing the sum of squared errors.\nThe residuals (errors) are the leftover variation in the data after accounting for the model fit:\n\n\\[Data = Fit + Residual\\]\n\nEach grey line segment represents an error, and the fit is found by making a compromise that involves averaging the squared errors."
+  },
+  {
+    "objectID": "11-SLR.html#estimating-the-parameters-2",
+    "href": "11-SLR.html#estimating-the-parameters-2",
+    "title": "ST201 Data Analysis",
+    "section": "Estimating the parameters",
+    "text": "Estimating the parameters\n\nWe assume that the true relationship between X and Y takes the form \\(Y = f(X) + \\epsilon\\) for some unknown function \\(f\\), where \\(\\epsilon\\) is a mean-zero random error term.\nIf \\(f\\) is to be approximated by a linear function, then we can write this relationship as\n\n\\[Y = \\beta_0 + \\beta_1X + \\epsilon\\]\n\nThe error term is a catch-all for what we miss with this simple model: the true relationship is probably not linear, there may be other variables that cause variation in Y.\nLet \\(\\hat{y_i} = \\hat{\\beta}_0 + \\hat{\\beta}_1x_i\\) be the prediction for \\(y_i\\) based on \\(x_i\\)\nThen \\(e_i = y_i - \\hat{y}_i\\) represents the ith residual (error)\nWe define the residual sum of squares (RSS) as\n\n\\[RSS = e_1^2 + e_2^2 + \\ldots + e_n^2\\]\n\nThe least squares approach chooses \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) to minimize the RSS."
+  },
+  {
+    "objectID": "11-SLR.html#assessing-the-accuracy-of-the-coefficient-estimates",
+    "href": "11-SLR.html#assessing-the-accuracy-of-the-coefficient-estimates",
+    "title": "ST201 Data Analysis",
+    "section": "Assessing the Accuracy of the Coefficient Estimates",
+    "text": "Assessing the Accuracy of the Coefficient Estimates\nWe will consider the analogy with the estimation of the population mean \\(\\mu\\) of a random variable Y .\n\nA natural question is as follows: how accurate is the sample mean \\(\\hat{\\mu}\\) as an estimate of \\(\\mu\\)?\nWe have established that the average of \\(\\hat{\\mu}\\)’s over many sample data sets will be very close to \\(\\mu\\) (CLT)\nBut how far off will a single estimate of \\(\\hat{\\mu}\\) be?\nIn general, we answer this question by computing the standard error of \\(\\hat{\\mu}\\) with the formula\n\\[SE = \\frac{s}{\\sqrt{n}}\\]"
+  },
+  {
+    "objectID": "11-SLR.html#assessing-the-accuracy-of-the-coefficient-estimates-1",
+    "href": "11-SLR.html#assessing-the-accuracy-of-the-coefficient-estimates-1",
+    "title": "ST201 Data Analysis",
+    "section": "Assessing the Accuracy of the Coefficient Estimates",
+    "text": "Assessing the Accuracy of the Coefficient Estimates\n\nStandard errors can also be computed for regression parameters\nThen once we have standard errors, they can be used to compute confidence intervals.\nThe 95% confidence interval for \\(\\beta_1\\) approximately takes the form\n\n\\[\\hat{\\beta}_1 \\pm T_{1-\\alpha/2, df}*SE(\\hat{\\beta}_1)\\]\n\nSimilarly, a confidence interval for \\(\\beta_0\\) approximately takes the form\n\n\\[\\hat{\\beta}_0 \\pm T_{1-\\alpha/2, df}*SE(\\hat{\\beta}_0)\\]"
+  },
+  {
+    "objectID": "11-SLR.html#significance-testing-for-the-coefficient-estimates",
+    "href": "11-SLR.html#significance-testing-for-the-coefficient-estimates",
+    "title": "ST201 Data Analysis",
+    "section": "Significance Testing for the Coefficient Estimates",
+    "text": "Significance Testing for the Coefficient Estimates\n\nWe’ve seen that standard errors can also be used to perform hypothesis tests.\nFor linear regression we can test\n\n\\[H_0 : \\beta_1 = 0\\] versus \\[H_a : \\beta_1 \\neq 0\\]\n\nIf the data do not provide evidence against \\(\\beta_1 = 0\\) then the model reduces to \\(Y = \\beta_0 + \\epsilon\\), and X is not linearly associated with Y."
+  },
+  {
+    "objectID": "11-SLR.html#model-fit",
+    "href": "11-SLR.html#model-fit",
+    "title": "ST201 Data Analysis",
+    "section": "Model Fit",
+    "text": "Model Fit\n\nOnce we tested for the significance \\(\\beta_1\\), it is natural to want to quantify the extent to which the model fits the data.\nThe quality of a linear regression fit is typically assessed using two related quantities\n\nthe residual standard error (RSE) and\nthe \\(R^2\\) statistic."
+  },
+  {
+    "objectID": "11-SLR.html#the-residual-standard-error-rse",
+    "href": "11-SLR.html#the-residual-standard-error-rse",
+    "title": "ST201 Data Analysis",
+    "section": "The Residual Standard Error (RSE)",
+    "text": "The Residual Standard Error (RSE)\n\nThe RSE is an estimate of the standard deviation of \\(\\epsilon\\). Roughly speaking, it is the average amount that the response will deviate from the true regression line. It is computed using the formula\n\n\\[\\sqrt{\\frac{1}{n-2}RSS}\\]\n\nThe RSE is considered a measure of the lack of fit of the model to the data.\nIf the predictions obtained using the model are very close to the true outcome values the RSE will be small, and we can conclude that the model fits the data very well."
+  },
+  {
+    "objectID": "11-SLR.html#the-r2-statistic",
+    "href": "11-SLR.html#the-r2-statistic",
+    "title": "ST201 Data Analysis",
+    "section": "The R\\(^2\\) Statistic",
+    "text": "The R\\(^2\\) Statistic\n\nThe RSE provides an absolute measure of lack of fit of the model to the data. But since it is measured in the units of Y , it is not always clear what constitutes a good RSE.\nThe R\\(^2\\) statistic provides an alternative measure of fit. It takes the form of a proportion\nspecifically the proportion of the variation in Y that is explained by X\ngiven that it is a proportion it always takes on a value between 0 and 1, and is therefore independent of the scale of Y.\nTo calculate R\\(^2\\), we use the formula\n\n\\[R2 = \\frac{TSS - RSS}{TSS}\\]\nwhere \\(TSS = \\sum (y_i - \\bar{y})^2\\) is the total sum of squares."
+  },
+  {
+    "objectID": "11-SLR.html#checking-model-assumptions",
+    "href": "11-SLR.html#checking-model-assumptions",
+    "title": "ST201 Data Analysis",
+    "section": "Checking Model Assumptions",
+    "text": "Checking Model Assumptions\nWith linear regression we are making an obvious assumption that the response/predictor relationship is linear.\nThe other assumptions made for the linear model mostly relate to the error terms:\n\\[e_i \\sim N(0, \\sigma^2)\\].\n\nThis implies a few things\n\nthe difference between \\(y_i\\) and \\(\\hat{y_i}\\) (which is e_i) needs to follow a normal distribution\nthe variance for each error \\(e_i\\) is constant as \\(\\sigma^2\\)\nthere is no correlation between the error terms (i.e., they are independent)"
+  },
+  {
+    "objectID": "11-SLR.html#checking-model-assumptions-1",
+    "href": "11-SLR.html#checking-model-assumptions-1",
+    "title": "ST201 Data Analysis",
+    "section": "Checking Model Assumptions",
+    "text": "Checking Model Assumptions\nWe can look at a number of plots to check if error assumptions are valid.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Residual Plots"
+  },
+  {
+    "objectID": "11-SLR.html#simple-linear-regression-in-r",
+    "href": "11-SLR.html#simple-linear-regression-in-r",
+    "title": "ST201 Data Analysis",
+    "section": "Simple Linear Regression in R",
+    "text": "Simple Linear Regression in R\n\nAdvertising &lt;- read_csv(\"Advertising.csv\")\n\nlr_mod &lt;- lm(sales ~ TV, data = Advertising)\nlr_mod\n\n\nCall:\nlm(formula = sales ~ TV, data = Advertising)\n\nCoefficients:\n(Intercept)           TV  \n    7.03259      0.04754  \n\nsummary(lr_mod)\n\n\nCall:\nlm(formula = sales ~ TV, data = Advertising)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-8.3860 -1.9545 -0.1913  2.0671  7.2124 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 7.032594   0.457843   15.36   &lt;2e-16 ***\nTV          0.047537   0.002691   17.67   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 3.259 on 198 degrees of freedom\nMultiple R-squared:  0.6119,    Adjusted R-squared:  0.6099 \nF-statistic: 312.1 on 1 and 198 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "11-SLR.html#class-example",
+    "href": "11-SLR.html#class-example",
+    "title": "ST201 Data Analysis",
+    "section": "Class Example",
+    "text": "Class Example\nThe whoop fitness tracker takes measurements related to recovery, strain and sleep. The dataset whoop_data contains 31 days of data on sleep performance, heart rate variability (hrv), activity strain and recovery.\nHave a look at the data set and see which variable appears to have the strongest predictive relationship with strain. Fit a linear regression model using the chosen predictor variable and interpret the output."
   }
 ]

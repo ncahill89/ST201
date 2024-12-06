@@ -1,0 +1,322 @@
+---
+title: "ST201 Data Analysis"
+subtitle:  "Simple Linear Regression"
+author: "Prof. Niamh Cahill (she/her)"
+format: 
+  revealjs:
+    highlight-style: github
+editor: visual
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+```
+
+## Correlation {style="font-size: 55%;"}
+
+Correlation is defined as
+
+$$Cor(X, Y ) = \frac{\sum_{i=1}^n (xi - \bar{x})(yi - \bar{y})}{\sqrt{\sum_{i=1}^n(xi - \bar{x})^2} \sqrt{\sum_{i = 1}^n(yi - \bar{y})^2}}$$
+
+is a measure of the linear relationship between X and Y.
+
+-   Correlation tells you about the direction and strength of the linear relationship but it does not imply a causal relationship.
+
+-   Correlation takes on values in the range \[-1,1\]
+
+-   Correlation cannot be used to predict $Y$ based on values of $X$.
+
+. . .
+
+```{r, fig.height=3}
+# Load required libraries
+library(ggplot2)
+library(dplyr)
+
+# Simulate data for three different relationships
+set.seed(123) # For reproducibility
+
+# Strong relationship
+data1 <- data.frame(x = seq(-40, 40, length.out = 50)) %>%
+  mutate(y = 0.8 * x + rnorm(50, sd = 5), group = "Strong")
+
+# Moderate relationship
+data2 <- data.frame(x = seq(500, 1500, length.out = 50)) %>%
+  mutate(y = 10 * x + rnorm(50, sd = 2000), group = "Moderate")
+
+# Weak relationship
+data3 <- data.frame(x = seq(0, 50, length.out = 200)) %>%
+  mutate(y = rnorm(200, mean = 100, sd = 50), group = "Weak")
+
+# Combine all datasets
+data <- bind_rows(data1, data2, data3)
+data$group <- factor(data$group, levels = c("Strong", "Moderate", "Weak"))
+
+# Create the plot
+ggplot(data, aes(x = x, y = y)) +
+  geom_point(alpha = 0.7, color = "steelblue") +
+ # geom_smooth(method = "lm", color = "gray40", se = FALSE) +
+  facet_wrap(~group, scales = "free") +
+  theme(panel.grid = element_blank(),
+        strip.text = element_text(size = 12),
+        axis.title = element_blank(),
+        axis.text.x = element_blank(),
+  axis.text.y = element_blank(),
+  axis.ticks = element_blank()) 
+
+```
+
+## Simple Linear Regression {style="font-size: 55%;"}
+
+Simple linear regression is a very straightforward approach for predicting a quantitative response Y on the basis of a single predictor variable X.
+
+-   It assumes that there is approximately a linear relationship between X and Y.
+
+-   Mathematically, we can write this linear relationship as
+
+$$Y \approx \beta_0 + \beta_1X$$
+
+Based on the relationship between $X$ and $Y$ data, we will have some uncertainty regarding our estimates of the model parameters $\beta_0$ and $\beta_1$.
+
+. . .
+
+```{r, fig.height=3}
+# Load required libraries
+library(ggplot2)
+library(dplyr)
+
+# Simulate data for three different relationships
+set.seed(123) # For reproducibility
+
+# Strong relationship
+data1 <- data.frame(x = seq(-40, 40, length.out = 50)) %>%
+  mutate(y = 0.8 * x + rnorm(50, sd = 5), group = "Strong")
+
+# Moderate relationship
+data2 <- data.frame(x = seq(500, 1500, length.out = 50)) %>%
+  mutate(y = 10 * x + rnorm(50, sd = 2000), group = "Moderate")
+
+# Weak relationship
+data3 <- data.frame(x = seq(0, 50, length.out = 200)) %>%
+  mutate(y = rnorm(200, mean = 100, sd = 50), group = "Weak")
+
+# Combine all datasets
+data <- bind_rows(data1, data2, data3)
+data$group <- factor(data$group, levels = c("Strong", "Moderate", "Weak"))
+
+# Create the plot
+ggplot(data, aes(x = x, y = y)) +
+  geom_point(alpha = 0.7, color = "steelblue") +
+  geom_smooth(method = "lm", color = "gray40", se = TRUE) +
+  facet_wrap(~group, scales = "free") +
+  theme(panel.grid = element_blank(),
+        strip.text = element_text(size = 12),
+        axis.title = element_blank(),
+        axis.text.x = element_blank(),
+  axis.text.y = element_blank(),
+  axis.ticks = element_blank()) 
+
+```
+
+. . .
+
+-   For instance, we might wonder, should we move the line up or down a little, or should we tilt it more or less?
+
+## Example {style="font-size: 55%;"}
+
+As an example, assume we have data where X represents TV advertising and Y represent sales, in n = 200 different markets.
+
+```{r, fig.align='center', fig.height=5}
+# Load necessary libraries
+library(ggplot2)
+
+# Load the dataset
+advertising_data <- read.csv("Advertising.csv")
+
+# Create a scatter plot of TV advertising budget vs sales
+ggplot(data = advertising_data, aes(x = TV, y = sales)) +
+  geom_point(color = "blue", size = 3) +
+  labs(title = "TV Advertising Budget vs Sales",
+       x = "TV Advertising Budget (in thousands)",
+       y = "Sales (in thousands)") 
+
+```
+
+Then we can regress sales onto TV by fitting the model
+
+$$sales \approx \beta_0 + \beta_1TV$$
+
+-   $\beta_0$ and $\beta_1$ are two unknown constants that represent the intercept and slope terms in the linear model.
+
+-   These are known as the model coefficients or parameters.
+
+-   Once we produce estimates of $\beta_0$ and $\beta_1$ we can predict future sales on the basis of a particular value of TV advertising by computing
+
+$$\hat{y} =  \hat{\beta}_0 + \hat{\beta}_1x$$
+
+-   where $\hat{y}$ indicates a prediction of Y on the basis of X = x.
+
+## Estimating the parameters {style="font-size: 55%;"}
+
+-   $\beta_0$ and $\beta_1$ are unknown so we must use data to estimate them. Let
+
+$$(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)$$ represent n observation pairs, each of which consists of a measurement of X and a measurement of Y .
+
+-   In the Advertising example, this data set consists of the TV advertising budget and product sales in n = 200 different markets.
+
+-   Our goal is to obtain coefficient estimates $\hat{\beta}_0$ and $\hat{\beta}_1$ such that the linear model fits the available data closely.
+
+-   There are a number of ways of measuring closeness. However, by far the most common approach involves minimizing minimizing the sum of squared errors.
+
+## Estimating the parameters {style="font-size: 55%;"}
+
+-   The best model fit for the data is found by minimizing the sum of squared errors.
+
+-   The residuals (errors) are the leftover variation in the data after accounting for the model fit:
+
+$$Data = Fit + Residual$$
+
+-   Each grey line segment represents an error, and the fit is found by making a compromise that involves averaging the squared errors.
+
+![](images/3.1.png){fig-align="center"}
+
+## Estimating the parameters {style="font-size: 55%;"}
+
+-   We assume that the true relationship between X and Y takes the form $Y = f(X) + \epsilon$ for some unknown function $f$, where $\epsilon$ is a mean-zero random error term.
+
+-   If $f$ is to be approximated by a linear function, then we can write this relationship as
+
+$$Y = \beta_0 + \beta_1X + \epsilon$$
+
+-   The error term is a catch-all for what we miss with this simple model: the true relationship is probably not linear, there may be other variables that cause variation in Y.
+
+-   Let $\hat{y_i} = \hat{\beta}_0 + \hat{\beta}_1x_i$ be the prediction for $y_i$ based on $x_i$
+
+-   Then $e_i = y_i - \hat{y}_i$ represents the ith residual (error)
+
+-   We define the residual sum of squares (RSS) as
+
+$$RSS = e_1^2 + e_2^2 + \ldots + e_n^2$$
+
+-   The least squares approach chooses $\hat{\beta}_0$ and $\hat{\beta}_1$ to minimize the RSS.
+
+## Assessing the Accuracy of the Coefficient Estimates {style="font-size: 65%;"}
+
+We will consider the analogy with the estimation of the population mean $\mu$ of a random variable Y .
+
+-   A natural question is as follows: how accurate is the sample mean $\hat{\mu}$ as an estimate of $\mu$?
+
+-   We have established that the average of $\hat{\mu}$’s over many sample data sets will be very close to $\mu$ (CLT)
+
+-   But how far off will a single estimate of $\hat{\mu}$ be?
+
+-   In general, we answer this question by computing the standard error of $\hat{\mu}$ with the formula
+
+    $$SE = \frac{s}{\sqrt{n}}$$
+
+## Assessing the Accuracy of the Coefficient Estimates {style="font-size: 65%;"}
+
+-   Standard errors can also be computed for regression parameters
+
+-   Then once we have standard errors, they can be used to compute confidence intervals.
+
+-   The 95% confidence interval for $\beta_1$ approximately takes the form
+
+$$\hat{\beta}_1 \pm T_{1-\alpha/2, df}*SE(\hat{\beta}_1)$$
+
+-   Similarly, a confidence interval for $\beta_0$ approximately takes the form
+
+$$\hat{\beta}_0 \pm T_{1-\alpha/2, df}*SE(\hat{\beta}_0)$$
+
+## Significance Testing for the Coefficient Estimates {style="font-size: 65%;"}
+
+-   We've seen that standard errors can also be used to perform hypothesis tests.
+
+-   For linear regression we can test
+
+$$H_0 : \beta_1 = 0$$ versus $$H_a : \beta_1 \neq 0$$
+
+-   If the data do not provide evidence against $\beta_1 = 0$ then the model reduces to $Y = \beta_0 + \epsilon$, and X is not linearly associated with Y.
+
+## Model Fit {style="font-size: 65%;"}
+
+-   Once we tested for the significance $\beta_1$, it is natural to want to quantify the extent to which the model fits the data.
+
+-   The quality of a linear regression fit is typically assessed using two related quantities
+
+    -   the residual standard error (RSE) and
+
+    -   the $R^2$ statistic.
+
+## The Residual Standard Error (RSE) {style="font-size: 65%;"}
+
+-   The RSE is an estimate of the standard deviation of $\epsilon$. Roughly speaking, it is the average amount that the response will deviate from the true regression line. It is computed using the formula
+
+$$\sqrt{\frac{1}{n-2}RSS}$$
+
+-   The RSE is considered a measure of the lack of fit of the model to the data.
+
+-   If the predictions obtained using the model are very close to the true outcome values the RSE will be small, and we can conclude that the model fits the data very well.
+
+## The R$^2$ Statistic {style="font-size: 65%;"}
+
+-   The RSE provides an absolute measure of lack of fit of the model to the data. But since it is measured in the units of Y , it is not always clear what constitutes a good RSE.
+
+-   The R$^2$ statistic provides an alternative measure of fit. It takes the form of a proportion
+
+-   specifically the proportion of the variation in Y that is explained by X
+
+-   given that it is a proportion it always takes on a value between 0 and 1, and is therefore independent of the scale of Y.
+
+-   To calculate R$^2$, we use the formula
+
+$$R2 = \frac{TSS - RSS}{TSS}$$
+
+where $TSS = \sum (y_i - \bar{y})^2$ is the total sum of squares.
+
+## Checking Model Assumptions {style="font-size: 65%;"}
+
+With linear regression we are making an obvious assumption that the response/predictor relationship is linear.
+
+The other assumptions made for the linear model mostly relate to the error terms:
+
+$$e_i \sim N(0, \sigma^2)$$.
+
+-   This implies a few things
+
+    -   the difference between $y_i$ and $\hat{y_i}$ (which is e_i) needs to follow a normal distribution
+
+    -   the variance for each error $e_i$ is constant as $\sigma^2$
+
+    -   there is no correlation between the error terms (i.e., they are independent)
+
+## Checking Model Assumptions {style="font-size: 65%;"}
+
+We can look at a number of plots to check if error assumptions are valid.
+
+::: {#fig-res layout-ncol="2"}
+![](images/Screenshot%202024-12-06%20at%2009.27.42.png)
+
+![](images/Screenshot%202024-12-06%20at%2009.27.51.png)
+
+Residual Plots
+:::
+
+## Simple Linear Regression in R {style="font-size: 50%;"}
+
+```{r, echo = TRUE, include=TRUE}
+#| code-line-numbers: ""
+
+Advertising <- read_csv("Advertising.csv")
+
+lr_mod <- lm(sales ~ TV, data = Advertising)
+lr_mod
+summary(lr_mod)
+```
+
+## Class Example {style="font-size: 55%;"}
+
+The whoop fitness tracker takes measurements related to recovery, strain and sleep. The dataset `whoop_data` contains 31 days of data on sleep performance, heart rate variability (hrv), activity strain and recovery.
+
+Have a look at the data set and see which variable appears to have the strongest predictive relationship with `strain`. Fit a linear regression model using the chosen predictor variable and interpret the output.
