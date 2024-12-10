@@ -462,9 +462,9 @@ Prof.&nbsp;Niamh Cahill (she/her)
 <li><p>These are known as the model coefficients or parameters.</p></li>
 <li><p>Once we produce estimates of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> we can predict future sales on the basis of a particular value of TV advertising by computing</p></li>
 </ul>
-<p><span class="math display">\[\hat{y} =  \hat{\beta}_0 + \hat{\beta}_1x\]</span></p>
+<p><span class="math display">\[\widehat{y} =  \widehat{\beta}_0 + \widehat{\beta}_1x\]</span></p>
 <ul>
-<li>where <span class="math inline">\(\hat{y}\)</span> indicates a prediction of Y on the basis of X = x.</li>
+<li>where <span class="math inline">\(\widehat{y}\)</span> indicates a prediction of Y on the basis of X = x.</li>
 </ul>
 </section>
 <section id="estimating-the-parameters" class="slide level2" style="font-size: 55%;">
@@ -475,7 +475,7 @@ Prof.&nbsp;Niamh Cahill (she/her)
 <p><span class="math display">\[(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\]</span> represent n observation pairs, each of which consists of a measurement of X and a measurement of Y .</p>
 <ul>
 <li><p>In the Advertising example, this data set consists of the TV advertising budget and product sales in n = 200 different markets.</p></li>
-<li><p>Our goal is to obtain coefficient estimates <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> such that the linear model fits the available data closely.</p></li>
+<li><p>Our goal is to obtain coefficient estimates <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span> such that the linear model fits the available data closely.</p></li>
 <li><p>There are a number of ways of measuring closeness. However, by far the most common approach involves minimizing the sum of squared <em>errors</em>.</p></li>
 </ul>
 </section>
@@ -495,123 +495,19 @@ Prof.&nbsp;Niamh Cahill (she/her)
 <h2>Estimating the parameters</h2>
 <ul>
 <li><p>We assume that the true relationship between X and Y takes the form <span class="math inline">\(Y = f(X) + \epsilon\)</span> for some unknown function <span class="math inline">\(f\)</span>, where <span class="math inline">\(\epsilon\)</span> is a mean-zero random error term.</p></li>
-<li><p>If <span class="math inline">\(f\)</span> is to be approximated by a linear function, then we can write this relationship as</p></li>
+<li><p>If <span class="math inline">\(f\)</span> is to be approximated by a simple linear function, then we can write this relationship as</p></li>
 </ul>
 <p><span class="math display">\[Y = \beta_0 + \beta_1X + \epsilon\]</span></p>
 <ul>
 <li><p>The error term is a catch-all for what we miss with this simple model: the true relationship is probably not linear, there may be other variables that cause variation in Y.</p></li>
-<li><p>Let <span class="math inline">\(\hat{y_i} = \hat{\beta}_0 + \hat{\beta}_1x_i\)</span> be the prediction for <span class="math inline">\(y_i\)</span> based on <span class="math inline">\(x_i\)</span></p></li>
-<li><p>Then <span class="math inline">\(e_i = y_i - \hat{y}_i\)</span> represents the ith residual (error)</p></li>
+<li><p>Let <span class="math inline">\(\widehat{y_i} = \widehat{\beta}_0 + \widehat{\beta}_1x_i\)</span> be the prediction for <span class="math inline">\(y_i\)</span> based on <span class="math inline">\(x_i\)</span></p></li>
+<li><p>Then <span class="math inline">\(e_i = y_i - \widehat{y}_i\)</span> represents the ith residual (error)</p></li>
 <li><p>We define the residual sum of squares (RSS) as</p></li>
 </ul>
 <p><span class="math display">\[RSS = e_1^2 + e_2^2 + \ldots + e_n^2\]</span></p>
 <ul>
-<li>The least squares approach chooses <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> to minimize the RSS.</li>
+<li>The least squares approach chooses <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span> to minimize the RSS.</li>
 </ul>
-</section>
-<section id="assessing-the-accuracy-of-the-coefficient-estimates" class="slide level2" style="font-size: 65%;">
-<h2>Assessing the Accuracy of the Coefficient Estimates</h2>
-<p>We will consider the analogy with the estimation of the population mean <span class="math inline">\(\mu\)</span> of a random variable Y .</p>
-<ul>
-<li><p>A natural question is as follows: how accurate is the sample mean <span class="math inline">\(\hat{\mu}\)</span> as an estimate of <span class="math inline">\(\mu\)</span>?</p></li>
-<li><p>We have established that the average of <span class="math inline">\(\hat{\mu}\)</span>’s over many sample data sets will be very close to <span class="math inline">\(\mu\)</span> (CLT)</p></li>
-<li><p>But how far off will a single estimate of <span class="math inline">\(\hat{\mu}\)</span> be?</p></li>
-<li><p>In general, we answer this question by computing the standard error of <span class="math inline">\(\hat{\mu}\)</span> with the formula</p>
-<p><span class="math display">\[SE = \frac{s}{\sqrt{n}}\]</span></p></li>
-</ul>
-</section>
-<section id="assessing-the-accuracy-of-the-coefficient-estimates-1" class="slide level2" style="font-size: 65%;">
-<h2>Assessing the Accuracy of the Coefficient Estimates</h2>
-<ul>
-<li><p>Standard errors can also be computed for regression parameters</p></li>
-<li><p>Then once we have standard errors, they can be used to compute confidence intervals.</p></li>
-<li><p>The 95% confidence interval for <span class="math inline">\(\beta_1\)</span> approximately takes the form</p></li>
-</ul>
-<p><span class="math display">\[\hat{\beta}_1 \pm T_{1-\alpha/2, df}*SE(\hat{\beta}_1)\]</span></p>
-<ul>
-<li>Similarly, a confidence interval for <span class="math inline">\(\beta_0\)</span> approximately takes the form</li>
-</ul>
-<p><span class="math display">\[\hat{\beta}_0 \pm T_{1-\alpha/2, df}*SE(\hat{\beta}_0)\]</span></p>
-</section>
-<section id="significance-testing-for-the-coefficient-estimates" class="slide level2" style="font-size: 65%;">
-<h2>Significance Testing for the Coefficient Estimates</h2>
-<ul>
-<li><p>We’ve seen that standard errors can also be used to perform hypothesis tests.</p></li>
-<li><p>For linear regression we can test</p></li>
-</ul>
-<p><span class="math display">\[H_0 : \beta_1 = 0\]</span> versus <span class="math display">\[H_a : \beta_1 \neq 0\]</span></p>
-<ul>
-<li>If the data do not provide evidence against <span class="math inline">\(\beta_1 = 0\)</span> then the model reduces to <span class="math inline">\(Y = \beta_0 + \epsilon\)</span>, and X is not linearly associated with Y.</li>
-</ul>
-</section>
-<section id="model-fit" class="slide level2" style="font-size: 65%;">
-<h2>Model Fit</h2>
-<ul>
-<li><p>Once we tested for the significance <span class="math inline">\(\beta_1\)</span>, it is natural to want to quantify the extent to which the model fits the data.</p></li>
-<li><p>The quality of a linear regression fit is typically assessed using two related quantities</p>
-<ul>
-<li><p>the residual standard error (RSE) and</p></li>
-<li><p>the <span class="math inline">\(R^2\)</span> statistic.</p></li>
-</ul></li>
-</ul>
-</section>
-<section id="the-residual-standard-error-rse" class="slide level2" style="font-size: 65%;">
-<h2>The Residual Standard Error (RSE)</h2>
-<ul>
-<li>The RSE is an estimate of the standard deviation of <span class="math inline">\(\epsilon\)</span>. Roughly speaking, it is the average amount that the response will deviate from the true regression line. It is computed using the formula</li>
-</ul>
-<p><span class="math display">\[\sqrt{\frac{1}{n-2}RSS}\]</span></p>
-<ul>
-<li><p>The RSE is considered a measure of the lack of fit of the model to the data.</p></li>
-<li><p>If the predictions obtained using the model are very close to the true outcome values the RSE will be small, and we can conclude that the model fits the data very well.</p></li>
-</ul>
-</section>
-<section id="the-r2-statistic" class="slide level2" style="font-size: 65%;">
-<h2>The R<span class="math inline">\(^2\)</span> Statistic</h2>
-<ul>
-<li><p>The RSE provides an absolute measure of lack of fit of the model to the data. But since it is measured in the units of Y , it is not always clear what constitutes a good RSE.</p></li>
-<li><p>The R<span class="math inline">\(^2\)</span> statistic provides an alternative measure of fit. It takes the form of a proportion</p></li>
-<li><p>specifically the proportion of the variation in Y that is explained by X</p></li>
-<li><p>given that it is a proportion it always takes on a value between 0 and 1, and is therefore independent of the scale of Y.</p></li>
-<li><p>To calculate R<span class="math inline">\(^2\)</span>, we use the formula</p></li>
-</ul>
-<p><span class="math display">\[R2 = \frac{TSS - RSS}{TSS}\]</span></p>
-<p>where <span class="math inline">\(TSS = \sum (y_i - \bar{y})^2\)</span> is the total sum of squares.</p>
-</section>
-<section id="checking-model-assumptions" class="slide level2" style="font-size: 65%;">
-<h2>Checking Model Assumptions</h2>
-<p>With linear regression we are making an obvious assumption that the response/predictor relationship is linear.</p>
-<p>The other assumptions made for the linear model mostly relate to the error terms:</p>
-<p><span class="math display">\[e_i \sim N(0, \sigma^2)\]</span>.</p>
-<ul>
-<li><p>This implies a few things</p>
-<ul>
-<li><p>the difference between <span class="math inline">\(y_i\)</span> and <span class="math inline">\(\hat{y_i}\)</span> (which is e_i) needs to follow a normal distribution</p></li>
-<li><p>the variance for each error <span class="math inline">\(e_i\)</span> is constant as <span class="math inline">\(\sigma^2\)</span></p></li>
-<li><p>there is no correlation between the error terms (i.e., they are independent)</p></li>
-</ul></li>
-</ul>
-</section>
-<section id="checking-model-assumptions-1" class="slide level2" style="font-size: 65%;">
-<h2>Checking Model Assumptions</h2>
-<p>We can look at a number of plots to check if error assumptions are valid.</p>
-<div id="fig-res" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-res-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="images/Screenshot 2024-12-06 at 09.27.42.png"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="images/Screenshot 2024-12-06 at 09.27.51.png"></p>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-res-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Residual Plots
-</figcaption>
-</figure>
-</div>
 </section>
 <section id="simple-linear-regression-in-r" class="slide level2" style="font-size: 50%;">
 <h2>Simple Linear Regression in R</h2>
@@ -652,10 +548,114 @@ F-statistic: 312.1 on 1 and 198 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </section>
+<section id="assessing-the-accuracy-of-the-coefficient-estimates" class="slide level2" style="font-size: 60%;">
+<h2>Assessing the Accuracy of the Coefficient Estimates</h2>
+<p>We will consider the analogy with the estimation of the population mean <span class="math inline">\(\mu\)</span> of a random variable Y .</p>
+<ul>
+<li><p>A natural question is as follows: how accurate is the sample mean <span class="math inline">\(\widehat{\mu}\)</span> (<span class="math inline">\(\bar{x}\)</span>) as an estimate of <span class="math inline">\(\mu\)</span>?</p></li>
+<li><p>We have established that the average of <span class="math inline">\(\widehat{\mu}\)</span>’s over many sample data sets will be very close to <span class="math inline">\(\mu\)</span> (CLT)</p></li>
+<li><p>But how far off will a single estimate of <span class="math inline">\(\widehat{\mu}\)</span> be?</p></li>
+<li><p>In general, we answer this question by computing the standard error of <span class="math inline">\(\widehat{\mu}\)</span> with the formula</p>
+<p><span class="math display">\[SE = \frac{s}{\sqrt{n}}\]</span></p></li>
+</ul>
+</section>
+<section id="assessing-the-accuracy-of-the-coefficient-estimates-1" class="slide level2" style="font-size: 60%;">
+<h2>Assessing the Accuracy of the Coefficient Estimates</h2>
+<ul>
+<li><p>Standard errors can also be computed for regression parameters</p></li>
+<li><p>Then once we have standard errors, they can be used to compute confidence intervals.</p></li>
+<li><p>The 95% confidence interval for <span class="math inline">\(\beta_1\)</span> approximately takes the form</p></li>
+</ul>
+<p><span class="math display">\[\widehat{\beta}_1 \pm T_{1-\alpha/2, df}*SE(\widehat{\beta}_1)\]</span></p>
+<ul>
+<li>Similarly, a confidence interval for <span class="math inline">\(\beta_0\)</span> approximately takes the form</li>
+</ul>
+<p><span class="math display">\[\widehat{\beta}_0 \pm T_{1-\alpha/2, df}*SE(\widehat{\beta}_0)\]</span></p>
+</section>
+<section id="significance-testing-for-the-coefficient-estimates" class="slide level2" style="font-size: 60%;">
+<h2>Significance Testing for the Coefficient Estimates</h2>
+<ul>
+<li><p>We’ve seen that standard errors can also be used to perform hypothesis tests.</p></li>
+<li><p>For linear regression we can test</p></li>
+</ul>
+<p><span class="math display">\[H_0 : \beta_1 = 0\]</span> versus <span class="math display">\[H_a : \beta_1 \neq 0\]</span></p>
+<ul>
+<li>If the data do not provide evidence against <span class="math inline">\(\beta_1 = 0\)</span> then the model reduces to <span class="math inline">\(Y = \beta_0 + \epsilon\)</span>, and X is not linearly associated with Y.</li>
+</ul>
+</section>
+<section id="model-fit" class="slide level2" style="font-size: 60%;">
+<h2>Model Fit</h2>
+<ul>
+<li><p>Once we tested for the significance <span class="math inline">\(\beta_1\)</span>, it is natural to want to quantify the extent to which the model fits the data.</p></li>
+<li><p>The quality of a linear regression fit is typically assessed using two related quantities</p>
+<ul>
+<li><p>the residual standard error (RSE) and</p></li>
+<li><p>the <span class="math inline">\(R^2\)</span> statistic.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="the-residual-standard-error-rse" class="slide level2" style="font-size: 60%;">
+<h2>The Residual Standard Error (RSE)</h2>
+<ul>
+<li>The RSE is an estimate of the standard deviation of <span class="math inline">\(\epsilon\)</span>. Roughly speaking, it is the average amount that the response will deviate from the true regression line. It is computed using the formula</li>
+</ul>
+<p><span class="math display">\[RSE = \sqrt{\frac{1}{n-2}RSS}\]</span></p>
+<ul>
+<li><p>The RSE is considered a measure of the lack of fit of the model to the data.</p></li>
+<li><p>If the predictions obtained using the model are very close to the true outcome values the RSE will be small, and we can conclude that the model fits the data very well.</p></li>
+</ul>
+</section>
+<section id="the-r2-statistic" class="slide level2" style="font-size: 60%;">
+<h2>The R<span class="math inline">\(^2\)</span> Statistic</h2>
+<ul>
+<li><p>The RSE provides an absolute measure of lack of fit of the model to the data. But since it is measured in the units of Y , it is not always clear what constitutes a good RSE.</p></li>
+<li><p>The R<span class="math inline">\(^2\)</span> statistic provides an alternative measure of fit. It takes the form of a proportion</p></li>
+<li><p>specifically the proportion of the variation in Y that is explained by X</p></li>
+<li><p>given that it is a proportion it always takes on a value between 0 and 1, and is therefore independent of the scale of Y.</p></li>
+<li><p>To calculate R<span class="math inline">\(^2\)</span>, we use the formula</p></li>
+</ul>
+<p><span class="math display">\[R^2 = \frac{TSS - RSS}{TSS}\]</span></p>
+<p>where <span class="math inline">\(TSS = \sum (y_i - \bar{y})^2\)</span> is the total sum of squares.</p>
+</section>
+<section id="checking-model-assumptions" class="slide level2" style="font-size: 60%;">
+<h2>Checking Model Assumptions</h2>
+<p>With linear regression we are making an obvious assumption that the response/predictor relationship is linear.</p>
+<p>The other assumptions made for the linear model mostly relate to the error terms:</p>
+<p><span class="math display">\[e_i \sim N(0, \sigma^2)\]</span>.</p>
+<ul>
+<li><p>This implies a few things</p>
+<ul>
+<li><p>the difference between <span class="math inline">\(y_i\)</span> and <span class="math inline">\(\widehat{y_i}\)</span> (which is e_i) needs to follow a normal distribution</p></li>
+<li><p>the variance for each error <span class="math inline">\(e_i\)</span> is constant as <span class="math inline">\(\sigma^2\)</span></p></li>
+<li><p>there is no correlation between the error terms (i.e., they are independent)</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="checking-model-assumptions-1" class="slide level2" style="font-size: 60%;">
+<h2>Checking Model Assumptions</h2>
+<p>We can look at a number of plots to check if error assumptions are valid.</p>
+<div id="fig-res" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-res-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/Screenshot 2024-12-06 at 09.27.42.png"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/Screenshot 2024-12-06 at 09.27.51.png"></p>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-res-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Residual Plots
+</figcaption>
+</figure>
+</div>
+</section>
 <section id="class-example" class="slide level2" style="font-size: 55%;">
 <h2>Class Example</h2>
 <p>The whoop fitness tracker takes measurements related to recovery, strain and sleep. The dataset <code>whoop_data</code> contains 31 days of data on sleep performance, heart rate variability (hrv), activity strain and recovery.</p>
-<p>Have a look at the data set and see which variable appears to have the strongest predictive relationship with <code>strain</code>. Fit a linear regression model using the chosen predictor variable and interpret the output.</p>
+<p>Have a look at the data set and see which variable appears to have the strongest predictive relationship with `recovery``. Fit a linear regression model using the chosen predictor variable and interpret the output.</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

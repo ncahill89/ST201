@@ -155,9 +155,9 @@ $$sales \approx \beta_0 + \beta_1TV$$
 
 -   Once we produce estimates of $\beta_0$ and $\beta_1$ we can predict future sales on the basis of a particular value of TV advertising by computing
 
-$$\hat{y} =  \hat{\beta}_0 + \hat{\beta}_1x$$
+$$\widehat{y} =  \widehat{\beta}_0 + \widehat{\beta}_1x$$
 
--   where $\hat{y}$ indicates a prediction of Y on the basis of X = x.
+-   where $\widehat{y}$ indicates a prediction of Y on the basis of X = x.
 
 ## Estimating the parameters {style="font-size: 55%;"}
 
@@ -167,7 +167,7 @@ $$(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)$$ represent n observation pairs, ea
 
 -   In the Advertising example, this data set consists of the TV advertising budget and product sales in n = 200 different markets.
 
--   Our goal is to obtain coefficient estimates $\hat{\beta}_0$ and $\hat{\beta}_1$ such that the linear model fits the available data closely.
+-   Our goal is to obtain coefficient estimates $\widehat{\beta}_0$ and $\widehat{\beta}_1$ such that the linear model fits the available data closely.
 
 -   There are a number of ways of measuring closeness. However, by far the most common approach involves minimizing the sum of squared *errors*.
 
@@ -187,123 +187,22 @@ $$Data = Fit + Residual$$
 
 -   We assume that the true relationship between X and Y takes the form $Y = f(X) + \epsilon$ for some unknown function $f$, where $\epsilon$ is a mean-zero random error term.
 
--   If $f$ is to be approximated by a linear function, then we can write this relationship as
+-   If $f$ is to be approximated by a simple linear function, then we can write this relationship as
 
 $$Y = \beta_0 + \beta_1X + \epsilon$$
 
 -   The error term is a catch-all for what we miss with this simple model: the true relationship is probably not linear, there may be other variables that cause variation in Y.
 
--   Let $\hat{y_i} = \hat{\beta}_0 + \hat{\beta}_1x_i$ be the prediction for $y_i$ based on $x_i$
+-   Let $\widehat{y_i} = \widehat{\beta}_0 + \widehat{\beta}_1x_i$ be the prediction for $y_i$ based on $x_i$
 
--   Then $e_i = y_i - \hat{y}_i$ represents the ith residual (error)
+-   Then $e_i = y_i - \widehat{y}_i$ represents the ith residual (error)
 
 -   We define the residual sum of squares (RSS) as
 
 $$RSS = e_1^2 + e_2^2 + \ldots + e_n^2$$
 
--   The least squares approach chooses $\hat{\beta}_0$ and $\hat{\beta}_1$ to minimize the RSS.
+-   The least squares approach chooses $\widehat{\beta}_0$ and $\widehat{\beta}_1$ to minimize the RSS.
 
-## Assessing the Accuracy of the Coefficient Estimates {style="font-size: 65%;"}
-
-We will consider the analogy with the estimation of the population mean $\mu$ of a random variable Y .
-
--   A natural question is as follows: how accurate is the sample mean $\hat{\mu}$ as an estimate of $\mu$?
-
--   We have established that the average of $\hat{\mu}$’s over many sample data sets will be very close to $\mu$ (CLT)
-
--   But how far off will a single estimate of $\hat{\mu}$ be?
-
--   In general, we answer this question by computing the standard error of $\hat{\mu}$ with the formula
-
-    $$SE = \frac{s}{\sqrt{n}}$$
-
-## Assessing the Accuracy of the Coefficient Estimates {style="font-size: 65%;"}
-
--   Standard errors can also be computed for regression parameters
-
--   Then once we have standard errors, they can be used to compute confidence intervals.
-
--   The 95% confidence interval for $\beta_1$ approximately takes the form
-
-$$\hat{\beta}_1 \pm T_{1-\alpha/2, df}*SE(\hat{\beta}_1)$$
-
--   Similarly, a confidence interval for $\beta_0$ approximately takes the form
-
-$$\hat{\beta}_0 \pm T_{1-\alpha/2, df}*SE(\hat{\beta}_0)$$
-
-## Significance Testing for the Coefficient Estimates {style="font-size: 65%;"}
-
--   We've seen that standard errors can also be used to perform hypothesis tests.
-
--   For linear regression we can test
-
-$$H_0 : \beta_1 = 0$$ versus $$H_a : \beta_1 \neq 0$$
-
--   If the data do not provide evidence against $\beta_1 = 0$ then the model reduces to $Y = \beta_0 + \epsilon$, and X is not linearly associated with Y.
-
-## Model Fit {style="font-size: 65%;"}
-
--   Once we tested for the significance $\beta_1$, it is natural to want to quantify the extent to which the model fits the data.
-
--   The quality of a linear regression fit is typically assessed using two related quantities
-
-    -   the residual standard error (RSE) and
-
-    -   the $R^2$ statistic.
-
-## The Residual Standard Error (RSE) {style="font-size: 65%;"}
-
--   The RSE is an estimate of the standard deviation of $\epsilon$. Roughly speaking, it is the average amount that the response will deviate from the true regression line. It is computed using the formula
-
-$$\sqrt{\frac{1}{n-2}RSS}$$
-
--   The RSE is considered a measure of the lack of fit of the model to the data.
-
--   If the predictions obtained using the model are very close to the true outcome values the RSE will be small, and we can conclude that the model fits the data very well.
-
-## The R$^2$ Statistic {style="font-size: 65%;"}
-
--   The RSE provides an absolute measure of lack of fit of the model to the data. But since it is measured in the units of Y , it is not always clear what constitutes a good RSE.
-
--   The R$^2$ statistic provides an alternative measure of fit. It takes the form of a proportion
-
--   specifically the proportion of the variation in Y that is explained by X
-
--   given that it is a proportion it always takes on a value between 0 and 1, and is therefore independent of the scale of Y.
-
--   To calculate R$^2$, we use the formula
-
-$$R2 = \frac{TSS - RSS}{TSS}$$
-
-where $TSS = \sum (y_i - \bar{y})^2$ is the total sum of squares.
-
-## Checking Model Assumptions {style="font-size: 65%;"}
-
-With linear regression we are making an obvious assumption that the response/predictor relationship is linear.
-
-The other assumptions made for the linear model mostly relate to the error terms:
-
-$$e_i \sim N(0, \sigma^2)$$.
-
--   This implies a few things
-
-    -   the difference between $y_i$ and $\hat{y_i}$ (which is e_i) needs to follow a normal distribution
-
-    -   the variance for each error $e_i$ is constant as $\sigma^2$
-
-    -   there is no correlation between the error terms (i.e., they are independent)
-
-## Checking Model Assumptions {style="font-size: 65%;"}
-
-We can look at a number of plots to check if error assumptions are valid.
-
-::: {#fig-res layout-ncol="2"}
-![](images/Screenshot%202024-12-06%20at%2009.27.42.png)
-
-![](images/Screenshot%202024-12-06%20at%2009.27.51.png)
-
-Residual Plots
-:::
 
 ## Simple Linear Regression in R {style="font-size: 50%;"}
 
@@ -317,8 +216,111 @@ lr_mod
 summary(lr_mod)
 ```
 
+## Assessing the Accuracy of the Coefficient Estimates {style="font-size: 60%;"}
+
+We will consider the analogy with the estimation of the population mean $\mu$ of a random variable Y .
+
+-   A natural question is as follows: how accurate is the sample mean $\widehat{\mu}$ ($\bar{x}$) as an estimate of $\mu$?
+
+-   We have established that the average of $\widehat{\mu}$’s over many sample data sets will be very close to $\mu$ (CLT)
+
+-   But how far off will a single estimate of $\widehat{\mu}$  be?
+
+-   In general, we answer this question by computing the standard error of $\widehat{\mu}$ with the formula
+
+    $$SE = \frac{s}{\sqrt{n}}$$
+
+## Assessing the Accuracy of the Coefficient Estimates {style="font-size: 60%;"}
+
+-   Standard errors can also be computed for regression parameters
+
+-   Then once we have standard errors, they can be used to compute confidence intervals.
+
+-   The 95% confidence interval for $\beta_1$ approximately takes the form
+
+$$\widehat{\beta}_1 \pm T_{1-\alpha/2, df}*SE(\widehat{\beta}_1)$$
+
+-   Similarly, a confidence interval for $\beta_0$ approximately takes the form
+
+$$\widehat{\beta}_0 \pm T_{1-\alpha/2, df}*SE(\widehat{\beta}_0)$$
+
+## Significance Testing for the Coefficient Estimates {style="font-size: 60%;"}
+
+-   We've seen that standard errors can also be used to perform hypothesis tests.
+
+-   For linear regression we can test
+
+$$H_0 : \beta_1 = 0$$ versus $$H_a : \beta_1 \neq 0$$
+
+-   If the data do not provide evidence against $\beta_1 = 0$ then the model reduces to $Y = \beta_0 + \epsilon$, and X is not linearly associated with Y.
+
+## Model Fit {style="font-size: 60%;"}
+
+-   Once we tested for the significance $\beta_1$, it is natural to want to quantify the extent to which the model fits the data.
+
+-   The quality of a linear regression fit is typically assessed using two related quantities
+
+    -   the residual standard error (RSE) and
+
+    -   the $R^2$ statistic.
+
+## The Residual Standard Error (RSE) {style="font-size: 60%;"}
+
+-   The RSE is an estimate of the standard deviation of $\epsilon$. Roughly speaking, it is the average amount that the response will deviate from the true regression line. It is computed using the formula
+
+$$RSE = \sqrt{\frac{1}{n-2}RSS}$$
+
+-   The RSE is considered a measure of the lack of fit of the model to the data.
+
+-   If the predictions obtained using the model are very close to the true outcome values the RSE will be small, and we can conclude that the model fits the data very well.
+
+## The R$^2$ Statistic {style="font-size: 60%;"}
+
+-   The RSE provides an absolute measure of lack of fit of the model to the data. But since it is measured in the units of Y , it is not always clear what constitutes a good RSE.
+
+-   The R$^2$ statistic provides an alternative measure of fit. It takes the form of a proportion
+
+-   specifically the proportion of the variation in Y that is explained by X
+
+-   given that it is a proportion it always takes on a value between 0 and 1, and is therefore independent of the scale of Y.
+
+-   To calculate R$^2$, we use the formula
+
+$$R^2 = \frac{TSS - RSS}{TSS}$$
+
+where $TSS = \sum (y_i - \bar{y})^2$ is the total sum of squares.
+
+## Checking Model Assumptions {style="font-size: 60%;"}
+
+With linear regression we are making an obvious assumption that the response/predictor relationship is linear.
+
+The other assumptions made for the linear model mostly relate to the error terms:
+
+$$e_i \sim N(0, \sigma^2)$$.
+
+-   This implies a few things
+
+    -   the difference between $y_i$ and $\widehat{y_i}$ (which is e_i) needs to follow a normal distribution
+
+    -   the variance for each error $e_i$ is constant as $\sigma^2$
+
+    -   there is no correlation between the error terms (i.e., they are independent)
+
+## Checking Model Assumptions {style="font-size: 60%;"}
+
+We can look at a number of plots to check if error assumptions are valid.
+
+::: {#fig-res layout-ncol="2"}
+![](images/Screenshot%202024-12-06%20at%2009.27.42.png)
+
+![](images/Screenshot%202024-12-06%20at%2009.27.51.png)
+
+Residual Plots
+:::
+
+
 ## Class Example {style="font-size: 55%;"}
 
 The whoop fitness tracker takes measurements related to recovery, strain and sleep. The dataset `whoop_data` contains 31 days of data on sleep performance, heart rate variability (hrv), activity strain and recovery.
 
-Have a look at the data set and see which variable appears to have the strongest predictive relationship with `strain`. Fit a linear regression model using the chosen predictor variable and interpret the output.
+Have a look at the data set and see which variable appears to have the strongest predictive relationship with `recovery``. Fit a linear regression model using the chosen predictor variable and interpret the output.
