@@ -323,4 +323,4 @@ Residual Plots
 
 The whoop fitness tracker takes measurements related to recovery, strain and sleep. The dataset `whoop_data` contains 31 days of data on sleep performance, heart rate variability (hrv), activity strain and recovery.
 
-Have a look at the data set and see which variable appears to have the strongest predictive relationship with `recovery``. Fit a linear regression model using the chosen predictor variable and interpret the output.
+Have a look at the data set and see which variable appears to have the strongest predictive relationship with `recovery`. Fit a linear regression model using the chosen predictor variable and interpret the output.

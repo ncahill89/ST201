@@ -1523,6 +1523,6 @@
     "href": "11-SLR.html#class-example",
     "title": "ST201 Data Analysis",
     "section": "Class Example",
-    "text": "Class Example\nThe whoop fitness tracker takes measurements related to recovery, strain and sleep. The dataset whoop_data contains 31 days of data on sleep performance, heart rate variability (hrv), activity strain and recovery.\nHave a look at the data set and see which variable appears to have the strongest predictive relationship with `recovery``. Fit a linear regression model using the chosen predictor variable and interpret the output."
+    "text": "Class Example\nThe whoop fitness tracker takes measurements related to recovery, strain and sleep. The dataset whoop_data contains 31 days of data on sleep performance, heart rate variability (hrv), activity strain and recovery.\nHave a look at the data set and see which variable appears to have the strongest predictive relationship with recovery. Fit a linear regression model using the chosen predictor variable and interpret the output."
   }
 ]
