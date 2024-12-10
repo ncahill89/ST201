@@ -136,10 +136,12 @@ advertising_data <- read.csv("Advertising.csv")
 
 # Create a scatter plot of TV advertising budget vs sales
 ggplot(data = advertising_data, aes(x = TV, y = sales)) +
-  geom_point(color = "blue", size = 3) +
+  geom_point(size = 2) +
+  geom_smooth(method = "lm") +
   labs(title = "TV Advertising Budget vs Sales",
        x = "TV Advertising Budget (in thousands)",
-       y = "Sales (in thousands)") 
+       y = "Sales (in thousands)") +
+  theme_bw()
 
 ```
 
