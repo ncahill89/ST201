@@ -1439,7 +1439,7 @@
     "href": "11-SLR.html#estimating-the-parameters",
     "title": "ST201 Data Analysis",
     "section": "Estimating the parameters",
-    "text": "Estimating the parameters\n\n\\(\\beta_0\\) and \\(\\beta_1\\) are unknown so we must use data to estimate them. Let\n\n\\[(x_1, y_1), (x_2, y_2), \\ldots, (x_n, y_n)\\] represent n observation pairs, each of which consists of a measurement of X and a measurement of Y .\n\nIn the Advertising example, this data set consists of the TV advertising budget and product sales in n = 200 different markets.\nOur goal is to obtain coefficient estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) such that the linear model fits the available data closely.\nThere are a number of ways of measuring closeness. However, by far the most common approach involves minimizing minimizing the sum of squared errors."
+    "text": "Estimating the parameters\n\n\\(\\beta_0\\) and \\(\\beta_1\\) are unknown so we must use data to estimate them. Let\n\n\\[(x_1, y_1), (x_2, y_2), \\ldots, (x_n, y_n)\\] represent n observation pairs, each of which consists of a measurement of X and a measurement of Y .\n\nIn the Advertising example, this data set consists of the TV advertising budget and product sales in n = 200 different markets.\nOur goal is to obtain coefficient estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) such that the linear model fits the available data closely.\nThere are a number of ways of measuring closeness. However, by far the most common approach involves minimizing the sum of squared errors."
   },
   {
     "objectID": "11-SLR.html#estimating-the-parameters-1",
