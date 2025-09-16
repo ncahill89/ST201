@@ -17,18 +17,18 @@ editor: visual
 -   📍Tuesdays @3pm in Physics Hall
 -   📍Thursdays @12pm in Physics Hall
 
-**📚 Tutorials:** Alternating weeks, beginning **Week 4 (14th Oct)**.
+**📚 Tutorials:** Alternating weeks, beginning **Week 4 (13th Oct)**.
 
--   📍 **Mondays** 2pm
--   📍 **Tuesdays** 11am, 1pm.
+-   📍 **Mondays** 2pm in GFLAB
+-   📍 **Tuesdays** 11am, 1pm in GFLAB
 
 ## Information {style="font-size: 80%;"}
 
 **📝 Assessment:**
 
 -   4 **Assignments** worth **15%**
--   1 **Midterm** worth **10%** (November 12th @ 3pm)
--   **Final Exam** worth **75%** (January 9th @ 10am-12pm)
+-   1 **Midterm** worth **10%** (November 11th \@ 3pm)
+-   **Final Exam** worth **75%** (January 9th \@ 10am-12pm)
 
 **📖 Textbooks:**
 
@@ -40,11 +40,11 @@ editor: visual
 
 -   **Lecture notes** will be shared, but don't hesitate to **take your own notes** for deeper understanding. 📝
 
--   **Slides** will be uploaded to **Moodle** for easy access after class. 💻
+-   **Slide** links will be uploaded to **Moodle** for easy access after class. 💻
 
--   Expect a mix of formats! Some lectures will focus on **slides**, while others will involve **hands-on R coding** in **RStudio**—a key part of this course. 💡💻
+-   Expect a mix of formats! Some lectures will focus on **slides**, while others will involve **hands-on R coding** in **RStudio** - a key part of this course. 💡💻
 
--   Relevant **R code** will be provided along with the lecture notes to enhance your learning. 📊💻
+-   Relevant **R code** will be provided to enhance your learning. 📊💻
 
 -   **Got questions?** Don't be shy—ask them during the lecture! 🙋‍♂️🙋‍♀️
 
