@@ -287,7 +287,7 @@ table(loan50$loan_amount)
 
 ```{r}
 hist(loan50$loan_amount,
-     breaks = 34,
+     breaks = 30,
      main = "Histogram",
      xlab = "Loan Amounts")
 ```
@@ -299,7 +299,7 @@ hist(loan50$loan_amount,
 #| code-line-numbers: "1-4|2"
 
 hist(loan50$loan_amount,
-     breaks = 34,
+     breaks = 30,
      main = "Histogram",
      xlab = "Loan Amounts")
 ```
@@ -314,7 +314,7 @@ hist(loan50$loan_amount,
 
 ```{r}
 hist(loan50$loan_amount,
-     breaks = 34/2,
+     breaks = 15,
      main = "Histogram",
      xlab = "Loan Amounts")
 ```
@@ -326,7 +326,7 @@ hist(loan50$loan_amount,
 #| code-line-numbers: "1-4|2"
 
 hist(loan50$loan_amount,
-     breaks = 16,
+     breaks = 15,
      main = "Histogram",
      xlab = "Loan Amounts")
 ```
@@ -341,7 +341,7 @@ hist(loan50$loan_amount,
 
 ```{r}
 hist(loan50$loan_amount,
-     breaks = 34/4,
+     breaks = 10,
      main = "Histogram",
      xlab = "Loan Amounts")
 ```
@@ -353,7 +353,7 @@ hist(loan50$loan_amount,
 #| code-line-numbers: "1-4|2"
 
 hist(loan50$loan_amount,
-     breaks = 8,
+     breaks = 10,
      main = "Histogram",
      xlab = "Loan Amounts")
 ```

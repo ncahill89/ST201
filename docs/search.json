@@ -130,21 +130,21 @@
     "href": "1-Data.html#graphical-representations-of-numerical-data",
     "title": "ST201 Data Analysis",
     "section": "Graphical representations of numerical data",
-    "text": "Graphical representations of numerical data\n\nHistogramCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(loan50$loan_amount,\n     breaks = 34,\n     main = \"Histogram\",\n     xlab = \"Loan Amounts\")"
+    "text": "Graphical representations of numerical data\n\nHistogramCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(loan50$loan_amount,\n     breaks = 30,\n     main = \"Histogram\",\n     xlab = \"Loan Amounts\")"
   },
   {
     "objectID": "1-Data.html#graphical-representations-of-numerical-data-1",
     "href": "1-Data.html#graphical-representations-of-numerical-data-1",
     "title": "ST201 Data Analysis",
     "section": "Graphical representations of numerical data",
-    "text": "Graphical representations of numerical data\n\nHistogramCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(loan50$loan_amount,\n     breaks = 16,\n     main = \"Histogram\",\n     xlab = \"Loan Amounts\")"
+    "text": "Graphical representations of numerical data\n\nHistogramCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(loan50$loan_amount,\n     breaks = 15,\n     main = \"Histogram\",\n     xlab = \"Loan Amounts\")"
   },
   {
     "objectID": "1-Data.html#graphical-representations-of-numerical-data-2",
     "href": "1-Data.html#graphical-representations-of-numerical-data-2",
     "title": "ST201 Data Analysis",
     "section": "Graphical representations of numerical data",
-    "text": "Graphical representations of numerical data\n\nHistogramCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(loan50$loan_amount,\n     breaks = 8,\n     main = \"Histogram\",\n     xlab = \"Loan Amounts\")"
+    "text": "Graphical representations of numerical data\n\nHistogramCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(loan50$loan_amount,\n     breaks = 10,\n     main = \"Histogram\",\n     xlab = \"Loan Amounts\")"
   },
   {
     "objectID": "1-Data.html#empirical-cumulative-distribution-function-ecdf",
