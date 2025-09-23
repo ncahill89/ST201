@@ -190,7 +190,7 @@ loan_tab
 ```
 :::
 
-## Numerical Representations of Categorical Data {style="font-size: 80%;"}
+## Numerical Representations of categorical Data {style="font-size: 80%;"}
 
 \footnotesize
 

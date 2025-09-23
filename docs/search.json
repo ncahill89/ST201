@@ -101,8 +101,8 @@
     "objectID": "1-Data.html#numerical-representations-of-categorical-data-1",
     "href": "1-Data.html#numerical-representations-of-categorical-data-1",
     "title": "ST201 Data Analysis",
-    "section": "Numerical Representations of Categorical Data",
-    "text": "Numerical Representations of Categorical Data\nLet’s consider the proportion (relative frequency) of loans made within each homeowner category in this dataset\n\nRelative Frequency TableCode\n\n\n\n\n\n\n\nhome\nFreq\n\n\n\n\nrent\n0.42\n\n\nmortgage\n0.52\n\n\nown\n0.06\n\n\n\n\n\n\n\n\n\nN &lt;- nrow(loan50)\nhome &lt;- loan50$homeownership\nloan_tab &lt;- table(home)\nloan_tab/N\n\n\nhome\n    rent mortgage      own \n    0.42     0.52     0.06"
+    "section": "Numerical Representations of categorical Data",
+    "text": "Numerical Representations of categorical Data\nLet’s consider the proportion (relative frequency) of loans made within each homeowner category in this dataset\n\nRelative Frequency TableCode\n\n\n\n\n\n\n\nhome\nFreq\n\n\n\n\nrent\n0.42\n\n\nmortgage\n0.52\n\n\nown\n0.06\n\n\n\n\n\n\n\n\n\nN &lt;- nrow(loan50)\nhome &lt;- loan50$homeownership\nloan_tab &lt;- table(home)\nloan_tab/N\n\n\nhome\n    rent mortgage      own \n    0.42     0.52     0.06"
   },
   {
     "objectID": "1-Data.html#graphical-representations-of-categorical-data",
