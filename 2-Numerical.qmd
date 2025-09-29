@@ -35,15 +35,16 @@ The mean, often called the average, is a common way to measure the center of a d
 ::: {.column width="65%"}
 **The Sample Mean**
 
--   a typical or central value in a set of numbers.
--   **Formula:** the sum of all values divided by the total number of values
+-   **Description:** a central value in a set of numbers.
+-   **Formula:** the sum of all values divided by the total number of values.
 :::
 
 ::: {.column width="35%"}
-**Notation (general)**
+**Notation**
 
--   often labeled $\bar{x}$
--   **Formula:** $\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$
+ $\bar{x}$
+ 
+ $\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$
 :::
 :::
 
@@ -59,11 +60,10 @@ For the 🚴 Watt Test 🚴 we know what we want the mean to be e.g., 160.
 
 ::: columns
 ::: {.column width="45%"}
-Sometimes we are interested in the distribution of a single variable.
+ A dot plot provides the most basic of displays when we are interested in the distribution of a single variable.
 
--   In these cases, a dot plot provides the most basic of displays.
 -   A dot plot is a one-variable scatterplot;
--   an example using 120 seconds of watt values is shown:
+-   an example using 120 watt values is shown:
 :::
 
 ::: {.column width="55%"}
@@ -122,11 +122,10 @@ image_write(animation, path = "images/stripchart_animation.gif", format = "gif")
 
 ::: columns
 ::: {.column width="45%"}
-Sometimes we are interested in the distribution of a single variable.
+ A dot plot provides the most basic of displays when we are interested in the distribution of a single variable.
 
--   In these cases, a dot plot provides the most basic of displays.
 -   A dot plot is a one-variable scatterplot;
--   an example using 120 seconds of watt values is shown:
+-   an example using 120 watt values is shown:
 :::
 
 ::: {.column width="55%"}
@@ -245,7 +244,7 @@ data <- data.frame(watts = round(watts))
 
 ## Scatter Plots {style="font-size: 80%;"}
 
-We could also consider visualising two variables here if we include the time aspect.
+We could also consider visualising two variables here as a scatter plot if we include the time aspect.
 
 ::: columns
 ::: {.column width="50%"}
@@ -302,7 +301,7 @@ image_write(animation, path = "images/scatter_animation1.gif", format = "gif")
 
 ## Scatter Plots {style="font-size: 80%;"}
 
-We could also consider visualising two variables here if we include the time aspect.
+We could also consider visualising two variables here as a scatter plot if we include the time aspect.
 
 ::: columns
 ::: {.column width="50%"}
@@ -514,10 +513,11 @@ stripchart(x=round(loan50$interest_rate),
 
 ## Example - Loan Interest Rates {style="font-size: 80%;"}
 
-A histogram of the loan interest rate data is shown below:
+A histogram is a plot that shows the distribution of data by grouping values into bins and displaying their frequencies as bars. A histogram of the loan interest rate data is shown below:
 
 ::: panel-tabset
-### Dot Plot
+
+### Histogram
 
 ```{r}
 hist(x=loan50$interest_rate,
@@ -542,7 +542,7 @@ hist(x=loan50$interest_rate,
 ```
 :::
 
-## Mean of Loan Interest Rates {style="font-size: 75%;"}
+## Mean of Loan Interest Rates {style="font-size: 80%;"}
 
 When working with data we often have a **sample** from a larger population.
 
@@ -568,15 +568,15 @@ When working with data we often have a **sample** from a larger population.
 ::: {.column width="40%"}
 **The Median**
 
--   the 50th percentile.
+-   **Description:** the 50th percentile.
 -   **Formula:** order the values and find the middle value
 :::
 
 ::: {.column width="60%"}
-**Notation (general)**
+**Notation**
 
--   labeled $\tilde{x}^{(0.5)}$
--   **Formula:** $$
+-   $\tilde{x}^{(0.5)}$
+-   $$
     \tilde{x}^{(0.5)} = 
     \begin{cases}
     x_{(n+1)/2},& \text{if n is odd}\\
@@ -593,10 +593,11 @@ round(loan50$interest_rate[1:10])
 
 ## Median - Loan Interest Rates {style="font-size: 80%;"}
 
--   Recall the ECDF? Let's look at it for the interest rate data and get an idea of where the median is.
+-   Recall the ECDF? It shows the proportion of data points less than or equal to each value. Let's look at it for the interest rate data and get an idea of where the median is.
 
 ::: panel-tabset
 ### ECDF Plot
+
 
 ```{r, fig.align='center'}
 plot.ecdf(x=loan50$interest_rate) 
@@ -677,7 +678,7 @@ abline(h = 0.8)
 
 ## Boxplots {style="font-size: 80%;"}
 
-Consider a boxplot of the interest rates.
+A boxplot is a graphical summary of data that shows its median, quartiles, spread, and potential outliers. Consider a boxplot of the interest rates.
 
 ::: panel-tabset
 ### Boxplot
@@ -843,7 +844,7 @@ abline(v = median(loan2), col = "green")
 
 ## Scatterplots for paired data {style="font-size: 80%;"}
 
-### Loan amount vs Interest rates
+A scatter plot is a chart that displays individual data points to show the relationship between two variables.
 
 ::: panel-tabset
 ### Scatterplot
