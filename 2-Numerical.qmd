@@ -42,9 +42,9 @@ The mean, often called the average, is a common way to measure the center of a d
 ::: {.column width="35%"}
 **Notation**
 
- $\bar{x}$
- 
- $\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$
+$\bar{x}$
+
+$\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$
 :::
 :::
 
@@ -60,7 +60,7 @@ For the 🚴 Watt Test 🚴 we know what we want the mean to be e.g., 160.
 
 ::: columns
 ::: {.column width="45%"}
- A dot plot provides the most basic of displays when we are interested in the distribution of a single variable.
+A dot plot provides the most basic of displays when we are interested in the distribution of a single variable.
 
 -   A dot plot is a one-variable scatterplot;
 -   an example using 120 watt values is shown:
@@ -122,7 +122,7 @@ image_write(animation, path = "images/stripchart_animation.gif", format = "gif")
 
 ::: columns
 ::: {.column width="45%"}
- A dot plot provides the most basic of displays when we are interested in the distribution of a single variable.
+A dot plot provides the most basic of displays when we are interested in the distribution of a single variable.
 
 -   A dot plot is a one-variable scatterplot;
 -   an example using 120 watt values is shown:
@@ -516,7 +516,6 @@ stripchart(x=round(loan50$interest_rate),
 A histogram is a plot that shows the distribution of data by grouping values into bins and displaying their frequencies as bars. A histogram of the loan interest rate data is shown below:
 
 ::: panel-tabset
-
 ### Histogram
 
 ```{r}
@@ -597,7 +596,6 @@ round(loan50$interest_rate[1:10])
 
 ::: panel-tabset
 ### ECDF Plot
-
 
 ```{r, fig.align='center'}
 plot.ecdf(x=loan50$interest_rate) 

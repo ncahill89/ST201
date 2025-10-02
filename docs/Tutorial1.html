@@ -122,6 +122,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#quantiles" id="toc-quantiles" class="nav-link" data-scroll-target="#quantiles">Quantiles</a></li>
   <li><a href="#variance-and-standard-deviation" id="toc-variance-and-standard-deviation" class="nav-link" data-scroll-target="#variance-and-standard-deviation">Variance and Standard Deviation</a></li>
   <li><a href="#boxplots-and-histograms" id="toc-boxplots-and-histograms" class="nav-link" data-scroll-target="#boxplots-and-histograms">Boxplots and Histograms</a></li>
+  <li><a href="#filtering" id="toc-filtering" class="nav-link" data-scroll-target="#filtering">Filtering</a></li>
+  <li><a href="#boxplots-for-comparing-a-categorical-vs-a-numerical-variable" id="toc-boxplots-for-comparing-a-categorical-vs-a-numerical-variable" class="nav-link" data-scroll-target="#boxplots-for-comparing-a-categorical-vs-a-numerical-variable">Boxplots for comparing a categorical vs a numerical variable</a></li>
   </ul>
 </nav>
     </div>
@@ -150,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="instructions" class="level2">
 <h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
 <ul>
-<li>Attempt the questions below before your tutorial in the week beginning 14th October 2024.</li>
+<li>Attempt the questions below before your tutorial in the week beginning 13th October 2024.</li>
 </ul>
 </section>
 <section id="reading-the-the-data" class="level2">
@@ -220,6 +222,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="a">
 <li><p>Create a histogram of the distance variable using the <code>hist</code> function. Change the x-axis label to “Distance (km)” using the argument <code>xlab</code>.</p></li>
 <li><p>Describe the distribution of the histogram (symmetric or skewed?). What have you learned from this?</p></li>
+</ol>
+</section>
+<section id="filtering" class="level2">
+<h2 class="anchored" data-anchor-id="filtering">Filtering</h2>
+<p>I want to filter the day to look at Saturday deliveries only. Copy the following into your R script and run it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sat_del <span class="ot">&lt;-</span> pizza_del[pizza_del<span class="sc">$</span>day <span class="sc">==</span> <span class="st">"Saturday"</span>,]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sat_del</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Exercise 7</strong></p>
+<ol type="a">
+<li><p>What is the average order amount for saturday deliveries?</p></li>
+<li><p>How does this compare to the average order amount for Monday deliveries?</p></li>
+</ol>
+</section>
+<section id="boxplots-for-comparing-a-categorical-vs-a-numerical-variable" class="level2">
+<h2 class="anchored" data-anchor-id="boxplots-for-comparing-a-categorical-vs-a-numerical-variable">Boxplots for comparing a categorical vs a numerical variable</h2>
+<p>I want to visualise the order amount variable for each delivery day using a boxplot. Copy the following into your R script and run it to produce a boxplot:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(order_amount <span class="sc">~</span> day, <span class="at">data =</span> pizza_del)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Exercise 8</strong></p>
+<ol type="a">
+<li><p>Provide an interpretation for the boxplot.</p></li>
+<li><p>Update the code to look at tip vs delivery day instead.</p></li>
 </ol>
 <p><strong>SAVE YOUR R SCRIPT!</strong></p>
 <p>Click: file - save as</p>
