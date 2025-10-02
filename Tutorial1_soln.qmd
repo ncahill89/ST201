@@ -1,0 +1,222 @@
+---
+title: "ST201 Tutorial Sheet 1 with Solutions"
+format: 
+  html:
+    embed-resources: true
+    self-contained-math: true
+editor: visual
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+INCLUDE = FALSE
+pizza_del <- readRDS("~/Dropbox/LecturingMaynooth/ST201_DataAnalysis/Tutorials/pizza_del.rds")
+```
+
+## Instructions for tutors
+
+Please work through the code below in a regular R script. The course isn't covering R Markdown so the students will only be seeing regular R scripts. Get the students to try the questions first.
+
+## Reading the the Data
+
+**Open a new R script.** The pizza delivery dataset is available on the Rstudio server in the ST201 folder in a file called `pizza_del.rds`. You can load the file into R by copying the following code into your R script:
+
+```{r, eval = FALSE}
+pizza_del <- readRDS("~/SharedFiles/ST201/pizza_del.rds")
+```
+
+**Note for Tutor:** Tell them how to open a new R script. Can you also show them how to load this data directly from the ST201 folder by just clicking on the `pizza_del.rds` file. Make sure they actually look at the data!
+
+Let's say we want to look at the `distance` variable (distance between the pizza place and the delivery location) in the `pizza_del` dataset. Copy the following into your R script and run it to view the first 10 observations of this variable:
+
+```{r}
+pizza_del$distance[1:10]
+```
+
+**Note for Tutor:** Mention the use if the "\$" symbol for pulling a variable from a data set. Mention that the use of the colon (:) is when you want to pull out consecutive entries from the vector of values. Show some different versions of this e.g., `pizza_del$distance[c(1,3,5,6,7)]`
+
+**Exercise 1**
+
+What is the value of the 275th observation of distance?
+
+```{r}
+pizza_del$distance[275]
+```
+
+## Mean and Median
+
+Now, suppose we are interested in the average distance between the pizza place and the delivery location. Copy the following into your R script and run it to obtain the average:
+
+```{r}
+mean(pizza_del$distance)
+```
+
+**Exercise 2**
+
+(a) Using R find the median distance between the pizza place and the delivery location.
+
+```{r}
+median(pizza_del$distance)
+```
+
+(b) How does the mean compare to the median? What might this tell you about the distribution of the data?
+
+**Ans:** The mean and the median are very similar. This suggests that there might not be big outliers in this dataset.
+
+## Quantiles
+
+Now I want to know what distance value represents the lower quartile (25% quantile) of the data. To do this I can use the `quantile` function in R. Copy the following into your R script. You will notice an error because it's looking for an additional argument after the comma.
+
+```{r, eval = FALSE}
+quantile(pizza_del$distance,
+         )
+```
+
+**Exercise 3**
+
+(a) Add the correct argument to the quantile function for finding the 25% quantile.
+
+```{r}
+quantile(pizza_del$distance,
+         probs = 0.25)
+```
+
+When you run the code above you will see that the lower quartile value is 1.3. So this means that there's a 25% chance that the delivery driver will need to travel less than 1.3 km when delivering pizzas. Why might this information be useful to the owners of a pizza place?
+
+**Ans:** This information can be useful because we can see that there's a 25% chance that the delivery person won't have to travel too far and perhaps having a bike for some deliveries might be useful and help to save money.
+
+(b) What is the upper quartile distance value?
+
+```{r}
+quantile(pizza_del$distance,
+         probs = 0.75)
+```
+
+(c) Provide an interpretation for (b).
+
+**Ans:** This indicates that 25% of the time the delivery person will need to travel **more than** 3km (or 75% of the time they will travel less that 3 km).
+
+## Variance and Standard Deviation
+
+I want to know how much variation there is in the distances.
+
+**Exercise 4**
+
+(a) Use the `var` function in R to calculate the variance.
+
+```{r}
+var(pizza_del$distance)
+```
+
+(b) Use R to obtain the standard deviation using the `sd` function. What is the advantage of using the standard deviation as a measure of variation?
+
+```{r}
+sd_dist <- sd(pizza_del$distance)
+sd_dist
+```
+
+**Note for Tutor:** Point out that you stored this as an object because you want to use if for part (c).
+
+(c) What range of distances fall within 1 standard deviation of the mean distance?
+
+```{r}
+## create a mean object first 
+mean_dist <- mean(pizza_del$distance)
+
+## add and subtract the sd_dist from mean_dist
+mean_dist - sd_dist
+mean_dist + sd_dist
+
+```
+
+**Note for Tutor:** Mention that sd is a useful measure of variation because it is on the same scale as the data. Now we can see that if we go one measure of variation (i.e., 1 standard deviation) away from the mean we have distance ranging from 0.9km up to 3.7km. The bigger the sd the more variation there is in the data.
+
+## Boxplots and Histograms
+
+I want to visualise the distance variable using a boxplot. Copy the following into your R script and run it to produce a boxplot:
+
+```{r, fig.height= 3, fig.width=4}
+boxplot(pizza_del$distance)
+```
+
+**Note for Tutor:** Mention that the boxplot is showing "outliers".
+
+**Exercise 5**
+
+(a) Add a y-axis label to the boxplot by adding a `ylab` argument to the code above. Label the axis "Distance (km)"
+
+```{r, fig.height= 3, fig.width=4}
+boxplot(pizza_del$distance, 
+        ylab = "Distance (km)")
+```
+
+(b) Provide an interpretation for the boxplot.
+
+**Ans:** We can see from the boxplot that the middle 50% of the data is between about 1 to 2km. According to the boxplot there are some outliers above 6 km.
+
+**Exercise 6**
+
+(a) Create a histogram of the distance variable using the `hist` function. Change the x-axis label to "Distance (km)" using the argument `xlab`.
+
+```{r, fig.height= 3, fig.width=4}
+hist(pizza_del$distance, 
+     xlab = "Distance (km)")
+```
+
+(b) Describe the distribution of the histogram (symmetric or skewed?). What have you learned from this?
+
+**Ans:** The Histogram appears to be skewed to the right. We see most of the deliveries are about 2-3km away from the pizza place. Some deliveries are up to 8 km away.
+
+## Filtering
+
+I want to filter the day to look at Saturday deliveries only. Copy the following into your R script and run it.
+
+```{r}
+sat_del <- pizza_del[pizza_del$day == "Saturday",]
+head(sat_del)
+```
+
+**Exercise 7**
+
+(a) What is the average order amount for saturday deliveries? 
+
+```{r}
+mean(sat_del$order_amount)
+```
+
+
+(b) How does this compare to the average order amount for Monday deliveries? 
+
+```{r}
+mon_del <- pizza_del[pizza_del$day == "Monday",]
+mean(mon_del$order_amount)
+```
+
+**Note for Tutor:** Mention that we learn here that Saturday order amount is slightly higher than the Monday order amount, on average. 
+
+## Boxplots for comparing a categorical vs a numerical variable
+
+I want to visualise the order amount variable for each delivery day using a boxplot. Copy the following into your R script and run it to produce a boxplot:
+
+```{r}
+boxplot(order_amount ~ day, data = pizza_del)
+```
+
+**Note for Tutor:** Note the use of the formula (y~x) and the addition of the data argument here when using two variables in the boxplot. You could do `boxplot(pizza_del$order_amount ~ pizza_del$day)` but the other way is cleaner. 
+
+**Exercise 8**
+
+(a) Provide an interpretation for the boxplot.
+
+**Ans:** There does not appear to be a notable difference between the order amounts accross days of the week. Friday and Saturday appear slighter higher. 
+
+
+(b) Update the code to look at tip vs delivery day instead. 
+
+```{r}
+boxplot(tip ~ day, data = pizza_del)
+```
+
+**SAVE YOUR R SCRIPT!**
+
+**Note for Tutor:** Show them how to save the script. Note the students won't be allowed to save the scripts to the ST201 folder so show them how to save to their home folder. Also show them how to export a file from the server to save on their own computers.

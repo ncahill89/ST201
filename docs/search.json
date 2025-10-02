@@ -178,15 +178,15 @@
     "objectID": "2-Numerical.html#watt-test-challenge-7-rounds",
     "href": "2-Numerical.html#watt-test-challenge-7-rounds",
     "title": "ST201 Data Analysis",
-    "section": "🚴 Watt Test Challenge: 7 Rounds! 🚴",
-    "text": "🚴 Watt Test Challenge: 7 Rounds! 🚴\n\n🏋️‍♂️ Goal: Achieve an average of 160 watts\n⏲️ Time: 2 minutes per round\n💡 Pro Tip: Adjust the resistance to push your wattage higher!"
+    "section": "",
+    "text": "🏋️‍♂️ Goal: Achieve an average of 160 watts\n⏲️ Time: 2 minutes per round\n💡 Pro Tip: Adjust the resistance to push your wattage higher!"
   },
   {
     "objectID": "2-Numerical.html#the-average-mean",
     "href": "2-Numerical.html#the-average-mean",
     "title": "ST201 Data Analysis",
     "section": "The Average (Mean)",
-    "text": "The Average (Mean)\nThe mean, often called the average, is a common way to measure the center of a distribution of data. For example, assume we have a watt value every second over a two minute period. To compute the mean watt value, we add up all the watt values and divide by 120.\n\n\nThe Sample Mean\n\nDescription: a central value in a set of numbers.\nFormula: the sum of all values divided by the total number of values.\n\n\nNotation\n\\(\\bar{x}\\)\n\\(\\bar{x} = \\frac{1}{n}\\sum_{i=1}^n x_i\\)\n\nFor the 🚴 Watt Test 🚴 we know what we want the mean to be e.g., 160.\n🤔 Consider how many different ways we can generate that mean value in a two minute interval."
+    "text": "The Average (Mean)\nThe mean, often called the average, is a common way to measure the center of a distribution of data. For example, assume we have a watt value every second over a two minute period. To compute the mean watt value, we add up all the watt values and divide by 120.\n\n\nThe Sample Mean\n\nDescription: a central value in a set of numbers.\nFormula: the sum of all values divided by the total number of values.\n\n\nNotation\n\\(\\bar{x}\\)\n\\(\\bar{x} = \\frac{1}{n}\\sum_{i=1}^n x_i\\)\n\n\nFor the 🚴 Watt Test 🚴 we know what we want the mean to be e.g., 160.\n🤔 Consider how many different ways we can generate that mean value in a two minute interval."
   },
   {
     "objectID": "2-Numerical.html#visualisation---dot-plots",
@@ -256,21 +256,21 @@
     "href": "2-Numerical.html#example---loan-interest-rates",
     "title": "ST201 Data Analysis",
     "section": "Example - Loan Interest Rates",
-    "text": "Example - Loan Interest Rates\nA dot plot of the (rounded) loan interest rate data is shown below:\n\nDot PlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nstripchart(x=round(loan50$interest_rate), \n           method = \"stack\", \n           at = 0, cex = 2,\n           col = \"steelblue\",  pch = 19,\n           main = \"\", \n           xlab = \"Loan interest rates\", \n           ylab=\"\")"
+    "text": "Example - Loan Interest Rates\nA dot plot of the (rounded) loan interest rate data is shown below:\n\nDot PlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nstripchart(x=round(loan50$interest_rate), \n           method = \"stack\", \n           at = 0, cex = 2,\n           col = \"steelblue\",  pch = 19,\n           main = \"\", \n           xlab = \"Loan interest rates\", \n           ylab=\"\")"
   },
   {
     "objectID": "2-Numerical.html#example---loan-interest-rates-1",
     "href": "2-Numerical.html#example---loan-interest-rates-1",
     "title": "ST201 Data Analysis",
     "section": "Example - Loan Interest Rates",
-    "text": "Example - Loan Interest Rates\nA histogram is a plot that shows the distribution of data by grouping values into bins and displaying their frequencies as bars. A histogram of the loan interest rate data is shown below:\n\nHistogramCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(x=loan50$interest_rate,\n     breaks = 10,\n     col = \"steelblue\", \n     main = \"\",\n     xlab = \"Loan interest rates\", \n     ylab=\"\")"
+    "text": "Example - Loan Interest Rates\nA histogram is a plot that shows the distribution of data by grouping values into bins and displaying their frequencies as bars. A histogram of the loan interest rate data is shown below:\n\nHistogramCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(x=loan50$interest_rate,\n     breaks = 10,\n     col = \"steelblue\", \n     main = \"\",\n     xlab = \"Loan interest rates\", \n     ylab=\"\")"
   },
   {
     "objectID": "2-Numerical.html#mean-of-loan-interest-rates",
     "href": "2-Numerical.html#mean-of-loan-interest-rates",
     "title": "ST201 Data Analysis",
     "section": "Mean of Loan Interest Rates",
-    "text": "Mean of Loan Interest Rates\nWhen working with data we often have a sample from a larger population.\n\nWe can calculate the mean for the sample: \\(\\bar{x}\\).\n\nBut the mean of the entire population has a special label: \\(\\mu\\).\n\nWhy don’t we always calculate \\(\\mu\\)?\n\nOften not feasible to measure the population mean precisely.\nInstead, we estimate \\(\\mu\\) using the sample mean \\(\\bar{x}\\).\n\nLoan Interest Rate Example\n\nFrom the sample of 50 loans, the mean interest rate is 11.57%.\n\nLater we’ll explore how reliable \\(\\bar{x}\\) is for estimating \\(\\mu\\)!"
+    "text": "Mean of Loan Interest Rates\nWhen working with data we often have a sample from a larger population.\n\nWe can calculate the mean for the sample: \\(\\bar{x}\\).\n\nBut the mean of the entire population has a special label: \\(\\mu\\).\n\n\nWhy don’t we always calculate \\(\\mu\\)?\n\nOften not feasible to measure the population mean precisely.\nInstead, we estimate \\(\\mu\\) using the sample mean \\(\\bar{x}\\).\n\n\n\nLoan Interest Rate Example\n\nFrom the sample of 50 loans, the mean interest rate is 11.57%.\n\nLater we’ll explore how reliable \\(\\bar{x}\\) is for estimating \\(\\mu\\)!"
   },
   {
     "objectID": "2-Numerical.html#later-well-explore-how-reliable-barx-is-in-estimating-mu",
@@ -284,14 +284,14 @@
     "href": "2-Numerical.html#median---loan-interest-rates",
     "title": "ST201 Data Analysis",
     "section": "Median - Loan Interest Rates",
-    "text": "Median - Loan Interest Rates\n\nThe median is the value which divides the observations into two equal parts\n\n\n\nThe Median\n\nDescription: the 50th percentile.\nFormula: order the values and find the middle value\n\n\nNotation\n\n\\(\\tilde{x}^{(0.5)}\\)\n\\[\n\\tilde{x}^{(0.5)} =\n\\begin{cases}\nx_{(n+1)/2},& \\text{if n is odd}\\\\\n\\frac{1}{2}(x_{n/2} + x_{(n/2) + 1}), & \\text{if n is even}\n\\end{cases}\\]\n\n\n\nConsider 10 interest rates from the loan data and calculate the median\n\n\n\n [1] 11 10 26 10  9 10 17  6  8 13"
+    "text": "Median - Loan Interest Rates\n\nThe median is the value which divides the observations into two equal parts\n\n\n\nThe Median\n\nDescription: the 50th percentile.\nFormula: order the values and find the middle value\n\n\nNotation\n\n\\(\\tilde{x}^{(0.5)}\\)\n\\[\n\\tilde{x}^{(0.5)} =\n\\begin{cases}\nx_{(n+1)/2},& \\text{if n is odd}\\\\\n\\frac{1}{2}(x_{n/2} + x_{(n/2) + 1}), & \\text{if n is even}\n\\end{cases}\\]\n\n\n\n\nConsider 10 interest rates from the loan data and calculate the median\n\n\n\n [1] 11 10 26 10  9 10 17  6  8 13"
   },
   {
     "objectID": "2-Numerical.html#median---loan-interest-rates-1",
     "href": "2-Numerical.html#median---loan-interest-rates-1",
     "title": "ST201 Data Analysis",
     "section": "Median - Loan Interest Rates",
-    "text": "Median - Loan Interest Rates\n\nRecall the ECDF? It shows the proportion of data points less than or equal to each value. Let’s look at it for the interest rate data and get an idea of where the median is.\n\n\nECDF PlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplot.ecdf(x=loan50$interest_rate) \nabline(h = 0.5)"
+    "text": "Median - Loan Interest Rates\n\nRecall the ECDF? It shows the proportion of data points less than or equal to each value. Let’s look at it for the interest rate data and get an idea of where the median is.\n\n\nECDF PlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplot.ecdf(x=loan50$interest_rate) \nabline(h = 0.5)"
   },
   {
     "objectID": "2-Numerical.html#quantiles",
@@ -319,7 +319,7 @@
     "href": "2-Numerical.html#boxplots",
     "title": "ST201 Data Analysis",
     "section": "Boxplots",
-    "text": "Boxplots\nA boxplot is a graphical summary of data that shows its median, quartiles, spread, and potential outliers. Consider a boxplot of the interest rates.\n\nBoxplotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nboxplot(loan50$interest_rate,\n        ylab = \"Loan interest rates\")"
+    "text": "Boxplots\nA boxplot is a graphical summary of data that shows its median, quartiles, spread, and potential outliers. Consider a boxplot of the interest rates.\n\nBoxplotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nboxplot(loan50$interest_rate,\n        ylab = \"Loan interest rates\")"
   },
   {
     "objectID": "2-Numerical.html#measures-of-dispersion---variance",
@@ -361,21 +361,21 @@
     "href": "2-Numerical.html#scatterplots-for-paired-data",
     "title": "ST201 Data Analysis",
     "section": "Scatterplots for paired data",
-    "text": "Scatterplots for paired data\nA scatter plot is a chart that displays individual data points to show the relationship between two variables.\n\nScatterplotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplot(x=loan50$loan_amount, \n     y=loan50$interest_rate,\n     cex=2, \n     cex.lab = 1.5,\n     pch = 19, \n     col = \"steelblue\",\n     xlab = \"Loan amount (thousands)\", \n     ylab=\"Interest rates (%)\")"
+    "text": "Scatterplots for paired data\nA scatter plot is a chart that displays individual data points to show the relationship between two variables.\n\nScatterplotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplot(x=loan50$loan_amount, \n     y=loan50$interest_rate,\n     cex=2, \n     cex.lab = 1.5,\n     pch = 19, \n     col = \"steelblue\",\n     xlab = \"Loan amount (thousands)\", \n     ylab=\"Interest rates (%)\")"
   },
   {
     "objectID": "2-Numerical.html#scatterplots-for-paired-data-1",
     "href": "2-Numerical.html#scatterplots-for-paired-data-1",
     "title": "ST201 Data Analysis",
     "section": "Scatterplots for paired data",
-    "text": "Scatterplots for paired data\nLoan amount vs Income"
+    "text": "Scatterplots for paired data\n\nLoan amount vs Income"
   },
   {
     "objectID": "2-Numerical.html#scatterplots-for-paired-data-2",
     "href": "2-Numerical.html#scatterplots-for-paired-data-2",
     "title": "ST201 Data Analysis",
     "section": "Scatterplots for paired data",
-    "text": "Scatterplots for paired data\nInterest rates vs Income"
+    "text": "Scatterplots for paired data\n\nInterest rates vs Income"
   },
   {
     "objectID": "2-Numerical.html#scatter-plots-5",
@@ -1530,7 +1530,7 @@
     "href": "Tutorial1.html#filtering",
     "title": "ST201 Tutorial Sheet 1",
     "section": "Filtering",
-    "text": "Filtering\nI want to filter the day to look at Saturday deliveries only. Copy the following into your R script and run it.\n\nsat_del &lt;- pizza_del[pizza_del$day == \"Saturday\",]\nsat_del\n\nExercise 7\n\nWhat is the average order amount for saturday deliveries?\nHow does this compare to the average order amount for Monday deliveries?"
+    "text": "Filtering\nI want to filter the day to look at Saturday deliveries only. Copy the following into your R script and run it.\n\nsat_del &lt;- pizza_del[pizza_del$day == \"Saturday\",]\nhead(sat_del)\n\nExercise 7\n\nWhat is the average order amount for saturday deliveries?\nHow does this compare to the average order amount for Monday deliveries?"
   },
   {
     "objectID": "Tutorial1.html#boxplots-for-comparing-a-categorical-vs-a-numerical-variable",
@@ -1538,5 +1538,75 @@
     "title": "ST201 Tutorial Sheet 1",
     "section": "Boxplots for comparing a categorical vs a numerical variable",
     "text": "Boxplots for comparing a categorical vs a numerical variable\nI want to visualise the order amount variable for each delivery day using a boxplot. Copy the following into your R script and run it to produce a boxplot:\n\nboxplot(order_amount ~ day, data = pizza_del)\n\nExercise 8\n\nProvide an interpretation for the boxplot.\nUpdate the code to look at tip vs delivery day instead.\n\nSAVE YOUR R SCRIPT!\nClick: file - save as"
+  },
+  {
+    "objectID": "Tutorial1_soln.html",
+    "href": "Tutorial1_soln.html",
+    "title": "ST201 Tutorial Sheet 1 with Solutions",
+    "section": "",
+    "text": "Please work through the code below in a regular R script. The course isn’t covering R Markdown so the students will only be seeing regular R scripts. Get the students to try the questions first."
+  },
+  {
+    "objectID": "Tutorial1_soln.html#instructions-for-tutors",
+    "href": "Tutorial1_soln.html#instructions-for-tutors",
+    "title": "ST201 Tutorial Sheet 1 with Solutions",
+    "section": "",
+    "text": "Please work through the code below in a regular R script. The course isn’t covering R Markdown so the students will only be seeing regular R scripts. Get the students to try the questions first."
+  },
+  {
+    "objectID": "Tutorial1_soln.html#reading-the-the-data",
+    "href": "Tutorial1_soln.html#reading-the-the-data",
+    "title": "ST201 Tutorial Sheet 1 with Solutions",
+    "section": "Reading the the Data",
+    "text": "Reading the the Data\nOpen a new R script. The pizza delivery dataset is available on the Rstudio server in the ST201 folder in a file called pizza_del.rds. You can load the file into R by copying the following code into your R script:\n\npizza_del &lt;- readRDS(\"~/SharedFiles/ST201/pizza_del.rds\")\n\nNote for Tutor: Tell them how to open a new R script. Can you also show them how to load this data directly from the ST201 folder by just clicking on the pizza_del.rds file. Make sure they actually look at the data!\nLet’s say we want to look at the distance variable (distance between the pizza place and the delivery location) in the pizza_del dataset. Copy the following into your R script and run it to view the first 10 observations of this variable:\n\npizza_del$distance[1:10]\n\n [1] 2.2 1.0 3.0 1.8 1.3 3.1 3.2 2.8 2.3 2.5\n\n\nNote for Tutor: Mention the use if the “$” symbol for pulling a variable from a data set. Mention that the use of the colon (:) is when you want to pull out consecutive entries from the vector of values. Show some different versions of this e.g., pizza_del$distance[c(1,3,5,6,7)]\nExercise 1\nWhat is the value of the 275th observation of distance?\n\npizza_del$distance[275]\n\n[1] 0.4"
+  },
+  {
+    "objectID": "Tutorial1_soln.html#mean-and-median",
+    "href": "Tutorial1_soln.html#mean-and-median",
+    "title": "ST201 Tutorial Sheet 1 with Solutions",
+    "section": "Mean and Median",
+    "text": "Mean and Median\nNow, suppose we are interested in the average distance between the pizza place and the delivery location. Copy the following into your R script and run it to obtain the average:\n\nmean(pizza_del$distance)\n\n[1] 2.287634\n\n\nExercise 2\n\nUsing R find the median distance between the pizza place and the delivery location.\n\n\nmedian(pizza_del$distance)\n\n[1] 2.3\n\n\n\nHow does the mean compare to the median? What might this tell you about the distribution of the data?\n\nAns: The mean and the median are very similar. This suggests that there might not be big outliers in this dataset."
+  },
+  {
+    "objectID": "Tutorial1_soln.html#quantiles",
+    "href": "Tutorial1_soln.html#quantiles",
+    "title": "ST201 Tutorial Sheet 1 with Solutions",
+    "section": "Quantiles",
+    "text": "Quantiles\nNow I want to know what distance value represents the lower quartile (25% quantile) of the data. To do this I can use the quantile function in R. Copy the following into your R script. You will notice an error because it’s looking for an additional argument after the comma.\n\nquantile(pizza_del$distance,\n         )\n\nExercise 3\n\nAdd the correct argument to the quantile function for finding the 25% quantile.\n\n\nquantile(pizza_del$distance,\n         probs = 0.25)\n\n25% \n1.3 \n\n\nWhen you run the code above you will see that the lower quartile value is 1.3. So this means that there’s a 25% chance that the delivery driver will need to travel less than 1.3 km when delivering pizzas. Why might this information be useful to the owners of a pizza place?\nAns: This information can be useful because we can see that there’s a 25% chance that the delivery person won’t have to travel too far and perhaps having a bike for some deliveries might be useful and help to save money.\n\nWhat is the upper quartile distance value?\n\n\nquantile(pizza_del$distance,\n         probs = 0.75)\n\n75% \n  3 \n\n\n\nProvide an interpretation for (b).\n\nAns: This indicates that 25% of the time the delivery person will need to travel more than 3km (or 75% of the time they will travel less that 3 km)."
+  },
+  {
+    "objectID": "Tutorial1_soln.html#variance-and-standard-deviation",
+    "href": "Tutorial1_soln.html#variance-and-standard-deviation",
+    "title": "ST201 Tutorial Sheet 1 with Solutions",
+    "section": "Variance and Standard Deviation",
+    "text": "Variance and Standard Deviation\nI want to know how much variation there is in the distances.\nExercise 4\n\nUse the var function in R to calculate the variance.\n\n\nvar(pizza_del$distance)\n\n[1] 1.895912\n\n\n\nUse R to obtain the standard deviation using the sd function. What is the advantage of using the standard deviation as a measure of variation?\n\n\nsd_dist &lt;- sd(pizza_del$distance)\nsd_dist\n\n[1] 1.376921\n\n\nNote for Tutor: Point out that you stored this as an object because you want to use if for part (c).\n\nWhat range of distances fall within 1 standard deviation of the mean distance?\n\n\n## create a mean object first \nmean_dist &lt;- mean(pizza_del$distance)\n\n## add and subtract the sd_dist from mean_dist\nmean_dist - sd_dist\n\n[1] 0.9107131\n\nmean_dist + sd_dist\n\n[1] 3.664555\n\n\nNote for Tutor: Mention that sd is a useful measure of variation because it is on the same scale as the data. Now we can see that if we go one measure of variation (i.e., 1 standard deviation) away from the mean we have distance ranging from 0.9km up to 3.7km. The bigger the sd the more variation there is in the data."
+  },
+  {
+    "objectID": "Tutorial1_soln.html#boxplots-and-histograms",
+    "href": "Tutorial1_soln.html#boxplots-and-histograms",
+    "title": "ST201 Tutorial Sheet 1 with Solutions",
+    "section": "Boxplots and Histograms",
+    "text": "Boxplots and Histograms\nI want to visualise the distance variable using a boxplot. Copy the following into your R script and run it to produce a boxplot:\n\nboxplot(pizza_del$distance)\n\n\n\n\n\n\n\n\nNote for Tutor: Mention that the boxplot is showing “outliers”.\nExercise 5\n\nAdd a y-axis label to the boxplot by adding a ylab argument to the code above. Label the axis “Distance (km)”\n\n\nboxplot(pizza_del$distance, \n        ylab = \"Distance (km)\")\n\n\n\n\n\n\n\n\n\nProvide an interpretation for the boxplot.\n\nAns: We can see from the boxplot that the middle 50% of the data is between about 1 to 2km. According to the boxplot there are some outliers above 6 km.\nExercise 6\n\nCreate a histogram of the distance variable using the hist function. Change the x-axis label to “Distance (km)” using the argument xlab.\n\n\nhist(pizza_del$distance, \n     xlab = \"Distance (km)\")\n\n\n\n\n\n\n\n\n\nDescribe the distribution of the histogram (symmetric or skewed?). What have you learned from this?\n\nAns: The Histogram appears to be skewed to the right. We see most of the deliveries are about 2-3km away from the pizza place. Some deliveries are up to 8 km away."
+  },
+  {
+    "objectID": "Tutorial1_soln.html#filtering",
+    "href": "Tutorial1_soln.html#filtering",
+    "title": "ST201 Tutorial Sheet 1 with Solutions",
+    "section": "Filtering",
+    "text": "Filtering\nI want to filter the day to look at Saturday deliveries only. Copy the following into your R script and run it.\n\nsat_del &lt;- pizza_del[pizza_del$day == \"Saturday\",]\nhead(sat_del)\n\n        day distance order_amount  tip\n1  Saturday      2.2        19.94 5.06\n7  Saturday      3.2        28.04 5.00\n10 Saturday      2.5        17.18 1.82\n12 Saturday      2.0        17.00 1.50\n14 Saturday      2.5        15.18 2.00\n24 Saturday      1.7        22.08 0.00\n\n\nExercise 7\n\nWhat is the average order amount for saturday deliveries?\n\n\nmean(sat_del$order_amount)\n\n[1] 22.59794\n\n\n\nHow does this compare to the average order amount for Monday deliveries?\n\n\nmon_del &lt;- pizza_del[pizza_del$day == \"Monday\",]\nmean(mon_del$order_amount)\n\n[1] 20.89421\n\n\nNote for Tutor: Mention that we learn here that Saturday order amount is slightly higher than the Monday order amount, on average."
+  },
+  {
+    "objectID": "Tutorial1_soln.html#boxplots-for-comparing-a-categorical-vs-a-numerical-variable",
+    "href": "Tutorial1_soln.html#boxplots-for-comparing-a-categorical-vs-a-numerical-variable",
+    "title": "ST201 Tutorial Sheet 1 with Solutions",
+    "section": "Boxplots for comparing a categorical vs a numerical variable",
+    "text": "Boxplots for comparing a categorical vs a numerical variable\nI want to visualise the order amount variable for each delivery day using a boxplot. Copy the following into your R script and run it to produce a boxplot:\n\nboxplot(order_amount ~ day, data = pizza_del)\n\n\n\n\n\n\n\n\nNote for Tutor: Note the use of the formula (y~x) and the addition of the data argument here when using two variables in the boxplot. You could do boxplot(pizza_del$order_amount ~ pizza_del$day) but the other way is cleaner.\nExercise 8\n\nProvide an interpretation for the boxplot.\n\nAns: There does not appear to be a notable difference between the order amounts accross days of the week. Friday and Saturday appear slighter higher.\n\nUpdate the code to look at tip vs delivery day instead.\n\n\nboxplot(tip ~ day, data = pizza_del)\n\n\n\n\n\n\n\n\nSAVE YOUR R SCRIPT!\nNote for Tutor: Show them how to save the script. Note the students won’t be allowed to save the scripts to the ST201 folder so show them how to save to their home folder. Also show them how to export a file from the server to save on their own computers."
+  },
+  {
+    "objectID": "2-Numerical.html",
+    "href": "2-Numerical.html",
+    "title": "ST201 Data Analysis",
+    "section": "",
+    "text": "🏋️‍♂️ Goal: Achieve an average of 160 watts\n⏲️ Time: 2 minutes per round\n💡 Pro Tip: Adjust the resistance to push your wattage higher!"
   }
 ]
