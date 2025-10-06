@@ -375,6 +375,34 @@ For two way tables, the degrees of freedom is equal to: $df$ = (number of rows m
 
 -   In our airline example, the degrees of freedom parameter is: $df = (2-1)*(4-1) = 3$ .
 
+## Hypothesis Testing: The Big Picture {style="font-size: 60%;"}
+
+**Purpose:** To determine if an observed effect or relationship is statistically significant or just due to random chance.
+
+**Key Steps:**
+
+  - State hypotheses
+    
+    - Null hypothesis ($H_o$): No effect or no relationship.
+    - Alternative hypothesis ($H_a$): There is an effect or relationship.
+
+  - Choose a significance level (α)
+
+    - Common choice: 0.05 (5% risk of rejecting H₀ when it’s true)
+
+  - Select a test statistic
+
+    - Depends on data type and goal (e.g., t-test, chi-squared)
+
+  - Calculate p-value
+
+    - Probability of observing data as extreme as ours if H₀ is true.
+
+  - Make a decision
+
+    - If p < α: reject $H_0$ → evidence supports $H_a$
+    - If p ≥ α: fail to reject $H_0$ → no strong evidence against $H_0$
+
 ## Chi-squared test of independence {style="font-size: 75%;"}
 
 We will use the chi-squared test statistic and the chi-squared distribution to do a hypothesis test for independence for a two-way table.

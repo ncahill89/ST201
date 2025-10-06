@@ -1608,5 +1608,12 @@
     "title": "ST201 Data Analysis",
     "section": "",
     "text": "🏋️‍♂️ Goal: Achieve an average of 160 watts\n⏲️ Time: 2 minutes per round\n💡 Pro Tip: Adjust the resistance to push your wattage higher!"
+  },
+  {
+    "objectID": "3-Categorical.html#hypothesis-testing-the-big-picture",
+    "href": "3-Categorical.html#hypothesis-testing-the-big-picture",
+    "title": "ST201 Data Analysis",
+    "section": "Hypothesis Testing: The Big Picture",
+    "text": "Hypothesis Testing: The Big Picture\nPurpose: To determine if an observed effect or relationship is statistically significant or just due to random chance.\nKey Steps:\n\nState hypotheses\n\nNull hypothesis (\\(H_o\\)): No effect or no relationship.\nAlternative hypothesis (\\(H_a\\)): There is an effect or relationship.\n\nChoose a significance level (α)\n\nCommon choice: 0.05 (5% risk of rejecting H₀ when it’s true)\n\nSelect a test statistic\n\nDepends on data type and goal (e.g., t-test, chi-squared)\n\nCalculate p-value\n\nProbability of observing data as extreme as ours if H₀ is true.\n\nMake a decision\n\nIf p &lt; α: reject \\(H_0\\) → evidence supports \\(H_a\\)\nIf p ≥ α: fail to reject \\(H_0\\) → no strong evidence against \\(H_0\\)"
   }
 ]
