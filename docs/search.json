@@ -501,7 +501,7 @@
     "href": "3-Categorical.html#association-of-two-variables",
     "title": "ST201 Data Analysis",
     "section": "Association of Two Variables",
-    "text": "Association of Two Variables\nWe are often interested in the interdependence of two or more categorical variables\n\ne.g., we might be interested in whether the satisfaction of airline customers varies w.r.t the travel class (Economy, Business)\ne.g., we may want to find out of female employees at a company are paid less than male employees or vice versa. Assume in this example we have two salary categories (low, high).\n\nWhen both variables are categorical then it is possible to list all combinations of the variables and count how often the combinations occur in the data."
+    "text": "Association of Two Variables\nWe are often interested in the interdependence of two or more categorical variables\n\ne.g., we might be interested in whether the satisfaction of airline customers varies w.r.t the travel class (Economy, Business)\ne.g., we may want to find out if female employees at a company are paid less than male employees or vice versa. Assume in this example we have two salary categories (low, high).\n\nWhen both variables are categorical then it is possible to list all combinations of the variables and count how often the combinations occur in the data."
   },
   {
     "objectID": "3-Categorical.html#airline-satisfaction-example",
