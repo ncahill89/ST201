@@ -407,8 +407,8 @@ For two way tables, the degrees of freedom is equal to: $df$ = (number of rows m
 
 We will use the chi-squared test statistic and the chi-squared distribution to do a hypothesis test for independence for a two-way table.
 
--   the *null* hypothesis is **independence**
--   the *alternative* hypothesis is **no independence**
+-   the *null* hypothesis is **independence** (no relationship)
+-   the *alternative* hypothesis is **no independence** (relationship)
 
 ::: callout-note
 ## The test statistic for assessing the independence between two categorical variables is a chi-squared ($\chi^2$) test statistic
