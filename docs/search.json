@@ -178,15 +178,15 @@
     "objectID": "2-Numerical.html#watt-test-challenge-7-rounds",
     "href": "2-Numerical.html#watt-test-challenge-7-rounds",
     "title": "ST201 Data Analysis",
-    "section": "",
-    "text": "🏋️‍♂️ Goal: Achieve an average of 160 watts\n⏲️ Time: 2 minutes per round\n💡 Pro Tip: Adjust the resistance to push your wattage higher!"
+    "section": "🚴 Watt Test Challenge: 7 Rounds! 🚴",
+    "text": "🚴 Watt Test Challenge: 7 Rounds! 🚴\n\n🏋️‍♂️ Goal: Achieve an average of 160 watts\n⏲️ Time: 2 minutes per round\n💡 Pro Tip: Adjust the resistance to push your wattage higher!"
   },
   {
     "objectID": "2-Numerical.html#the-average-mean",
     "href": "2-Numerical.html#the-average-mean",
     "title": "ST201 Data Analysis",
     "section": "The Average (Mean)",
-    "text": "The Average (Mean)\nThe mean, often called the average, is a common way to measure the center of a distribution of data. For example, assume we have a watt value every second over a two minute period. To compute the mean watt value, we add up all the watt values and divide by 120.\n\n\nThe Sample Mean\n\nDescription: a central value in a set of numbers.\nFormula: the sum of all values divided by the total number of values.\n\n\nNotation\n\\(\\bar{x}\\)\n\\(\\bar{x} = \\frac{1}{n}\\sum_{i=1}^n x_i\\)\n\n\nFor the 🚴 Watt Test 🚴 we know what we want the mean to be e.g., 160.\n🤔 Consider how many different ways we can generate that mean value in a two minute interval."
+    "text": "The Average (Mean)\nThe mean, often called the average, is a common way to measure the center of a distribution of data. For example, assume we have a watt value every second over a two minute period. To compute the mean watt value, we add up all the watt values and divide by 120.\n\n\nThe Sample Mean\n\nDescription: a central value in a set of numbers.\nFormula: the sum of all values divided by the total number of values.\n\n\nNotation\n\\(\\bar{x}\\)\n\\(\\bar{x} = \\frac{1}{n}\\sum_{i=1}^n x_i\\)\n\nFor the 🚴 Watt Test 🚴 we know what we want the mean to be e.g., 160.\n🤔 Consider how many different ways we can generate that mean value in a two minute interval."
   },
   {
     "objectID": "2-Numerical.html#visualisation---dot-plots",
@@ -256,21 +256,21 @@
     "href": "2-Numerical.html#example---loan-interest-rates",
     "title": "ST201 Data Analysis",
     "section": "Example - Loan Interest Rates",
-    "text": "Example - Loan Interest Rates\nA dot plot of the (rounded) loan interest rate data is shown below:\n\nDot PlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nstripchart(x=round(loan50$interest_rate), \n           method = \"stack\", \n           at = 0, cex = 2,\n           col = \"steelblue\",  pch = 19,\n           main = \"\", \n           xlab = \"Loan interest rates\", \n           ylab=\"\")"
+    "text": "Example - Loan Interest Rates\nA dot plot of the (rounded) loan interest rate data is shown below:\n\nDot PlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nstripchart(x=round(loan50$interest_rate), \n           method = \"stack\", \n           at = 0, cex = 2,\n           col = \"steelblue\",  pch = 19,\n           main = \"\", \n           xlab = \"Loan interest rates\", \n           ylab=\"\")"
   },
   {
     "objectID": "2-Numerical.html#example---loan-interest-rates-1",
     "href": "2-Numerical.html#example---loan-interest-rates-1",
     "title": "ST201 Data Analysis",
     "section": "Example - Loan Interest Rates",
-    "text": "Example - Loan Interest Rates\nA histogram is a plot that shows the distribution of data by grouping values into bins and displaying their frequencies as bars. A histogram of the loan interest rate data is shown below:\n\nHistogramCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(x=loan50$interest_rate,\n     breaks = 10,\n     col = \"steelblue\", \n     main = \"\",\n     xlab = \"Loan interest rates\", \n     ylab=\"\")"
+    "text": "Example - Loan Interest Rates\nA histogram is a plot that shows the distribution of data by grouping values into bins and displaying their frequencies as bars. A histogram of the loan interest rate data is shown below:\n\nHistogramCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhist(x=loan50$interest_rate,\n     breaks = 10,\n     col = \"steelblue\", \n     main = \"\",\n     xlab = \"Loan interest rates\", \n     ylab=\"\")"
   },
   {
     "objectID": "2-Numerical.html#mean-of-loan-interest-rates",
     "href": "2-Numerical.html#mean-of-loan-interest-rates",
     "title": "ST201 Data Analysis",
     "section": "Mean of Loan Interest Rates",
-    "text": "Mean of Loan Interest Rates\nWhen working with data we often have a sample from a larger population.\n\nWe can calculate the mean for the sample: \\(\\bar{x}\\).\n\nBut the mean of the entire population has a special label: \\(\\mu\\).\n\n\nWhy don’t we always calculate \\(\\mu\\)?\n\nOften not feasible to measure the population mean precisely.\nInstead, we estimate \\(\\mu\\) using the sample mean \\(\\bar{x}\\).\n\n\n\nLoan Interest Rate Example\n\nFrom the sample of 50 loans, the mean interest rate is 11.57%.\n\nLater we’ll explore how reliable \\(\\bar{x}\\) is for estimating \\(\\mu\\)!"
+    "text": "Mean of Loan Interest Rates\nWhen working with data we often have a sample from a larger population.\n\nWe can calculate the mean for the sample: \\(\\bar{x}\\).\n\nBut the mean of the entire population has a special label: \\(\\mu\\).\n\nWhy don’t we always calculate \\(\\mu\\)?\n\nOften not feasible to measure the population mean precisely.\nInstead, we estimate \\(\\mu\\) using the sample mean \\(\\bar{x}\\).\n\nLoan Interest Rate Example\n\nFrom the sample of 50 loans, the mean interest rate is 11.57%.\n\nLater we’ll explore how reliable \\(\\bar{x}\\) is for estimating \\(\\mu\\)!"
   },
   {
     "objectID": "2-Numerical.html#later-well-explore-how-reliable-barx-is-in-estimating-mu",
@@ -284,14 +284,14 @@
     "href": "2-Numerical.html#median---loan-interest-rates",
     "title": "ST201 Data Analysis",
     "section": "Median - Loan Interest Rates",
-    "text": "Median - Loan Interest Rates\n\nThe median is the value which divides the observations into two equal parts\n\n\n\nThe Median\n\nDescription: the 50th percentile.\nFormula: order the values and find the middle value\n\n\nNotation\n\n\\(\\tilde{x}^{(0.5)}\\)\n\\[\n\\tilde{x}^{(0.5)} =\n\\begin{cases}\nx_{(n+1)/2},& \\text{if n is odd}\\\\\n\\frac{1}{2}(x_{n/2} + x_{(n/2) + 1}), & \\text{if n is even}\n\\end{cases}\\]\n\n\n\n\nConsider 10 interest rates from the loan data and calculate the median\n\n\n\n [1] 11 10 26 10  9 10 17  6  8 13"
+    "text": "Median - Loan Interest Rates\n\nThe median is the value which divides the observations into two equal parts\n\n\n\nThe Median\n\nDescription: the 50th percentile.\nFormula: order the values and find the middle value\n\n\nNotation\n\n\\(\\tilde{x}^{(0.5)}\\)\n\\[\n\\tilde{x}^{(0.5)} =\n\\begin{cases}\nx_{(n+1)/2},& \\text{if n is odd}\\\\\n\\frac{1}{2}(x_{n/2} + x_{(n/2) + 1}), & \\text{if n is even}\n\\end{cases}\\]\n\n\n\nConsider 10 interest rates from the loan data and calculate the median\n\n\n\n [1] 11 10 26 10  9 10 17  6  8 13"
   },
   {
     "objectID": "2-Numerical.html#median---loan-interest-rates-1",
     "href": "2-Numerical.html#median---loan-interest-rates-1",
     "title": "ST201 Data Analysis",
     "section": "Median - Loan Interest Rates",
-    "text": "Median - Loan Interest Rates\n\nRecall the ECDF? It shows the proportion of data points less than or equal to each value. Let’s look at it for the interest rate data and get an idea of where the median is.\n\n\nECDF PlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplot.ecdf(x=loan50$interest_rate) \nabline(h = 0.5)"
+    "text": "Median - Loan Interest Rates\n\nRecall the ECDF? It shows the proportion of data points less than or equal to each value. Let’s look at it for the interest rate data and get an idea of where the median is.\n\n\nECDF PlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplot.ecdf(x=loan50$interest_rate) \nabline(h = 0.5)"
   },
   {
     "objectID": "2-Numerical.html#quantiles",
@@ -319,7 +319,7 @@
     "href": "2-Numerical.html#boxplots",
     "title": "ST201 Data Analysis",
     "section": "Boxplots",
-    "text": "Boxplots\nA boxplot is a graphical summary of data that shows its median, quartiles, spread, and potential outliers. Consider a boxplot of the interest rates.\n\nBoxplotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nboxplot(loan50$interest_rate,\n        ylab = \"Loan interest rates\")"
+    "text": "Boxplots\nA boxplot is a graphical summary of data that shows its median, quartiles, spread, and potential outliers. Consider a boxplot of the interest rates.\n\nBoxplotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nboxplot(loan50$interest_rate,\n        ylab = \"Loan interest rates\")"
   },
   {
     "objectID": "2-Numerical.html#measures-of-dispersion---variance",
@@ -361,21 +361,21 @@
     "href": "2-Numerical.html#scatterplots-for-paired-data",
     "title": "ST201 Data Analysis",
     "section": "Scatterplots for paired data",
-    "text": "Scatterplots for paired data\nA scatter plot is a chart that displays individual data points to show the relationship between two variables.\n\nScatterplotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplot(x=loan50$loan_amount, \n     y=loan50$interest_rate,\n     cex=2, \n     cex.lab = 1.5,\n     pch = 19, \n     col = \"steelblue\",\n     xlab = \"Loan amount (thousands)\", \n     ylab=\"Interest rates (%)\")"
+    "text": "Scatterplots for paired data\nA scatter plot is a chart that displays individual data points to show the relationship between two variables.\n\nScatterplotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplot(x=loan50$loan_amount, \n     y=loan50$interest_rate,\n     cex=2, \n     cex.lab = 1.5,\n     pch = 19, \n     col = \"steelblue\",\n     xlab = \"Loan amount (thousands)\", \n     ylab=\"Interest rates (%)\")"
   },
   {
     "objectID": "2-Numerical.html#scatterplots-for-paired-data-1",
     "href": "2-Numerical.html#scatterplots-for-paired-data-1",
     "title": "ST201 Data Analysis",
     "section": "Scatterplots for paired data",
-    "text": "Scatterplots for paired data\n\nLoan amount vs Income"
+    "text": "Scatterplots for paired data\nLoan amount vs Income"
   },
   {
     "objectID": "2-Numerical.html#scatterplots-for-paired-data-2",
     "href": "2-Numerical.html#scatterplots-for-paired-data-2",
     "title": "ST201 Data Analysis",
     "section": "Scatterplots for paired data",
-    "text": "Scatterplots for paired data\n\nInterest rates vs Income"
+    "text": "Scatterplots for paired data\nInterest rates vs Income"
   },
   {
     "objectID": "2-Numerical.html#scatter-plots-5",
