@@ -15,7 +15,7 @@ library(vcd)
 
 ```
 
-## Considering associations with  > two categorical variables {style="font-size: 70%;"}
+## Considering associations with \> two categorical variables {style="font-size: 70%;"}
 
 **How do we consider associations with categorical data?**
 
@@ -137,6 +137,25 @@ barplot(hospital_tab,
 
 **Treatment A** has a higher success rate than **Treatment B** in both hospitals.
 
+## Odds and Odds Ratio {style="font-size: 70%;"}
+
+### 🔍 What Are Odds?
+
+When comparing two groups (e.g., Treatment vs. Control), the *odds of success* for each are calculated by:
+
+-   **Category 1**:\
+    $w1 = \frac{\text{Success in Group 1}}{\text{Failure in Group 1}}$
+
+-   **Category 2**:\
+    $w2 = \frac{\text{Success in Group 2}}{\text{Failure in Group 2}}$
+
+### 🔗 What is the Odds Ratio?
+
+The *odds ratio* tells us how much more likely success odds are in one group compared to the other:
+
+$\text{Odds Ratio} = \frac{w1}{w2}$
+
+
 ## Example: Student Admissions at UC Berkeley {style="font-size: 70%;"}
 
 Aggregate data on applicants to graduate school at Berkeley for the six largest departments in 1973 classified by admission and sex.
@@ -165,23 +184,6 @@ admission_dat <- admission_dat %>%
 admission_dat
 ```
 
-## Odds and Odds Ratio {style="font-size: 70%;"}
-
-### 🔍 What Are Odds?
-
-When comparing two groups (e.g., Treatment vs. Control), the *odds of success* for each are calculated by:
-
--   **Category 1**:\
-    $w1 = \frac{\text{Success in Group 1}}{\text{Failure in Group 1}}$
-
--   **Category 2**:\
-    $w2 = \frac{\text{Success in Group 2}}{\text{Failure in Group 2}}$
-
-### 🔗 What is the Odds Ratio?
-
-The *odds ratio* tells us how much more likely success odds are in one group compared to the other:
-
-$\text{Odds Ratio} = \frac{w1}{w2}$
 
 ## Example: Student Admissions at UC Berkeley {style="font-size: 70%;"}
 
@@ -295,7 +297,6 @@ A lurking variable is a variable that is not included as an explanatory variable
 
 Ignoring an important lurking variable can lead to **Simpson's Paradox**, especially when analyzing **categorical data**. This paradox occurs when the relationship between two variables reverses or changes after considering a third variable.
 
-
 ## Visualisation: 2-way mosaic plots {style="font-size: 70%;"}
 
 ::: columns
@@ -309,11 +310,11 @@ mosaic(~ gender + admit,
 :::
 
 ::: {.column width="50%"}
-```{r, echo = TRUE, include=TRUE}
-admission_OR <- loddsratio(~  admit + gender, 
-                           data = admission_dat, 
-                           log = FALSE)
-coef(admission_OR)
+```{r, echo = TRUE, include=TRUE, eval=FALSE}
+mosaic(~ gender + admit, 
+      data = admission_dat, 
+      shade = TRUE,
+      legend = TRUE)
 ```
 :::
 :::
@@ -331,11 +332,11 @@ mosaic(~ dept + gender + admit ,
 :::
 
 ::: {.column width="50%"}
-```{r, echo = TRUE, include=TRUE}
-admission_OR <- loddsratio(~  admit + gender + dept, 
-                           data = admission_dat, 
-                           log = FALSE)
-coef(admission_OR)
+```{r, echo = TRUE, include=TRUE, eval=FALSE}
+mosaic(~ dept + gender + admit , 
+      data = admission_dat, 
+      shade = TRUE,
+      legend = TRUE)
 ```
 :::
 :::

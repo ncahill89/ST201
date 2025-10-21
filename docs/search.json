@@ -858,14 +858,14 @@
     "href": "5-Categorical3.html#visualisation-2-way-mosaic-plots",
     "title": "ST201 Data Analysis",
     "section": "Visualisation: 2-way mosaic plots",
-    "text": "Visualisation: 2-way mosaic plots\n\n\n\n\n\n\n\n\n\n\n\n\n\nadmission_OR &lt;- loddsratio(~  admit + gender, \n                           data = admission_dat, \n                           log = FALSE)\ncoef(admission_OR)\n\nAdmitted:Rejected/Female:Male \n                    0.5431594"
+    "text": "Visualisation: 2-way mosaic plots\n\n\n\n\n\n\n\n\n\n\n\n\n\nmosaic(~ gender + admit, \n      data = admission_dat, \n      shade = TRUE,\n      legend = TRUE)"
   },
   {
     "objectID": "5-Categorical3.html#visualisation-3-way-mosaic-plots",
     "href": "5-Categorical3.html#visualisation-3-way-mosaic-plots",
     "title": "ST201 Data Analysis",
     "section": "Visualisation: 3-way mosaic plots",
-    "text": "Visualisation: 3-way mosaic plots\n\n\n\n\n\n\n\n\n\n\n\n\n\nadmission_OR &lt;- loddsratio(~  admit + gender + dept, \n                           data = admission_dat, \n                           log = FALSE)\ncoef(admission_OR)\n\n        A         B         C         D         E         F \n2.8635896 1.2461048 0.8825661 1.0854419 0.8185776 1.2079151"
+    "text": "Visualisation: 3-way mosaic plots\n\n\n\n\n\n\n\n\n\n\n\n\n\nmosaic(~ dept + gender + admit , \n      data = admission_dat, \n      shade = TRUE,\n      legend = TRUE)"
   },
   {
     "objectID": "Tutorial2.html",
