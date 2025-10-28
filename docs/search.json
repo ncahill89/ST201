@@ -11,7 +11,7 @@
     "href": "0-Information.html#information-1",
     "title": "ST201 Module Information",
     "section": "Information",
-    "text": "Information\n📝 Assessment:\n\n4 Assignments worth 15%\n1 Midterm worth 10% (November 11th @ 3pm)\nFinal Exam worth 75% (January 9th @ 10am-12pm)\n\n📖 Textbooks:\n\nIntroduction to Statistical and Data Analysis by Christian Heimann & Michael Schomaker Shalabh\n\n⏰ Office Hours: By appointment (and please do make an appointment if needed)"
+    "text": "Information\n📝 Assessment:\n\n4 Assignments worth 15%\n1 Midterm worth 10% (November 11th @ 3pm)\nFinal Exam worth 75% (January 8th @ 10am-12pm)\n\n📖 Textbooks:\n\nIntroduction to Statistical and Data Analysis by Christian Heimann & Michael Schomaker Shalabh\n\n⏰ Office Hours: By appointment (and please do make an appointment if needed)"
   },
   {
     "objectID": "0-Information.html#lecturing-format",
@@ -732,21 +732,21 @@
     "href": "5-Categorical3.html#example-scenario-medical-treatment-success-rates",
     "title": "ST201 Data Analysis",
     "section": "Example Scenario: Medical Treatment Success Rates",
-    "text": "Example Scenario: Medical Treatment Success Rates\nLet’s consider two treatments, Treatment A and Treatment B, and their successes. Assume we also have information on where the treatments are carried out, either Hospital X or Hospital Y.\nData\n\n\n  Hospital Treatment Patients Successes\n1        X         A       10         5\n2        X         B       90        30\n3        Y         A       10         9\n4        Y         B       90        60\n\n\nTurning this data into contingency tables\n\n\nlibrary(vcd)\nhospital_data$Failures &lt;- \n  hospital_data$Patients -  hospital_data$Successes\n\ntreatment_tab &lt;- \n  xtabs(cbind(Successes, Failures) ~ Treatment, \n      data = hospital_data)\n\nhospital_tab &lt;- \n  xtabs(cbind(Successes, Failures)  ~ Hospital, \n      data = hospital_data)\n\ntreatment_tab;hospital_tab\n\n\n         \nTreatment Successes Failures\n        A        14        6\n        B        90       90\n\n\n        \nHospital Successes Failures\n       X        35       65\n       Y        69       31"
+    "text": "Example Scenario: Medical Treatment Success Rates\nLet’s consider two treatments, Treatment A and Treatment B, and their successes. Assume we also have information on where the treatments are carried out, either Hospital X or Hospital Y.\n\nData\n\n\n  Hospital Treatment Patients Successes\n1        X         A       10         5\n2        X         B       90        30\n3        Y         A       10         9\n4        Y         B       90        60\n\n\nTurning this data into contingency tables\n\nlibrary(vcd)\nhospital_data$Failures &lt;- \n  hospital_data$Patients -  hospital_data$Successes\n\ntreatment_tab &lt;- \n  xtabs(cbind(Successes, Failures) ~ Treatment, \n      data = hospital_data)\n\nhospital_tab &lt;- \n  xtabs(cbind(Successes, Failures)  ~ Hospital, \n      data = hospital_data)\n\ntreatment_tab;hospital_tab\n\n         \nTreatment Successes Failures\n        A        14        6\n        B        90       90\n\n\n        \nHospital Successes Failures\n       X        35       65\n       Y        69       31"
   },
   {
     "objectID": "5-Categorical3.html#overall-success-rates-ignoring-hospital",
     "href": "5-Categorical3.html#overall-success-rates-ignoring-hospital",
     "title": "ST201 Data Analysis",
     "section": "Overall Success Rates (ignoring hospital)",
-    "text": "Overall Success Rates (ignoring hospital)\nLet’s first compare the overall success rates for both treatments, ignoring the hospital.\n\nGiven the format of this data we might deal with it a little differently in R than we’ve seen before.\n\n\n# Calculate the overall success rate for Treatment A and B\noverall_data &lt;- aggregate(cbind(Patients, Successes) ~ Treatment, \n                          data = hospital_data, sum)\noverall_data$OverallSuccessRate &lt;- \n  overall_data$Successes / overall_data$Patients\noverall_data\n\n  Treatment Patients Successes OverallSuccessRate\n1         A       20        14                0.7\n2         B      180        90                0.5\n\n\n\nWe can still visualise this, but the table is also sufficient.\n\n\n\nbarplot(overall_data$OverallSuccessRate, \n        names.arg = overall_data$Treatment,\n        main = \"Overall Success Rates by Treatment\" ,\n        ylab = \"Overall Success Rate\", \n        xlab = \"Treatment\")\n\n\n\n\n\n\n\n\n\n\nTreatment A has a higher success rate than Treatment B."
+    "text": "Overall Success Rates (ignoring hospital)\nLet’s first compare the overall success rates for both treatments, ignoring the hospital.\n\nGiven the format of this data we might deal with it a little differently in R than we’ve seen before.\n\n\n# Calculate the overall success rate for Treatment A and B\noverall_data &lt;- aggregate(cbind(Patients, Successes) ~ Treatment, \n                      data = hospital_data,\n                      FUN = sum)\noverall_data$OverallSuccessRate &lt;- \n  overall_data$Successes / overall_data$Patients\noverall_data\n\n  Treatment Patients Successes OverallSuccessRate\n1         A       20        14                0.7\n2         B      180        90                0.5\n\n\n\nWe can still visualise this, but the table is also sufficient.\n\n\nbarplot(overall_data$OverallSuccessRate, \n        names.arg = overall_data$Treatment,\n        main = \"Overall Success Rates by Treatment\" ,\n        ylab = \"Overall Success Rate\", \n        xlab = \"Treatment\")\n\n\n\n\n\n\n\n\n. . .\nTreatment A has a higher success rate than Treatment B."
   },
   {
     "objectID": "5-Categorical3.html#success-rates-for-treatment-by-hospital",
     "href": "5-Categorical3.html#success-rates-for-treatment-by-hospital",
     "title": "ST201 Data Analysis",
     "section": "Success Rates for Treatment by Hospital",
-    "text": "Success Rates for Treatment by Hospital\nNow, let’s break down the success rates based on whether treatment was performed at Hospital X or Y.\n\n# Calculate the overall success rate for Treatment A and B\nhospital_data$SuccessRate &lt;- \n  hospital_data$Successes / hospital_data$Patients\nhospital_data\n\n  Hospital Treatment Patients Successes Failures SuccessRate\n1        X         A       10         5        5   0.5000000\n2        X         B       90        30       60   0.3333333\n3        Y         A       10         9        1   0.9000000\n4        Y         B       90        60       30   0.6666667\n\n\n\nTo visualise this with a barplot we need to manipulate the data a bit:\n\n\n\nhospital_tab &lt;- xtabs(SuccessRate ~ Treatment + Hospital, \n                      data = hospital_data)\nhospital_tab\n\n\n         Hospital\nTreatment         X         Y\n        A 0.5000000 0.9000000\n        B 0.3333333 0.6666667\n\n\n\n\nbarplot(hospital_tab,\n        legend.text = TRUE,\n        beside = TRUE,\n        main = \"Success Rates by Treatment & Hospital\" ,\n        ylab = \"Success Rate\", \n        xlab = \"Hospital\")\n\n\n\n\n\n\n\n\n\n\nTreatment A has a higher success rate than Treatment B in both hospitals."
+    "text": "Success Rates for Treatment by Hospital\nNow, let’s break down the success rates based on whether treatment was performed at Hospital X or Y.\n\n# Calculate the overall success rate for Treatment A and B\nhospital_data$SuccessRate &lt;- \n  hospital_data$Successes / hospital_data$Patients\nhospital_data\n\n  Hospital Treatment Patients Successes Failures SuccessRate\n1        X         A       10         5        5   0.5000000\n2        X         B       90        30       60   0.3333333\n3        Y         A       10         9        1   0.9000000\n4        Y         B       90        60       30   0.6666667\n\n\n\nTo visualise this with a barplot we need to manipulate the data a bit:\n\n\nhospital_tab &lt;- xtabs(SuccessRate ~ Treatment + Hospital, \n                      data = hospital_data)\nhospital_tab\n\n         Hospital\nTreatment         X         Y\n        A 0.5000000 0.9000000\n        B 0.3333333 0.6666667\n\n\n\nbarplot(hospital_tab,\n        legend.text = TRUE,\n        beside = TRUE,\n        main = \"Success Rates by Treatment & Hospital\" ,\n        ylab = \"Success Rate\", \n        xlab = \"Hospital\")\n\n\n\n\n\n\n\n\n. . .\nTreatment A has a higher success rate than Treatment B in both hospitals."
   },
   {
     "objectID": "5-Categorical3.html#example-student-admissions-at-uc-berkeley",
@@ -760,14 +760,14 @@
     "href": "5-Categorical3.html#odds-and-odds-ratio",
     "title": "ST201 Data Analysis",
     "section": "Odds and Odds Ratio",
-    "text": "Odds and Odds Ratio\n🔍 What Are Odds?\nWhen comparing two groups (e.g., Treatment vs. Control), the odds of success for each are calculated by:\n\nCategory 1:\n\\(w1 = \\frac{\\text{Success in Group 1}}{\\text{Failure in Group 1}}\\)\nCategory 2:\n\\(w2 = \\frac{\\text{Success in Group 2}}{\\text{Failure in Group 2}}\\)\n\n🔗 What is the Odds Ratio?\nThe odds ratio tells us how much more likely success odds are in one group compared to the other:\n\\(\\text{Odds Ratio} = \\frac{w1}{w2}\\)"
+    "text": "Odds and Odds Ratio\n\n🔍 What Are Odds?\nWhen comparing two groups (e.g., Treatment vs. Control), the odds of success for each are calculated by:\n\nCategory 1:\n\\(w1 = \\frac{\\text{Success in Group 1}}{\\text{Failure in Group 1}}\\)\nCategory 2:\n\\(w2 = \\frac{\\text{Success in Group 2}}{\\text{Failure in Group 2}}\\)\n\n\n\n🔗 What is the Odds Ratio?\nThe odds ratio tells us how much more likely success odds are in one group compared to the other:\n\\(\\text{Odds Ratio} = \\frac{w1}{w2}\\)"
   },
   {
     "objectID": "5-Categorical3.html#example-student-admissions-at-uc-berkeley-1",
     "href": "5-Categorical3.html#example-student-admissions-at-uc-berkeley-1",
     "title": "ST201 Data Analysis",
     "section": "Example: Student Admissions at UC Berkeley",
-    "text": "Example: Student Admissions at UC Berkeley\nLet’s assume, upon an initial look at the data, that the tables are collapsed over department.\n\nxtabs( ~ gender + admit, data = admission_dat)\n\n        admit\ngender   Admitted Rejected\n  Female      557     1278\n  Male       1198     1493\n\n\n\nOdds\n\n\nadmission_odds &lt;- lodds(~  admit + gender, \n                        data = admission_dat, \n                        log = FALSE)\ncoef(admission_odds)\n\n\nAdmitted:Rejected|Female   Admitted:Rejected|Male \n               0.4358372                0.8024113 \n\nconfint(admission_odds)\n\n                             2.5 %    97.5 %\nAdmitted:Rejected|Female 0.3945546 0.4814394\nAdmitted:Rejected|Male   0.7436704 0.8657919\n\n\n\n\nand Odds Ratios\n\n\nadmission_OR &lt;- loddsratio(~  admit + gender, \n                           data = admission_dat, \n                           log = FALSE)\ncoef(admission_OR)\n\n\nAdmitted:Rejected/Female:Male \n                    0.5431594 \n\nconfint(admission_OR)\n\n                                  2.5 %    97.5 %\nAdmitted:Rejected/Female:Male 0.4792272 0.6156207"
+    "text": "Example: Student Admissions at UC Berkeley\nLet’s assume, upon an initial look at the data, that the tables are collapsed over department.\n\nxtabs( ~ gender + admit, data = admission_dat)\n\n        admit\ngender   Admitted Rejected\n  Female      557     1278\n  Male       1198     1493\n\n\n. . .\nOdds\n\nadmission_odds &lt;- lodds(~  admit + gender, \n                        data = admission_dat, \n                        log = FALSE)\ncoef(admission_odds)\n\nAdmitted:Rejected|Female   Admitted:Rejected|Male \n               0.4358372                0.8024113 \n\nconfint(admission_odds)\n\n                             2.5 %    97.5 %\nAdmitted:Rejected|Female 0.3945546 0.4814394\nAdmitted:Rejected|Male   0.7436704 0.8657919\n\n\n. . .\nand Odds Ratios\n\nadmission_OR &lt;- loddsratio(~  admit + gender, \n                           data = admission_dat, \n                           log = FALSE)\ncoef(admission_OR)\n\nAdmitted:Rejected/Female:Male \n                    0.5431594 \n\nconfint(admission_OR)\n\n                                  2.5 %    97.5 %\nAdmitted:Rejected/Female:Male 0.4792272 0.6156207"
   },
   {
     "objectID": "5-Categorical3.html#example-student-admissions-at-uc-berkeley-2",
@@ -850,8 +850,8 @@
     "objectID": "5-Categorical3.html#considering-associations-with-two-categorical-variables",
     "href": "5-Categorical3.html#considering-associations-with-two-categorical-variables",
     "title": "ST201 Data Analysis",
-    "section": "Considering associations with > two categorical variables",
-    "text": "Considering associations with &gt; two categorical variables\nHow do we consider associations with categorical data?\n\nVisualisation\nProportions and Relative Risk\nOdds and Odds Ratios"
+    "section": "",
+    "text": "How do we consider associations with categorical data?\n\nVisualisation\nProportions and Relative Risk\nOdds and Odds Ratios"
   },
   {
     "objectID": "5-Categorical3.html#visualisation-2-way-mosaic-plots",
@@ -1615,5 +1615,82 @@
     "title": "ST201 Data Analysis",
     "section": "Hypothesis Testing: The Big Picture",
     "text": "Hypothesis Testing: The Big Picture\nPurpose: To determine if an observed effect or relationship is statistically significant or just due to random chance.\nKey Steps:\n\nState hypotheses\n\nNull hypothesis (\\(H_o\\)): No effect or no relationship.\nAlternative hypothesis (\\(H_a\\)): There is an effect or relationship.\n\nChoose a significance level (α)\n\nCommon choice: 0.05 (5% risk of rejecting H₀ when it’s true)\n\nSelect a test statistic\n\nDepends on data type and goal (e.g., t-test, chi-squared)\n\nCalculate p-value\n\nProbability of observing data as extreme as ours if H₀ is true.\n\nMake a decision\n\nIf p &lt; α: reject \\(H_0\\) → evidence supports \\(H_a\\)\nIf p ≥ α: fail to reject \\(H_0\\) → no strong evidence against \\(H_0\\)"
+  },
+  {
+    "objectID": "Tutorial2_soln.html",
+    "href": "Tutorial2_soln.html",
+    "title": "ST201 Tutorial Sheet 2 with Solutions",
+    "section": "",
+    "text": "Please work through the code below in a regular R script. The course isn’t covering R Markdown so the students will only be seeing regular R scripts. Get the students to try the questions first."
+  },
+  {
+    "objectID": "Tutorial2_soln.html#instructions-for-tutors",
+    "href": "Tutorial2_soln.html#instructions-for-tutors",
+    "title": "ST201 Tutorial Sheet 2 with Solutions",
+    "section": "",
+    "text": "Please work through the code below in a regular R script. The course isn’t covering R Markdown so the students will only be seeing regular R scripts. Get the students to try the questions first."
+  },
+  {
+    "objectID": "Tutorial2_soln.html#the-dataset",
+    "href": "Tutorial2_soln.html#the-dataset",
+    "title": "ST201 Tutorial Sheet 2 with Solutions",
+    "section": "The Dataset",
+    "text": "The Dataset\nA total of 150 customers of a petrol station are asked about their satisfaction with their car or motorbike insurance. The customers were asked if their vehicle type was a petrol car, a diesel car or a motorbike and if they were satisfied or unsatisfied with their insurance cover."
+  },
+  {
+    "objectID": "Tutorial2_soln.html#reading-the-the-data",
+    "href": "Tutorial2_soln.html#reading-the-the-data",
+    "title": "ST201 Tutorial Sheet 2 with Solutions",
+    "section": "Reading the the Data",
+    "text": "Reading the the Data\nOpen a new R script. The insurance satisfaction dataset is available on the Rstudio server in the ST201 folder in a file called insurance_dat.rds. Load the file into R and look at the data.\n\ninsurance_dat &lt;- readRDS(\"insurance_dat.rds\")"
+  },
+  {
+    "objectID": "Tutorial2_soln.html#contingency-tables",
+    "href": "Tutorial2_soln.html#contingency-tables",
+    "title": "ST201 Tutorial Sheet 2 with Solutions",
+    "section": "Contingency Tables",
+    "text": "Contingency Tables\nExercise 1\nRun the following code to create a contingency table for the insurance data called insurance_tab\n\ninsurance_tab &lt;- xtabs(~ vehicle + satisfaction, data = insurance_dat)\ninsurance_tab\n\n            satisfaction\nvehicle      satisfied unsatisfied\n  diesel_car        29          31\n  motorbike         12          20\n  petrol_car        33          25\n\n\nRun the following code to add the marginal distributions to this contingency table using the function addmargins()\n\naddmargins(insurance_tab)\n\n            satisfaction\nvehicle      satisfied unsatisfied Sum\n  diesel_car        29          31  60\n  motorbike         12          20  32\n  petrol_car        33          25  58\n  Sum               74          76 150\n\n\nExercise 2\nNow, suppose we are interested in looking at the table of proportions (the relative frequencies) rather than the raw frequencies as given by the contingency table above.\n\nCreate a table of proportions called insurance_prob_tab by applying the prop.table() function to the contingency table.\n\n\ninsurance_prop_tab &lt;- prop.table(insurance_tab)\ninsurance_prop_tab\n\n            satisfaction\nvehicle      satisfied unsatisfied\n  diesel_car 0.1933333   0.2066667\n  motorbike  0.0800000   0.1333333\n  petrol_car 0.2200000   0.1666667\n\n\n\nUse the addmargins() function to add the marginal distributions to the proportion table created in part (a).\n\n\naddmargins(insurance_prop_tab)\n\n            satisfaction\nvehicle      satisfied unsatisfied       Sum\n  diesel_car 0.1933333   0.2066667 0.4000000\n  motorbike  0.0800000   0.1333333 0.2133333\n  petrol_car 0.2200000   0.1666667 0.3866667\n  Sum        0.4933333   0.5066667 1.0000000\n\n\n\nWhat proportion of customers were satisfied with their insurance cover?\n\nAns. 49 % of customers were satisfied with their insurance (proportion = 0.493)"
+  },
+  {
+    "objectID": "Tutorial2_soln.html#barplots",
+    "href": "Tutorial2_soln.html#barplots",
+    "title": "ST201 Tutorial Sheet 2 with Solutions",
+    "section": "Barplots",
+    "text": "Barplots\nTo visualise the data in the contingency table we can produce a stacked barplot of the data in the table using the following code:\n\nbarplot(t(insurance_tab),\n        legend = TRUE,\n        args.legend = list(x = \"topleft\"),# This is changing the legend position\n        ylim = c(0,110)) # This is changing the y-axis limits\n\n\n\n\n\n\n\n\nNote the arguments in the function:\n\nt transposes the table to put vehicle on the x-axis\nlegend = TRUE. This tells the function to add a legend to the plot\nargs.legend = list(x = \"topleft\"). This tell the function where to place the legend.\nylim = c(0,100). This tells the function to make the y-axis limits go from 0 to 100. This is useful for improving the position of the legend.\n\nExercise 3\n\nInstead of the stacked barplot, change the plot so that the bars are side by side. Change the ylim argument as needed to improve the legend position.\n\n\nbarplot(insurance_tab,\n        legend = TRUE,\n        beside = TRUE,\n        args.legend = list(x = \"topleft\"),# This is changing the legend position\n        ylim = c(0,45)) # This is changing the y-axis limits \n\n\n\n\n\n\n\n\n\nBased on the barplots, describe what you have learned about the relationship between the type of vehicle and satisfaction with insurance cover.\n\nAns. Petrol car drivers seem to be the most satisfied. Diesel car drivers seem to be the most unsatisfied. Motorbike drivers have a notable higher number of unsatisfied customers compared to satisfied customers."
+  },
+  {
+    "objectID": "Tutorial2_soln.html#conditional-distributions",
+    "href": "Tutorial2_soln.html#conditional-distributions",
+    "title": "ST201 Tutorial Sheet 2 with Solutions",
+    "section": "Conditional Distributions",
+    "text": "Conditional Distributions\nWhat proportion of people that owned diesel cars are satisfied with their insurance? To answer this we want the conditional distribution for satisfaction given diesel_car. We can get this using our contingency table as follows:\n\ninsurance_tab[1,1]/(insurance_tab[1,1] + insurance_tab[1,2])\n\n[1] 0.4833333\n\n\nExercise 4\n\nModify the code above to find the proportion of people that owned petrol cars that were satisfied.\n\n\ninsurance_tab[3,1]/(insurance_tab[3,1] + insurance_tab[3,2])\n\n[1] 0.5689655\n\n\n\nWhat proportion of people that owned motorbikes were satisfied?\n\n\ninsurance_tab[2,1]/(insurance_tab[2,1] + insurance_tab[2,2])\n\n[1] 0.375\n\n\n\nBased on (b) and (c) does there appear to be a relationship between the type of vehicle and the satisfaction with insurance cover? Give a reason for your answer.\n\nAns. It seems that owning a motor bike lowers your chance of being satisfied. So yes there does appear to be a relationship but a formal test would help to determine if the relationship is significant."
+  },
+  {
+    "objectID": "Tutorial2_soln.html#odds",
+    "href": "Tutorial2_soln.html#odds",
+    "title": "ST201 Tutorial Sheet 2 with Solutions",
+    "section": "Odds",
+    "text": "Odds\nWe can use the following code to find the odds of being satisfied for each vehicle type on the log scale:\n\nlibrary(vcd)\n\nLoading required package: grid\n\nsatisfaction_odds &lt;- lodds( ~ satisfaction + vehicle, \n                            data = insurance_dat)\ncoef(satisfaction_odds)\n\nsatisfied:unsatisfied|diesel_car  satisfied:unsatisfied|motorbike \n                     -0.06669137                      -0.51082562 \nsatisfied:unsatisfied|petrol_car \n                      0.27763174 \n\n\nExercise 5\n\nModify the code to put the odds on the original scale.\n\n\nlibrary(vcd)\nsatisfaction_odds &lt;- lodds( ~ satisfaction + vehicle, \n                            data = insurance_dat,\n                            log = FALSE)\ncoef(satisfaction_odds)\n\nsatisfied:unsatisfied|diesel_car  satisfied:unsatisfied|motorbike \n                       0.9354839                        0.6000000 \nsatisfied:unsatisfied|petrol_car \n                       1.3200000 \n\n\n\nWhat are the odds of satisfaction for petrol car users? Provide an interpretation.\n\nAns. 1.32. Petrol car users are 32% more likely to be satisfied rather than unsatisfied with insurance.\n\nWhat is the odds ratio for petrol compared to diesel car users? Provide an interpretation.\n\nAns. 1.32/0.94 = 1.4. The odds of satisfaction with insurance is increased by 40% for petrol car users compared to diesel car users."
+  },
+  {
+    "objectID": "Tutorial2_soln.html#chi-squared-test",
+    "href": "Tutorial2_soln.html#chi-squared-test",
+    "title": "ST201 Tutorial Sheet 2 with Solutions",
+    "section": "Chi-squared test",
+    "text": "Chi-squared test\nIf we want to test whether vehicle type and satisfaction are independent then we can perform Pearson’s Chi-squared test using R as follows:\n\nmy_chisq_test &lt;- chisq.test(insurance_tab)\nmy_chisq_test\n\n\n    Pearson's Chi-squared test\n\ndata:  insurance_tab\nX-squared = 3.144, df = 2, p-value = 0.2076\n\n\nThe key components of the Chi-squared test are the test statistics and the p-value which are provided when you run the R code above. If you want to access specific parts of the my_chisq_test object created above then you can use the $ as follows\n\nmy_chisq_test$statistic\n\nX-squared \n 3.144007 \n\n\nThis will give you the chi-squared test statistic.\nExercise 6\n\nAccess the part of my_chisq_test that provides the expected contingency table, assuming vehicle type and satisfaction are independent. How many motorbike drivers would you expect to be unsatisfied with their insurance?\n\n\n## Expected table\nmy_chisq_test$expected\n\n            satisfaction\nvehicle      satisfied unsatisfied\n  diesel_car  29.60000    30.40000\n  motorbike   15.78667    16.21333\n  petrol_car  28.61333    29.38667\n\n## Expected motorbike drivers unsatisfied\nmy_chisq_test$expected[2,2]\n\n[1] 16.21333\n\n\n\nCalculate the Pearson residual for the number of motorbike drivers that were unsatisfied with their insurance. Note that Pearson’s residuals are defined as\n\n\\[\\frac{observed - expected}{\\sqrt{expected}}\\]\n\nexpected &lt;- my_chisq_test$expected[2,2]\nobserved &lt;- insurance_tab[2,2]\n\n(observed - expected)/sqrt(expected)\n\n[1] 0.940418\n\n\n\nWhat is the p-value for the Chi-squared test? Based on this would you conclude that vehicle type and satisfaction are independent? Give a reason for your answer.\n\n\nmy_chisq_test$p.value\n\n[1] 0.2076288\n\n\nA. Based on the p-value I would fail to reject the null hypothesis that the variables are independent. Therefore, there does not appear to be a significant relationship between vehicle type and insurance satisfaction."
+  },
+  {
+    "objectID": "Tutorial2_soln.html#mosaic-plot",
+    "href": "Tutorial2_soln.html#mosaic-plot",
+    "title": "ST201 Tutorial Sheet 2 with Solutions",
+    "section": "Mosaic Plot",
+    "text": "Mosaic Plot\nYou can also use a mosaic plot to visualise the data in the contingency table as follows:\n\nlibrary(vcd)\nmosaic(~ vehicle + satisfaction , data = insurance_dat)\n\n\n\n\n\n\n\n\nExercise 7\n\nAdd an appropriate argument to colour the mosaic plot based on the values of the Pearson residuals.\n\n\nlibrary(vcd)\nmosaic(~ vehicle + satisfaction, \n       data = insurance_dat,\n       shade = TRUE)\n\n\n\n\n\n\n\n\n\nWhat have your learned from this plot?\n\nAns. We see that motor bike drivers are more likely to be unsatisfied than satisfied. Petrol car drivers are more likely to be satisfied than unsatisfied. For diesel car drivers it’s about 50:50. However, the all gray shading would suggest that there is not a significant association between these variables (i.e., there are no colors representing large Pearson residuals).\nSAVE YOUR R SCRIPT!\nClick: file - save as"
+  },
+  {
+    "objectID": "5-Categorical3.html",
+    "href": "5-Categorical3.html",
+    "title": "ST201 Data Analysis",
+    "section": "",
+    "text": "How do we consider associations with categorical data?\n\nVisualisation\nProportions and Relative Risk\nOdds and Odds Ratios"
   }
 ]

@@ -74,7 +74,8 @@ Let’s first compare the **overall success rates** for both treatments, ignorin
 
 # Calculate the overall success rate for Treatment A and B
 overall_data <- aggregate(cbind(Patients, Successes) ~ Treatment, 
-                          data = hospital_data, sum)
+                      data = hospital_data,
+                      FUN = sum)
 overall_data$OverallSuccessRate <- 
   overall_data$Successes / overall_data$Patients
 overall_data
