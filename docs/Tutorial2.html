@@ -212,7 +212,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="barplots">Barplots</h2>
 <p>To visualise the data in the contingency table we can produce a stacked barplot of the data in the table using the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(insurance_tab,</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">t</span>(insurance_tab),</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"topleft"</span>),<span class="co"># This is changing the legend position</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">110</span>)) <span class="co"># This is changing the y-axis limits</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -222,7 +222,7 @@ window.Quarto = {
 <li><code>t</code> transposes the table to put vehicle on the x-axis</li>
 <li><code>legend = TRUE</code>. This tells the function to add a legend to the plot</li>
 <li><code>args.legend = list(x = "topleft")</code>. This tell the function where to place the legend.</li>
-<li><code>ylim = c(0,100)</code>. This tells the function to make the y-axis limits go from 0 to 100. This is useful for improving the position of the legend.</li>
+<li><code>ylim = c(0,110)</code>. This tells the function to make the y-axis limits go from 0 to 100. This is useful for improving the position of the legend.</li>
 </ol>
 <p><strong>Exercise 3</strong></p>
 <ol type="a">

@@ -101,7 +101,7 @@ Note the arguments in the function:
 1.  `t` transposes the table to put vehicle on the x-axis
 2.  `legend = TRUE`. This tells the function to add a legend to the plot
 3.  `args.legend = list(x = "topleft")`. This tell the function where to place the legend.
-4.  `ylim = c(0,100)`. This tells the function to make the y-axis limits go from 0 to 100. This is useful for improving the position of the legend.
+4.  `ylim = c(0,110)`. This tells the function to make the y-axis limits go from 0 to 110. This is useful for improving the position of the legend.
 
 **Exercise 3**
 
