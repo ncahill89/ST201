@@ -30,7 +30,7 @@ library(vcd)
 
 ## Instructions
 
--   Attempt the questions below before your tutorial in the week beginning 4th November 2024.
+-   Attempt the questions below before your tutorial in the week beginning 3rd November 2025.
 
 ## The Dataset
 

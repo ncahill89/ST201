@@ -1,18 +1,23 @@
 ---
-title: "ST201 Tutorial Sheet 3 "
-format: html
+title: "ST201 Tutorial Sheet 3 with Solutions"
+format: 
+  html:
+    embed-resources: true
+    self-contained-math: true
 editor: visual
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-ECHO = FALSE
-INCLUDE = FALSE
+ECHO = TRUE
+INCLUDE = TRUE
 ```
 
-## Instructions
+## Instructions for tutors
 
--   Attempt the questions below before your tutorial in the week beginning 17th November 2025.
+Please work through the code below in a regular R script. The course isn't covering R Markdown so the students will only be seeing regular R scripts. Get the students to try the questions first.
+
+------------------------------------------------------------------------
 
 **Exercise 1**
 
@@ -49,13 +54,11 @@ dbinom(x = 8,
 ```{r, echo = ECHO, include = INCLUDE}
 ## just get the probability of failure instead of success
 ## so use p = 0.75 (probability of an incorrect answer) instead
-
 dbinom(x = 8,
        size = 8,
        prob = 0.75)
 
 ## or...get the probability of zero correct answers (keeping p = 0.25)
-
 dbinom(x = 0,
        size = 8,
        prob = 0.25)
@@ -123,7 +126,6 @@ dpois(x = 1,
 
 ```{r, echo = ECHO, include = INCLUDE}
 ## First consider the probability of 1 or less and then find 1 - that value
-
 1- ppois(q = 1, 
         lambda = 2.5)
 ```
@@ -133,7 +135,6 @@ dpois(x = 1,
 ```{r, echo = ECHO, include = INCLUDE}
 ## if lambda = 2.5 per 30 minutes then lambda = 5 per hour
 ## consider the probability of 2 or less and then find 1 - that value
-
 1- ppois(q = 2, 
         lambda = 5)
 ```
@@ -142,7 +143,6 @@ dpois(x = 1,
 
 ```{r, echo = ECHO, include = INCLUDE}
 ## as above if lambda = 2.5 per 30 minutes then lambda = 5 per hour
-
 qpois(p = 0.9, 
       lambda = 5)
 ```
