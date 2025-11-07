@@ -12,7 +12,7 @@ pizza_del <- readRDS("~/Dropbox/LecturingMaynooth/ST201_DataAnalysis/Tutorials/p
 
 ## Instructions
 
--   Attempt the questions below before your tutorial in the week beginning 13th October 2024.
+-   Attempt the questions below before your tutorial in the week beginning 13th October 2025.
 
 ## Reading the the Data
 
@@ -113,9 +113,9 @@ head(sat_del)
 
 **Exercise 7**
 
-(a) What is the average order amount for saturday deliveries? 
+(a) What is the average order amount for saturday deliveries?
 
-(b) How does this compare to the average order amount for Monday deliveries? 
+(b) How does this compare to the average order amount for Monday deliveries?
 
 ## Boxplots for comparing a categorical vs a numerical variable
 
@@ -129,8 +129,7 @@ boxplot(order_amount ~ day, data = pizza_del)
 
 (a) Provide an interpretation for the boxplot.
 
-(b) Update the code to look at tip vs delivery day instead. 
-
+(b) Update the code to look at tip vs delivery day instead.
 
 **SAVE YOUR R SCRIPT!**
 
